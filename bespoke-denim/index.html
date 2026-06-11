@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Callum Godfrey — 001</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #fafaf8;
+  --paper: #f4f3f0;
+  --ink: #141412;
+  --mid: #8a8a84;
+  --light: #d4d3ce;
+  --serif: 'Shippori Mincho', 'Times New Roman', serif;
+  --sans: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 0.2s;
+}
+
+.nav-link:hover { opacity: 0.5; }
+
+.lang-dropdown-wrap { position: relative; }
+
+.lang-dropdown-btn {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  padding: 0;
+  transition: opacity 0.2s;
+}
+
+.lang-dropdown-btn:hover { opacity: 0.5; }
+
+.lang-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+  background: var(--ink);
+  border: 0.5px solid rgba(255,255,255,0.1);
+  min-width: 160px;
+  z-index: 200;
+}
+
+.lang-dropdown-menu.open { display: block; }
+
+.lang-dropdown-menu button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 12px 20px;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.lang-dropdown-menu button:last-child { border-bottom: none; }
+.lang-dropdown-menu button:hover { color: var(--white); }
+.lang-dropdown-menu button.active { color: var(--white); }
+
+/* ── HERO ── */
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.hero-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  opacity: 0.75;
+}
+
+.hero-portrait { display: block; }
+.hero-landscape { display: none; }
+
+.hero-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.hero-left {}
+
+.hero-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 16px;
+  display: block;
+}
+
+.hero-title {
+  font-family: var(--serif);
+  font-size: clamp(52px, 9vw, 120px);
+  line-height: 0.9;
+  color: var(--white);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.hero-right {
+  text-align: right;
+  padding-bottom: 8px;
+}
+
+.hero-sub {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+  display: block;
+}
+
+.hero-cta {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 0.5px solid rgba(255,255,255,0.4);
+  padding-bottom: 3px;
+  transition: opacity 0.2s;
+}
+
+.hero-cta:hover { opacity: 0.5; }
+
+/* ── RULE ── */
+.rule {
+  width: 100%;
+  height: 0.5px;
+  background: var(--light);
+}
+
+/* ── INTRO STATEMENT ── */
+.statement {
+  padding: 140px 48px;
+  max-width: 900px;
+}
+
+.statement-text {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 48px);
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+
+.statement-text em {
+  color: var(--mid);
+  font-style: normal;
+}
+
+/* ── FULL IMAGE ── */
+.full-img {
+  width: 100%;
+  display: block;
+}
+
+.full-img img {
+  width: 100%;
+  height: 85vh;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── TWO COL ── */
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.two-col-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  min-height: 600px;
+}
+
+.two-col-text {
+  padding: 100px 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: var(--paper);
+}
+
+.two-col-text.right { order: -1; }
+
+.col-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 48px;
+  display: block;
+}
+
+.col-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  line-height: 1.4;
+  font-weight: 400;
+  margin-bottom: 32px;
+  color: var(--ink);
+}
+
+.col-body {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--mid);
+  max-width: 340px;
+  margin-bottom: 48px;
+}
+
+.col-link {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 3px;
+  align-self: flex-start;
+  transition: opacity 0.2s;
+}
+
+.col-link:hover { opacity: 0.4; }
+
+/* ── SPECS ROW ── */
+.specs {
+  padding: 80px 48px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--light);
+  border-top: 0.5px solid var(--light);
+  border-bottom: 0.5px solid var(--light);
+}
+
+.spec {
+  padding: 40px 32px;
+  background: var(--white);
+}
+
+.spec-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.spec-value {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--ink);
+  font-weight: 400;
+}
+
+/* ── CAROUSEL ── */
+.carousel-section {
+  padding: 120px 0 120px 48px;
+}
+
+.carousel-header {
+  padding-right: 48px;
+  margin-bottom: 60px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.carousel-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.carousel-hint {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 48px;
+  cursor: grab;
+}
+
+.carousel-track:active { cursor: grabbing; }
+.carousel-track::-webkit-scrollbar { display: none; }
+
+.carousel-item {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  position: relative;
+  background: var(--ink);
+  overflow: hidden;
+}
+
+.carousel-item.ratio-43 { width: min(560px, 70vw); }
+.carousel-item.ratio-916 { width: min(280px, 40vw); }
+
+.carousel-item video {
+  width: 100%;
+  display: block;
+  height: 520px;
+  object-fit: cover;
+}
+
+.carousel-item.ratio-43 video { object-fit: contain; }
+.carousel-item.ratio-916 video { object-fit: contain; }
+
+.carousel-item-label {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+}
+
+/* ── PHOTO GRID ── */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 2px;
+}
+
+.photo-grid img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.photo-grid img:first-child {
+  aspect-ratio: auto;
+  height: 100%;
+}
+
+/* ── MAKING ── */
+.making {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+
+.making-text {
+  padding: 100px 80px;
+  background: var(--paper);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.making-top {}
+
+.making-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 48px;
+}
+
+.making-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c0392b;
+  animation: pulse 2.5s infinite;
+}
+
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+.making-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 400;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  color: var(--ink);
+}
+
+.making-body {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--mid);
+  max-width: 340px;
+}
+
+.making-video {
+  position: relative;
+  background: var(--ink);
+}
+
+.making-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* ── SIGNUP ── */
+.signup {
+  padding: 160px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.signup-left {}
+
+.signup-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 60px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+
+.signup-sub {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--mid);
+}
+
+.signup-right {}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.signup-input {
+  padding: 18px 0;
+  font-family: var(--sans);
+  font-size: 14px;
+  background: transparent;
+  border: none;
+  border-bottom: 0.5px solid var(--light);
+  outline: none;
+  color: var(--ink);
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.signup-input::placeholder { color: var(--light); }
+.signup-input:focus { border-color: var(--ink); }
+
+.signup-btn {
+  margin-top: 32px;
+  padding: 16px 0;
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+  align-self: flex-start;
+  padding: 14px 40px;
+}
+
+.signup-btn:hover { opacity: 0.6; }
+.signup-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+.signup-message {
+  font-size: 12px;
+  margin-top: 16px;
+  color: var(--mid);
+  min-height: 18px;
+}
+
+.signup-message.success { color: #2d6a4f; }
+.signup-message.error { color: #c0392b; }
+
+/* ── FOOTER ── */
+footer {
+  padding: 48px;
+  border-top: 0.5px solid var(--light);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--mid);
+  font-weight: 400;
+}
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover { color: var(--ink); }
+.footer-link svg { width: 12px; height: 12px; fill: currentColor; }
+
+.footer-note {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--light);
+  text-align: right;
+}
+
+/* ── MOBILE ── */
+@media (min-width: 768px) {
+  .hero-portrait { display: none; }
+  .hero-landscape { display: block; }
+}
+
+@media (max-width: 900px) {
+  .two-col { grid-template-columns: 1fr; }
+  .two-col-text.right { order: 0; }
+  .two-col-img img { min-height: 400px; }
+  .two-col-text { padding: 64px 32px; }
+  .making { grid-template-columns: 1fr; }
+  .making-video { min-height: 300px; aspect-ratio: 16/9; position: relative; }
+  .signup { grid-template-columns: 1fr; gap: 48px; padding: 100px 32px; }
+  .photo-grid { grid-template-columns: 1fr 1fr; }
+  .photo-grid img { aspect-ratio: 3/4; height: auto; }
+  .specs { grid-template-columns: 1fr 1fr; padding: 0; }
+  footer { grid-template-columns: 1fr; gap: 24px; padding: 40px 32px; }
+  .footer-note { text-align: left; }
+}
+
+@media (max-width: 600px) {
+  nav { padding: 20px 24px; }
+  .nav-right { gap: 20px; }
+  .nav-link:not(.nav-apply-link) { display: none; }
+  .hero-content { padding: 32px 24px; flex-direction: column; align-items: flex-start; gap: 32px; }
+  .hero-right { text-align: left; }
+  .statement { padding: 80px 24px; }
+  .two-col-text { padding: 48px 24px; }
+  .col-body { max-width: 100%; }
+  .carousel-section { padding: 80px 0 80px 24px; }
+  .carousel-header { padding-right: 24px; }
+  .carousel-track { padding-right: 24px; }
+  .carousel-item.ratio-43 { width: 80vw; }
+  .carousel-item.ratio-916 { width: 55vw; }
+  .carousel-item video { height: 380px; }
+  .photo-grid { grid-template-columns: 1fr; }
+  .making-text { padding: 64px 24px; }
+  .specs { grid-template-columns: 1fr 1fr; }
+  .spec { padding: 28px 20px; }
+  footer { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Callum Godfrey</a>
+  <div class="nav-right">
+    <a href="#making" class="nav-link" id="nav-making">Making</a>
+    <a href="#waitlist" class="nav-link" id="nav-waitlist">Waitlist</a>
+    <div class="lang-dropdown-wrap">
+      <button class="lang-dropdown-btn" onclick="toggleLangMenu()" id="langBtn">EN</button>
+      <div class="lang-dropdown-menu" id="langMenu">
+        <button onclick="setNavLang('en')">EN — English</button>
+        <button onclick="setNavLang('ja')">日本語</button>
+        <button onclick="setNavLang('ko')">한국어</button>
+        <button onclick="setNavLang('fr')">Français</button>
+        <button onclick="setNavLang('de')">Deutsch</button>
+      </div>
+    </div>
+    <a href="order.html" class="nav-link nav-apply-link" id="nav-apply-link">Apply</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <img class="hero-img hero-portrait" src="media/portrait_hero.jpg" alt="Callum Godfrey 001" />
+  <img class="hero-img hero-landscape" src="media/landscape_hero.jpg" alt="Callum Godfrey 001" />
+  <div class="hero-content">
+    <div class="hero-left">
+      <span class="hero-label" id="hero-label">Wellington, New Zealand</span>
+      <h1 class="hero-title">Callum<br>Godfrey</h1>
+    </div>
+    <div class="hero-right">
+      <span class="hero-sub" id="hero-sub">001 — High Waisted Wide Bootcut</span>
+      <a href="order.html" class="hero-cta" id="hero-cta">Apply for a commission</a>
+    </div>
+  </div>
+</section>
+
+<!-- STATEMENT -->
+<section class="statement">
+  <p class="statement-text" id="statement-text">
+    I make every pair myself —<br>
+    <em>cut and sewn to order</em><br>
+    from raw Japanese 15oz selvedge.<br>
+    Four slots a month. That's it.
+  </p>
+</section>
+
+<div class="rule"></div>
+
+<!-- FULL IMAGE -->
+<div class="full-img">
+  <img src="media/landscape_2.jpg" alt="" loading="lazy" />
+</div>
+
+<!-- TWO COL -->
+<section class="two-col">
+  <div class="two-col-img">
+    <img src="media/portrait_3.jpg" alt="" loading="lazy" />
+  </div>
+  <div class="two-col-text">
+    <span class="col-eyebrow" id="col-eyebrow">The jean</span>
+    <h2 class="col-title" id="col-title">No stock.<br>No shortcuts.<br>Just a pair that fits.</h2>
+    <p class="col-body" id="col-body">Each commission starts with your measurements, moves through CLO3D digital fitting, and ends with hand-cut, hand-sewn denim that belongs to you. Raw 15oz Japanese selvedge. It fades with you.</p>
+    <a href="order.html" class="col-link" id="col-link">Apply for 001</a>
+  </div>
+</section>
+
+<!-- SPECS -->
+<div class="specs">
+  <div class="spec">
+    <span class="spec-label" id="spec-fabric-label">Fabric</span>
+    <span class="spec-value" id="spec-fabric">Japanese 15oz selvedge</span>
+  </div>
+  <div class="spec">
+    <span class="spec-label" id="spec-slots-label">Slots per batch</span>
+    <span class="spec-value">4</span>
+  </div>
+  <div class="spec">
+    <span class="spec-label" id="spec-lead-label">Lead time</span>
+    <span class="spec-value" id="spec-lead">2 – 4 weeks</span>
+  </div>
+  <div class="spec">
+    <span class="spec-label" id="spec-origin-label">Made in</span>
+    <span class="spec-value">Wellington, NZ</span>
+  </div>
+</div>
+
+<!-- CAROUSEL -->
+<section class="carousel-section">
+  <div class="carousel-header">
+    <div>
+      <span class="col-eyebrow" id="carousel-eyebrow">On the street</span>
+      <h2 class="carousel-title" id="carousel-title">As worn.</h2>
+    </div>
+    <span class="carousel-hint" id="carousel-hint">Drag →</span>
+  </div>
+  <div class="carousel-track" id="carousel">
+    <div class="carousel-item ratio-43">
+      <video src="media/on_the_street.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">Wellington</span>
+    </div>
+    <div class="carousel-item ratio-43">
+      <video src="media/cool_video.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">001</span>
+    </div>
+    <div class="carousel-item ratio-916">
+      <video src="media/e4wet.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">Raw denim</span>
+    </div>
+    <div class="carousel-item ratio-43">
+      <video src="media/4f43f6159ec04551bdee3ecea5de6e76.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">15oz selvedge</span>
+    </div>
+    <div class="carousel-item ratio-916">
+      <video src="media/0213__1_.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">Handmade</span>
+    </div>
+  </div>
+</section>
+
+<!-- PHOTO GRID -->
+<div class="photo-grid">
+  <img src="media/landscape_3.jpg" alt="" loading="lazy" />
+  <img src="media/portrait_2.jpg" alt="" loading="lazy" />
+  <img src="media/landscape_4.jpg" alt="" loading="lazy" />
+</div>
+
+<!-- IN THE MAKING -->
+<section class="making" id="making">
+  <div class="making-text">
+    <div class="making-top">
+      <div class="making-live">
+        <span class="making-dot"></span>
+        <span id="making-badge">Latest vlog</span>
+      </div>
+      <h2 class="making-title" id="making-title">Behind<br>the seams.</h2>
+      <p class="making-body" id="making-body">Pattern making, CLO3D, sewing, Wellington streets. I document everything. Mostly in Japanese, always honest.</p>
+    </div>
+  </div>
+  <div class="making-video">
+    <iframe id="yt-embed"
+      src="https://www.youtube.com/embed/UoPG6AOnDJA?start=190&rel=0&modestbranding=1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- SIGNUP -->
+<section class="signup" id="waitlist">
+  <div class="signup-left">
+    <h2 class="signup-title" id="signup-title">Be first<br>to know.</h2>
+    <p class="signup-sub" id="signup-sub">4 slots a month. They go fast. Drop your email and I'll let you know when Batch 002 opens.</p>
+  </div>
+  <div class="signup-right">
+    <form class="signup-form" id="signupForm">
+      <input class="signup-input" type="email" placeholder="your@email.com" id="signupEmail" required />
+      <button class="signup-btn" type="submit" id="signupBtn">
+        <span id="signup-btn-text">Notify me</span>
+      </button>
+    </form>
+    <p class="signup-message" id="signupMsg"></p>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-brand">Callum Godfrey</span>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+    <a href="https://www.tiktok.com/@callumgodfreyy" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      TikTok
+    </a>
+  </div>
+  <span class="footer-note" id="footer-note">Made by hand in Wellington, NZ</span>
+</footer>
+
+<script>
+// ── Carousel drag ──
+const track = document.getElementById('carousel');
+let isDragging = false, startX, scrollLeft;
+track.addEventListener('mousedown', e => { isDragging = true; startX = e.pageX - track.offsetLeft; scrollLeft = track.scrollLeft; });
+track.addEventListener('mouseleave', () => { isDragging = false; });
+track.addEventListener('mouseup', () => { isDragging = false; });
+track.addEventListener('mousemove', e => {
+  if (!isDragging) return;
+  e.preventDefault();
+  track.scrollLeft = scrollLeft - (e.pageX - track.offsetLeft - startX) * 1.5;
+});
+
+// ── Latest YouTube video ──
+async function loadLatestVideo() {
+  try {
+    const res = await fetch('/.netlify/functions/latest-video');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.videoId) document.getElementById('yt-embed').src = `https://www.youtube.com/embed/${data.videoId}?rel=0&modestbranding=1`;
+  } catch(e) {}
+}
+loadLatestVideo();
+
+// ── Language ──
+const landingCopy = {
+  en: { btn:'EN', label:'Wellington, New Zealand', sub:'001 — High Waisted Wide Bootcut', cta:'Apply for a commission', navMaking:'Making', navWaitlist:'Waitlist', navApply:'Apply', statement:'I make every pair myself —<br><em>cut and sewn to order</em><br>from raw Japanese 15oz selvedge.<br>Four slots a month. That\'s it.', colEyebrow:'The jean', colTitle:'No stock.<br>No shortcuts.<br>Just a pair that fits.', colBody:'Each commission starts with your measurements, moves through CLO3D digital fitting, and ends with hand-cut, hand-sewn denim that belongs to you. Raw 15oz Japanese selvedge. It fades with you.', colLink:'Apply for 001', specFabricLabel:'Fabric', specFabric:'Japanese 15oz selvedge', specSlotsLabel:'Slots per batch', specLeadLabel:'Lead time', specLead:'2 – 4 weeks', specOriginLabel:'Made in', carouselEyebrow:'On the street', carouselTitle:'As worn.', carouselHint:'Drag →', makingBadge:'Latest vlog', makingTitle:'Behind<br>the seams.', makingBody:'Pattern making, CLO3D, sewing, Wellington streets. I document everything. Mostly in Japanese, always honest.', signupTitle:'Be first<br>to know.', signupSub:'4 slots a month. They go fast. Drop your email and I\'ll let you know when Batch 002 opens.', signupBtn:'Notify me', signupPlaceholder:'your@email.com', successMsg:"You're on the list. I'll be in touch.", errorMsg:"Something went wrong — try again or DM me.", footerNote:'Made by hand in Wellington, NZ' },
+  ja: { btn:'日本語', label:'ニュージーランド・ウェリントン', sub:'001 — ハイウエスト ワイドブーツカット', cta:'コミッションに応募する', navMaking:'メイキング', navWaitlist:'順番待ち', navApply:'応募する', statement:'すべてのペアを一人で制作 —<br><em>受注後に裁断・縫製</em><br>生の日本製15ozセルビッジデニムで。<br>月4枠のみ。', colEyebrow:'このジーンズについて', colTitle:'在庫なし。<br>妥協なし。<br>本当に合う一本。', colBody:'採寸から始まり、CLO3Dでデジタルフィッティングを経て、手裁断・手縫いで仕上げる一本。生の日本製15ozセルビッジ。着るほどに色落ちしていく。', colLink:'001に応募する', specFabricLabel:'素材', specFabric:'日本製15ozセルビッジ', specSlotsLabel:'月間枠数', specLeadLabel:'リードタイム', specLead:'2〜4週間', specOriginLabel:'製造地', carouselEyebrow:'ストリートで', carouselTitle:'着用コーデ。', carouselHint:'スクロール →', makingBadge:'最新動画', makingTitle:'縫い目の<br>裏側。', makingBody:'パターン、CLO3D、縫製、ウェリントンの街。すべてを記録。主に日本語で、いつも正直に。', signupTitle:'いち早く<br>知る。', signupSub:'月4枠。すぐに埋まります。メールを登録してバッチ002の情報をお受け取りください。', signupBtn:'登録する', signupPlaceholder:'メールアドレス', successMsg:'登録完了。バッチ002のオープン時にご連絡します。', errorMsg:'エラーが発生しました。もう一度お試しいただくか、InstagramでDMをください。', footerNote:'ニュージーランド・ウェリントンで手作り' },
+  ko: { btn:'한국어', label:'뉴질랜드 웰링턴', sub:'001 — 하이웨이스트 와이드 부츠컷', cta:'커미션 신청하기', navMaking:'메이킹', navWaitlist:'대기자 명단', navApply:'신청', statement:'모든 페어를 직접 제작 —<br><em>주문 후 재단·봉제</em><br>일본제 15oz 셀비지 로우 데님으로.<br>한 달에 4자리뿐.', colEyebrow:'이 청바지에 대해', colTitle:'재고 없음.<br>타협 없음.<br>진짜 맞는 한 벌.', colBody:'채수에서 시작해 CLO3D 디지털 피팅을 거쳐 손으로 재단·봉제된 데님. 일본제 15oz 셀비지 로우 데님. 입을수록 색이 바랩니다.', colLink:'001 신청하기', specFabricLabel:'소재', specFabric:'일본제 15oz 셀비지', specSlotsLabel:'월 슬롯 수', specLeadLabel:'리드 타임', specLead:'2~4주', specOriginLabel:'제조지', carouselEyebrow:'거리에서', carouselTitle:'착용 모습.', carouselHint:'드래그 →', makingBadge:'최신 브이로그', makingTitle:'솔기<br>뒤에서.', makingBody:'패턴, CLO3D, 재봉, 웰링턴 거리. 모든 것을 기록합니다. 주로 일본어로, 항상 솔직하게.', signupTitle:'가장 먼저<br>알아보세요.', signupSub:'한 달에 4자리. 금방 찹니다. 배치 002 오픈 시 알려드립니다.', signupBtn:'알림 받기', signupPlaceholder:'이메일 주소', successMsg:'등록 완료. 배치 002 오픈 시 연락드립니다.', errorMsg:'오류 발생 — 다시 시도하거나 인스타그램으로 DM 주세요.', footerNote:'뉴질랜드 웰링턴에서 수제 제작' },
+  fr: { btn:'FR', label:'Wellington, Nouvelle-Zélande', sub:'001 — Jean Taille Haute Bootcut Large', cta:'Postuler pour une commission', navMaking:'Fabrication', navWaitlist:'Liste d\'attente', navApply:'Postuler', statement:'Je fabrique chaque paire moi-même —<br><em>coupée et cousue sur commande</em><br>en denim japonais 15oz brut.<br>Quatre créneaux par mois. C\'est tout.', colEyebrow:'Le jean', colTitle:'Pas de stock.<br>Pas de compromis.<br>Une paire qui vous va vraiment.', colBody:'Chaque commission commence par vos mesures, passe par un essayage numérique CLO3D, et aboutit à un denim coupé et cousu à la main, fait pour vous. Denim japonais 15oz brut. Il vieillit avec vous.', colLink:'Postuler pour 001', specFabricLabel:'Tissu', specFabric:'Denim japonais 15oz selvedge', specSlotsLabel:'Créneaux par lot', specLeadLabel:'Délai', specLead:'2 – 4 semaines', specOriginLabel:'Fabriqué à', carouselEyebrow:'Dans la rue', carouselTitle:'Tel que porté.', carouselHint:'Glisser →', makingBadge:'Dernier vlog', makingTitle:'Dans les<br>coulisses.', makingBody:'Patron, CLO3D, couture, les rues de Wellington. Je documente tout. Principalement en japonais, toujours honnête.', signupTitle:'Soyez le<br>premier informé.', signupSub:'4 créneaux par mois. Ça va vite. Laissez votre email pour le Lot 002.', signupBtn:'Me notifier', signupPlaceholder:'votre@email.com', successMsg:'Vous êtes sur la liste. Je vous contacterai à l\'ouverture du Lot 002.', errorMsg:'Une erreur s\'est produite — réessayez ou contactez-moi sur Instagram.', footerNote:'Fabriqué à la main à Wellington, Nouvelle-Zélande' },
+  de: { btn:'DE', label:'Wellington, Neuseeland', sub:'001 — High-Waist Wide-Leg Bootcut', cta:'Für eine Kommission bewerben', navMaking:'Making-of', navWaitlist:'Warteliste', navApply:'Bewerben', statement:'Ich fertige jedes Paar selbst —<br><em>auf Bestellung zugeschnitten und genäht</em><br>aus rohem japanischem 15oz Selvedge.<br>Vier Plätze pro Monat. Das wars.', colEyebrow:'Die Jeans', colTitle:'Kein Lager.<br>Keine Kompromisse.<br>Einfach eine Jeans, die passt.', colBody:'Jede Kommission beginnt mit Ihren Maßen, durchläuft ein digitales CLO3D-Fitting und endet mit handgeschnittenem, handgenähtem Denim, der Ihnen gehört. Roher japanischer 15oz Selvedge. Er verblasst mit Ihnen.', colLink:'Für 001 bewerben', specFabricLabel:'Stoff', specFabric:'Japanischer 15oz Selvedge', specSlotsLabel:'Plätze pro Batch', specLeadLabel:'Lieferzeit', specLead:'2 – 4 Wochen', specOriginLabel:'Gefertigt in', carouselEyebrow:'Auf der Straße', carouselTitle:'Wie getragen.', carouselHint:'Ziehen →', makingBadge:'Neuester Vlog', makingTitle:'Hinter den<br>Nähten.', makingBody:'Schnittmuster, CLO3D, Nähen, Wellingtons Straßen. Ich dokumentiere alles. Meist auf Japanisch, immer ehrlich.', signupTitle:'Als Erster<br>informiert sein.', signupSub:'4 Plätze pro Monat. Die sind schnell weg. E-Mail hinterlassen für Batch 002.', signupBtn:'Benachrichtigen', signupPlaceholder:'ihre@email.com', successMsg:'Sie sind auf der Liste. Ich melde mich zur Eröffnung von Batch 002.', errorMsg:'Ein Fehler ist aufgetreten — versuchen Sie es erneut oder schreiben Sie mir auf Instagram.', footerNote:'Handgefertigt in Wellington, Neuseeland' }
+};
+
+let currentLang = 'en';
+
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+
+document.addEventListener('click', e => {
+  const wrap = document.querySelector('.lang-dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) document.getElementById('langMenu').classList.remove('open');
+});
+
+function setNavLang(lang) {
+  currentLang = lang;
+  const c = landingCopy[lang];
+  document.getElementById('langMenu').classList.remove('open');
+  document.getElementById('langBtn').textContent = c.btn;
+  document.querySelectorAll('.lang-dropdown-menu button').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('onclick') === `setNavLang('${lang}')`);
+  });
+  const s = (id, val) => { const el = document.getElementById(id); if(el) el.innerHTML = val; };
+  const t = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
+  t('hero-label', c.label);
+  t('hero-sub', c.sub);
+  t('hero-cta', c.cta);
+  t('nav-making', c.navMaking);
+  t('nav-waitlist', c.navWaitlist);
+  t('nav-apply-link', c.navApply);
+  s('statement-text', c.statement);
+  t('col-eyebrow', c.colEyebrow);
+  s('col-title', c.colTitle);
+  t('col-body', c.colBody);
+  t('col-link', c.colLink);
+  t('spec-fabric-label', c.specFabricLabel);
+  t('spec-fabric', c.specFabric);
+  t('spec-slots-label', c.specSlotsLabel);
+  t('spec-lead-label', c.specLeadLabel);
+  t('spec-lead', c.specLead);
+  t('spec-origin-label', c.specOriginLabel);
+  t('carousel-eyebrow', c.carouselEyebrow);
+  t('carousel-title', c.carouselTitle);
+  t('carousel-hint', c.carouselHint);
+  t('making-badge', c.makingBadge);
+  s('making-title', c.makingTitle);
+  t('making-body', c.makingBody);
+  s('signup-title', c.signupTitle);
+  t('signup-sub', c.signupSub);
+  t('signup-btn-text', c.signupBtn);
+  document.getElementById('signupEmail').placeholder = c.signupPlaceholder;
+  t('footer-note', c.footerNote);
+  document.documentElement.lang = lang;
+  sessionStorage.setItem('preferredLang', lang);
+}
+
+// ── Klaviyo signup ──
+const KLAVIYO_KEY = 'YOUR_KLAVIYO_PUBLIC_KEY';
+const KLAVIYO_LIST = 'YOUR_KLAVIYO_LIST_ID';
+
+document.getElementById('signupForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const email = document.getElementById('signupEmail').value.trim();
+  const btn = document.getElementById('signupBtn');
+  const msg = document.getElementById('signupMsg');
+  const c = landingCopy[currentLang];
+  btn.disabled = true;
+  msg.textContent = ''; msg.className = 'signup-message';
+  try {
+    const res = await fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${KLAVIYO_KEY}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'revision': '2023-02-22' },
+      body: JSON.stringify({ data: { type: 'subscription', attributes: { list_id: KLAVIYO_LIST, email } } })
+    });
+    if (res.ok || res.status === 202) {
+      msg.textContent = c.successMsg;
+      msg.className = 'signup-message success';
+      document.getElementById('signupEmail').value = '';
+    } else { throw new Error(); }
+  } catch {
+    msg.textContent = c.errorMsg;
+    msg.className = 'signup-message error';
+  }
+  btn.disabled = false;
+});
+</script>
+</body>
+</html>
