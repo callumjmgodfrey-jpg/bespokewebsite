@@ -425,6 +425,53 @@ nav {
   height: 100%;
 }
 
+/* ── BTS SECTION ── */
+.bts {
+  padding: 120px 48px;
+  background: var(--paper);
+}
+
+.bts-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 60px;
+}
+
+.bts-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  color: var(--ink);
+}
+
+.bts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 2px;
+}
+
+.bts-grid img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.bts-grid img.landscape {
+  aspect-ratio: 4/3;
+}
+
+@media (max-width: 900px) {
+  .bts { padding: 80px 24px; }
+  .bts-grid { grid-template-columns: 1fr 1fr; }
+  .bts-grid img.landscape { aspect-ratio: 3/4; }
+}
+
+@media (max-width: 600px) {
+  .bts-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+}
+
 /* ── MAKING ── */
 .making {
   display: grid;
@@ -787,6 +834,22 @@ footer {
   <img src="media/portrait_2.jpg" alt="" loading="lazy" />
   <img src="media/landscape_4.jpg" alt="" loading="lazy" />
 </div>
+
+<!-- BEHIND THE SEAMS -->
+<section class="bts">
+  <div class="bts-header">
+    <div>
+      <span class="col-eyebrow">The studio</span>
+      <h2 class="bts-title">Behind the seams.</h2>
+    </div>
+  </div>
+  <div class="bts-grid">
+    <img src="media/bts_sewing.png" alt="Sewing at the machine" loading="lazy" class="landscape" />
+    <img src="media/bts_studio_1.png" alt="Studio" loading="lazy" />
+    <img src="media/bts_studio_2.png" alt="Studio" loading="lazy" />
+    <img src="media/bts_pattern.jpeg" alt="Pattern making" loading="lazy" />
+  </div>
+</section>
 
 <!-- IN THE MAKING -->
 <section class="making" id="making">
