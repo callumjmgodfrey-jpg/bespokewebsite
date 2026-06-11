@@ -1,5 +1,4 @@
 [build]
-  base = "bespoke-denim"
   publish = "bespoke-denim"
   functions = "bespoke-denim/netlify/functions"
 
