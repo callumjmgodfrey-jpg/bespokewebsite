@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Application Received — Callum Godfrey</title>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #fafaf8;
+  --paper: #f4f3f0;
+  --ink: #141412;
+  --mid: #8a8a84;
+  --light: #d4d3ce;
+  --serif: 'Shippori Mincho', 'Times New Roman', serif;
+  --sans: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-link {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 0.2s;
+}
+
+.nav-link:hover { opacity: 0.5; }
+
+/* HERO */
+.confirmation-hero {
+  background: var(--ink);
+  padding: 180px 48px 100px;
+  flex-shrink: 0;
+}
+
+.confirmation-check {
+  font-size: 13px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.check-mark {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(255,255,255,0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.check-mark svg {
+  width: 10px;
+  height: 10px;
+  stroke: rgba(255,255,255,0.6);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.confirmation-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 7vw, 90px);
+  line-height: 1;
+  color: var(--white);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+/* BODY */
+.confirmation-body {
+  flex: 1;
+  padding: 100px 48px 140px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 1100px;
+}
+
+.confirmation-lead {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  line-height: 1.8;
+  color: var(--ink);
+  font-weight: 400;
+  margin-bottom: 48px;
+}
+
+.confirmation-lead em {
+  color: var(--mid);
+  font-style: normal;
+}
+
+.back-link {
+  display: inline-block;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 0.5px solid var(--ink);
+  padding-bottom: 3px;
+  transition: opacity 0.2s;
+}
+
+.back-link:hover { opacity: 0.4; }
+
+/* NEXT STEPS */
+.next-steps {}
+
+.next-steps-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 40px;
+  display: block;
+}
+
+.steps-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  padding: 28px 0;
+  border-top: 0.5px solid var(--light);
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.step:last-child { border-bottom: 0.5px solid var(--light); }
+
+.step-num {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--light);
+  font-weight: 400;
+  padding-top: 2px;
+}
+
+.step-text {
+  font-size: 13px;
+  line-height: 1.9;
+  color: var(--mid);
+}
+
+.step-text strong {
+  color: var(--ink);
+  font-weight: 400;
+  display: block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  letter-spacing: 0.01em;
+}
+
+/* FOOTER */
+.rule { width: 100%; height: 0.5px; background: var(--light); }
+
+footer {
+  padding: 48px;
+  border-top: 0.5px solid var(--light);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+
+.footer-brand {
+  font-family: var(--serif);
+  font-size: 13px;
+  color: var(--mid);
+  font-weight: 400;
+}
+
+.footer-links {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover { color: var(--ink); }
+.footer-link svg { width: 12px; height: 12px; fill: currentColor; }
+
+.footer-note {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--light);
+  text-align: right;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  nav { padding: 20px 24px; }
+  .nav-right { gap: 20px; }
+  .nav-link:not(.nav-home-link) { display: none; }
+  .confirmation-hero { padding: 140px 24px 72px; }
+  .confirmation-body { grid-template-columns: 1fr; gap: 64px; padding: 72px 24px 100px; }
+  footer { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
+  .footer-note { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">Callum Godfrey</a>
+  <div class="nav-right">
+    <a href="index.html" class="nav-link nav-home-link">Home</a>
+  </div>
+</nav>
+
+<section class="confirmation-hero">
+  <div class="confirmation-check">
+    <span class="check-mark">
+      <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
+    </span>
+    Application received
+  </div>
+  <h1 class="confirmation-title">You're<br>on the list.</h1>
+</section>
+
+<div class="confirmation-body">
+  <div>
+    <p class="confirmation-lead">
+      I've got your application and I'll be in touch via email soon.<br><br>
+      <em>Everything here is made by hand — I work through applications one by one, so bear with me while I read yours properly.</em>
+    </p>
+    <a href="index.html" class="back-link">Back to the site</a>
+  </div>
+
+  <div class="next-steps">
+    <span class="next-steps-label">What happens next</span>
+    <ol class="steps-list">
+      <li class="step">
+        <span class="step-num">01</span>
+        <div class="step-text">
+          <strong>I read your application</strong>
+          I go through each one personally. Usually within a few days.
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">02</span>
+        <div class="step-text">
+          <strong>I'll email you</strong>
+          If there's a slot available and your application is a good fit, I'll reach out to confirm details and discuss next steps.
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">03</span>
+        <div class="step-text">
+          <strong>Fitting & fabric confirmation</strong>
+          We'll lock in your measurements, fabric, and any final details before I start cutting.
+        </div>
+      </li>
+      <li class="step">
+        <span class="step-num">04</span>
+        <div class="step-text">
+          <strong>I make your jeans</strong>
+          From pattern to finished pair — typically 2 to 4 weeks from confirmation.
+        </div>
+      </li>
+    </ol>
+  </div>
+</div>
+
+<div class="rule"></div>
+
+<footer>
+  <span class="footer-brand">Callum Godfrey</span>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+    <a href="https://www.tiktok.com/@callumgodfreyy" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      TikTok
+    </a>
+  </div>
+  <span class="footer-note">Made by hand in Wellington, NZ</span>
+</footer>
+
+</body>
+</html>

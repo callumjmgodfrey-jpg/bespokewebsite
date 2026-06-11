@@ -1653,8 +1653,7 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     });
 
     if (res.ok) {
-      document.getElementById('form-success').textContent = t.successMsg;
-      document.getElementById('form-success').style.display = 'block';
+      window.location.href = 'confirmation.html';
       document.getElementById('orderForm').reset();
       selectedSizing = null;
       document.getElementById('opt-standard').classList.remove('selected');
