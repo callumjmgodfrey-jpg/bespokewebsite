@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Application Received — Callum Godfrey</title>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="animations.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -277,49 +278,49 @@ footer {
 </nav>
 
 <section class="confirmation-hero">
-  <div class="confirmation-check">
+  <div class="confirmation-check reveal">
     <span class="check-mark">
       <svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg>
     </span>
     Application received
   </div>
-  <h1 class="confirmation-title">You're<br>on the list.</h1>
+  <h1 class="confirmation-title reveal reveal-d1">You're<br>on the list.</h1>
 </section>
 
 <div class="confirmation-body">
   <div>
-    <p class="confirmation-lead">
+    <p class="confirmation-lead reveal">
       I've got your application and I'll be in touch via email soon.<br><br>
       <em>Everything here is made by hand — I work through applications one by one, so bear with me while I read yours properly.</em>
     </p>
-    <a href="index.html" class="back-link">Back to the site</a>
+    <a href="index.html" class="back-link reveal reveal-d1">Back to the site</a>
   </div>
 
   <div class="next-steps">
-    <span class="next-steps-label">What happens next</span>
+    <span class="next-steps-label reveal">What happens next</span>
     <ol class="steps-list">
-      <li class="step">
+      <li class="step reveal">
         <span class="step-num">01</span>
         <div class="step-text">
           <strong>I read your application</strong>
           I go through each one personally. Usually within a few days.
         </div>
       </li>
-      <li class="step">
+      <li class="step reveal">
         <span class="step-num">02</span>
         <div class="step-text">
           <strong>I'll email you</strong>
           If there's a slot available and your application is a good fit, I'll reach out to confirm details and discuss next steps.
         </div>
       </li>
-      <li class="step">
+      <li class="step reveal">
         <span class="step-num">03</span>
         <div class="step-text">
           <strong>Fitting & fabric confirmation</strong>
           We'll lock in your measurements, fabric, and any final details before I start cutting.
         </div>
       </li>
-      <li class="step">
+      <li class="step reveal">
         <span class="step-num">04</span>
         <div class="step-text">
           <strong>I make your jeans</strong>
@@ -351,5 +352,6 @@ footer {
   <span class="footer-note">Made by hand in Wellington, NZ</span>
 </footer>
 
+<script src="animations.js"></script>
 </body>
 </html>

@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FAQ — Callum Godfrey</title>
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="animations.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -307,17 +308,17 @@ footer {
 </nav>
 
 <section class="page-header">
-  <span class="page-header-eyebrow">Questions</span>
-  <h1 class="page-header-title">Frequently<br>asked.</h1>
+  <span class="page-header-eyebrow reveal">Questions</span>
+  <h1 class="page-header-title reveal reveal-d1">Frequently<br>asked.</h1>
 </section>
 
 <div class="faq-wrapper">
 
   <!-- THE COMMISSION -->
   <div class="faq-section">
-    <span class="faq-section-label">The commission</span>
+    <span class="faq-section-label reveal">The commission</span>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">How does the commission process work?</span>
         <span class="faq-icon"></span>
@@ -328,7 +329,7 @@ footer {
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">How many slots are available?</span>
         <span class="faq-icon"></span>
@@ -338,7 +339,7 @@ footer {
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">What if there are no slots left when I apply?</span>
         <span class="faq-icon"></span>
@@ -348,7 +349,7 @@ footer {
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">Can I request changes to the design?</span>
         <span class="faq-icon"></span>
@@ -362,9 +363,9 @@ footer {
 
   <!-- FIT & SIZING -->
   <div class="faq-section">
-    <span class="faq-section-label">Fit & sizing</span>
+    <span class="faq-section-label reveal">Fit & sizing</span>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">How do I take my measurements correctly?</span>
         <span class="faq-icon"></span>
@@ -377,7 +378,7 @@ footer {
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">What's the difference between made-to-measure and standard sizing?</span>
         <span class="faq-icon"></span>
@@ -388,7 +389,7 @@ footer {
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">Will the jeans shrink after washing?</span>
         <span class="faq-icon"></span>
@@ -403,9 +404,9 @@ footer {
 
   <!-- FABRIC & MATERIALS -->
   <div class="faq-section">
-    <span class="faq-section-label">Fabric & materials</span>
+    <span class="faq-section-label reveal">Fabric & materials</span>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">What fabric is used?</span>
         <span class="faq-icon"></span>
@@ -416,7 +417,7 @@ footer {
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">Is the selvedge edge visible on the finished jeans?</span>
         <span class="faq-icon"></span>
@@ -430,9 +431,9 @@ footer {
 
   <!-- PRICING & SHIPPING -->
   <div class="faq-section">
-    <span class="faq-section-label">Pricing & shipping</span>
+    <span class="faq-section-label reveal">Pricing & shipping</span>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">How much does a commission cost?</span>
         <span class="faq-icon"></span>
@@ -442,7 +443,7 @@ footer {
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">Do you ship internationally?</span>
         <span class="faq-icon"></span>
@@ -452,7 +453,7 @@ footer {
       </div>
     </div>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">When do I pay?</span>
         <span class="faq-icon"></span>
@@ -466,9 +467,9 @@ footer {
 
   <!-- STILL HAVE QUESTIONS -->
   <div class="faq-section">
-    <span class="faq-section-label">Still have questions?</span>
+    <span class="faq-section-label reveal">Still have questions?</span>
 
-    <div class="faq-item">
+    <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
         <span class="faq-question-text">I have a question that's not answered here.</span>
         <span class="faq-icon"></span>
@@ -484,10 +485,10 @@ footer {
 <!-- CTA BAND -->
 <section class="cta-band">
   <div class="cta-band-text">
-    <span class="cta-band-eyebrow">Ready?</span>
-    <h2 class="cta-band-title">Four slots.<br>Apply now.</h2>
+    <span class="cta-band-eyebrow reveal">Ready?</span>
+    <h2 class="cta-band-title reveal reveal-d1">Four slots.<br>Apply now.</h2>
   </div>
-  <a href="order.html" class="cta-band-link">Apply for a commission</a>
+  <a href="order.html" class="cta-band-link reveal reveal-d2">Apply for a commission</a>
 </section>
 
 <div class="rule"></div>
@@ -520,6 +521,6 @@ function toggle(btn) {
   if (!isOpen) item.classList.add('open');
 }
 </script>
-
+<script src="animations.js"></script>
 </body>
 </html>
