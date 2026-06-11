@@ -411,7 +411,6 @@ nav {
 .photo-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
-  grid-template-rows: auto auto;
   gap: 2px;
 }
 
@@ -422,13 +421,7 @@ nav {
   display: block;
 }
 
-.photo-grid img.span-col {
-  grid-column: span 2;
-  aspect-ratio: 16/9;
-}
-
 .photo-grid img.tall {
-  grid-row: span 2;
   aspect-ratio: auto;
   height: 100%;
 }
@@ -641,8 +634,7 @@ footer {
   .signup { grid-template-columns: 1fr; gap: 48px; padding: 100px 32px; }
   .photo-grid { grid-template-columns: 1fr 1fr; }
   .photo-grid img { aspect-ratio: 3/4; height: auto; }
-  .photo-grid img.tall { grid-row: span 1; height: auto; aspect-ratio: 3/4; }
-  .photo-grid img.span-col { grid-column: span 1; aspect-ratio: 3/4; }
+  .photo-grid img.tall { height: auto; aspect-ratio: 3/4; }
   .specs { grid-template-columns: 1fr 1fr; padding: 0; }
   footer { grid-template-columns: 1fr; gap: 24px; padding: 40px 32px; }
   .footer-note { text-align: left; }
@@ -695,7 +687,7 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
-  <img class="hero-img hero-portrait" src="media/portrait_hero.jpg" alt="Callum Godfrey 001" />
+  <img class="hero-img hero-portrait" src="media/bts_pattern.jpeg" alt="Callum Godfrey 001" />
   <img class="hero-img hero-landscape" src="media/landscape_hero.jpg" alt="Callum Godfrey 001" />
   <div class="hero-content">
     <div class="hero-left">
@@ -723,7 +715,7 @@ footer {
 
 <!-- FULL IMAGE -->
 <div class="full-img">
-  <img src="media/landscape_2.jpg" alt="" loading="lazy" class="reveal-fade" />
+  <img src="media/landscape_2.jpg" alt="" loading="lazy" class="reveal" />
 </div>
 
 <!-- TWO COL -->
@@ -794,13 +786,9 @@ footer {
 
 <!-- PHOTO GRID -->
 <div class="photo-grid">
-  <img src="media/landscape_3.jpg" alt="" loading="lazy" class="tall reveal-fade" />
-  <img src="media/bts_studio_1.png" alt="" loading="lazy" class="reveal-fade" />
-  <img src="media/portrait_2.jpg" alt="" loading="lazy" class="reveal-fade" />
-  <img src="media/bts_sewing.png" alt="" loading="lazy" class="span-col reveal-fade" />
-  <img src="media/bts_studio_2.png" alt="" loading="lazy" class="reveal-fade" />
-  <img src="media/landscape_4.jpg" alt="" loading="lazy" class="reveal-fade" />
-  <img src="media/bts_pattern.jpeg" alt="" loading="lazy" class="reveal-fade" />
+  <img src="media/landscape_3.jpg" alt="" loading="lazy" class="tall reveal" />
+  <img src="media/portrait_2.jpg" alt="" loading="lazy" class="reveal reveal-d1" />
+  <img src="media/bts_sewing.png" alt="" loading="lazy" class="reveal reveal-d2" />
 </div>
 
 <!-- IN THE MAKING -->
