@@ -743,9 +743,9 @@ footer {
 
         <!-- SUBMIT -->
         <button type="submit" class="submit-btn" id="submitBtn">
-          <span id="l-submit">Submit application</span>
+          <span id="l-submit">Pay now — NZD $<span id="btn-total">500</span></span>
         </button>
-        <p class="submit-note" id="l-submit-note">Submitting this form does not charge you. This is an application for a commission slot.</p>
+        <p class="submit-note" id="l-submit-note">You'll be taken to Stripe's secure checkout. Card, Apple Pay, and Google Pay accepted.</p>
 
         <div class="form-message" id="form-success"></div>
         <div class="form-message error-msg" id="form-error"></div>
@@ -1048,6 +1048,7 @@ function selectShipRegion(el, region) {
   el.classList.add('selected');
   clearError('err-shipping');
   updateShippingDisplay();
+  updateBtnTotal();
 }
 
 // ── Sizing ──
@@ -1059,6 +1060,7 @@ function selectSizing(type) {
   document.getElementById('standard-size-section').classList.toggle('visible', type === 'Standard sizes');
   clearError('err-sizing');
   updateShippingDisplay();
+  updateBtnTotal();
 }
 
 function selectWaist(btn, value) {
@@ -1227,13 +1229,14 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   }
 
   try {
-    const res = await fetch('/.netlify/functions/submit-order', {
+    const res = await fetch('/.netlify/functions/create-checkout', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
     if (res.ok) {
-      window.location.href = 'confirmation.html';
+      const data = await res.json();
+      window.location.href = data.url;
     } else {
       throw new Error('Non-200');
     }
@@ -1241,7 +1244,7 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     document.getElementById('form-error').textContent = t.errorMsg;
     document.getElementById('form-error').style.display = 'block';
     btn.disabled = false;
-    document.getElementById('l-submit').textContent = t.submit;
+    document.getElementById('l-submit').innerHTML = 'Pay now — NZD $<span id="btn-total">' + getBtnTotal() + '</span>';
   }
 });
 
@@ -1283,6 +1286,18 @@ async function submitWaitlist() {
   } catch {
     msg.textContent = 'Something went wrong — try again or email me directly.';
   }
+}
+
+// ── Button total ──
+const SHIP_NZD = { nz: 20, au: 40, jpkr: 60, namerica: 70, ukeu: 75, row: 85 };
+function getBtnTotal() {
+  const base = selectedSizing === 'Made to measure' ? 550 : 500;
+  const ship = selectedShipRegion ? (SHIP_NZD[selectedShipRegion] || 0) : 0;
+  return base + ship;
+}
+function updateBtnTotal() {
+  const el = document.getElementById('btn-total');
+  if (el) el.textContent = getBtnTotal();
 }
 
 // ── Init ──
