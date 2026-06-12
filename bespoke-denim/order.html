@@ -1037,13 +1037,6 @@
         <div class="form-group">
           <label><span id="l-colour">Denim colour</span> <span class="required">*</span></label>
           <div class="colour-options">
-            <div class="colour-option" id="colour-black" onclick="selectColour(this, 'Black — 14oz Japanese selvedge')">
-              <div class="colour-swatch">
-                <img src="media/swatch_black.jpg" alt="Black denim swatch" />
-              </div>
-              <span class="colour-option-label" id="l-colour-black">Black</span>
-              <span class="colour-option-sub">14oz selvedge</span>
-            </div>
             <div class="colour-option" id="colour-indigo" onclick="selectColour(this, 'Indigo — 14oz Japanese selvedge')">
               <div class="colour-swatch">
                 <img src="media/swatch_indigo.jpg" alt="Indigo denim swatch" />
@@ -1185,7 +1178,7 @@ const translations = {
     tcsLabel: 'Terms & conditions', tcsToggle: 'Read before you submit',
     tcsReadNote: 'Scroll to read all terms before accepting.',
     tcsCheckbox: 'I\'ve read all of this and I\'m good with it',
-    colour: 'Denim colour', colourBlack: 'Black', colourIndigo: 'Indigo',
+    colour: 'Denim colour', colourIndigo: 'Indigo',
     shipping: 'Shipping region', shipNZ: 'New Zealand', shipAU: 'Australia', shipJPKR: 'Japan / Korea', shipNA: 'USA / Canada', shipUKEU: 'UK / Europe', shipROW: 'Rest of world', shipTotal: 'Estimated total', shipNote: "Shipped tracked via DHL Express. Estimates only — exact shipping is invoiced with your final balance. Import duties, if any, are the buyer's responsibility.",
     submit: 'Submit application', submitting: 'Sending…', waistSize: 'Waist', inseamSize: 'Inseam length',
     successMsg: "✓ Application received — I\'ll be in touch via email soon. Thanks for your patience while I work through everything by hand.",
@@ -1220,7 +1213,7 @@ const translations = {
     tcsLabel: '利用規約', tcsToggle: '利用規約を読む',
     tcsReadNote: '承諾前にすべての規約をお読みください。',
     tcsCheckbox: '利用規約を読み、同意します',
-    colour: 'デニムカラー', colourBlack: 'ブラック', colourIndigo: 'インディゴ',
+    colour: 'デニムカラー', colourIndigo: 'インディゴ',
     shipping: '配送地域', shipNZ: 'ニュージーランド', shipAU: 'オーストラリア', shipJPKR: '日本・韓国', shipNA: 'アメリカ・カナダ', shipUKEU: 'イギリス・ヨーロッパ', shipROW: 'その他の地域', shipTotal: '合計（概算）', shipNote: 'DHLエクスプレスの追跡付き配送。表示は概算です。正確な送料は最終請求書に含まれます。輸入関税が発生する場合は購入者のご負担となります。',
     submit: '注文する', submitting: '送信中…', waistSize: 'ウエスト幅', inseamSize: '舂下レングス',
     successMsg: '✓ ご注文を承りました。近日中にメールにてご連絡いたします。',
@@ -1253,7 +1246,7 @@ const translations = {
     tcsLabel: '이용약관', tcsToggle: '이용약관 읽기',
     tcsReadNote: '동의하기 전에 모든 약관을 읽어주세요.',
     tcsCheckbox: '이용약관을 읽고 동의합니다',
-    colour: '데님 색상', colourBlack: '블랙', colourIndigo: '인디고',
+    colour: '데님 색상', colourIndigo: '인디고',
     shipping: '배송 지역', shipNZ: '뉴질랜드', shipAU: '호주', shipJPKR: '일본 / 한국', shipNA: '미국 / 캐나다', shipUKEU: '영국 / 유럽', shipROW: '기타 지역', shipTotal: '예상 총액', shipNote: 'DHL 익스프레스 추적 배송. 표시 금액은 예상치이며 정확한 배송비는 최종 청구서에 포함됩니다. 수입 관세가 발생할 경우 구매자 부담입니다.',
     submit: '주문하기', submitting: '제출 중…', waistSize: '허리', inseamSize: '안쪽 솔기 길이',
     successMsg: '✓ 주문이 접수되었습니다. 곧 이메일로 연락드리겠습니다.',
@@ -1286,7 +1279,7 @@ const translations = {
     tcsLabel: 'Conditions générales', tcsToggle: 'Lire les conditions générales',
     tcsReadNote: 'Faites défiler pour lire toutes les conditions avant d\'accepter.',
     tcsCheckbox: 'J\'ai lu et j\'accepte les conditions générales',
-    colour: 'Couleur du denim', colourBlack: 'Noir', colourIndigo: 'Indigo',
+    colour: 'Couleur du denim', colourIndigo: 'Indigo',
     shipping: "Région d'expédition", shipNZ: 'Nouvelle-Zélande', shipAU: 'Australie', shipJPKR: 'Japon / Corée', shipNA: 'USA / Canada', shipUKEU: 'Royaume-Uni / Europe', shipROW: 'Reste du monde', shipTotal: 'Total estimé', shipNote: "Expédition suivie via DHL Express. Estimations uniquement — les frais exacts sont facturés avec votre solde final. Les droits d'importation éventuels sont à la charge de l'acheteur.",
     submit: 'Passer la commande', submitting: 'Envoi en cours…', waistSize: 'Tour de taille', inseamSize: 'Longueur de jambe',
     successMsg: '✓ Votre commande a été reçue. Nous vous contacterons par e-mail sous peu.',
@@ -1319,7 +1312,7 @@ const translations = {
     tcsLabel: 'Allgemeine Geschäftsbedingungen', tcsToggle: 'AGB lesen',
     tcsReadNote: 'Bitte scrollen Sie, um alle Bedingungen vor der Annahme zu lesen.',
     tcsCheckbox: 'Ich habe die AGB gelesen und stimme ihnen zu',
-    colour: 'Denimfarbe', colourBlack: 'Schwarz', colourIndigo: 'Indigo',
+    colour: 'Denimfarbe', colourIndigo: 'Indigo',
     shipping: 'Versandregion', shipNZ: 'Neuseeland', shipAU: 'Australien', shipJPKR: 'Japan / Korea', shipNA: 'USA / Kanada', shipUKEU: 'UK / Europa', shipROW: 'Rest der Welt', shipTotal: 'Geschätzte Gesamtsumme', shipNote: 'Versand mit Sendungsverfolgung via DHL Express. Nur Schätzwerte — die genauen Versandkosten werden mit der Endrechnung berechnet. Etwaige Einfuhrzölle trägt der Käufer.',
     submit: 'Bestellung aufgeben', submitting: 'Wird gesendet…', waistSize: 'Bundweite', inseamSize: 'Innenbeirlänge',
     successMsg: '✓ Ihre Bestellung wurde erhalten. Wir melden uns in Kürze per E-Mail.',
@@ -1486,7 +1479,6 @@ function setLang(lang) {
   if (document.getElementById('l-ship-row')) document.getElementById('l-ship-row').textContent = t.shipROW;
   if (document.getElementById('l-ship-total')) document.getElementById('l-ship-total').textContent = t.shipTotal;
   if (document.getElementById('l-ship-note')) document.getElementById('l-ship-note').textContent = t.shipNote;
-  if (document.getElementById('l-colour-black')) document.getElementById('l-colour-black').textContent = t.colourBlack;
   if (document.getElementById('l-colour-indigo')) document.getElementById('l-colour-indigo').textContent = t.colourIndigo;
   if (document.getElementById('l-waist-size')) document.getElementById('l-waist-size').textContent = t.waistSize;
   if (document.getElementById('l-inseam-size')) document.getElementById('l-inseam-size').textContent = t.inseamSize;
@@ -1695,7 +1687,6 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   if (document.getElementById('l-ship-row')) document.getElementById('l-ship-row').textContent = t.shipROW;
   if (document.getElementById('l-ship-total')) document.getElementById('l-ship-total').textContent = t.shipTotal;
   if (document.getElementById('l-ship-note')) document.getElementById('l-ship-note').textContent = t.shipNote;
-  if (document.getElementById('l-colour-black')) document.getElementById('l-colour-black').textContent = t.colourBlack;
   if (document.getElementById('l-colour-indigo')) document.getElementById('l-colour-indigo').textContent = t.colourIndigo;
   if (document.getElementById('l-waist-size')) document.getElementById('l-waist-size').textContent = t.waistSize;
   if (document.getElementById('l-inseam-size')) document.getElementById('l-inseam-size').textContent = t.inseamSize;
