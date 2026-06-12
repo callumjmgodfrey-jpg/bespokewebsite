@@ -968,9 +968,8 @@ let selectedWaist = null;
 let selectedInseamStd = null;
 let currentRates = {};
 let currentCurrency = 'USD';
-// TEST PRICES — revert before going live
-const basePricesNZD = { standard: 1, mtm: 1 };
-const shippingRatesNZD = { nz: 1, au: 1, jpkr: 1, namerica: 1, ukeu: 1, row: 1 };
+const basePricesNZD = { standard: 500, mtm: 550 };
+const shippingRatesNZD = { nz: 20, au: 40, jpkr: 60, namerica: 70, ukeu: 75, row: 85 };
 let selectedShipRegion = null;
 const currencySymbols = { NZD: 'NZD $', AUD: 'AUD $', USD: 'USD $', EUR: '€', GBP: '£', JPY: '¥', KRW: '₩' };
 let selectedSizing = null;
@@ -1291,7 +1290,7 @@ async function submitWaitlist() {
 }
 
 // ── Button total ──
-const SHIP_NZD = { nz: 1, au: 1, jpkr: 1, namerica: 1, ukeu: 1, row: 1 };
+const SHIP_NZD = { nz: 20, au: 40, jpkr: 60, namerica: 70, ukeu: 75, row: 85 };
 function getBtnTotal() {
   const base = selectedSizing === 'Made to measure' ? 550 : 500;
   const ship = selectedShipRegion ? (SHIP_NZD[selectedShipRegion] || 0) : 0;
