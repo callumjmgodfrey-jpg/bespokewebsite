@@ -562,6 +562,7 @@ nav {
 .photo-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
   gap: 2px;
 }
 
@@ -569,10 +570,12 @@ nav {
   width: 100%;
   aspect-ratio: 3/4;
   object-fit: cover;
+  object-position: center top;
   display: block;
 }
 
 .photo-grid img.tall {
+  grid-row: 1 / 3;
   aspect-ratio: auto;
   height: 100%;
 }
@@ -783,9 +786,9 @@ footer {
   .making { grid-template-columns: 1fr; }
   .making-video { min-height: 300px; aspect-ratio: 16/9; position: relative; }
   .signup { grid-template-columns: 1fr; gap: 48px; padding: 100px 32px; }
-  .photo-grid { grid-template-columns: 1fr 1fr; }
+  .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: unset; }
   .photo-grid img { aspect-ratio: 3/4; height: auto; }
-  .photo-grid img.tall { height: auto; aspect-ratio: 3/4; }
+  .photo-grid img.tall { grid-row: unset; height: auto; aspect-ratio: 3/4; }
   .specs { grid-template-columns: 1fr 1fr; padding: 0; }
   footer { grid-template-columns: 1fr; gap: 24px; padding: 40px 32px; }
   .footer-note { text-align: left; }
@@ -806,7 +809,8 @@ footer {
   .carousel-item.ratio-43 { width: 80vw; }
   .carousel-item.ratio-916 { width: 55vw; }
   .carousel-item video { height: 380px; }
-  .photo-grid { grid-template-columns: 1fr; }
+  .photo-grid { grid-template-columns: 1fr 1fr; grid-template-rows: unset; }
+  .photo-grid img.tall { grid-row: unset; aspect-ratio: 3/4; height: auto; }
   .making-text { padding: 64px 24px; }
   .specs { grid-template-columns: 1fr 1fr; }
   .spec { padding: 28px 20px; }
@@ -820,6 +824,7 @@ footer {
 <nav>
   <a href="index.html" class="nav-logo">Callum Godfrey</a>
   <div class="nav-right">
+    <a href="about.html" class="nav-link">About</a>
     <a href="#making" class="nav-link" id="nav-making">Making</a>
     <a href="#waitlist" class="nav-link" id="nav-waitlist">Waitlist</a>
     <div class="lang-dropdown-wrap">
@@ -851,45 +856,6 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- ABOUT TEASER -->
-<a href="#about" class="about-teaser reveal">
-  <span class="about-teaser-text">when i was 10 i made an assassins creed hoodie…</span>
-  <span class="about-teaser-arrow">Read more ↓</span>
-</a>
-
-<!-- STATEMENT -->
-<section class="statement">
-  <span class="statement-eyebrow reveal">一生もの</span>
-  <p class="statement-text reveal reveal-d1" id="statement-text">
-    Life is short.<br>
-    <em>Your clothes don't have to be.</em>
-  </p>
-</section>
-
-<div class="rule"></div>
-
-<!-- FULL IMAGE -->
-<div class="full-img">
-  <img src="media/landscape_2.jpg" alt="" loading="lazy" class="reveal" />
-</div>
-
-<!-- MANIFESTO -->
-<section class="two-col">
-  <div class="two-col-img">
-    <img src="media/portrait_hero.jpg" alt="" loading="lazy" class="reveal" />
-  </div>
-  <div class="two-col-text">
-    <span class="col-eyebrow reveal">Made to Outlive the Moment</span>
-    <h2 class="col-title reveal reveal-d1">You've felt it<br>before.</h2>
-    <div class="manifesto-paras">
-      <p class="col-body reveal reveal-d2">A pair of shoes destroyed within months, jeans worn through at the knee before you've even broken them in. Back to the store, again. It doesn't have to be this way.</p>
-      <p class="col-body reveal reveal-d3">The fashion industry is one of the largest contributors to global carbon emissions, driven by a cycle of cheap materials, cheap labour, and clothes designed to fall apart. We're opting out of that cycle entirely.</p>
-    </div>
-  </div>
-</section>
-
-<div class="rule"></div>
 
 <!-- TWO COL -->
 <section class="two-col">
@@ -925,44 +891,14 @@ footer {
   </div>
 </div>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-left">
-    <h2 class="about-heading reveal">when i was 10,<br>i tried to make<br>an assassins creed<br>hoodie<em>…</em></h2>
-    <div class="about-body">
-      <p class="reveal">The idea was good — but halfway through, it didn't come out the way it was supposed to. I still wore it anyway.</p>
-      <p class="reveal">Fashion and clothing had always been a big part of my life — there was always a sewing machine within arm's reach. My mum used to run her own label, gave it a go in the UK, then brought it back to New Zealand, slowed down and kept production local. Growing up around that probably shaped how I think about making things.</p>
-      <p class="reveal">Later on, when I started getting into fashion more myself, I'd find myself picturing an outfit — a silhouette, a specific shape — and then spend hours searching through clothing and vintage stores trying to find it. It usually ended in a "close enough" moment: spending too much money and time on something that wasn't quite right, then going back to looking again a few months later. It felt like I was wearing someone else's vision, not my own.</p>
-      <p class="reveal">I like to be able to feel the quality of things with my hands — heavy leather, raw selvedge denim, steel, that sort of stuff. I wanted clothing that felt like it was made to last a lifetime. All this fast fashion, cheap material, cheap labour stuff never sat with me.</p>
-      <p class="reveal">I graduated high school in 2020 — the first year of COVID, when everything was online and it didn't really matter whether you showed up or not. I didn't like who that made me. So I picked something to hold myself accountable to: learning Japanese, on my own, in my bedroom.</p>
-      <p class="reveal">I got so deep into it that my parents sat me down. They asked why they never saw me anymore, what I was doing in my room, why I was doing this to myself. I'd never really been vulnerable in front of them before — but I'd also never felt that strongly about anything, and I ended up breaking down trying to explain it. After that, they let me keep going. A year and a half later, I passed N1 with a near-perfect score.</p>
-      <p class="reveal">That same drive is how I approach making clothes. If I can't find what I'm picturing, I make it myself — properly, with materials and construction that earn the word "lifetime." That's the only way I know how to do this.</p>
-    </div>
-  </div>
-  <div class="about-right">
-    <img src="media/about_young.jpeg" alt="" class="about-photo reveal" loading="lazy" />
-    <div class="about-facts">
-      <div class="about-fact reveal">
-        <span class="about-fact-label">Based</span>
-        <span class="about-fact-value">Wellington, New Zealand</span>
-      </div>
-      <div class="about-fact reveal reveal-d1">
-        <span class="about-fact-label">Fabric</span>
-        <span class="about-fact-value">Japanese 14oz selvedge — sourced, not substituted</span>
-      </div>
-      <div class="about-fact reveal reveal-d2">
-        <span class="about-fact-label">Process</span>
-        <span class="about-fact-value">Hand drafted, hand cut, hand sewn. No factory.</span>
-      </div>
-      <div class="about-fact reveal reveal-d3">
-        <span class="about-fact-label">Output</span>
-        <span class="about-fact-value">Four pairs a month. That's it.</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="rule"></div>
+<!-- PHOTO GRID -->
+<div class="photo-grid">
+  <img src="media/portrait_hero.jpg" alt="Bespoke indigo selvedge jeans" loading="lazy" class="tall reveal" />
+  <img src="media/new_photo_1.png" alt="Callum Godfrey holding a finished pair of bespoke jeans" loading="lazy" class="reveal reveal-d1" />
+  <img src="media/portrait_2.jpg" alt="" loading="lazy" class="reveal reveal-d2" />
+  <img src="media/new_photo_2.png" alt="Denim pattern laid out over fabric ready for cutting" loading="lazy" class="reveal reveal-d3" />
+  <img src="media/landscape_3.jpg" alt="" loading="lazy" class="reveal reveal-d4" />
+</div>
 
 <!-- CAROUSEL -->
 <section class="carousel-section">
@@ -996,13 +932,6 @@ footer {
     </div>
   </div>
 </section>
-
-<!-- PHOTO GRID -->
-<div class="photo-grid">
-  <img src="media/landscape_3.jpg" alt="" loading="lazy" class="tall reveal" />
-  <img src="media/new_photo_1.png" alt="Callum Godfrey holding a finished pair of bespoke jeans" loading="lazy" class="reveal reveal-d1" />
-  <img src="media/new_photo_2.png" alt="Denim pattern laid out over fabric ready for cutting" loading="lazy" class="reveal reveal-d2" />
-</div>
 
 <!-- IN THE MAKING -->
 <section class="making" id="making">
