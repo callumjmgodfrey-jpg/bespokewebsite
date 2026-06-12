@@ -1216,7 +1216,8 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
     currencyPreference: document.getElementById('currency').value,
     sizingType: selectedSizing,
     colour: selectedColour,
-    shippingRegion: document.getElementById('l-ship-' + selectedShipRegion).textContent,
+    shippingRegion: selectedShipRegion,
+    shippingLabel: document.getElementById('l-ship-' + selectedShipRegion).textContent,
     shippingEstimateNZD: shippingRatesNZD[selectedShipRegion],
     _hp: document.getElementById('_hp') ? document.getElementById('_hp').value : '',
   };

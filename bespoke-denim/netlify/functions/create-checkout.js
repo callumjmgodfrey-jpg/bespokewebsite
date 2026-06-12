@@ -32,7 +32,8 @@ exports.handler = async function(event) {
   }
 
   const sizingType = sanitise(body.sizingType);
-  const shippingRegion = sanitise(body.shippingRegion);
+  const shippingRegion = sanitise(body.shippingRegion); // key e.g. 'nz'
+  const shippingLabel = sanitise(body.shippingLabel) || SHIPPING_LABELS[shippingRegion] || shippingRegion;
   const clientName = sanitise(body.clientName);
   const email = sanitise(body.email);
 
@@ -41,7 +42,7 @@ exports.handler = async function(event) {
   }
 
   const baseNZD = sizingType === 'Made to measure' ? BASE_PRICES_NZD.mtm : BASE_PRICES_NZD.standard;
-  const shipNZD = SHIPPING_NZD[shippingRegion] ?? 85;
+  const shipNZD = SHIPPING_NZD[shippingRegion] ?? SHIPPING_NZD.row;
   const totalCents = (baseNZD + shipNZD) * 100;
 
   // Build order description line items
@@ -75,7 +76,7 @@ exports.handler = async function(event) {
             currency: 'nzd',
             unit_amount: shipNZD * 100,
             product_data: {
-              name: `Shipping — ${SHIPPING_LABELS[shippingRegion] || shippingRegion}`,
+              name: `Shipping — ${shippingLabel}`,
             },
           },
           quantity: 1,
@@ -90,7 +91,7 @@ exports.handler = async function(event) {
         inseam: sanitise(body.inseam),
         colour: sanitise(body.colour),
         shippingRegion,
-        shippingLabel: SHIPPING_LABELS[shippingRegion] || shippingRegion,
+        shippingLabel,
       },
       success_url: `${siteUrl}/confirmation.html?session_id={CHECKOUT_SESSION_ID}`,
       cancel_url: `${siteUrl}/order.html`,
