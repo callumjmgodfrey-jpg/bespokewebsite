@@ -200,6 +200,128 @@ nav {
 
 .hero-cta:hover { opacity: 0.5; }
 
+/* ── ABOUT TEASER ── */
+.about-teaser {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 48px;
+  background: var(--ink);
+  border-top: 0.5px solid rgba(255,255,255,0.08);
+  text-decoration: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.about-teaser:hover { opacity: 0.6; }
+
+.about-teaser-text {
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.4vw, 16px);
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.about-teaser-arrow {
+  font-size: 11px;
+  color: rgba(255,255,255,0.3);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+/* ── ABOUT ── */
+.about {
+  padding: 120px 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.about-left {}
+
+.about-heading {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 48px;
+}
+
+.about-heading em {
+  color: var(--mid);
+  font-style: normal;
+}
+
+.about-body {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-body p {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--mid);
+  max-width: 440px;
+}
+
+.about-body p strong {
+  color: var(--ink);
+  font-weight: 400;
+}
+
+.about-right {
+  padding-top: 8px;
+}
+
+.about-facts {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.about-fact {
+  padding: 28px 0;
+  border-top: 0.5px solid var(--light);
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 24px;
+}
+
+.about-fact:last-child { border-bottom: 0.5px solid var(--light); }
+
+.about-fact-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--light);
+  padding-top: 3px;
+}
+
+.about-fact-value {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .about { grid-template-columns: 1fr; gap: 60px; }
+}
+
+@media (max-width: 600px) {
+  .about { padding: 80px 24px; }
+  .about-teaser { padding: 18px 24px; }
+  .about-fact { grid-template-columns: 110px 1fr; }
+}
+
 /* ── RULE ── */
 .rule {
   width: 100%;
@@ -701,6 +823,12 @@ footer {
   </div>
 </section>
 
+<!-- ABOUT TEASER -->
+<a href="#about" class="about-teaser reveal">
+  <span class="about-teaser-text">when i was 10 i made an assassins creed hoodie…</span>
+  <span class="about-teaser-arrow">Read more ↓</span>
+</a>
+
 <!-- STATEMENT -->
 <section class="statement">
   <p class="statement-text reveal" id="statement-text">
@@ -750,6 +878,40 @@ footer {
     <span class="spec-value">Wellington, NZ</span>
   </div>
 </div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="about-left">
+    <h2 class="about-heading reveal">when i was 10<br>i made an<br>assassins creed<br>hoodie<em>…</em></h2>
+    <div class="about-body">
+      <p class="reveal"><strong>I've been making things since before I knew what making things meant.</strong> Sewing, modifying, figuring out how garments work by taking them apart. The hoodie was awful. The stitching was wrong, the hood sat crooked, and I wore it everywhere.</p>
+      <p class="reveal reveal-d1">That same obsession — with how clothes are constructed, why they fit the way they do, what makes one pair of jeans feel completely different from another — is what eventually led me here. To raw selvedge. To bespoke. To cutting every pattern by hand on a rug in Wellington.</p>
+      <p class="reveal reveal-d2">I'm not a fashion brand. I'm one person with a sewing machine, a serious interest in denim, and a belief that the best clothes you'll ever own are the ones made specifically for your body.</p>
+    </div>
+  </div>
+  <div class="about-right">
+    <div class="about-facts">
+      <div class="about-fact reveal">
+        <span class="about-fact-label">Based</span>
+        <span class="about-fact-value">Wellington, New Zealand</span>
+      </div>
+      <div class="about-fact reveal reveal-d1">
+        <span class="about-fact-label">Fabric</span>
+        <span class="about-fact-value">Japanese 15oz selvedge — sourced, not substituted</span>
+      </div>
+      <div class="about-fact reveal reveal-d2">
+        <span class="about-fact-label">Process</span>
+        <span class="about-fact-value">Hand drafted, hand cut, hand sewn. No factory.</span>
+      </div>
+      <div class="about-fact reveal reveal-d3">
+        <span class="about-fact-label">Output</span>
+        <span class="about-fact-value">Four pairs a month. That's it.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
 
 <!-- CAROUSEL -->
 <section class="carousel-section">
