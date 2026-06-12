@@ -1,7 +1,8 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const BASE_PRICES_NZD = { standard: 500, mtm: 550 };
-const SHIPPING_NZD = { nz: 20, au: 40, jpkr: 60, namerica: 70, ukeu: 75, row: 85 };
+// TEST PRICES — revert to real prices before going live
+const BASE_PRICES_NZD = { standard: 1, mtm: 1 };
+const SHIPPING_NZD = { nz: 1, au: 1, jpkr: 1, namerica: 1, ukeu: 1, row: 1 };
 
 const SHIPPING_LABELS = {
   nz: 'New Zealand', au: 'Australia', jpkr: 'Japan / Korea',
