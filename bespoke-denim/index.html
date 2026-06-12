@@ -344,6 +344,15 @@ nav {
   max-width: 900px;
 }
 
+.statement-eyebrow {
+  display: block;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--mid);
+  margin-bottom: 24px;
+  font-family: var(--serif);
+}
+
 .statement-text {
   font-family: var(--serif);
   font-size: clamp(28px, 4vw, 48px);
@@ -357,6 +366,8 @@ nav {
   color: var(--mid);
   font-style: normal;
 }
+
+.manifesto-paras { display: flex; flex-direction: column; gap: 20px; }
 
 /* ── FULL IMAGE ── */
 .full-img {
@@ -840,11 +851,10 @@ footer {
 
 <!-- STATEMENT -->
 <section class="statement">
-  <p class="statement-text reveal" id="statement-text">
-    I make every pair myself —<br>
-    <em>cut and sewn to order</em><br>
-    from raw Japanese 15oz selvedge.<br>
-    Four slots a month. That's it.
+  <span class="statement-eyebrow reveal">一生もの</span>
+  <p class="statement-text reveal reveal-d1" id="statement-text">
+    Life is short.<br>
+    <em>Your clothes don't have to be.</em>
   </p>
 </section>
 
@@ -855,16 +865,34 @@ footer {
   <img src="media/landscape_2.jpg" alt="" loading="lazy" class="reveal" />
 </div>
 
+<!-- MANIFESTO -->
+<section class="two-col">
+  <div class="two-col-img">
+    <img src="media/portrait_hero.jpg" alt="" loading="lazy" class="reveal" />
+  </div>
+  <div class="two-col-text">
+    <span class="col-eyebrow reveal">Made to Outlive the Moment</span>
+    <h2 class="col-title reveal reveal-d1">You've felt it<br>before.</h2>
+    <div class="manifesto-paras">
+      <p class="col-body reveal reveal-d2">A pair of shoes destroyed within months, jeans worn through at the knee before you've even broken them in. Back to the store, again. It doesn't have to be this way.</p>
+      <p class="col-body reveal reveal-d3">The fashion industry is one of the largest contributors to global carbon emissions, driven by a cycle of cheap materials, cheap labour, and clothes designed to fall apart. We're opting out of that cycle entirely.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
 <!-- TWO COL -->
 <section class="two-col">
   <div class="two-col-img">
-    <img src="media/portrait_3.jpg" alt="" loading="lazy" />
+    <img src="media/portrait_3.jpg" alt="" loading="lazy" class="reveal" />
   </div>
   <div class="two-col-text">
     <span class="col-eyebrow reveal" id="col-eyebrow">The jean</span>
     <h2 class="col-title reveal reveal-d1" id="col-title">No stock.<br>No shortcuts.<br>Just a pair that fits.</h2>
-    <p class="col-body reveal reveal-d2" id="col-body">Each commission starts with your measurements, moves through CLO3D digital fitting, and ends with hand-cut, hand-sewn denim that belongs to you. Raw 15oz Japanese selvedge. It fades with you.</p>
-    <a href="order.html" class="col-link reveal reveal-d3" id="col-link">Apply for 001</a>
+    <p class="col-body reveal reveal-d2" id="col-body">Each piece is cut from the finest Japanese selvedge denim — 15oz raw, the kind that develops a story with every wear. Made-to-measure for your body, built with construction techniques designed to last decades, not seasons.</p>
+    <p class="col-body reveal reveal-d3" style="margin-bottom: 48px;">This isn't a pair of jeans. It's the pair you'll wear to your university graduation — and maybe, one day, to your kid's.</p>
+    <a href="order.html" class="col-link reveal reveal-d4" id="col-link">Apply for 001</a>
   </div>
 </section>
 
@@ -1027,7 +1055,7 @@ footer {
     <a href="care.html" class="footer-link">Care</a>
     <a href="faq.html" class="footer-link">FAQ</a>
   </div>
-  <span class="footer-note" id="footer-note">Made by hand in Wellington, NZ</span>
+  <span class="footer-note" id="footer-note">Worn in. Lived in. Built to fade with you.</span>
 </footer>
 
 <script src="animations.js"></script>
@@ -1057,7 +1085,7 @@ loadLatestVideo();
 
 // ── Language ──
 const landingCopy = {
-  en: { btn:'EN', label:'Wellington, New Zealand', sub:'001 — High Waisted Wide Bootcut', cta:'Apply for a commission', navMaking:'Making', navWaitlist:'Waitlist', navApply:'Apply', statement:'I make every pair myself —<br><em>cut and sewn to order</em><br>from raw Japanese 15oz selvedge.<br>Four slots a month. That\'s it.', colEyebrow:'The jean', colTitle:'No stock.<br>No shortcuts.<br>Just a pair that fits.', colBody:'Each commission starts with your measurements, moves through CLO3D digital fitting, and ends with hand-cut, hand-sewn denim that belongs to you. Raw 15oz Japanese selvedge. It fades with you.', colLink:'Apply for 001', specFabricLabel:'Fabric', specFabric:'Japanese 15oz selvedge', specSlotsLabel:'Slots per batch', specLeadLabel:'Lead time', specLead:'2 – 4 weeks', specOriginLabel:'Made in', carouselEyebrow:'On the street', carouselTitle:'As worn.', carouselHint:'Drag →', makingBadge:'Latest vlog', makingTitle:'Behind<br>the seams.', makingBody:'Pattern making, CLO3D, sewing, Wellington streets. I document everything. Mostly in Japanese, always honest.', signupTitle:'Be first<br>to know.', signupSub:'4 slots a month. They go fast. Drop your email and I\'ll let you know when Batch 002 opens.', signupBtn:'Notify me', signupPlaceholder:'your@email.com', successMsg:"You're on the list. I'll be in touch.", errorMsg:"Something went wrong — try again or DM me.", footerNote:'Made by hand in Wellington, NZ' },
+  en: { btn:'EN', label:'Wellington, New Zealand', sub:'001 — High Waisted Wide Bootcut', cta:'Apply for a commission', navMaking:'Making', navWaitlist:'Waitlist', navApply:'Apply', statement:'Life is short.<br><em>Your clothes don\'t have to be.</em>', colEyebrow:'The jean', colTitle:'No stock.<br>No shortcuts.<br>Just a pair that fits.', colBody:'Each piece is cut from the finest Japanese selvedge denim — 15oz raw, the kind that develops a story with every wear. Made-to-measure for your body, built with construction techniques designed to last decades, not seasons.', colLink:'Apply for 001', specFabricLabel:'Fabric', specFabric:'Japanese 15oz selvedge', specSlotsLabel:'Slots per batch', specLeadLabel:'Lead time', specLead:'2 – 4 weeks', specOriginLabel:'Made in', carouselEyebrow:'On the street', carouselTitle:'As worn.', carouselHint:'Drag →', makingBadge:'Latest vlog', makingTitle:'Behind<br>the seams.', makingBody:'Pattern making, CLO3D, sewing, Wellington streets. I document everything. Mostly in Japanese, always honest.', signupTitle:'Be first<br>to know.', signupSub:'4 slots a month. They go fast. Drop your email and I\'ll let you know when Batch 002 opens.', signupBtn:'Notify me', signupPlaceholder:'your@email.com', successMsg:"You're on the list. I'll be in touch.", errorMsg:"Something went wrong — try again or DM me.", footerNote:'Worn in. Lived in. Built to fade with you.' },
   ja: { btn:'日本語', label:'ニュージーランド・ウェリントン', sub:'001 — ハイウエスト ワイドブーツカット', cta:'コミッションに応募する', navMaking:'メイキング', navWaitlist:'順番待ち', navApply:'応募する', statement:'すべてのペアを一人で制作 —<br><em>受注後に裁断・縫製</em><br>生の日本製15ozセルビッジデニムで。<br>月4枠のみ。', colEyebrow:'このジーンズについて', colTitle:'在庫なし。<br>妥協なし。<br>本当に合う一本。', colBody:'採寸から始まり、CLO3Dでデジタルフィッティングを経て、手裁断・手縫いで仕上げる一本。生の日本製15ozセルビッジ。着るほどに色落ちしていく。', colLink:'001に応募する', specFabricLabel:'素材', specFabric:'日本製15ozセルビッジ', specSlotsLabel:'月間枠数', specLeadLabel:'リードタイム', specLead:'2〜4週間', specOriginLabel:'製造地', carouselEyebrow:'ストリートで', carouselTitle:'着用コーデ。', carouselHint:'スクロール →', makingBadge:'最新動画', makingTitle:'縫い目の<br>裏側。', makingBody:'パターン、CLO3D、縫製、ウェリントンの街。すべてを記録。主に日本語で、いつも正直に。', signupTitle:'いち早く<br>知る。', signupSub:'月4枠。すぐに埋まります。メールを登録してバッチ002の情報をお受け取りください。', signupBtn:'登録する', signupPlaceholder:'メールアドレス', successMsg:'登録完了。バッチ002のオープン時にご連絡します。', errorMsg:'エラーが発生しました。もう一度お試しいただくか、InstagramでDMをください。', footerNote:'ニュージーランド・ウェリントンで手作り' },
   ko: { btn:'한국어', label:'뉴질랜드 웰링턴', sub:'001 — 하이웨이스트 와이드 부츠컷', cta:'커미션 신청하기', navMaking:'메이킹', navWaitlist:'대기자 명단', navApply:'신청', statement:'모든 페어를 직접 제작 —<br><em>주문 후 재단·봉제</em><br>일본제 15oz 셀비지 로우 데님으로.<br>한 달에 4자리뿐.', colEyebrow:'이 청바지에 대해', colTitle:'재고 없음.<br>타협 없음.<br>진짜 맞는 한 벌.', colBody:'채수에서 시작해 CLO3D 디지털 피팅을 거쳐 손으로 재단·봉제된 데님. 일본제 15oz 셀비지 로우 데님. 입을수록 색이 바랩니다.', colLink:'001 신청하기', specFabricLabel:'소재', specFabric:'일본제 15oz 셀비지', specSlotsLabel:'월 슬롯 수', specLeadLabel:'리드 타임', specLead:'2~4주', specOriginLabel:'제조지', carouselEyebrow:'거리에서', carouselTitle:'착용 모습.', carouselHint:'드래그 →', makingBadge:'최신 브이로그', makingTitle:'솔기<br>뒤에서.', makingBody:'패턴, CLO3D, 재봉, 웰링턴 거리. 모든 것을 기록합니다. 주로 일본어로, 항상 솔직하게.', signupTitle:'가장 먼저<br>알아보세요.', signupSub:'한 달에 4자리. 금방 찹니다. 배치 002 오픈 시 알려드립니다.', signupBtn:'알림 받기', signupPlaceholder:'이메일 주소', successMsg:'등록 완료. 배치 002 오픈 시 연락드립니다.', errorMsg:'오류 발생 — 다시 시도하거나 인스타그램으로 DM 주세요.', footerNote:'뉴질랜드 웰링턴에서 수제 제작' },
   fr: { btn:'FR', label:'Wellington, Nouvelle-Zélande', sub:'001 — Jean Taille Haute Bootcut Large', cta:'Postuler pour une commission', navMaking:'Fabrication', navWaitlist:'Liste d\'attente', navApply:'Postuler', statement:'Je fabrique chaque paire moi-même —<br><em>coupée et cousue sur commande</em><br>en denim japonais 15oz brut.<br>Quatre créneaux par mois. C\'est tout.', colEyebrow:'Le jean', colTitle:'Pas de stock.<br>Pas de compromis.<br>Une paire qui vous va vraiment.', colBody:'Chaque commission commence par vos mesures, passe par un essayage numérique CLO3D, et aboutit à un denim coupé et cousu à la main, fait pour vous. Denim japonais 15oz brut. Il vieillit avec vous.', colLink:'Postuler pour 001', specFabricLabel:'Tissu', specFabric:'Denim japonais 15oz selvedge', specSlotsLabel:'Créneaux par lot', specLeadLabel:'Délai', specLead:'2 – 4 semaines', specOriginLabel:'Fabriqué à', carouselEyebrow:'Dans la rue', carouselTitle:'Tel que porté.', carouselHint:'Glisser →', makingBadge:'Dernier vlog', makingTitle:'Dans les<br>coulisses.', makingBody:'Patron, CLO3D, couture, les rues de Wellington. Je documente tout. Principalement en japonais, toujours honnête.', signupTitle:'Soyez le<br>premier informé.', signupSub:'4 créneaux par mois. Ça va vite. Laissez votre email pour le Lot 002.', signupBtn:'Me notifier', signupPlaceholder:'votre@email.com', successMsg:'Vous êtes sur la liste. Je vous contacterai à l\'ouverture du Lot 002.', errorMsg:'Une erreur s\'est produite — réessayez ou contactez-moi sur Instagram.', footerNote:'Fabriqué à la main à Wellington, Nouvelle-Zélande' },
