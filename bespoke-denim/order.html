@@ -122,27 +122,6 @@ nav {
   border-left: 0.5px solid var(--light);
 }
 
-/* LANG SWITCHER */
-.lang-switcher {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 48px;
-  flex-wrap: wrap;
-}
-.lang-btn {
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  background: none;
-  border: 0.5px solid var(--light);
-  color: var(--mid);
-  padding: 5px 10px;
-  cursor: pointer;
-  transition: all 0.15s;
-  font-family: var(--sans);
-}
-.lang-btn.active, .lang-btn:hover { border-color: var(--ink); color: var(--ink); }
-
 /* PRODUCT HEADER */
 .product-eyebrow {
   font-size: 9px;
@@ -576,14 +555,7 @@ footer {
   <!-- RIGHT: PRODUCT PANEL -->
   <div class="product-panel">
 
-    <!-- Language switcher -->
-    <nav class="lang-switcher" aria-label="Language selector">
-      <button class="lang-btn active" onclick="setLang('en')">EN</button>
-      <button class="lang-btn" onclick="setLang('ja')">日本語</button>
-      <button class="lang-btn" onclick="setLang('ko')">한국어</button>
-      <button class="lang-btn" onclick="setLang('fr')">FR</button>
-      <button class="lang-btn" onclick="setLang('de')">DE</button>
-    </nav>
+    <!-- Language switcher removed -->
 
     <!-- Product header -->
     <span class="product-eyebrow" id="l-eyebrow">001 — Wide Bootcut</span>
