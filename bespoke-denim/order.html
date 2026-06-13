@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>001 — Wide Bootcut — Callum Godfrey</title>
+<meta name="description" content="Apply for a bespoke pair of jeans. Callum Godfrey makes hand-cut, hand-sewn selvedge denim in Wellington, New Zealand.">
+<meta property="og:title" content="Apply for a Commission — Callum Godfrey">
+<meta property="og:description" content="Apply for a bespoke pair of jeans. Hand-cut, hand-sewn selvedge denim. Wellington, New Zealand.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="media/portrait_hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Apply for a Commission — Callum Godfrey">
+<meta name="twitter:description" content="Apply for a bespoke pair of jeans. Hand-cut, hand-sewn selvedge denim. Wellington, New Zealand.">
+<meta name="twitter:image" content="media/portrait_hero.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="animations.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --white: #fafaf8;
+  --paper: #f4f3f0;
+  --ink: #141412;
+  --mid: #8a8a84;
+  --light: #d4d3ce;
+  --serif: 'Shippori Mincho', 'Times New Roman', serif;
+  --sans: -apple-system, 'Helvetica Neue', Arial, sans-serif;
+}
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+.nav-logo {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: 0.12em;
+  font-weight: 400;
+}
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-link {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 400;
+  transition: opacity 0.2s;
+}
+.nav-link:hover { opacity: 0.5; }
+
+/* PRODUCT LAYOUT */
+.product-layout {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  min-height: 100vh;
+}
+
+/* LEFT — GALLERY */
+.gallery {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: var(--paper);
+}
+.gallery-main {
+  flex: 1;
+  overflow: hidden;
+}
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: opacity 0.3s ease;
+}
+.gallery-thumbs {
+  display: flex;
+  gap: 4px;
+  padding: 8px;
+  background: var(--paper);
+  flex-shrink: 0;
+}
+.gallery-thumb {
+  width: 72px;
+  height: 72px;
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.gallery-thumb.active { opacity: 1; outline: 1px solid var(--ink); }
+.gallery-thumb:hover { opacity: 0.8; }
+.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+/* RIGHT — PRODUCT PANEL */
+.product-panel {
+  padding: 110px 52px 100px 52px;
+  overflow-y: auto;
+  border-left: 0.5px solid var(--light);
+}
+
+/* PRODUCT HEADER */
+.product-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 12px;
+}
+.product-name {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 44px);
+  font-weight: 400;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 24px;
+}
+.product-price-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+.product-price {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+}
+.product-price-mtm {
+  font-size: 13px;
+  color: var(--mid);
+  font-family: var(--sans);
+}
+
+/* CURRENCY PILLS */
+.currency-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+}
+.currency-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-right: 4px;
+}
+.currency-pill {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  background: none;
+  border: 0.5px solid var(--light);
+  color: var(--mid);
+  padding: 4px 9px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--sans);
+}
+.currency-pill.active, .currency-pill:hover { border-color: var(--ink); color: var(--ink); }
+
+/* DESCRIPTION */
+.product-desc {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.4vw, 17px);
+  line-height: 1.8;
+  color: var(--mid);
+  margin-bottom: 24px;
+}
+
+/* SPEC CHIPS */
+.spec-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.spec-chip {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  border: 0.5px solid var(--light);
+  padding: 6px 12px;
+}
+
+/* SECTION DIVIDER */
+.form-divider {
+  width: 100%;
+  height: 0.5px;
+  background: var(--light);
+  margin: 32px 0;
+}
+
+/* SECTION LABEL */
+.form-section-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 20px;
+}
+
+/* SIZING OPTIONS */
+.sizing-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.sizing-option {
+  border: 0.5px solid var(--light);
+  padding: 16px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+}
+.sizing-option:hover { border-color: var(--mid); }
+.sizing-option.selected { border-color: var(--ink); }
+.sizing-option input[type="radio"] { display: none; }
+.sizing-option-title {
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+  margin-bottom: 4px;
+  font-weight: 400;
+}
+.sizing-option-price {
+  font-size: 11px;
+  color: var(--mid);
+}
+
+/* SIZE BUTTONS */
+.size-subsection { display: none; margin-top: 16px; }
+.size-subsection.visible { display: block; }
+.size-subsection + .size-subsection { margin-top: 16px; }
+.size-sub-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 10px;
+}
+.size-btn-grid { display: flex; gap: 6px; flex-wrap: wrap; }
+.size-btn {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  background: none;
+  border: 0.5px solid var(--light);
+  color: var(--mid);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+  font-family: var(--sans);
+}
+.size-btn:hover { border-color: var(--ink); color: var(--ink); }
+.size-btn.selected { background: var(--ink); color: var(--white); border-color: var(--ink); }
+
+/* MTM MEASUREMENTS */
+.measurements-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  margin-top: 16px;
+}
+.measure-hint {
+  font-size: 11px;
+  color: var(--mid);
+  line-height: 1.6;
+  margin-top: 12px;
+}
+
+/* FORM INPUTS */
+.form-group { margin-bottom: 20px; }
+.form-group label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 8px;
+}
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="number"] {
+  width: 100%;
+  background: none;
+  border: none;
+  border-bottom: 0.5px solid var(--light);
+  padding: 8px 0;
+  font-size: 14px;
+  font-family: var(--sans);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s;
+}
+.form-group input:focus { border-color: var(--ink); }
+.required { color: var(--mid); }
+.field-error {
+  font-size: 11px;
+  color: #c0392b;
+  margin-top: 6px;
+  display: none;
+}
+.field-error.visible { display: block; }
+
+/* SHIPPING TILES */
+.ship-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.ship-tile {
+  border: 0.5px solid var(--light);
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.ship-tile:hover { border-color: var(--mid); }
+.ship-tile.selected { border-color: var(--ink); }
+.ship-tile-label { font-size: 12px; color: var(--ink); }
+.ship-tile-price { font-size: 11px; color: var(--mid); }
+.ship-total-row {
+  display: none;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 12px 0;
+  border-top: 0.5px solid var(--light);
+  margin-bottom: 12px;
+}
+.ship-total-row.visible { display: flex; }
+.ship-total-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); }
+.ship-total-value { font-family: var(--serif); font-size: 18px; color: var(--ink); }
+.ship-note-text { font-size: 11px; color: var(--mid); line-height: 1.6; }
+
+/* T&CS */
+.tcs-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  padding: 12px 0;
+  border-top: 0.5px solid var(--light);
+  border-bottom: 0.5px solid var(--light);
+  user-select: none;
+}
+.tcs-toggle-label { font-size: 11px; letter-spacing: 0.08em; color: var(--ink); }
+.tcs-arrow { font-size: 10px; color: var(--mid); transition: transform 0.2s; }
+.tcs-arrow.open { transform: rotate(180deg); }
+.tcs-body { display: none; }
+.tcs-body.open { display: block; }
+.tcs-scroll {
+  max-height: 200px;
+  overflow-y: scroll;
+  padding: 16px 0;
+  border-bottom: 0.5px solid var(--light);
+  font-size: 12px;
+  line-height: 1.8;
+  color: var(--mid);
+}
+.tcs-scroll p { margin-bottom: 12px; }
+.tcs-scroll p:last-child { margin-bottom: 0; }
+.tcs-scroll strong { color: var(--ink); font-weight: 400; }
+.tcs-read-note { font-size: 11px; color: var(--mid); padding: 8px 0; font-style: italic; }
+.tcs-footer { display: flex; align-items: center; gap: 10px; padding: 12px 0; }
+.tcs-footer input[type="checkbox"] { width: 14px; height: 14px; cursor: pointer; accent-color: var(--ink); }
+.tcs-footer label { font-size: 12px; color: var(--mid); cursor: pointer; }
+
+/* SUBMIT */
+.submit-btn {
+  width: 100%;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 18px 24px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: pointer;
+  font-family: var(--sans);
+  margin-top: 32px;
+  transition: opacity 0.2s;
+}
+.submit-btn:hover { opacity: 0.75; }
+.submit-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+.submit-note {
+  font-size: 11px;
+  color: var(--mid);
+  line-height: 1.6;
+  margin-top: 14px;
+  text-align: center;
+}
+.form-message { font-size: 13px; margin-top: 16px; display: none; }
+.error-msg { color: #c0392b; }
+
+/* BATCH CLOSED */
+.form-closed {
+  display: none;
+  padding: 32px;
+  border: 0.5px solid var(--light);
+  margin-bottom: 32px;
+  text-align: center;
+}
+.form-closed.visible { display: block; }
+.form-closed-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; }
+.form-closed-body { font-size: 13px; color: var(--mid); line-height: 1.7; margin-bottom: 20px; }
+.form-closed-signup { display: flex; gap: 8px; }
+.form-closed-input {
+  flex: 1;
+  border: 0.5px solid var(--light);
+  background: none;
+  padding: 10px 12px;
+  font-size: 13px;
+  font-family: var(--sans);
+  color: var(--ink);
+  outline: none;
+}
+.form-closed-btn {
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 10px 20px;
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  font-family: var(--sans);
+}
+.form-closed-msg { font-size: 12px; color: var(--mid); margin-top: 10px; }
+.form-closed-msg.success { color: #2d7d46; }
+
+/* HONEYPOT */
+.hp-field { opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; pointer-events: none; }
+
+/* FOOTER */
+.rule { width: 100%; height: 0.5px; background: var(--light); }
+footer {
+  padding: 48px;
+  border-top: 0.5px solid var(--light);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+}
+.footer-brand { font-family: var(--serif); font-size: 13px; color: var(--mid); font-weight: 400; }
+.footer-links { display: flex; gap: 32px; justify-content: center; }
+.footer-link {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--ink); }
+.footer-link svg { width: 12px; height: 12px; fill: currentColor; }
+.footer-note { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light); text-align: right; }
+
+/* MOBILE */
+@media (max-width: 800px) {
+  nav { padding: 20px 24px; }
+  .nav-right { gap: 20px; }
+  .nav-link:not(.nav-apply-link) { display: none; }
+  .product-layout { grid-template-columns: 1fr; }
+  .gallery { position: relative; height: auto; }
+  .gallery-main { height: 70vw; max-height: 480px; }
+  .gallery-thumbs { padding: 6px; }
+  .gallery-thumb { width: 56px; height: 56px; }
+  .product-panel { padding: 48px 24px 80px; border-left: none; border-top: 0.5px solid var(--light); }
+  .lang-switcher { margin-bottom: 32px; }
+  .measurements-grid { grid-template-columns: 1fr 1fr; }
+  .ship-grid { grid-template-columns: 1fr; }
+  footer { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
+  .footer-note { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">Callum Godfrey</a>
+  <div class="nav-right">
+    <a href="index.html#making" class="nav-link">Making</a>
+    <a href="index.html#waitlist" class="nav-link">Waitlist</a>
+    <a href="order.html" class="nav-link nav-apply-link">Apply</a>
+  </div>
+</nav>
+
+<div class="product-layout">
+
+  <!-- LEFT: GALLERY -->
+  <div class="gallery">
+    <div class="gallery-main">
+      <img id="gallery-main-img" src="media/portrait_hero.jpg" alt="Bespoke indigo selvedge jeans">
+    </div>
+    <div class="gallery-thumbs">
+      <div class="gallery-thumb active" onclick="setPhoto(this,'media/portrait_hero.jpg')">
+        <img src="media/portrait_hero.jpg" alt="">
+      </div>
+      <div class="gallery-thumb" onclick="setPhoto(this,'media/portrait_2.jpg')">
+        <img src="media/portrait_2.jpg" alt="">
+      </div>
+      <div class="gallery-thumb" onclick="setPhoto(this,'media/portrait_3.jpg')">
+        <img src="media/portrait_3.jpg" alt="">
+      </div>
+      <div class="gallery-thumb" onclick="setPhoto(this,'media/landscape_3.jpg')">
+        <img src="media/landscape_3.jpg" alt="">
+      </div>
+      <div class="gallery-thumb" onclick="setPhoto(this,'media/bts_sewing.png')">
+        <img src="media/bts_sewing.png" alt="">
+      </div>
+      <div class="gallery-thumb" onclick="setPhoto(this,'media/new_photo_1.png')">
+        <img src="media/new_photo_1.png" alt="Holding a finished pair">
+      </div>
+      <div class="gallery-thumb" onclick="setPhoto(this,'media/new_photo_2.png')">
+        <img src="media/new_photo_2.png" alt="Pattern over fabric">
+      </div>
+    </div>
+  </div>
+
+  <!-- RIGHT: PRODUCT PANEL -->
+  <div class="product-panel">
+
+    <!-- Language switcher removed -->
+
+    <!-- Product header -->
+    <span class="product-eyebrow" id="l-eyebrow">001 — Wide Bootcut</span>
+    <h1 class="product-name" id="l-product-name">14oz Japanese<br>Selvedge</h1>
+
+    <div class="product-price-row">
+      <span class="product-price" id="price-standard">NZD $500</span>
+      <span class="product-price-mtm" id="l-price-mtm-note">/ <span id="price-mtm">NZD $550</span> made to measure</span>
+    </div>
+
+    <!-- Currency -->
+    <div class="currency-row">
+      <span class="currency-label" id="l-currency">Prices in</span>
+      <button type="button" class="currency-pill active" onclick="setCurrency(this,'USD')">USD</button>
+      <button type="button" class="currency-pill" onclick="setCurrency(this,'NZD')">NZD</button>
+      <button type="button" class="currency-pill" onclick="setCurrency(this,'AUD')">AUD</button>
+      <button type="button" class="currency-pill" onclick="setCurrency(this,'EUR')">EUR</button>
+      <button type="button" class="currency-pill" onclick="setCurrency(this,'GBP')">GBP</button>
+      <button type="button" class="currency-pill" onclick="setCurrency(this,'JPY')">JPY</button>
+      <button type="button" class="currency-pill" onclick="setCurrency(this,'KRW')">KRW</button>
+    </div>
+
+    <p class="product-desc" id="l-desc">Hand-cut and sewn to order from raw Japanese 14oz indigo selvedge. One style, one fabric. Each pair is built individually — no stock, no shortcuts.</p>
+
+    <div class="spec-chips">
+      <span class="spec-chip">14oz selvedge</span>
+      <span class="spec-chip">Indigo</span>
+      <span class="spec-chip" id="l-spec-lead">2–8 weeks</span>
+    </div>
+
+    <!-- Batch closed state -->
+    <div class="form-closed" id="formClosed">
+      <h2 class="form-closed-title">Batch 001 is full.</h2>
+      <p class="form-closed-body" id="l-closed-body">All commission slots for Batch 001 have been filled. Drop your email below and you'll be first to know when Batch 002 opens.</p>
+      <div class="form-closed-signup">
+        <input class="form-closed-input" type="email" placeholder="your@email.com" id="closedEmail" />
+        <button class="form-closed-btn" onclick="submitWaitlist()" id="l-closed-btn">Join waitlist</button>
+      </div>
+      <p class="form-closed-msg" id="closedMsg"></p>
+    </div>
+
+    <div id="main-form-wrap">
+
+      <div class="form-divider"></div>
+
+      <form id="orderForm" autocomplete="off" novalidate>
+        <input type="hidden" id="currency" name="currency" value="USD">
+        <div class="hp-field" aria-hidden="true">
+          <label for="_hp">Leave this empty</label>
+          <input type="text" id="_hp" name="_hp" tabindex="-1" autocomplete="off">
+        </div>
+
+        <!-- SIZING -->
+        <span class="form-section-label" id="l-sizing-label">Sizing</span>
+        <div class="sizing-options">
+          <div class="sizing-option" id="opt-standard" onclick="selectSizing('Standard sizes')">
+            <input type="radio" name="sizingType" value="Standard sizes">
+            <p class="sizing-option-title" id="l-opt-standard">Standard sizing</p>
+            <p class="sizing-option-price" id="price-opt-standard">NZD $500</p>
+          </div>
+          <div class="sizing-option" id="opt-mtm" onclick="selectSizing('Made to measure')">
+            <input type="radio" name="sizingType" value="Made to measure">
+            <p class="sizing-option-title" id="l-opt-mtm">Made to measure</p>
+            <p class="sizing-option-price" id="price-opt-mtm">NZD $550</p>
+          </div>
+        </div>
+        <p class="field-error" id="err-sizing"></p>
+
+        <!-- Standard size pickers -->
+        <div class="size-subsection" id="standard-size-section">
+          <span class="size-sub-label" id="l-waist-size">Waist</span>
+          <div class="size-btn-grid" id="waist-btn-grid">
+            <button type="button" class="size-btn" onclick="selectWaist(this,'W28')">W28</button>
+            <button type="button" class="size-btn" onclick="selectWaist(this,'W30')">W30</button>
+            <button type="button" class="size-btn" onclick="selectWaist(this,'W32')">W32</button>
+            <button type="button" class="size-btn" onclick="selectWaist(this,'W34')">W34</button>
+            <button type="button" class="size-btn" onclick="selectWaist(this,'W36')">W36</button>
+          </div>
+          <p class="field-error" id="err-size"></p>
+          <div style="margin-top:20px;">
+            <span class="size-sub-label" id="l-inseam-size">Inseam</span>
+            <div class="size-btn-grid" id="inseam-btn-grid">
+              <button type="button" class="size-btn" onclick="selectInseamStd(this,'L30')">L30</button>
+              <button type="button" class="size-btn" onclick="selectInseamStd(this,'L32')">L32</button>
+              <button type="button" class="size-btn" onclick="selectInseamStd(this,'L34')">L34</button>
+            </div>
+            <p class="field-error" id="err-inseam-std"></p>
+          </div>
+        </div>
+
+        <!-- MTM measurements -->
+        <div class="size-subsection" id="measurements-section">
+          <p class="size-sub-label" id="l-measurements-title">Your measurements</p>
+          <div class="measurements-grid">
+            <div class="form-group">
+              <label for="naturalWaist"><span id="l-waist">Natural waist</span> <span class="required">*</span></label>
+              <input type="number" id="naturalWaist" name="naturalWaist" min="50" max="150" step="0.5" placeholder="cm">
+              <p class="field-error" id="err-waist"></p>
+            </div>
+            <div class="form-group">
+              <label for="highHip"><span id="l-hip">High hip</span> <span class="required">*</span></label>
+              <input type="number" id="highHip" name="highHip" min="60" max="160" step="0.5" placeholder="cm">
+              <p class="field-error" id="err-hip"></p>
+            </div>
+            <div class="form-group">
+              <label for="inseam"><span id="l-inseam">Inseam</span> <span class="required">*</span></label>
+              <input type="number" id="inseam" name="inseam" min="50" max="120" step="0.5" placeholder="cm">
+              <p class="field-error" id="err-inseam"></p>
+            </div>
+          </div>
+          <p class="measure-hint" id="l-measure-hint">All in cm. If you're not sure how to measure, please double-check before submitting — I can't offer remakes for incorrect numbers.</p>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <!-- SHIPPING -->
+        <span class="form-section-label" id="l-shipping-label">Shipping</span>
+        <div class="ship-grid">
+          <div class="ship-tile" data-region="nz" onclick="selectShipRegion(this,'nz')">
+            <span class="ship-tile-label" id="l-ship-nz">New Zealand</span>
+            <span class="ship-tile-price">~NZD $20</span>
+          </div>
+          <div class="ship-tile" data-region="au" onclick="selectShipRegion(this,'au')">
+            <span class="ship-tile-label" id="l-ship-au">Australia</span>
+            <span class="ship-tile-price">~NZD $40</span>
+          </div>
+          <div class="ship-tile" data-region="jpkr" onclick="selectShipRegion(this,'jpkr')">
+            <span class="ship-tile-label" id="l-ship-jpkr">Japan / Korea</span>
+            <span class="ship-tile-price">~NZD $60</span>
+          </div>
+          <div class="ship-tile" data-region="namerica" onclick="selectShipRegion(this,'namerica')">
+            <span class="ship-tile-label" id="l-ship-namerica">USA / Canada</span>
+            <span class="ship-tile-price">~NZD $70</span>
+          </div>
+          <div class="ship-tile" data-region="ukeu" onclick="selectShipRegion(this,'ukeu')">
+            <span class="ship-tile-label" id="l-ship-ukeu">UK / Europe</span>
+            <span class="ship-tile-price">~NZD $75</span>
+          </div>
+          <div class="ship-tile" data-region="row" onclick="selectShipRegion(this,'row')">
+            <span class="ship-tile-label" id="l-ship-row">Rest of world</span>
+            <span class="ship-tile-price">~NZD $85</span>
+          </div>
+        </div>
+        <div class="ship-total-row" id="ship-total-wrap">
+          <span class="ship-total-label" id="l-ship-total">Estimated total</span>
+          <span class="ship-total-value" id="ship-total"></span>
+        </div>
+        <p class="ship-note-text" id="l-ship-note">Shipped tracked via DHL Express. Estimates only — exact shipping is invoiced with your final balance. Import duties, if any, are the buyer's responsibility.</p>
+        <p class="field-error" id="err-shipping"></p>
+
+        <div class="form-divider"></div>
+
+        <!-- YOUR DETAILS -->
+        <span class="form-section-label" id="l-details-label">Your details</span>
+        <div class="form-group">
+          <label for="clientName"><span id="l-name">Name</span> <span class="required">*</span></label>
+          <input type="text" id="clientName" name="clientName" autocomplete="name">
+          <p class="field-error" id="err-name"></p>
+        </div>
+        <div class="form-group">
+          <label for="email"><span id="l-email">Email</span> <span class="required">*</span></label>
+          <input type="email" id="email" name="email" autocomplete="email">
+          <p class="field-error" id="err-email"></p>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <!-- T&CS -->
+        <label class="form-section-label" id="l-tcs-label">Terms &amp; conditions <span class="required">*</span></label>
+        <div class="tcs-toggle" onclick="toggleTcs()" id="tcs-toggle" role="button" aria-expanded="false">
+          <span class="tcs-toggle-label" id="l-tcs-toggle">Read before you submit</span>
+          <span class="tcs-arrow" id="tcs-arrow">▼</span>
+        </div>
+        <div class="tcs-body" id="tcs-body">
+          <div class="tcs-scroll" id="tcs-scroll" onscroll="checkTcsScroll()">
+            <div id="tcs-content"></div>
+          </div>
+          <p class="tcs-read-note" id="l-tcs-read-note" style="display:none;"></p>
+          <div class="tcs-footer">
+            <input type="checkbox" id="tcsAccepted" name="tcsAccepted" disabled onchange="updateSubmitState()">
+            <label for="tcsAccepted" id="l-tcs-checkbox">I've read and agree to the terms &amp; conditions</label>
+          </div>
+        </div>
+        <p class="field-error" id="err-tcs"></p>
+
+        <!-- SUBMIT -->
+        <button type="submit" class="submit-btn" id="submitBtn">
+          <span id="l-submit">Pay now — NZD $<span id="btn-total">500</span></span>
+        </button>
+        <p class="submit-note" id="l-submit-note">You'll be taken to Stripe's secure checkout. Card, Apple Pay, and Google Pay accepted.</p>
+
+        <div class="form-message" id="form-success"></div>
+        <div class="form-message error-msg" id="form-error"></div>
+
+      </form>
+    </div><!-- /main-form-wrap -->
+
+  </div><!-- /product-panel -->
+</div><!-- /product-layout -->
+
+<div class="rule"></div>
+
+<footer>
+  <span class="footer-brand">Callum Godfrey</span>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+    <a href="https://www.tiktok.com/@callumgodfreyy" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      TikTok
+    </a>
+    <a href="care.html" class="footer-link">Care</a>
+    <a href="repairs.html" class="footer-link">Lifetime Repairs</a>
+    <a href="faq.html" class="footer-link">FAQ</a>
+  </div>
+  <span class="footer-note">Made by hand in Wellington, NZ</span>
+</footer>
+
+<script src="animations.js"></script>
+<script>
+// ── Translations ──
+const translations = {
+  en: {
+    eyebrow: '001 — Wide Bootcut',
+    productName: '14oz Japanese Selvedge',
+    desc: 'Hand-cut and sewn to order from raw Japanese 14oz indigo selvedge. One style, one fabric. Each pair is built individually — no stock, no shortcuts.',
+    priceMtmNote: '/ {mtm} made to measure',
+    currency: 'Prices in',
+    specLead: '2–8 weeks',
+    sizingLabel: 'Sizing',
+    optStandard: 'Standard sizing', optMtm: 'Made to measure',
+    measurementsTitle: 'Your measurements', waist: 'Natural waist', hip: 'High hip', inseam: 'Inseam',
+    measureHint: 'All in cm. If you\'re not sure how to measure, please double-check before submitting — I can\'t offer remakes for incorrect numbers.',
+    waistSize: 'Waist', inseamSize: 'Inseam',
+    shippingLabel: 'Shipping',
+    shipNZ: 'New Zealand', shipAU: 'Australia', shipJPKR: 'Japan / Korea', shipNA: 'USA / Canada', shipUKEU: 'UK / Europe', shipROW: 'Rest of world',
+    shipTotal: 'Estimated total',
+    shipNote: "Shipped tracked via DHL Express. Estimates only — exact shipping is invoiced with your final balance. Import duties, if any, are the buyer's responsibility.",
+    detailsLabel: 'Your details',
+    name: 'Name', email: 'Email',
+    tcsLabel: 'Terms & conditions', tcsToggle: 'Read before you submit',
+    tcsReadNote: 'Scroll to read all terms before accepting.',
+    tcsCheckbox: 'I\'ve read and agree to the terms & conditions',
+    submit: 'Submit application', submitting: 'Sending…',
+    submitNote: 'Submitting this form does not charge you. This is an application for a commission slot.',
+    successMsg: "✓ Application received — I'll be in touch via email soon.",
+    errorMsg: 'Something went wrong — try again or email me directly.',
+    errRequired: 'This field is required.',
+    errEmail: 'Please enter a valid email address.',
+    errTcs: 'You\'ll need to read and accept the T&Cs before submitting.',
+    closedBody: 'All commission slots for Batch 001 have been filled. Drop your email below and you\'ll be first to know when Batch 002 opens.',
+    closedBtn: 'Join waitlist',
+    tcs: `<p><strong>Measurement Accuracy</strong><br>You are strictly responsible for the measurements you provide. If you select Standard Sizing or provide Made-to-Measure numbers that are incorrect, a refund or free remake cannot be offered. Please double-check your numbers against the measurement guide before submitting.</p>
+<p><strong>Deposits &amp; Final Sales</strong><br>Because each pair is cut and sewn to your specific order, all sales are final. The initial 50% deposit is non-refundable once fabric cutting begins.</p>
+<p><strong>The Nature of Raw Denim</strong><br>You acknowledge that this garment is made from rigid, raw Japanese 14oz indigo denim. Indigo dye will transfer onto lighter surfaces (crocking) during initial wear. Please allow for a 1–2% shrinkage after the first wash — this is accounted for in the initial pattern.</p>
+<p><strong>Lead Times</strong><br>Everything is built by a single maker. Estimated lead times (typically 2–8 weeks from the date the deposit is paid) are estimates, not guarantees.</p>
+<p><strong>Payment Process</strong><br>Submitting this form does not charge you. This is an application for a commission slot. If accepted, you will receive two invoices via Hnry: a 50% materials deposit, then the final balance + shipping once your jeans are complete. All invoices can be paid by card, Apple Pay, Google Pay, or bank transfer from anywhere in the world.</p>`
+  },
+  ja: {
+    eyebrow: '001 — ワイドブーツカット',
+    productName: '14ozジャパニーズセルビッジ',
+    desc: '生の日本製14ozインディゴセルビッジから、オーダーごとに手裁断・手縫製。一スタイル、一生地。在庫なし。',
+    priceMtmNote: '/ {mtm} メイドトゥメジャー',
+    currency: '通貨',
+    specLead: '2〜8週間',
+    sizingLabel: 'サイズ選択',
+    optStandard: 'スタンダードサイズ', optMtm: 'メイドトゥメジャー',
+    measurementsTitle: '採寸データ', waist: 'ウエスト', hip: 'ハイヒップ', inseam: '股下',
+    measureHint: '単位はcmでご入力ください。不明な場合はご提出前にご確認ください。',
+    waistSize: 'ウエスト幅', inseamSize: '股下レングス',
+    shippingLabel: '配送地域',
+    shipNZ: 'ニュージーランド', shipAU: 'オーストラリア', shipJPKR: '日本・韓国', shipNA: 'アメリカ・カナダ', shipUKEU: 'イギリス・ヨーロッパ', shipROW: 'その他の地域',
+    shipTotal: '合計（概算）',
+    shipNote: 'DHLエクスプレスの追跡付き配送。表示は概算です。正確な送料は最終請求書に含まれます。輸入関税が発生する場合は購入者のご負担となります。',
+    detailsLabel: 'お客様情報',
+    name: 'お名前', email: 'メールアドレス',
+    tcsLabel: '利用規約', tcsToggle: '利用規約を読む',
+    tcsReadNote: '承諾前にすべての規約をお読みください。',
+    tcsCheckbox: '利用規約を読み、同意します',
+    submit: '注文する', submitting: '送信中…',
+    submitNote: 'このフォームの送信は課金されません。',
+    successMsg: '✓ ご注文を承りました。近日中にメールにてご連絡いたします。',
+    errorMsg: 'エラーが発生しました。再度お試しいただくか、直接ご連絡ください。',
+    errRequired: 'この項目は必須です。', errEmail: '有効なメールアドレスを入力してください。',
+    errTcs: '利用規約をお読みの上、同意してください。',
+    closedBody: 'バッチ001の全スロットが埋まりました。メールアドレスをご登録いただくと、バッチ002のオープン時に最初にお知らせします。',
+    closedBtn: 'ウェイトリストに登録',
+    tcs: `<p><strong>採寸の正確性</strong><br>お客様が提供する採寸データについては、お客様が完全に責任を負うものとします。標準サイズを選択された場合、またはメイドトゥメジャーの採寸に誤りがあった場合、返金・再製作はお受けできません。送信前に採寸ガイドで数値をご確認ください。</p>
+<p><strong>デポジットと最終販売</strong><br>各ペアはお客様のご注文に合わせて裁断・縫製されるため、すべての販売は最終となります。生地の裁断が開始された後は、最初の50%のデポジットは返金不可となります。</p>
+<p><strong>生デニムの特性について</strong><br>本製品は硬い生の日本製14ozインディゴデニムから製造されていることをご了承ください。インディゴ染料は新品時に明るい表面に色移り（クロッキング）することがあります。初回洗濯後に1〜2%の縮みが生じる場合があります（これは初期パターンで考慮済みです）。</p>
+<p><strong>リードタイム</strong><br>推定リードタイム（通常、デポジット入金後2〜8週間）はあくまでも目安であり、保証ではありません。</p>
+<p><strong>お支払いの流れ</strong><br>このフォームの送信は課金されません。コミッションが承認された場合、Hnryを通じて2枚の請求書が届きます。</p>`
+  },
+  ko: {
+    eyebrow: '001 — 와이드 부츠컷',
+    productName: '14온스 재패니즈 셀비지',
+    desc: '원단 일본제 14온스 인디고 셀비지로 주문 제작됩니다. 하나의 스타일, 하나의 원단. 재고 없음.',
+    priceMtmNote: '/ {mtm} 맞춤 제작',
+    currency: '통화',
+    specLead: '2–8주',
+    sizingLabel: '사이즈',
+    optStandard: '표준 사이즈', optMtm: '맞춤 제작',
+    measurementsTitle: '측정 데이터', waist: '자연 허리', hip: '하이 힙', inseam: '안쪽 솔기',
+    measureHint: '모든 측정값은 cm 단위로 입력하세요.',
+    waistSize: '허리', inseamSize: '안쪽 솔기 길이',
+    shippingLabel: '배송 지역',
+    shipNZ: '뉴질랜드', shipAU: '호주', shipJPKR: '일본 / 한국', shipNA: '미국 / 캐나다', shipUKEU: '영국 / 유럽', shipROW: '기타 지역',
+    shipTotal: '예상 총액',
+    shipNote: 'DHL 익스프레스 추적 배송. 표시 금액은 예상치이며 정확한 배송비는 최종 청구서에 포함됩니다.',
+    detailsLabel: '고객 정보',
+    name: '이름', email: '이메일 주소',
+    tcsLabel: '이용약관', tcsToggle: '이용약관 읽기',
+    tcsReadNote: '동의하기 전에 모든 약관을 읽어주세요.',
+    tcsCheckbox: '이용약관을 읽고 동의합니다',
+    submit: '주문하기', submitting: '제출 중…',
+    submitNote: '이 양식을 제출해도 결제가 이루어지지 않습니다.',
+    successMsg: '✓ 주문이 접수되었습니다. 곧 이메일로 연락드리겠습니다.',
+    errorMsg: '오류가 발생했습니다. 다시 시도하거나 직접 문의해 주세요.',
+    errRequired: '이 항목은 필수입니다.', errEmail: '유효한 이메일 주소를 입력하세요.',
+    errTcs: '이용약관을 읽고 동의해 주세요.',
+    closedBody: '배치 001의 모든 슬롯이 찼습니다. 배치 002가 열리면 가장 먼저 알려드리겠습니다.',
+    closedBtn: '대기자 명단 등록',
+    tcs: `<p><strong>측정 정확도</strong><br>제공하신 측정값에 대해 고객님이 전적으로 책임을 지십니다. 표준 사이즈를 선택하거나 잘못된 맞춤 측정값을 제공한 경우 환불 또는 무료 재제작이 불가합니다.</p>
+<p><strong>예치금 및 최종 판매</strong><br>각 제품은 주문별로 재단 및 봉제되므로 모든 판매는 최종입니다. 원단 재단이 시작된 후에는 초기 50% 예치금은 환불되지 않습니다.</p>
+<p><strong>로우 데님의 특성</strong><br>인디고 염료는 처음 착용 시 밝은 표면에 이염될 수 있습니다. 첫 세탁 후 1~2%의 수축을 허용해 주세요.</p>
+<p><strong>리드 타임</strong><br>예상 리드 타임(예치금 입금일로부터 보통 2~8주)은 추정치이며 보장이 아닙니다.</p>
+<p><strong>결제 절차</strong><br>이 양식을 제출해도 결제가 이루어지지 않습니다. 수락 시 Hnry를 통해 두 개의 청구서가 발송됩니다.</p>`
+  },
+  fr: {
+    eyebrow: '001 — Wide Bootcut',
+    productName: 'Selvedge Japanese 14oz',
+    desc: 'Coupé et cousu à la main sur commande, en denim indigo brut japonais 14oz. Un style, un tissu. Pas de stock, pas de compromis.',
+    priceMtmNote: '/ {mtm} sur mesure',
+    currency: 'Devise',
+    specLead: '2–8 semaines',
+    sizingLabel: 'Taille',
+    optStandard: 'Taille standard', optMtm: 'Sur mesure',
+    measurementsTitle: 'Vos mesures', waist: 'Tour de taille', hip: 'Tour de hanche haute', inseam: 'Entrejambe',
+    measureHint: 'Toutes les mesures en cm. Consultez le guide si vous n\'êtes pas sûr.',
+    waistSize: 'Tour de taille', inseamSize: 'Longueur de jambe',
+    shippingLabel: 'Expédition',
+    shipNZ: 'Nouvelle-Zélande', shipAU: 'Australie', shipJPKR: 'Japon / Corée', shipNA: 'USA / Canada', shipUKEU: 'Royaume-Uni / Europe', shipROW: 'Reste du monde',
+    shipTotal: 'Total estimé',
+    shipNote: "Expédition suivie via DHL Express. Estimations uniquement — les frais exacts sont facturés avec votre solde final.",
+    detailsLabel: 'Vos coordonnées',
+    name: 'Nom complet', email: 'Adresse e-mail',
+    tcsLabel: 'Conditions générales', tcsToggle: 'Lire avant de soumettre',
+    tcsReadNote: 'Faites défiler pour lire toutes les conditions avant d\'accepter.',
+    tcsCheckbox: 'J\'ai lu et j\'accepte les conditions générales',
+    submit: 'Soumettre', submitting: 'Envoi en cours…',
+    submitNote: 'La soumission de ce formulaire ne génère aucun paiement.',
+    successMsg: '✓ Votre commande a été reçue. Nous vous contacterons par e-mail sous peu.',
+    errorMsg: 'Une erreur s\'est produite. Veuillez réessayer ou nous contacter directement.',
+    errRequired: 'Ce champ est obligatoire.', errEmail: 'Veuillez saisir une adresse e-mail valide.',
+    errTcs: 'Veuillez lire et accepter les conditions générales.',
+    closedBody: 'Tous les créneaux du Lot 001 sont réservés. Laissez votre e-mail pour être prévenu à l\'ouverture du Lot 002.',
+    closedBtn: 'Rejoindre la liste d\'attente',
+    tcs: `<p><strong>Précision des mesures</strong><br>Vous êtes entièrement responsable des mesures que vous fournissez. En cas de mesures incorrectes, aucun remboursement ni remake gratuit ne pourra être proposé.</p>
+<p><strong>Acomptes et ventes définitives</strong><br>Toutes les ventes sont définitives. L'acompte initial de 50 % est non remboursable une fois la coupe du tissu commencée.</p>
+<p><strong>Nature du denim brut</strong><br>La teinture indigo peut déteindre sur les surfaces claires lors des premiers ports. Prévoyez un rétrécissement de 1 à 2 % après le premier lavage.</p>
+<p><strong>Délais</strong><br>Les délais estimés (généralement 2 à 8 semaines à partir du paiement de l'acompte) sont des estimations, pas des garanties.</p>
+<p><strong>Processus de paiement</strong><br>La soumission de ce formulaire ne génère aucun paiement. En cas d'acceptation, vous recevrez deux factures via Hnry.</p>`
+  },
+  de: {
+    eyebrow: '001 — Wide Bootcut',
+    productName: '14oz Japanese Selvedge',
+    desc: 'Von Hand zugeschnitten und genäht aus rohem japanischem 14oz Indigo-Selvedge. Ein Stil, ein Stoff. Kein Lager, keine Abkürzungen.',
+    priceMtmNote: '/ {mtm} maßgefertigt',
+    currency: 'Währung',
+    specLead: '2–8 Wochen',
+    sizingLabel: 'Größe',
+    optStandard: 'Standardgröße', optMtm: 'Maßgefertigt',
+    measurementsTitle: 'Ihre Maße', waist: 'Natürliche Taille', hip: 'Hohe Hüfte', inseam: 'Innenbeinlänge',
+    measureHint: 'Alle Maße in cm. Nutzen Sie die Maßanleitung bei Unsicherheiten.',
+    waistSize: 'Bundweite', inseamSize: 'Innenbeinlänge',
+    shippingLabel: 'Versand',
+    shipNZ: 'Neuseeland', shipAU: 'Australien', shipJPKR: 'Japan / Korea', shipNA: 'USA / Kanada', shipUKEU: 'UK / Europa', shipROW: 'Rest der Welt',
+    shipTotal: 'Geschätzte Gesamtsumme',
+    shipNote: 'Versand mit Sendungsverfolgung via DHL Express. Nur Schätzwerte — die genauen Versandkosten werden mit der Endrechnung berechnet.',
+    detailsLabel: 'Ihre Angaben',
+    name: 'Vollständiger Name', email: 'E-Mail-Adresse',
+    tcsLabel: 'Allgemeine Geschäftsbedingungen', tcsToggle: 'AGB lesen',
+    tcsReadNote: 'Bitte scrollen Sie, um alle Bedingungen vor der Annahme zu lesen.',
+    tcsCheckbox: 'Ich habe die AGB gelesen und stimme ihnen zu',
+    submit: 'Bestellung aufgeben', submitting: 'Wird gesendet…',
+    submitNote: 'Das Absenden dieses Formulars ist mit keiner Zahlung verbunden.',
+    successMsg: '✓ Ihre Bestellung wurde erhalten. Wir melden uns in Kürze per E-Mail.',
+    errorMsg: 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.',
+    errRequired: 'Dieses Feld ist erforderlich.', errEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
+    errTcs: 'Bitte lesen und akzeptieren Sie die AGB.',
+    closedBody: 'Alle Slots für Batch 001 sind vergeben. Hinterlassen Sie Ihre E-Mail, um als Erster über Batch 002 informiert zu werden.',
+    closedBtn: 'Warteliste beitreten',
+    tcs: `<p><strong>Maßgenauigkeit</strong><br>Sie sind vollständig verantwortlich für die von Ihnen angegebenen Maße. Bei falschen Angaben können keine Rückerstattung oder kostenlose Neuanfertigung angeboten werden.</p>
+<p><strong>Anzahlung und endgültige Verkäufe</strong><br>Alle Verkäufe sind endgültig. Die anfängliche 50%-Anzahlung ist nach Beginn des Zuschneidens nicht erstattungsfähig.</p>
+<p><strong>Eigenschaften von Rohdenim</strong><br>Indigofarbe kann beim ersten Tragen auf hellere Oberflächen abfärben. Auch nach dem ersten Waschen ist mit einer Schrumpfung von 1–2 % zu rechnen.</p>
+<p><strong>Lieferzeiten</strong><br>Geschätzte Lieferzeiten (in der Regel 2–8 Wochen ab Anzahlung) sind Schätzungen, keine Garantien.</p>
+<p><strong>Zahlungsablauf</strong><br>Das Absenden dieses Formulars ist mit keiner Zahlung verbunden. Bei Annahme erhalten Sie zwei Rechnungen über Hnry.</p>`
+  }
+};
+
+// ── State ──
+let currentLang = 'en';
+let selectedWaist = null;
+let selectedInseamStd = null;
+let currentRates = {};
+let currentCurrency = 'USD';
+const basePricesNZD = { standard: 0.5, mtm: 0.5 };
+const shippingRatesNZD = { nz: 0.5, au: 0.5, jpkr: 0.5, namerica: 0.5, ukeu: 0.5, row: 0.5 };
+let selectedShipRegion = null;
+const currencySymbols = { NZD: 'NZD $', AUD: 'AUD $', USD: 'USD $', EUR: '€', GBP: '£', JPY: '¥', KRW: '₩' };
+let selectedSizing = null;
+let selectedColour = 'Indigo — 14oz Japanese selvedge';
+let tcsRead = false;
+let tcsOpen = false;
+const langLabels = { en: 'EN', ja: '日本語', ko: '한국어', fr: 'FR', de: 'DE' };
+
+// ── Gallery ──
+function setPhoto(thumb, src) {
+  document.getElementById('gallery-main-img').src = src;
+  document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+  thumb.classList.add('active');
+}
+
+// ── Currency ──
+async function fetchRates(currency) {
+  try {
+    const res = await fetch('https://api.frankfurter.app/latest?from=NZD&to=USD,AUD,EUR,GBP,JPY,KRW');
+    if (res.ok) {
+      const data = await res.json();
+      currentRates = { NZD:1, USD:data.rates.USD, AUD:data.rates.AUD, EUR:data.rates.EUR, GBP:data.rates.GBP, JPY:data.rates.JPY, KRW:data.rates.KRW };
+    }
+  } catch(e) {
+    currentRates = { NZD:1, USD:0.61, AUD:0.94, EUR:0.56, GBP:0.48, JPY:90, KRW:800 };
+  }
+  updatePrices(currency);
+}
+
+function fmtNZD(nzd, currency) {
+  const rate = currentRates[currency] || 1;
+  const sym = currencySymbols[currency] || 'NZD $';
+  const v = Math.round(nzd * rate);
+  return sym + ((currency === 'JPY' || currency === 'KRW') ? v.toLocaleString() : v);
+}
+
+function updatePrices(currency) {
+  currentCurrency = currency;
+  const std = fmtNZD(basePricesNZD.standard, currency);
+  const mtm = fmtNZD(basePricesNZD.mtm, currency);
+  document.getElementById('price-standard').textContent = std;
+  document.getElementById('price-mtm').textContent = mtm;
+  document.getElementById('price-opt-standard').textContent = std;
+  document.getElementById('price-opt-mtm').textContent = mtm;
+  updateShippingDisplay();
+}
+
+function setCurrency(btn, currency) {
+  document.querySelectorAll('.currency-pill').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  const hiddenInput = document.getElementById('currency');
+  if (hiddenInput) hiddenInput.value = currency;
+  fetchRates(currency);
+}
+
+function updateShippingDisplay() {
+  document.querySelectorAll('.ship-tile').forEach(tile => {
+    const region = tile.dataset.region;
+    const priceEl = tile.querySelector('.ship-tile-price');
+    if (priceEl) priceEl.textContent = '~' + fmtNZD(shippingRatesNZD[region], currentCurrency);
+  });
+  const totalEl = document.getElementById('ship-total');
+  const totalWrap = document.getElementById('ship-total-wrap');
+  if (selectedShipRegion && selectedSizing && totalEl && totalWrap) {
+    const base = selectedSizing === 'Made to measure' ? basePricesNZD.mtm : basePricesNZD.standard;
+    totalEl.textContent = '~' + fmtNZD(base + shippingRatesNZD[selectedShipRegion], currentCurrency);
+    totalWrap.classList.add('visible');
+  } else if (totalWrap) {
+    totalWrap.classList.remove('visible');
+  }
+}
+
+function selectShipRegion(el, region) {
+  selectedShipRegion = region;
+  document.querySelectorAll('.ship-tile').forEach(o => o.classList.remove('selected'));
+  el.classList.add('selected');
+  clearError('err-shipping');
+  updateShippingDisplay();
+  updateBtnTotal();
+}
+
+// ── Sizing ──
+function selectSizing(type) {
+  selectedSizing = type;
+  document.getElementById('opt-standard').classList.toggle('selected', type === 'Standard sizes');
+  document.getElementById('opt-mtm').classList.toggle('selected', type === 'Made to measure');
+  document.getElementById('measurements-section').classList.toggle('visible', type === 'Made to measure');
+  document.getElementById('standard-size-section').classList.toggle('visible', type === 'Standard sizes');
+  clearError('err-sizing');
+  updateShippingDisplay();
+  updateBtnTotal();
+}
+
+function selectWaist(btn, value) {
+  selectedWaist = value;
+  document.querySelectorAll('#waist-btn-grid .size-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  clearError('err-size');
+}
+
+function selectInseamStd(btn, value) {
+  selectedInseamStd = value;
+  document.querySelectorAll('#inseam-btn-grid .size-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  clearError('err-inseam-std');
+}
+
+// ── Language ──
+function setLang(lang) {
+  currentLang = lang;
+  const t = translations[lang];
+  document.documentElement.lang = lang;
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent === langLabels[lang]);
+  });
+  const set = (id, val) => { const el = document.getElementById(id); if (el && val !== undefined) el.textContent = val; };
+  set('l-eyebrow', t.eyebrow);
+  set('l-product-name', t.productName);
+  set('l-desc', t.desc);
+  set('l-currency', t.currency);
+  set('l-spec-lead', t.specLead);
+  set('l-sizing-label', t.sizingLabel);
+  set('l-opt-standard', t.optStandard);
+  set('l-opt-mtm', t.optMtm);
+  set('l-measurements-title', t.measurementsTitle);
+  set('l-waist', t.waist);
+  set('l-hip', t.hip);
+  set('l-inseam', t.inseam);
+  set('l-measure-hint', t.measureHint);
+  set('l-waist-size', t.waistSize);
+  set('l-inseam-size', t.inseamSize);
+  set('l-shipping-label', t.shippingLabel);
+  set('l-ship-nz', t.shipNZ);
+  set('l-ship-au', t.shipAU);
+  set('l-ship-jpkr', t.shipJPKR);
+  set('l-ship-namerica', t.shipNA);
+  set('l-ship-ukeu', t.shipUKEU);
+  set('l-ship-row', t.shipROW);
+  set('l-ship-total', t.shipTotal);
+  set('l-ship-note', t.shipNote);
+  set('l-details-label', t.detailsLabel);
+  set('l-name', t.name);
+  set('l-email', t.email);
+  const tcsLabelEl = document.getElementById('l-tcs-label');
+  if (tcsLabelEl) tcsLabelEl.innerHTML = t.tcsLabel + ' <span class="required">*</span>';
+  set('l-tcs-toggle', t.tcsToggle);
+  set('l-tcs-checkbox', t.tcsCheckbox);
+  set('l-submit', t.submit);
+  set('l-submit-note', t.submitNote);
+  set('l-closed-body', t.closedBody);
+  set('l-closed-btn', t.closedBtn);
+  document.getElementById('tcs-content').innerHTML = t.tcs;
+  const readNote = document.getElementById('l-tcs-read-note');
+  if (readNote) {
+    readNote.textContent = t.tcsReadNote;
+    if (!tcsRead) readNote.style.display = tcsOpen ? 'block' : 'none';
+  }
+  updatePrices(currentCurrency);
+}
+
+// ── T&Cs ──
+function toggleTcs() {
+  tcsOpen = !tcsOpen;
+  document.getElementById('tcs-body').classList.toggle('open', tcsOpen);
+  document.getElementById('tcs-arrow').classList.toggle('open', tcsOpen);
+  document.getElementById('tcs-toggle').setAttribute('aria-expanded', tcsOpen);
+  if (tcsOpen) {
+    document.getElementById('tcs-content').innerHTML = translations[currentLang].tcs;
+    document.getElementById('l-tcs-read-note').textContent = translations[currentLang].tcsReadNote;
+    if (!tcsRead) {
+      document.getElementById('l-tcs-read-note').style.display = 'block';
+      setTimeout(checkTcsScroll, 50);
+    }
+  }
+}
+
+function checkTcsScroll() {
+  if (tcsRead) return;
+  const scroll = document.getElementById('tcs-scroll');
+  if (scroll.scrollTop + scroll.clientHeight >= scroll.scrollHeight - 10) {
+    tcsRead = true;
+    document.getElementById('tcsAccepted').disabled = false;
+    document.getElementById('l-tcs-read-note').style.display = 'none';
+  }
+}
+
+function updateSubmitState() {}
+
+// ── Errors ──
+function clearError(id) { const el = document.getElementById(id); if (el) el.classList.remove('visible'); }
+function showError(id, msg) { const el = document.getElementById(id); if (el) { el.textContent = msg; el.classList.add('visible'); } }
+
+// ── Validation ──
+function validateForm() {
+  const t = translations[currentLang];
+  let valid = true;
+
+  const name = document.getElementById('clientName').value.trim();
+  if (!name) { showError('err-name', t.errRequired); valid = false; } else clearError('err-name');
+
+  const email = document.getElementById('email').value.trim();
+  if (!email) { showError('err-email', t.errRequired); valid = false; }
+  else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { showError('err-email', t.errEmail); valid = false; }
+  else clearError('err-email');
+
+  if (!selectedSizing) { showError('err-sizing', t.errRequired); valid = false; } else clearError('err-sizing');
+
+  if (selectedSizing === 'Standard sizes') {
+    if (!selectedWaist) { showError('err-size', t.errRequired); valid = false; } else clearError('err-size');
+    if (!selectedInseamStd) { showError('err-inseam-std', t.errRequired); valid = false; } else clearError('err-inseam-std');
+  }
+
+  if (selectedSizing === 'Made to measure') {
+    ['naturalWaist','highHip','inseam'].forEach((id, i) => {
+      const errIds = ['err-waist','err-hip','err-inseam'];
+      const val = document.getElementById(id).value.trim();
+      if (!val) { showError(errIds[i], t.errRequired); valid = false; } else clearError(errIds[i]);
+    });
+  }
+
+  if (!selectedShipRegion) { showError('err-shipping', t.errRequired); valid = false; } else clearError('err-shipping');
+
+  if (!document.getElementById('tcsAccepted').checked) { showError('err-tcs', t.errTcs); valid = false; } else clearError('err-tcs');
+
+  return valid;
+}
+
+// ── Submit ──
+document.getElementById('orderForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const t = translations[currentLang];
+  document.getElementById('form-success').style.display = 'none';
+  document.getElementById('form-error').style.display = 'none';
+  if (!validateForm()) return;
+
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  document.getElementById('l-submit').textContent = t.submitting;
+
+  const payload = {
+    clientName: document.getElementById('clientName').value.trim(),
+    email: document.getElementById('email').value.trim(),
+    currencyPreference: document.getElementById('currency').value,
+    sizingType: selectedSizing,
+    colour: selectedColour,
+    shippingRegion: selectedShipRegion,
+    shippingLabel: document.getElementById('l-ship-' + selectedShipRegion).textContent,
+    shippingEstimateNZD: shippingRatesNZD[selectedShipRegion],
+    _hp: document.getElementById('_hp') ? document.getElementById('_hp').value : '',
+  };
+
+  if (selectedSizing === 'Made to measure') {
+    payload.naturalWaist = document.getElementById('naturalWaist').value;
+    payload.highHip = document.getElementById('highHip').value;
+    payload.inseam = document.getElementById('inseam').value;
+  } else {
+    payload.size = selectedWaist + ' ' + selectedInseamStd;
+  }
+
+  try {
+    const res = await fetch('/.netlify/functions/create-checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+    });
+    if (res.ok) {
+      const data = await res.json();
+      window.location.href = data.url;
+    } else {
+      throw new Error('Non-200');
+    }
+  } catch {
+    document.getElementById('form-error').textContent = t.errorMsg;
+    document.getElementById('form-error').style.display = 'block';
+    btn.disabled = false;
+    document.getElementById('l-submit').innerHTML = 'Pay now — NZD $<span id="btn-total">' + getBtnTotal() + '</span>';
+  }
+});
+
+// ── Batch limit ──
+const MAX_SUBMISSIONS = 4;
+async function checkSubmissionLimit() {
+  try {
+    const res = await fetch('/.netlify/functions/submission-count');
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data.count >= MAX_SUBMISSIONS) showFormClosed();
+  } catch(e) {}
+}
+
+function showFormClosed() {
+  document.getElementById('formClosed').classList.add('visible');
+  document.getElementById('main-form-wrap').style.display = 'none';
+}
+
+// ── Waitlist ──
+const KLAVIYO_KEY_ORDER = 'YOUR_KLAVIYO_PUBLIC_KEY';
+const KLAVIYO_LIST_ORDER = 'YOUR_KLAVIYO_LIST_ID';
+async function submitWaitlist() {
+  const email = document.getElementById('closedEmail').value.trim();
+  const msg = document.getElementById('closedMsg');
+  if (!email) return;
+  msg.textContent = '...';
+  try {
+    const res = await fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${KLAVIYO_KEY_ORDER}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'revision': '2023-02-22' },
+      body: JSON.stringify({ data: { type: 'subscription', attributes: { list_id: KLAVIYO_LIST_ORDER, email } } })
+    });
+    if (res.ok || res.status === 202) {
+      msg.textContent = "You're on the list — I'll be in touch when Batch 002 opens.";
+      msg.className = 'form-closed-msg success';
+      document.getElementById('closedEmail').value = '';
+    } else { throw new Error(); }
+  } catch {
+    msg.textContent = 'Something went wrong — try again or email me directly.';
+  }
+}
+
+// ── Button total ──
+const SHIP_NZD = { nz: 0.5, au: 0.5, jpkr: 0.5, namerica: 0.5, ukeu: 0.5, row: 0.5 };
+function getBtnTotal() {
+  const base = selectedSizing === 'Made to measure' ? 0.5 : 0.5;
+  const ship = selectedShipRegion ? (SHIP_NZD[selectedShipRegion] || 0) : 0;
+  return base + ship;
+}
+function updateBtnTotal() {
+  const el = document.getElementById('btn-total');
+  if (el) el.textContent = getBtnTotal();
+}
+
+// ── Init ──
+fetchRates('USD');
+checkSubmissionLimit();
+</script>
+</body>
+</html>
