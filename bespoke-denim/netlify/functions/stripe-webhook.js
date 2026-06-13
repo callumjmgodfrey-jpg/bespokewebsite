@@ -32,6 +32,10 @@ exports.handler = async function(event) {
   const customerEmail = session.customer_email || '';
   const sizingType = meta.sizingType || 'Standard sizing';
   const shippingLabel = meta.shippingLabel || meta.shippingRegion || '';
+  const addr = session.shipping_details?.address || {};
+  const shippingAddress = [
+    addr.line1, addr.line2, addr.city, addr.state, addr.postal_code, addr.country
+  ].filter(Boolean).join(', ');
 
   // ── Notion ──────────────────────────────────────────────────────────────
   const properties = {
@@ -42,6 +46,7 @@ exports.handler = async function(event) {
     'Amount Paid': { number: amountNZD },
     'Sizing Type': { select: { name: sizingType } },
     'Shipping Region': { rich_text: [{ text: { content: shippingLabel } }] },
+    'Shipping Address': { rich_text: [{ text: { content: shippingAddress } }] },
     'Stripe Session ID': { rich_text: [{ text: { content: session.id } }] },
     'Order Date': { date: { start: orderDate } },
   };
@@ -129,6 +134,7 @@ exports.handler = async function(event) {
               <tr><td style="padding:8px 0;color:#8a8a84;font-size:13px;">Product</td><td style="padding:8px 0;font-size:13px;">001 — 14oz Japanese Selvedge Wide Bootcut</td></tr>
               ${orderDetails}
               <tr><td style="padding:8px 0;color:#8a8a84;font-size:13px;">Shipping to</td><td style="padding:8px 0;font-size:13px;">${shippingLabel}</td></tr>
+              ${shippingAddress ? `<tr><td style="padding:8px 0;color:#8a8a84;font-size:13px;">Delivery address</td><td style="padding:8px 0;font-size:13px;">${shippingAddress}</td></tr>` : ''}
               <tr style="border-top:0.5px solid #d4d3ce;"><td style="padding:12px 0;font-size:13px;color:#141412;">Total paid</td><td style="padding:12px 0;font-size:13px;font-weight:500;color:#141412;">NZD $${amountNZD.toFixed(2)}</td></tr>
             </table>
           </td>

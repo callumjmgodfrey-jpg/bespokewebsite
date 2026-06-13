@@ -58,6 +58,9 @@ exports.handler = async function(event) {
       payment_method_types: ['card'],
       mode: 'payment',
       customer_email: email,
+      shipping_address_collection: {
+        allowed_countries: ['NZ', 'AU', 'JP', 'KR', 'US', 'CA', 'GB', 'FR', 'DE', 'IT', 'ES', 'NL', 'SE', 'NO', 'DK', 'CH', 'AT', 'BE', 'PT', 'PL', 'CZ', 'HU', 'RO', 'SG', 'HK', 'TW', 'CN', 'IN', 'BR', 'MX', 'ZA', 'AE', 'SA', 'IL', 'TR', 'TH', 'MY', 'ID', 'PH', 'VN'],
+      },
       line_items: [
         {
           price_data: {
