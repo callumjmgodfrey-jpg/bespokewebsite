@@ -49,7 +49,7 @@ exports.handler = async function(event) {
     'Order Date': { date: { start: orderDate } },
   };
 
-  if (sizingType === 'Standard sizing' && meta.size) {
+  if (sizingType !== 'Made to measure' && meta.size) {
     properties['Size'] = { rich_text: [{ text: { content: meta.size } }] };
   }
 
