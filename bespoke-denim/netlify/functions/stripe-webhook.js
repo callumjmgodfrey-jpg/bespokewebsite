@@ -187,7 +187,7 @@ exports.handler = async function(event) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Callum Godfrey <orders@callumgodfrey.com>',
+          from: 'Callum Godfrey <callumgodfrey@callumgodfrey.com>',
           to: customerEmail,
           subject: 'Your order is confirmed — 001 Wide Bootcut',
           html,
