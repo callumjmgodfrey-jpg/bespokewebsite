@@ -226,6 +226,16 @@ footer {
 @media (max-width: 900px) {
   .care-item { grid-template-columns: 160px 1fr; }
 }
+
+.lang-dropdown-wrap { position: relative; }
+.lang-dropdown-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); background: transparent; border: none; cursor: pointer; font-family: var(--sans); padding: 0; transition: opacity 0.2s; }
+.lang-dropdown-btn:hover { opacity: 0.5; }
+.lang-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); right: 0; background: var(--ink); border: 0.5px solid rgba(255,255,255,0.1); min-width: 160px; z-index: 200; }
+.lang-dropdown-menu.open { display: block; }
+.lang-dropdown-menu button { display: block; width: 100%; text-align: left; padding: 12px 20px; font-family: var(--sans); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); background: transparent; border: none; border-bottom: 0.5px solid rgba(255,255,255,0.07); cursor: pointer; transition: color 0.15s; }
+.lang-dropdown-menu button:last-child { border-bottom: none; }
+.lang-dropdown-menu button:hover { color: var(--white); }
+.lang-dropdown-menu button.active { color: var(--white); }
 </style>
 </head>
 <body>
@@ -234,21 +244,31 @@ footer {
 <nav>
   <a href="index.html" class="nav-logo">Callum Godfrey</a>
   <div class="nav-right">
-    <a href="index.html#making" class="nav-link">Making</a>
-    <a href="index.html#waitlist" class="nav-link">Waitlist</a>
-    <a href="order.html" class="nav-link nav-apply-link">Apply</a>
+    <a href="index.html#making" class="nav-link" id="nav-making">Making</a>
+    <a href="index.html#waitlist" class="nav-link" id="nav-waitlist">Waitlist</a>
+    <div class="lang-dropdown-wrap">
+      <button class="lang-dropdown-btn" onclick="toggleLangMenu()" id="langBtn">EN</button>
+      <div class="lang-dropdown-menu" id="langMenu">
+        <button onclick="applyLang('en')">EN — English</button>
+        <button onclick="applyLang('ja')">日本語</button>
+        <button onclick="applyLang('ko')">한국어</button>
+        <button onclick="applyLang('fr')">Français</button>
+        <button onclick="applyLang('de')">Deutsch</button>
+      </div>
+    </div>
+    <a href="order.html" class="nav-link nav-apply-link" id="nav-apply">Apply</a>
   </div>
 </nav>
 
 <!-- PAGE HEADER -->
 <section class="page-header">
-  <span class="page-header-eyebrow reveal">Raw Selvedge Denim</span>
-  <h1 class="page-header-title reveal reveal-d1">Care<br>Instructions</h1>
+  <span class="page-header-eyebrow reveal" id="l-eyebrow">Raw Selvedge Denim</span>
+  <h1 class="page-header-title reveal reveal-d1" id="l-title">Care<br>Instructions</h1>
 </section>
 
 <!-- INTRO -->
 <section class="care-intro">
-  <p class="care-intro-text reveal">Your jeans are made from raw, unsanforized Japanese selvedge denim. This means they have not been pre-washed and will shrink slightly on their first wash. This has been accounted for in your pattern.</p>
+  <p class="care-intro-text reveal" id="l-intro">Your jeans are made from raw, unsanforized Japanese selvedge denim. This means they have not been pre-washed and will shrink slightly on their first wash. This has been accounted for in your pattern.</p>
 </section>
 
 <div class="rule"></div>
@@ -257,28 +277,28 @@ footer {
 <div class="care-items">
 
   <div class="care-item reveal">
-    <span class="care-item-label">First wash</span>
-    <p class="care-item-body">Expect <em>3–5% shrinkage in length.</em> This is normal and intentional.</p>
+    <span class="care-item-label" id="l-label-firstwash">First wash</span>
+    <p class="care-item-body" id="l-body-firstwash">Expect <em>3–5% shrinkage in length.</em> This is normal and intentional.</p>
   </div>
 
   <div class="care-item reveal">
-    <span class="care-item-label">Washing</span>
-    <p class="care-item-body">Cold wash only, inside out, gentle cycle. <em>Never hot water.</em></p>
+    <span class="care-item-label" id="l-label-washing">Washing</span>
+    <p class="care-item-body" id="l-body-washing">Cold wash only, inside out, gentle cycle. <em>Never hot water.</em></p>
   </div>
 
   <div class="care-item reveal">
-    <span class="care-item-label">Drying</span>
-    <p class="care-item-body">Hang dry only. <em>Never tumble dry.</em></p>
+    <span class="care-item-label" id="l-label-drying">Drying</span>
+    <p class="care-item-body" id="l-body-drying">Hang dry only. <em>Never tumble dry.</em></p>
   </div>
 
   <div class="care-item reveal">
-    <span class="care-item-label">Best practice</span>
-    <p class="care-item-body">Wash as infrequently as possible. Spot clean where you can. Freezing your jeans overnight kills bacteria and odour without affecting the fabric or fade.</p>
+    <span class="care-item-label" id="l-label-bestpractice">Best practice</span>
+    <p class="care-item-body" id="l-body-bestpractice">Wash as infrequently as possible. Spot clean where you can. Freezing your jeans overnight kills bacteria and odour without affecting the fabric or fade.</p>
   </div>
 
   <div class="care-item reveal">
-    <span class="care-item-label">Fading</span>
-    <p class="care-item-body">Raw denim will fade and crease uniquely to the way you wear them. <em>This is the whole point</em> — wear them hard and they'll become yours.</p>
+    <span class="care-item-label" id="l-label-fading">Fading</span>
+    <p class="care-item-body" id="l-body-fading">Raw denim will fade and crease uniquely to the way you wear them. <em>This is the whole point</em> — wear them hard and they'll become yours.</p>
   </div>
 
 </div>
