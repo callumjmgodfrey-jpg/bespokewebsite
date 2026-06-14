@@ -24,7 +24,10 @@ exports.handler = async function(event) {
     return { statusCode: 200, body: 'Event ignored' };
   }
 
-  const session = stripeEvent.data.object;
+  const sessionRaw = stripeEvent.data.object;
+  const session = await stripe.checkout.sessions.retrieve(sessionRaw.id, {
+    expand: ['shipping_details'],
+  });
   const meta = session.metadata || {};
   const amountNZD = (session.amount_total || 0) / 100;
   const orderDate = new Date(session.created * 1000).toISOString().split('T')[0];
