@@ -121,7 +121,7 @@ exports.handler = async function(event) {
           <td style="padding-bottom:40px;">
             <p style="margin:0;font-family:'Times New Roman',serif;font-size:18px;line-height:1.8;color:#141412;">
               Hi ${customerName},<br><br>
-              Payment received — your order is confirmed and I'll get started shortly. Everything is cut and sewn by hand, so I'll be in touch personally once I begin work on your pair.
+              Payment received — your order is confirmed. This is your receipt. Everything is cut and sewn by hand, so I'll be in touch once I'm ready to start on your pair.
             </p>
           </td>
         </tr>
@@ -151,7 +151,7 @@ exports.handler = async function(event) {
               </tr>
               <tr style="border-top:0.5px solid #d4d3ce;">
                 <td style="padding:20px 0;vertical-align:top;width:32px;font-family:'Times New Roman',serif;font-size:13px;color:#d4d3ce;">02</td>
-                <td style="padding:20px 0;font-size:13px;line-height:1.7;color:#8a8a84;"><strong style="display:block;color:#141412;font-weight:400;margin-bottom:4px;">I'll email you to confirm</strong>Expect a message from me within a day or two before I start cutting.</td>
+                <td style="padding:20px 0;font-size:13px;line-height:1.7;color:#8a8a84;"><strong style="display:block;color:#141412;font-weight:400;margin-bottom:4px;">I'll be in touch</strong>Expect a message from me within a day or two once I'm ready to start cutting.</td>
               </tr>
               <tr style="border-top:0.5px solid #d4d3ce;">
                 <td style="padding:20px 0;vertical-align:top;width:32px;font-family:'Times New Roman',serif;font-size:13px;color:#d4d3ce;">03</td>
