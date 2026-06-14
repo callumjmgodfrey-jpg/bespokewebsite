@@ -168,7 +168,7 @@ exports.handler = async function(event) {
         <!-- Footer -->
         <tr>
           <td style="border-top:0.5px solid #d4d3ce;padding-top:32px;">
-            <p style="margin:0 0 8px;font-size:12px;color:#8a8a84;line-height:1.6;">Any questions? Reply to this email or reach me at <a href="mailto:callum.jm.godfrey@gmail.com" style="color:#141412;">callum.jm.godfrey@gmail.com</a></p>
+            <p style="margin:0 0 8px;font-size:12px;color:#8a8a84;line-height:1.6;">Any questions? Reply to this email or reach me at <a href="mailto:callumgodfrey@callumgodfrey.com" style="color:#141412;">callumgodfrey@callumgodfrey.com</a></p>
             <p style="margin:0;font-size:11px;color:#d4d3ce;letter-spacing:0.1em;text-transform:uppercase;">Made by hand in Wellington, New Zealand</p>
           </td>
         </tr>
@@ -199,6 +199,42 @@ exports.handler = async function(event) {
       }
     } catch (err) {
       console.error('Resend fetch error:', err.message);
+    }
+
+    // ── Notify Callum ────────────────────────────────────────────────────────
+    const notifyDetails = sizingType === 'Made to measure'
+      ? `Made to measure — waist ${meta.naturalWaist}cm, hip ${meta.highHip}cm, inseam ${meta.inseam}cm`
+      : `Standard sizes — ${meta.size || 'not specified'}`;
+
+    const notifyHtml = `
+<table style="font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.8;color:#141412;max-width:480px;">
+  <tr><td style="padding-bottom:24px;font-size:20px;font-family:'Times New Roman',serif;">New order — CG</td></tr>
+  <tr><td><strong>Name:</strong> ${customerName}</td></tr>
+  <tr><td><strong>Email:</strong> ${customerEmail}</td></tr>
+  <tr><td><strong>Sizing:</strong> ${notifyDetails}</td></tr>
+  <tr><td><strong>Ships to:</strong> ${shippingLabel}</td></tr>
+  ${shippingAddress ? `<tr><td><strong>Address:</strong> ${shippingAddress}</td></tr>` : ''}
+  <tr><td><strong>Amount:</strong> NZD $${amountNZD.toFixed(2)}</td></tr>
+  <tr><td><strong>Date:</strong> ${orderDate}</td></tr>
+  <tr><td><strong>Stripe session:</strong> ${session.id}</td></tr>
+</table>`;
+
+    try {
+      await fetch('https://api.resend.com/emails', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          from: 'Bespoke Orders <callumgodfrey@callumgodfrey.com>',
+          to: 'callumgodfrey@callumgodfrey.com',
+          subject: `New order — ${customerName} — NZD $${amountNZD.toFixed(2)}`,
+          html: notifyHtml,
+        }),
+      });
+    } catch (err) {
+      console.error('Notify email error:', err.message);
     }
   }
 
