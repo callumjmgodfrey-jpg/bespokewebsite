@@ -109,6 +109,16 @@ footer { padding: 48px; border-top: 0.5px solid var(--light); display: grid; gri
   footer { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
   .footer-note { text-align: left; }
 }
+
+.lang-dropdown-wrap { position: relative; }
+.lang-dropdown-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); background: transparent; border: none; cursor: pointer; font-family: var(--sans); padding: 0; transition: opacity 0.2s; }
+.lang-dropdown-btn:hover { opacity: 0.5; }
+.lang-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); right: 0; background: var(--ink); border: 0.5px solid rgba(255,255,255,0.1); min-width: 160px; z-index: 200; }
+.lang-dropdown-menu.open { display: block; }
+.lang-dropdown-menu button { display: block; width: 100%; text-align: left; padding: 12px 20px; font-family: var(--sans); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); background: transparent; border: none; border-bottom: 0.5px solid rgba(255,255,255,0.07); cursor: pointer; transition: color 0.15s; }
+.lang-dropdown-menu button:last-child { border-bottom: none; }
+.lang-dropdown-menu button:hover { color: var(--white); }
+.lang-dropdown-menu button.active { color: var(--white); }
 </style>
 </head>
 <body>
@@ -116,27 +126,37 @@ footer { padding: 48px; border-top: 0.5px solid var(--light); display: grid; gri
 <nav>
   <a href="index.html" class="nav-logo">Callum Godfrey</a>
   <div class="nav-right">
-    <a href="index.html#making" class="nav-link">Making</a>
-    <a href="index.html#waitlist" class="nav-link">Waitlist</a>
-    <a href="order.html" class="nav-link nav-apply-link">Apply</a>
+    <a href="index.html#making" class="nav-link" id="nav-making">Making</a>
+    <a href="index.html#waitlist" class="nav-link" id="nav-waitlist">Waitlist</a>
+    <div class="lang-dropdown-wrap">
+      <button class="lang-dropdown-btn" onclick="toggleLangMenu()" id="langBtn">EN</button>
+      <div class="lang-dropdown-menu" id="langMenu">
+        <button onclick="applyLang('en')">EN — English</button>
+        <button onclick="applyLang('ja')">日本語</button>
+        <button onclick="applyLang('ko')">한국어</button>
+        <button onclick="applyLang('fr')">Français</button>
+        <button onclick="applyLang('de')">Deutsch</button>
+      </div>
+    </div>
+    <a href="order.html" class="nav-link nav-apply-link" id="nav-apply">Apply</a>
   </div>
 </nav>
 
 <section class="page-header">
-  <span class="page-header-eyebrow reveal">Wellington, New Zealand</span>
-  <h1 class="page-header-title reveal reveal-d1">when i was 10,<br>i tried to make<br>an assassins creed<br>hoodie<em>…</em></h1>
+  <span class="page-header-eyebrow reveal" id="l-eyebrow">Wellington, New Zealand</span>
+  <h1 class="page-header-title reveal reveal-d1" id="l-title">when i was 10,<br>i tried to make<br>an assassins creed<br>hoodie<em>…</em></h1>
 </section>
 
 <div class="about">
   <div class="about-left">
     <div class="about-body">
-      <p class="reveal">The idea was good — but halfway through, it didn't come out the way it was supposed to. I still wore it anyway.</p>
-      <p class="reveal">Fashion and clothing had always been a big part of my life — there was always a sewing machine within arm's reach. My mum used to run her own label, gave it a go in the UK, then brought it back to New Zealand, slowed down and kept production local. Growing up around that probably shaped how I think about making things.</p>
-      <p class="reveal">Later on, when I started getting into fashion more myself, I'd find myself picturing an outfit — a silhouette, a specific shape — and then spend hours searching through clothing and vintage stores trying to find it. It usually ended in a "close enough" moment: spending too much money and time on something that wasn't quite right, then going back to looking again a few months later. It felt like I was wearing someone else's vision, not my own.</p>
-      <p class="reveal">I like to be able to feel the quality of things with my hands — heavy leather, raw selvedge denim, steel, that sort of stuff. I wanted clothing that felt like it was made to last a lifetime. All this fast fashion, cheap material, cheap labour stuff never sat with me.</p>
-      <p class="reveal">I graduated high school in 2020 — the first year of COVID, when everything was online and it didn't really matter whether you showed up or not. I didn't like who that made me. So I picked something to hold myself accountable to: learning Japanese, on my own, in my bedroom.</p>
-      <p class="reveal">I got so deep into it that my parents sat me down. They asked why they never saw me anymore, what I was doing in my room, why I was doing this to myself. I'd never really been vulnerable in front of them before — but I'd also never felt that strongly about anything, and I ended up breaking down trying to explain it. After that, they let me keep going. A year and a half later, I passed N1 with a near-perfect score.</p>
-      <p class="reveal">That same drive is how I approach making clothes. If I can't find what I'm picturing, I make it myself — properly, with materials and construction that earn the word "lifetime." That's the only way I know how to do this.</p>
+      <p class="reveal" id="l-p1">The idea was good — but halfway through, it didn't come out the way it was supposed to. I still wore it anyway.</p>
+      <p class="reveal" id="l-p2">Fashion and clothing had always been a big part of my life — there was always a sewing machine within arm's reach. My mum used to run her own label, gave it a go in the UK, then brought it back to New Zealand, slowed down and kept production local. Growing up around that probably shaped how I think about making things.</p>
+      <p class="reveal" id="l-p3">Later on, when I started getting into fashion more myself, I'd find myself picturing an outfit — a silhouette, a specific shape — and then spend hours searching through clothing and vintage stores trying to find it. It usually ended in a "close enough" moment: spending too much money and time on something that wasn't quite right, then going back to looking again a few months later. It felt like I was wearing someone else's vision, not my own.</p>
+      <p class="reveal" id="l-p4">I like to be able to feel the quality of things with my hands — heavy leather, raw selvedge denim, steel, that sort of stuff. I wanted clothing that felt like it was made to last a lifetime. All this fast fashion, cheap material, cheap labour stuff never sat with me.</p>
+      <p class="reveal" id="l-p5">I graduated high school in 2020 — the first year of COVID, when everything was online and it didn't really matter whether you showed up or not. I didn't like who that made me. So I picked something to hold myself accountable to: learning Japanese, on my own, in my bedroom.</p>
+      <p class="reveal" id="l-p6">I got so deep into it that my parents sat me down. They asked why they never saw me anymore, what I was doing in my room, why I was doing this to myself. I'd never really been vulnerable in front of them before — but I'd also never felt that strongly about anything, and I ended up breaking down trying to explain it. After that, they let me keep going. A year and a half later, I passed N1 with a near-perfect score.</p>
+      <p class="reveal" id="l-p7">That same drive is how I approach making clothes. If I can't find what I'm picturing, I make it myself — properly, with materials and construction that earn the word "lifetime." That's the only way I know how to do this.</p>
     </div>
   </div>
 
@@ -144,20 +164,20 @@ footer { padding: 48px; border-top: 0.5px solid var(--light); display: grid; gri
     <img src="media/about_young.jpeg" alt="Callum as a kid" class="about-photo reveal" loading="lazy" />
     <div class="about-facts">
       <div class="about-fact reveal">
-        <span class="about-fact-label">Based</span>
-        <span class="about-fact-value">Wellington, New Zealand</span>
+        <span class="about-fact-label" id="l-fact1-label">Based</span>
+        <span class="about-fact-value" id="l-fact1-val">Wellington, New Zealand</span>
       </div>
       <div class="about-fact reveal reveal-d1">
-        <span class="about-fact-label">Fabric</span>
-        <span class="about-fact-value">Japanese 14oz selvedge — sourced, not substituted</span>
+        <span class="about-fact-label" id="l-fact2-label">Fabric</span>
+        <span class="about-fact-value" id="l-fact2-val">Japanese 14oz selvedge — sourced, not substituted</span>
       </div>
       <div class="about-fact reveal reveal-d2">
-        <span class="about-fact-label">Process</span>
-        <span class="about-fact-value">Hand drafted, hand cut, hand sewn. No factory.</span>
+        <span class="about-fact-label" id="l-fact3-label">Process</span>
+        <span class="about-fact-value" id="l-fact3-val">Hand drafted, hand cut, hand sewn. No factory.</span>
       </div>
       <div class="about-fact reveal reveal-d3">
-        <span class="about-fact-label">Output</span>
-        <span class="about-fact-value">Four pairs a month. That's it.</span>
+        <span class="about-fact-label" id="l-fact4-label">Output</span>
+        <span class="about-fact-value" id="l-fact4-val">Four pairs a month. That's it.</span>
       </div>
     </div>
   </div>
@@ -184,9 +204,131 @@ footer { padding: 48px; border-top: 0.5px solid var(--light); display: grid; gri
     <a href="repairs.html" class="footer-link">Lifetime Repairs</a>
     <a href="faq.html" class="footer-link">FAQ</a>
   </div>
-  <span class="footer-note">Made by hand in Wellington, NZ</span>
+  <span class="footer-note" id="l-footer-note">Made by hand in Wellington, NZ</span>
 </footer>
 
 <script src="animations.js"></script>
+<script>
+const aboutCopy = {
+  en: {
+    btn: 'EN', navMaking: 'Making', navWaitlist: 'Waitlist', navApply: 'Apply',
+    eyebrow: 'Wellington, New Zealand',
+    title: 'when i was 10,<br>i tried to make<br>an assassins creed<br>hoodie<em>…</em>',
+    p1: 'The idea was good — but halfway through, it didn\'t come out the way it was supposed to. I still wore it anyway.',
+    p2: 'Fashion and clothing had always been a big part of my life — there was always a sewing machine within arm\'s reach. My mum used to run her own label, gave it a go in the UK, then brought it back to New Zealand, slowed down and kept production local. Growing up around that probably shaped how I think about making things.',
+    p3: 'Later on, when I started getting into fashion more myself, I\'d find myself picturing an outfit — a silhouette, a specific shape — and then spend hours searching through clothing and vintage stores trying to find it. It usually ended in a "close enough" moment: spending too much money and time on something that wasn\'t quite right, then going back to looking again a few months later. It felt like I was wearing someone else\'s vision, not my own.',
+    p4: 'I like to be able to feel the quality of things with my hands — heavy leather, raw selvedge denim, steel, that sort of stuff. I wanted clothing that felt like it was made to last a lifetime. All this fast fashion, cheap material, cheap labour stuff never sat with me.',
+    p5: 'I graduated high school in 2020 — the first year of COVID, when everything was online and it didn\'t really matter whether you showed up or not. I didn\'t like who that made me. So I picked something to hold myself accountable to: learning Japanese, on my own, in my bedroom.',
+    p6: 'I got so deep into it that my parents sat me down. They asked why they never saw me anymore, what I was doing in my room, why I was doing this to myself. I\'d never really been vulnerable in front of them before — but I\'d also never felt that strongly about anything, and I ended up breaking down trying to explain it. After that, they let me keep going. A year and a half later, I passed N1 with a near-perfect score.',
+    p7: 'That same drive is how I approach making clothes. If I can\'t find what I\'m picturing, I make it myself — properly, with materials and construction that earn the word "lifetime." That\'s the only way I know how to do this.',
+    fact1Label: 'Based', fact1Val: 'Wellington, New Zealand',
+    fact2Label: 'Fabric', fact2Val: 'Japanese 14oz selvedge — sourced, not substituted',
+    fact3Label: 'Process', fact3Val: 'Hand drafted, hand cut, hand sewn. No factory.',
+    fact4Label: 'Output', fact4Val: 'Four pairs a month. That\'s it.',
+    footerNote: 'Made by hand in Wellington, NZ'
+  },
+  ja: {
+    btn: '日本語', navMaking: 'メイキング', navWaitlist: '順番待ち', navApply: '注文',
+    eyebrow: 'ニュージーランド・ウェリントン',
+    title: '10歳のとき、<br>アサシンクリードの<br>パーカーを<br>作ろうとした<em>…</em>',
+    p1: 'アイデアは良かった。でも途中で、思い通りにならなかった。それでも着た。',
+    p2: 'ファッションと服は、ずっと自分の生活の一部だった。手の届く場所にはいつもミシンがあった。母は自分のブランドを持っていて、イギリスでも挑戦し、ニュージーランドに戻ってから生産を地元に絞った。そんな環境で育ったことが、ものを作ることへの考え方を形成したのだと思う。',
+    p3: '自分でもファッションに深くはまり始めると、頭の中にシルエットや形が浮かんで、それを探してショップやヴィンテージストアを何時間も歩き回るようになった。たいていは「まあこれでいいか」という妥協で終わる。思ったよりお金と時間をかけたのに、納得できないまま。数ヶ月後にまた探し始める繰り返しだった。自分のビジョンではなく、誰かのビジョンを着ている感覚。',
+    p4: '手で質を感じられるものが好きだ。重い革、生のセルビッジデニム、鉄。そういうもの。一生持つように作られた服が欲しかった。ファストファッション、安い素材、安い労働力——そういうものは最初からしっくりこなかった。',
+    p5: '2020年に高校を卒業した。COVID最初の年、すべてがオンラインで、出席してもしなくても関係なかった。そんな自分が嫌だった。だから自分を縛るものを一つ選んだ。日本語を、自分の部屋で、独りで学ぶこと。',
+    p6: 'のめり込みすぎて、両親に呼び出された。なぜ顔を見せないのか、部屋で何をしているのか、なぜそこまでするのかと聞かれた。それまで両親の前で弱みを見せたことはなかった。でもこれほど強く感じたことも初めてで、説明しようとしているうちに泣いてしまった。その後、続けさせてもらえた。1年半後、日本語能力試験N1をほぼ満点で合格した。',
+    p7: '服を作る姿勢も同じだ。頭の中に浮かんだものが見つからなければ、自分で作る。ちゃんと、「一生もの」という言葉に値する素材と構造で。それしか知らない。',
+    fact1Label: '拠点', fact1Val: 'ニュージーランド・ウェリントン',
+    fact2Label: '素材', fact2Val: '日本製14ozセルビッジ — 代替なし、直接調達',
+    fact3Label: '製法', fact3Val: '手でパターン作成、手裁断、手縫い。工場なし。',
+    fact4Label: '生産量', fact4Val: '月4本。それだけ。',
+    footerNote: 'ニュージーランド・ウェリントンで手作り'
+  },
+  ko: {
+    btn: '한국어', navMaking: '메이킹', navWaitlist: '대기자 명단', navApply: '주문',
+    eyebrow: '뉴질랜드 웰링턴',
+    title: '열 살 때,<br>어쌔신 크리드<br>후디를<br>만들려고 했다<em>…</em>',
+    p1: '아이디어는 좋았다. 하지만 만들다 보니 생각대로 되지 않았다. 그래도 입었다.',
+    p2: '패션과 의류는 항상 내 삶의 큰 부분이었다. 손 닿는 곳에는 항상 재봉틀이 있었다. 어머니는 자신의 브랜드를 운영하셨는데, 영국에서도 도전해 보시다가 뉴질랜드로 돌아와 생산을 로컬로 줄이셨다. 그런 환경에서 자란 것이 내가 무언가를 만드는 방식에 영향을 줬을 것이다.',
+    p3: '나중에 패션에 더 깊이 빠져들면서, 머릿속에 실루엣이나 특정 형태가 떠오르면 그것을 찾으러 옷 가게와 빈티지 매장을 몇 시간씩 돌아다니게 됐다. 대부분 "그냥 이걸로"라는 타협으로 끝났다. 정확하지 않은 것에 너무 많은 돈과 시간을 쓰고, 몇 달 후에 또 찾아 나서는 반복. 내 비전이 아닌 다른 사람의 비전을 입고 있는 것 같았다.',
+    p4: '손으로 질감을 느낄 수 있는 것들이 좋다. 두꺼운 가죽, 로우 셀비지 데님, 철. 그런 것들. 평생 쓸 수 있도록 만들어진 옷을 원했다. 패스트 패션, 싼 소재, 싼 노동력 — 그런 것들은 처음부터 맞지 않았다.',
+    p5: '2020년에 고등학교를 졸업했다. 코로나가 처음 시작된 해로, 모든 게 온라인이었고 출석 여부가 크게 중요하지 않았다. 그런 내 모습이 싫었다. 그래서 스스로를 다잡을 것을 하나 골랐다. 혼자 방에서 일본어를 배우는 것.',
+    p6: '너무 깊이 빠져들어 부모님이 나를 불렀다. 왜 얼굴을 안 보이냐, 방에서 뭘 하냐, 왜 이러냐고 물었다. 부모님 앞에서 약한 모습을 보인 적이 없었는데, 이것만큼 강하게 느낀 것도 없었기에 설명하려다 결국 눈물이 났다. 그 후로 계속하게 해주셨다. 1년 반 후, JLPT N1을 거의 만점으로 합격했다.',
+    p7: '옷을 만드는 자세도 마찬가지다. 내가 그리는 것을 찾지 못하면, 직접 만든다. 제대로, "평생"이라는 말에 걸맞은 소재와 제작 방식으로. 내가 아는 유일한 방법이다.',
+    fact1Label: '위치', fact1Val: '뉴질랜드 웰링턴',
+    fact2Label: '소재', fact2Val: '일본제 14oz 셀비지 — 대체 없이 직접 조달',
+    fact3Label: '제작 방식', fact3Val: '손으로 패턴 제작, 손 재단, 손 봉제. 공장 없음.',
+    fact4Label: '생산량', fact4Val: '월 4벌. 그게 전부.',
+    footerNote: '뉴질랜드 웰링턴에서 수제 제작'
+  },
+  fr: {
+    btn: 'FR', navMaking: 'Fabrication', navWaitlist: 'Liste d\'attente', navApply: 'Commander',
+    eyebrow: 'Wellington, Nouvelle-Zélande',
+    title: 'à 10 ans,<br>j\'ai essayé de faire<br>un sweat Assassin\'s<br>Creed<em>…</em>',
+    p1: 'L\'idée était bonne — mais à mi-chemin, ça ne s\'est pas passé comme prévu. Je l\'ai quand même porté.',
+    p2: 'La mode et les vêtements ont toujours occupé une place importante dans ma vie — il y avait toujours une machine à coudre à portée de main. Ma mère avait sa propre marque, elle a tenté l\'aventure au Royaume-Uni, puis est revenue en Nouvelle-Zélande, a ralenti et gardé la production en local. Grandir dans cet environnement a probablement façonné ma façon de penser la création.',
+    p3: 'Plus tard, quand je me suis vraiment intéressé à la mode, je me retrouvais à imaginer une tenue — une silhouette, une forme précise — puis à passer des heures dans les boutiques et les friperies à essayer de la trouver. Ça se terminait toujours par un "c\'est à peu près ça" : dépenser trop d\'argent et de temps pour quelque chose qui n\'était pas tout à fait juste, puis recommencer à chercher quelques mois plus tard. J\'avais l\'impression de porter la vision de quelqu\'un d\'autre, pas la mienne.',
+    p4: 'J\'aime sentir la qualité des choses avec mes mains — cuir épais, denim selvedge brut, acier, ce genre de trucs. Je voulais des vêtements qui donnent l\'impression d\'avoir été faits pour durer toute une vie. Tout ce truc de fast fashion, matériaux bon marché, main-d\'œuvre bon marché ne m\'a jamais convenu.',
+    p5: 'J\'ai obtenu mon bac en 2020 — la première année du COVID, quand tout était en ligne et que ça ne changeait pas grand-chose d\'être là ou pas. Je n\'aimais pas ce que ça faisait de moi. Alors j\'ai choisi quelque chose pour me tenir accountable : apprendre le japonais, seul, dans ma chambre.',
+    p6: 'Je m\'y suis tellement plongé que mes parents m\'ont convoqué. Ils ont demandé pourquoi ils ne me voyaient plus, ce que je faisais dans ma chambre, pourquoi je me faisais ça. Je n\'avais jamais vraiment été vulnérable devant eux auparavant — mais je n\'avais jamais non plus ressenti quoi que ce soit d\'aussi fort, et j\'ai fini par craquer en essayant de leur expliquer. Après ça, ils m\'ont laissé continuer. Un an et demi plus tard, j\'ai passé le N1 avec un score quasi parfait.',
+    p7: 'C\'est la même force qui guide ma façon de créer des vêtements. Si je ne trouve pas ce que j\'imagine, je le fais moi-même — correctement, avec des matériaux et une construction qui méritent le mot "lifetime". C\'est la seule façon que je connaisse.',
+    fact1Label: 'Basé à', fact1Val: 'Wellington, Nouvelle-Zélande',
+    fact2Label: 'Tissu', fact2Val: 'Selvedge japonais 14oz — sourcé, pas substitué',
+    fact3Label: 'Processus', fact3Val: 'Patron à la main, coupe à la main, couture à la main. Pas d\'usine.',
+    fact4Label: 'Production', fact4Val: 'Quatre paires par mois. C\'est tout.',
+    footerNote: 'Fabriqué à la main à Wellington, Nouvelle-Zélande'
+  },
+  de: {
+    btn: 'DE', navMaking: 'Making-of', navWaitlist: 'Warteliste', navApply: 'Bestellen',
+    eyebrow: 'Wellington, Neuseeland',
+    title: 'mit 10 Jahren<br>habe ich versucht,<br>einen Assassin\'s Creed<br>Hoodie zu nähen<em>…</em>',
+    p1: 'Die Idee war gut — aber auf halbem Weg wurde es nichts. Ich habe ihn trotzdem getragen.',
+    p2: 'Mode und Kleidung waren immer ein großer Teil meines Lebens — in Reichweite war immer eine Nähmaschine. Meine Mutter hatte ihr eigenes Label, hat es im Vereinigten Königreich versucht, es dann zurück nach Neuseeland gebracht, zurückgeschaltet und die Produktion lokal gehalten. In dieser Umgebung aufzuwachsen hat wahrscheinlich geprägt, wie ich übers Herstellen denke.',
+    p3: 'Als ich selbst mehr in die Mode eintauchte, fand ich mich dabei, mir ein Outfit vorzustellen — eine Silhouette, eine bestimmte Form — und dann stundenlang durch Kleidergeschäfte und Vintage-Läden zu suchen. Es endete meistens mit einem "Naja, geht so"-Moment: zu viel Geld und Zeit für etwas ausgegeben, das nicht ganz stimmte, und ein paar Monate später wieder von vorn zu suchen. Es fühlte sich an, als würde ich die Vision jemand anderen tragen, nicht meine eigene.',
+    p4: 'Ich mag es, die Qualität von Dingen mit den Händen zu spüren — schweres Leder, roher Selvedge-Denim, Stahl, solche Sachen. Ich wollte Kleidung, die sich anfühlt, als wäre sie für ein Leben gemacht. Der ganze Fast-Fashion-, billiges-Material-, billige-Arbeit-Kram hat mir nie gepasst.',
+    p5: 'Ich habe 2020 die Schule abgeschlossen — das erste Jahr von COVID, als alles online war und es kaum eine Rolle spielte, ob man dabei war oder nicht. Ich mochte nicht, was das aus mir machte. Also habe ich mir etwas gesucht, das mich zur Verantwortung zieht: Japanisch lernen, allein, in meinem Zimmer.',
+    p6: 'Ich vertiefte mich so sehr darin, dass meine Eltern mich zur Rede stellten. Sie fragten, warum sie mich nie mehr sähen, was ich in meinem Zimmer treibe, warum ich mir das antue. Ich war nie wirklich verletzlich vor ihnen gewesen — aber ich hatte auch nie etwas so stark gespürt, und am Ende brach ich zusammen, als ich versuchte, es zu erklären. Danach ließen sie mich weitermachen. Eineinhalb Jahre später bestand ich die N1 mit fast perfektem Ergebnis.',
+    p7: 'Dieselbe Energie prägt meinen Ansatz beim Kleidermachen. Wenn ich nicht finden kann, was ich mir vorstelle, mache ich es selbst — ordentlich, mit Materialien und Verarbeitung, die das Wort "lifetime" verdienen. Das ist der einzige Weg, den ich kenne.',
+    fact1Label: 'Standort', fact1Val: 'Wellington, Neuseeland',
+    fact2Label: 'Stoff', fact2Val: 'Japanischer 14oz Selvedge — direkt bezogen, kein Ersatz',
+    fact3Label: 'Prozess', fact3Val: 'Handgeschnittenes Muster, Handzuschnitt, handgenäht. Keine Fabrik.',
+    fact4Label: 'Produktion', fact4Val: 'Vier Paare pro Monat. Das war\'s.',
+    footerNote: 'Handgefertigt in Wellington, Neuseeland'
+  }
+};
+
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+
+document.addEventListener('click', e => {
+  const wrap = document.querySelector('.lang-dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) document.getElementById('langMenu').classList.remove('open');
+});
+
+function applyLang(lang) {
+  const c = aboutCopy[lang];
+  document.getElementById('langMenu').classList.remove('open');
+  document.getElementById('langBtn').textContent = c.btn;
+  document.querySelectorAll('.lang-dropdown-menu button').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('onclick') === `applyLang('${lang}')`);
+  });
+  const t = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  const h = (id, val) => { const el = document.getElementById(id); if (el) el.innerHTML = val; };
+  t('nav-making', c.navMaking); t('nav-waitlist', c.navWaitlist); t('nav-apply', c.navApply);
+  t('l-eyebrow', c.eyebrow); h('l-title', c.title);
+  t('l-p1', c.p1); t('l-p2', c.p2); t('l-p3', c.p3); t('l-p4', c.p4);
+  t('l-p5', c.p5); t('l-p6', c.p6); t('l-p7', c.p7);
+  t('l-fact1-label', c.fact1Label); t('l-fact1-val', c.fact1Val);
+  t('l-fact2-label', c.fact2Label); t('l-fact2-val', c.fact2Val);
+  t('l-fact3-label', c.fact3Label); t('l-fact3-val', c.fact3Val);
+  t('l-fact4-label', c.fact4Label); t('l-fact4-val', c.fact4Val);
+  t('l-footer-note', c.footerNote);
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+}
+
+applyLang(localStorage.getItem('lang') || 'en');
+</script>
 </body>
 </html>

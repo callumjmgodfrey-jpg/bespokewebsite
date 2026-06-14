@@ -303,6 +303,16 @@ footer {
   footer { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
   .footer-note { text-align: left; }
 }
+
+.lang-dropdown-wrap { position: relative; }
+.lang-dropdown-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); background: transparent; border: none; cursor: pointer; font-family: var(--sans); padding: 0; transition: opacity 0.2s; }
+.lang-dropdown-btn:hover { opacity: 0.5; }
+.lang-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); right: 0; background: var(--ink); border: 0.5px solid rgba(255,255,255,0.1); min-width: 160px; z-index: 200; }
+.lang-dropdown-menu.open { display: block; }
+.lang-dropdown-menu button { display: block; width: 100%; text-align: left; padding: 12px 20px; font-family: var(--sans); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); background: transparent; border: none; border-bottom: 0.5px solid rgba(255,255,255,0.07); cursor: pointer; transition: color 0.15s; }
+.lang-dropdown-menu button:last-child { border-bottom: none; }
+.lang-dropdown-menu button:hover { color: var(--white); }
+.lang-dropdown-menu button.active { color: var(--white); }
 </style>
 </head>
 <body>
@@ -310,29 +320,39 @@ footer {
 <nav>
   <a href="index.html" class="nav-logo">Callum Godfrey</a>
   <div class="nav-right">
-    <a href="index.html#making" class="nav-link">Making</a>
-    <a href="index.html#waitlist" class="nav-link">Waitlist</a>
-    <a href="order.html" class="nav-link nav-apply-link">Apply</a>
+    <a href="index.html#making" class="nav-link" id="nav-making">Making</a>
+    <a href="index.html#waitlist" class="nav-link" id="nav-waitlist">Waitlist</a>
+    <div class="lang-dropdown-wrap">
+      <button class="lang-dropdown-btn" onclick="toggleLangMenu()" id="langBtn">EN</button>
+      <div class="lang-dropdown-menu" id="langMenu">
+        <button onclick="applyLang('en')">EN — English</button>
+        <button onclick="applyLang('ja')">日本語</button>
+        <button onclick="applyLang('ko')">한국어</button>
+        <button onclick="applyLang('fr')">Français</button>
+        <button onclick="applyLang('de')">Deutsch</button>
+      </div>
+    </div>
+    <a href="order.html" class="nav-link nav-apply-link" id="nav-apply">Apply</a>
   </div>
 </nav>
 
 <section class="page-header">
-  <span class="page-header-eyebrow reveal">Questions</span>
-  <h1 class="page-header-title reveal reveal-d1">Frequently<br>asked.</h1>
+  <span class="page-header-eyebrow reveal" id="l-eyebrow">Questions</span>
+  <h1 class="page-header-title reveal reveal-d1" id="l-title">Frequently<br>asked.</h1>
 </section>
 
 <div class="faq-wrapper">
 
   <!-- THE COMMISSION -->
   <div class="faq-section">
-    <span class="faq-section-label reveal">The commission</span>
+    <span class="faq-section-label reveal" id="l-sec1">The commission</span>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">How does the commission process work?</span>
+        <span class="faq-question-text" id="l-q1">How does the commission process work?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a1">
         <p>You fill out an application with your measurements and preferences. I read every one personally and get back to you within a few days if there's a slot available and it's a good fit.</p>
         <p>From there we confirm the details — measurements, fabric, any final adjustments — and I start cutting. The whole process from confirmation to finished pair is typically 2 to 4 weeks.</p>
       </div>
@@ -340,30 +360,30 @@ footer {
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">How many slots are available?</span>
+        <span class="faq-question-text" id="l-q2">How many slots are available?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a2">
         <p>Four per batch. Each pair is made entirely by hand — pattern, cutting, sewing — so I keep the number small enough to do it properly.</p>
       </div>
     </div>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">What if there are no slots left when I apply?</span>
+        <span class="faq-question-text" id="l-q3">What if there are no slots left when I apply?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a3">
         <p>Join the waitlist from the <a href="index.html#waitlist">home page</a> and I'll email you as soon as the next batch opens. Waitlist people get first access.</p>
       </div>
     </div>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">Can I request changes to the design?</span>
+        <span class="faq-question-text" id="l-q4">Can I request changes to the design?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a4">
         <p>The current offering is the 001 — a high waisted wide bootcut. The fit and cut are fixed for this batch. Small details like hem finish can be discussed once your application is confirmed.</p>
       </div>
     </div>
@@ -372,14 +392,14 @@ footer {
 
   <!-- FIT & SIZING -->
   <div class="faq-section">
-    <span class="faq-section-label reveal">Fit & sizing</span>
+    <span class="faq-section-label reveal" id="l-sec2">Fit &amp; sizing</span>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">How do I take my measurements correctly?</span>
+        <span class="faq-question-text" id="l-q5">How do I take my measurements correctly?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a5">
         <p><strong style="color:var(--ink); font-weight:400;">Natural waist</strong> — measure around the narrowest part of your torso, usually a few inches above your belly button. Keep the tape snug but not tight.</p>
         <p><strong style="color:var(--ink); font-weight:400;">High hip</strong> — measure around the fullest part of your hips and seat, typically 7–9 inches below your natural waist.</p>
         <p><strong style="color:var(--ink); font-weight:400;">Inseam</strong> — measure from your crotch to the floor (or to your preferred hem length) along the inside of your leg. A friend holding the tape helps here.</p>
@@ -389,10 +409,10 @@ footer {
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">What's the difference between made-to-measure and standard sizing?</span>
+        <span class="faq-question-text" id="l-q6">What's the difference between made-to-measure and standard sizing?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a6">
         <p>Standard sizing uses a set of predefined waist and inseam measurements. It works well if your measurements fall cleanly within a size.</p>
         <p>Made-to-measure uses your exact natural waist, high hip, and inseam to draft a pattern specific to you. If you're between sizes, have a longer torso, or just want the best possible fit, go made-to-measure.</p>
       </div>
@@ -400,10 +420,10 @@ footer {
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">Will the jeans shrink after washing?</span>
+        <span class="faq-question-text" id="l-q7">Will the jeans shrink after washing?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a7">
         <p>Yes — the fabric is raw, unsanforized Japanese selvedge denim, so the first wash will cause around 3–5% shrinkage in length. This is accounted for in the pattern, so your finished measurements will still be on point after that first wash.</p>
         <p>See the <a href="care.html">care instructions</a> for full washing guidance.</p>
       </div>
@@ -413,14 +433,14 @@ footer {
 
   <!-- FABRIC & MATERIALS -->
   <div class="faq-section">
-    <span class="faq-section-label reveal">Fabric & materials</span>
+    <span class="faq-section-label reveal" id="l-sec3">Fabric &amp; materials</span>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">What fabric is used?</span>
+        <span class="faq-question-text" id="l-q8">What fabric is used?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a8">
         <p>14oz raw Japanese selvedge denim. It's a heavy, tightly woven fabric with a clean selvedge edge — the kind that fades dramatically over time and holds creases where you wear it.</p>
         <p>Raw means it hasn't been pre-washed or treated, so the colour is deep indigo to start and will fade uniquely based on how you wear it.</p>
       </div>
@@ -428,10 +448,10 @@ footer {
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">Is the selvedge edge visible on the finished jeans?</span>
+        <span class="faq-question-text" id="l-q9">Is the selvedge edge visible on the finished jeans?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a9">
         <p>Yes — on the outseam when cuffed, the selvedge edge is visible. It's one of the hallmarks of the fabric and part of why people seek it out.</p>
       </div>
     </div>
@@ -440,34 +460,34 @@ footer {
 
   <!-- PRICING & SHIPPING -->
   <div class="faq-section">
-    <span class="faq-section-label reveal">Pricing & shipping</span>
+    <span class="faq-section-label reveal" id="l-sec4">Pricing &amp; shipping</span>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">How much does a commission cost?</span>
+        <span class="faq-question-text" id="l-q10">How much does a commission cost?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a10">
         <p>Pricing is confirmed at the application stage. The order form shows an estimate in your preferred currency. Final pricing is locked in when your application is confirmed.</p>
       </div>
     </div>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">Do you ship internationally?</span>
+        <span class="faq-question-text" id="l-q11">Do you ship internationally?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a11">
         <p>Yes. The order form lets you select your shipping region and shows an estimated shipping cost. All orders ship from Wellington, New Zealand.</p>
       </div>
     </div>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">When do I pay?</span>
+        <span class="faq-question-text" id="l-q12">When do I pay?</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a12">
         <p>Payment is arranged after your application is confirmed — not at the application stage. I'll send you the details once we've agreed on everything.</p>
       </div>
     </div>
@@ -476,14 +496,14 @@ footer {
 
   <!-- STILL HAVE QUESTIONS -->
   <div class="faq-section">
-    <span class="faq-section-label reveal">Still have questions?</span>
+    <span class="faq-section-label reveal" id="l-sec5">Still have questions?</span>
 
     <div class="faq-item reveal">
       <button class="faq-question" onclick="toggle(this)">
-        <span class="faq-question-text">I have a question that's not answered here.</span>
+        <span class="faq-question-text" id="l-q13">I have a question that's not answered here.</span>
         <span class="faq-icon"></span>
       </button>
-      <div class="faq-answer">
+      <div class="faq-answer" id="l-a13">
         <p>DM me on <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener">Instagram</a> — that's the fastest way to reach me. I read everything.</p>
       </div>
     </div>
@@ -494,10 +514,10 @@ footer {
 <!-- CTA BAND -->
 <section class="cta-band">
   <div class="cta-band-text">
-    <span class="cta-band-eyebrow reveal">Ready?</span>
-    <h2 class="cta-band-title reveal reveal-d1">Four slots.<br>Apply now.</h2>
+    <span class="cta-band-eyebrow reveal" id="l-cta-eyebrow">Ready?</span>
+    <h2 class="cta-band-title reveal reveal-d1" id="l-cta-title">Four slots.<br>Apply now.</h2>
   </div>
-  <a href="order.html" class="cta-band-link reveal reveal-d2">Apply for a commission</a>
+  <a href="order.html" class="cta-band-link reveal reveal-d2" id="l-cta-link">Apply for a commission</a>
 </section>
 
 <div class="rule"></div>
@@ -520,7 +540,7 @@ footer {
     <a href="care.html" class="footer-link">Care</a>
     <a href="repairs.html" class="footer-link">Lifetime Repairs</a>
   </div>
-  <span class="footer-note">Made by hand in Wellington, NZ</span>
+  <span class="footer-note" id="l-footer-note">Made by hand in Wellington, NZ</span>
 </footer>
 
 <script>
@@ -532,5 +552,235 @@ function toggle(btn) {
 }
 </script>
 <script src="animations.js"></script>
+<script>
+const faqCopy = {
+  en: {
+    btn: 'EN', navMaking: 'Making', navWaitlist: 'Waitlist', navApply: 'Apply',
+    eyebrow: 'Questions', title: 'Frequently<br>asked.',
+    sec1: 'The commission',
+    q1: 'How does the commission process work?',
+    a1: '<p>You fill out an application with your measurements and preferences. I read every one personally and get back to you within a few days if there\'s a slot available and it\'s a good fit.</p><p>From there we confirm the details — measurements, fabric, any final adjustments — and I start cutting. The whole process from confirmation to finished pair is typically 2 to 4 weeks.</p>',
+    q2: 'How many slots are available?',
+    a2: '<p>Four per batch. Each pair is made entirely by hand — pattern, cutting, sewing — so I keep the number small enough to do it properly.</p>',
+    q3: 'What if there are no slots left when I apply?',
+    a3: '<p>Join the waitlist from the <a href="index.html#waitlist">home page</a> and I\'ll email you as soon as the next batch opens. Waitlist people get first access.</p>',
+    q4: 'Can I request changes to the design?',
+    a4: '<p>The current offering is the 001 — a high waisted wide bootcut. The fit and cut are fixed for this batch. Small details like hem finish can be discussed once your application is confirmed.</p>',
+    sec2: 'Fit & sizing',
+    q5: 'How do I take my measurements correctly?',
+    a5: '<p><strong style="color:var(--ink); font-weight:400;">Natural waist</strong> — measure around the narrowest part of your torso, usually a few inches above your belly button. Keep the tape snug but not tight.</p><p><strong style="color:var(--ink); font-weight:400;">High hip</strong> — measure around the fullest part of your hips and seat, typically 7–9 inches below your natural waist.</p><p><strong style="color:var(--ink); font-weight:400;">Inseam</strong> — measure from your crotch to the floor (or to your preferred hem length) along the inside of your leg. A friend holding the tape helps here.</p><p>If you\'re unsure, err on the side of including a note in the application and we\'ll sort it out together before I cut anything.</p>',
+    q6: 'What\'s the difference between made-to-measure and standard sizing?',
+    a6: '<p>Standard sizing uses a set of predefined waist and inseam measurements. It works well if your measurements fall cleanly within a size.</p><p>Made-to-measure uses your exact natural waist, high hip, and inseam to draft a pattern specific to you. If you\'re between sizes, have a longer torso, or just want the best possible fit, go made-to-measure.</p>',
+    q7: 'Will the jeans shrink after washing?',
+    a7: '<p>Yes — the fabric is raw, unsanforized Japanese selvedge denim, so the first wash will cause around 3–5% shrinkage in length. This is accounted for in the pattern, so your finished measurements will still be on point after that first wash.</p><p>See the <a href="care.html">care instructions</a> for full washing guidance.</p>',
+    sec3: 'Fabric & materials',
+    q8: 'What fabric is used?',
+    a8: '<p>14oz raw Japanese selvedge denim. It\'s a heavy, tightly woven fabric with a clean selvedge edge — the kind that fades dramatically over time and holds creases where you wear it.</p><p>Raw means it hasn\'t been pre-washed or treated, so the colour is deep indigo to start and will fade uniquely based on how you wear it.</p>',
+    q9: 'Is the selvedge edge visible on the finished jeans?',
+    a9: '<p>Yes — on the outseam when cuffed, the selvedge edge is visible. It\'s one of the hallmarks of the fabric and part of why people seek it out.</p>',
+    sec4: 'Pricing & shipping',
+    q10: 'How much does a commission cost?',
+    a10: '<p>Pricing is confirmed at the application stage. The order form shows an estimate in your preferred currency. Final pricing is locked in when your application is confirmed.</p>',
+    q11: 'Do you ship internationally?',
+    a11: '<p>Yes. The order form lets you select your shipping region and shows an estimated shipping cost. All orders ship from Wellington, New Zealand.</p>',
+    q12: 'When do I pay?',
+    a12: '<p>Payment is arranged after your application is confirmed — not at the application stage. I\'ll send you the details once we\'ve agreed on everything.</p>',
+    sec5: 'Still have questions?',
+    q13: 'I have a question that\'s not answered here.',
+    a13: '<p>DM me on <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener">Instagram</a> — that\'s the fastest way to reach me. I read everything.</p>',
+    ctaEyebrow: 'Ready?', ctaTitle: 'Four slots.<br>Apply now.', ctaLink: 'Apply for a commission',
+    footerNote: 'Made by hand in Wellington, NZ'
+  },
+  ja: {
+    btn: '日本語', navMaking: 'メイキング', navWaitlist: '順番待ち', navApply: '注文',
+    eyebrow: 'よくある質問', title: 'よくある<br>ご質問',
+    sec1: 'コミッションについて',
+    q1: 'コミッションの流れを教えてください。',
+    a1: '<p>採寸と希望をフォームに入力して申し込みます。すべて個人的に確認し、空き枠があれば数日以内に返答します。</p><p>確定後は詳細（採寸・生地・最終調整）を確認し、裁断に入ります。確定から完成まで通常2〜4週間です。</p>',
+    q2: '枠は何席ありますか？',
+    a2: '<p>1バッチにつき4席。パターン・裁断・縫製をすべて手作業で行うため、きちんとできる数に絞っています。</p>',
+    q3: '申し込んだときに空きがなかった場合は？',
+    a3: '<p><a href="index.html#waitlist">ホームページ</a>のウェイティングリストに登録してください。次のバッチが開いた際にメールでお知らせします。登録者が優先されます。</p>',
+    q4: 'デザインの変更はできますか？',
+    a4: '<p>現在のモデルは001（ハイウエスト ワイドブーツカット）のみです。フィットとカットはこのバッチでは固定です。裾の仕上げなど細部については、申込確定後にご相談いただけます。</p>',
+    sec2: 'フィット・サイズ',
+    q5: '正しい採寸方法を教えてください。',
+    a5: '<p><strong style="color:var(--ink); font-weight:400;">ウエスト（ナチュラルウエスト）</strong> — 胴体の最も細い部分（へそより数センチ上）をメジャーで測ります。きつくならない程度に密着させてください。</p><p><strong style="color:var(--ink); font-weight:400;">ヒップ（ハイヒップ）</strong> — ヒップと座面の最も広い部分（ナチュラルウエストから約18〜23cm下）を測ります。</p><p><strong style="color:var(--ink); font-weight:400;">股下（インシーム）</strong> — 股から床まで（または希望の裾丈まで）、脚の内側に沿って測ります。誰かに持ってもらうと正確です。</p><p>不明な点はフォームにメモを添えてください。裁断前に一緒に確認します。</p>',
+    q6: 'イージーオーダーとフルオーダーの違いは何ですか？',
+    a6: '<p>既製サイズは決まったウエストと股下の寸法を使用します。寸法がサイズに合えばうまくいきます。</p><p>オーダーメイドはあなたのナチュラルウエスト・ハイヒップ・股下からパターンを起こします。サイズの間にいる方、胴長の方、最高のフィットを求める方にはオーダーメイドをおすすめします。</p>',
+    q7: '洗濯後に縮みますか？',
+    a7: '<p>はい。未洗いの日本製セルビッジデニムのため、初回洗濯で丈が3〜5%程度縮みます。パターンにはそれが考慮されているため、初回洗濯後も仕上がり寸法は適切です。</p><p>詳しい洗い方は<a href="care.html">お手入れ方法</a>をご覧ください。</p>',
+    sec3: '生地・素材',
+    q8: 'どんな生地を使用していますか？',
+    a8: '<p>日本製14ozローセルビッジデニム。目の詰まった重厚な生地で、クリーンなセルビッジ耳が特徴です。経年で劇的に色落ちし、着用箇所にヒゲやアタリが出ます。</p><p>未洗いのため最初は深いインディゴで、着用の仕方によって独自のフェードが生まれます。</p>',
+    q9: '完成したジーンズにセルビッジ耳は見えますか？',
+    a9: '<p>はい。ロールアップ時にアウトシームのセルビッジ耳が見えます。この生地の証しであり、多くの人が求める理由の一つです。</p>',
+    sec4: '価格・配送',
+    q10: 'コミッションの費用はいくらですか？',
+    a10: '<p>価格は申込段階で確定します。注文フォームに希望通貨での見積もりが表示されます。最終価格は申込確定時に決まります。</p>',
+    q11: '海外発送はできますか？',
+    a11: '<p>はい。注文フォームで発送地域を選択でき、配送料の目安が表示されます。すべてニュージーランド・ウェリントンから発送します。</p>',
+    q12: '支払いはいつですか？',
+    a12: '<p>お支払いは申込確定後に案内します。申込時点ではありません。すべて合意した後に詳細をお送りします。</p>',
+    sec5: 'その他のご質問',
+    q13: 'ここに載っていない質問があります。',
+    a13: '<p><a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener">Instagram</a> のDMが最も早く届きます。すべて読んでいます。</p>',
+    ctaEyebrow: '準備はいいですか？', ctaTitle: '4枠。<br>今すぐ申し込む。', ctaLink: 'コミッションに申し込む',
+    footerNote: 'ニュージーランド・ウェリントンで手作り'
+  },
+  ko: {
+    btn: '한국어', navMaking: '메이킹', navWaitlist: '대기자 명단', navApply: '주문',
+    eyebrow: '자주 묻는 질문', title: '자주 묻는<br>질문',
+    sec1: '커미션 안내',
+    q1: '커미션 진행 과정이 어떻게 되나요?',
+    a1: '<p>치수와 원하는 스타일을 작성해 신청서를 제출합니다. 모든 신청서를 직접 검토하고, 자리가 있고 적합하다면 며칠 안에 연락드립니다.</p><p>이후 세부 사항(치수, 원단, 최종 조정)을 확인하고 재단에 들어갑니다. 확정부터 완성까지 보통 2~4주가 소요됩니다.</p>',
+    q2: '자리는 몇 개인가요?',
+    a2: '<p>배치당 4자리. 패턴·재단·봉제를 모두 손으로 직접 하기 때문에 제대로 할 수 있는 수로 제한합니다.</p>',
+    q3: '신청할 때 자리가 없으면 어떻게 되나요?',
+    a3: '<p><a href="index.html#waitlist">홈페이지</a>의 대기자 명단에 등록하시면 다음 배치가 열릴 때 이메일로 알려드립니다. 대기자 명단 등록자가 우선입니다.</p>',
+    q4: '디자인 변경을 요청할 수 있나요?',
+    a4: '<p>현재 제공되는 모델은 001(하이웨이스트 와이드 부츠컷)뿐입니다. 핏과 컷은 이번 배치에서 고정입니다. 밑단 마감 같은 세부 사항은 신청 확정 후 협의할 수 있습니다.</p>',
+    sec2: '핏 & 사이즈',
+    q5: '치수는 어떻게 정확하게 재나요?',
+    a5: '<p><strong style="color:var(--ink); font-weight:400;">내추럴 웨이스트</strong> — 몸통에서 가장 좁은 부분(배꼽에서 몇 센티미터 위)을 줄자로 잽니다. 너무 조이지 않게 밀착시키세요.</p><p><strong style="color:var(--ink); font-weight:400;">하이 힙</strong> — 엉덩이와 좌면에서 가장 넓은 부분(내추럴 웨이스트에서 약 18~23cm 아래)을 잽니다.</p><p><strong style="color:var(--ink); font-weight:400;">인심</strong> — 사타구니에서 바닥까지(또는 원하는 밑단 길이까지) 다리 안쪽을 따라 잽니다. 누군가 줄자를 잡아주면 도움이 됩니다.</p><p>불확실하면 신청서에 메모를 남겨주세요. 재단 전에 함께 확인하겠습니다.</p>',
+    q6: '맞춤 제작과 기성 사이즈의 차이는 무엇인가요?',
+    a6: '<p>기성 사이즈는 정해진 허리와 인심 치수를 사용합니다. 치수가 사이즈에 딱 맞으면 잘 맞습니다.</p><p>맞춤 제작은 내추럴 웨이스트·하이 힙·인심을 기반으로 패턴을 제작합니다. 사이즈 사이에 해당하거나, 상체가 길거나, 최상의 핏을 원한다면 맞춤 제작을 추천합니다.</p>',
+    q7: '세탁 후 줄어드나요?',
+    a7: '<p>네 — 원단이 로우 일본제 셀비지 데님이라 첫 세탁 시 길이가 약 3~5% 수축됩니다. 이는 패턴에 반영되어 있어 첫 세탁 후에도 완성 치수가 정확합니다.</p><p>자세한 세탁 방법은 <a href="care.html">세탁 및 관리 방법</a>을 참고하세요.</p>',
+    sec3: '원단 & 소재',
+    q8: '어떤 원단을 사용하나요?',
+    a8: '<p>일본제 14oz 로우 셀비지 데님. 촘촘하게 짜인 두꺼운 원단으로 깔끔한 셀비지 귀가 특징입니다. 시간이 지나면서 극적으로 색이 빠지고, 착용 부위에 독특한 주름과 색상 변화가 생깁니다.</p><p>로우 원단이라 세탁 처리를 하지 않아 처음에는 진한 인디고 색상이며, 착용 습관에 따라 독특하게 색이 빠집니다.</p>',
+    q9: '완성된 청바지에 셀비지 귀가 보이나요?',
+    a9: '<p>네 — 롤업할 때 아웃심에서 셀비지 귀가 보입니다. 이 원단의 상징 중 하나이며, 많은 사람들이 찾는 이유 중 하나입니다.</p>',
+    sec4: '가격 & 배송',
+    q10: '커미션 비용은 얼마인가요?',
+    a10: '<p>가격은 신청 단계에서 확정됩니다. 주문 양식에 선호 통화로 견적이 표시됩니다. 최종 가격은 신청 확정 시 결정됩니다.</p>',
+    q11: '국제 배송이 가능한가요?',
+    a11: '<p>네. 주문 양식에서 배송 지역을 선택하면 예상 배송비가 표시됩니다. 모든 주문은 뉴질랜드 웰링턴에서 발송됩니다.</p>',
+    q12: '언제 결제하나요?',
+    a12: '<p>결제는 신청 확정 후에 안내됩니다 — 신청 시점이 아닙니다. 모든 사항을 합의한 후 상세 내용을 전달해 드립니다.</p>',
+    sec5: '더 궁금한 점이 있나요?',
+    q13: '여기에 없는 질문이 있습니다.',
+    a13: '<p><a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener">인스타그램</a> DM이 가장 빠릅니다. 모든 메시지를 읽습니다.</p>',
+    ctaEyebrow: '준비되셨나요?', ctaTitle: '4자리.<br>지금 신청하세요.', ctaLink: '커미션 신청하기',
+    footerNote: '뉴질랜드 웰링턴에서 수제 제작'
+  },
+  fr: {
+    btn: 'FR', navMaking: 'Fabrication', navWaitlist: 'Liste d\'attente', navApply: 'Commander',
+    eyebrow: 'Questions fréquentes', title: 'Questions<br>fréquentes.',
+    sec1: 'La commission',
+    q1: 'Comment fonctionne le processus de commission ?',
+    a1: '<p>Vous remplissez un formulaire avec vos mesures et vos préférences. Je les lis tous personnellement et vous réponds sous quelques jours s\'il y a un créneau disponible et que ça correspond.</p><p>Ensuite nous confirmons les détails — mesures, tissu, ajustements finaux — et je commence à couper. L\'ensemble du processus, de la confirmation à la paire terminée, prend généralement 2 à 4 semaines.</p>',
+    q2: 'Combien de créneaux sont disponibles ?',
+    a2: '<p>Quatre par lot. Chaque paire est entièrement faite à la main — patron, coupe, couture — donc je garde le nombre suffisamment petit pour bien faire les choses.</p>',
+    q3: 'Que se passe-t-il s\'il n\'y a plus de créneaux quand je postule ?',
+    a3: '<p>Inscrivez-vous sur la liste d\'attente depuis la <a href="index.html#waitlist">page d\'accueil</a> et je vous enverrai un e-mail dès que le prochain lot sera ouvert. Les personnes sur la liste ont un accès prioritaire.</p>',
+    q4: 'Puis-je demander des modifications au design ?',
+    a4: '<p>L\'offre actuelle est le 001 — un jean taille haute bootcut large. La coupe et le fit sont fixes pour ce lot. Les petits détails comme la finition de l\'ourlet peuvent être discutés une fois votre candidature confirmée.</p>',
+    sec2: 'Coupe & tailles',
+    q5: 'Comment prendre mes mesures correctement ?',
+    a5: '<p><strong style="color:var(--ink); font-weight:400;">Tour de taille naturel</strong> — mesurez autour de la partie la plus étroite de votre torse, généralement quelques centimètres au-dessus du nombril. Le ruban doit être ajusté sans serrer.</p><p><strong style="color:var(--ink); font-weight:400;">Tour de hanche haute</strong> — mesurez autour de la partie la plus large de vos hanches et de vos fesses, typiquement 18 à 23 cm sous votre taille naturelle.</p><p><strong style="color:var(--ink); font-weight:400;">Entrejambe</strong> — mesurez de l\'entrejambe jusqu\'au sol (ou jusqu\'à la longueur d\'ourlet souhaitée) le long de l\'intérieur de la jambe. Se faire aider est utile.</p><p>En cas de doute, ajoutez une note dans le formulaire et nous réglerons ça ensemble avant que je coupe quoi que ce soit.</p>',
+    q6: 'Quelle est la différence entre le sur-mesure et le prêt-à-porter ?',
+    a6: '<p>Le prêt-à-porter utilise des mesures de tour de taille et d\'entrejambe prédéfinies. Il fonctionne bien si vos mesures correspondent clairement à une taille.</p><p>Le sur-mesure utilise votre tour de taille naturel exact, votre tour de hanche haute et votre entrejambe pour créer un patron spécifique à vous. Si vous êtes entre deux tailles, avez un torse plus long, ou souhaitez simplement le meilleur ajustement possible, optez pour le sur-mesure.</p>',
+    q7: 'Le jean va-t-il rétrécir après le lavage ?',
+    a7: '<p>Oui — le tissu est du denim japonais selvedge brut, non sanforisé, donc le premier lavage provoquera environ 3 à 5 % de rétrécissement en longueur. Cela est pris en compte dans le patron, de sorte que vos mesures finales seront toujours correctes après ce premier lavage.</p><p>Consultez les <a href="care.html">instructions d\'entretien</a> pour des conseils de lavage complets.</p>',
+    sec3: 'Tissu & matériaux',
+    q8: 'Quel tissu est utilisé ?',
+    a8: '<p>Denim japonais selvedge brut 14oz. C\'est un tissu lourd, tissé serré, avec un bord selvedge net — celui qui se délave de façon spectaculaire avec le temps et garde les marques là où vous le portez.</p><p>Brut signifie qu\'il n\'a pas été pré-lavé ni traité, donc la couleur est un indigo profond au départ et se délavera de façon unique selon la manière dont vous le portez.</p>',
+    q9: 'Le bord selvedge est-il visible sur le jean fini ?',
+    a9: '<p>Oui — sur la couture extérieure lorsqu\'il est retroussé, le bord selvedge est visible. C\'est l\'une des caractéristiques du tissu et l\'une des raisons pour lesquelles les gens le recherchent.</p>',
+    sec4: 'Prix & livraison',
+    q10: 'Combien coûte une commission ?',
+    a10: '<p>Le prix est confirmé lors de la candidature. Le formulaire de commande affiche une estimation dans votre devise préférée. Le prix final est fixé lors de la confirmation de votre candidature.</p>',
+    q11: 'Livrez-vous à l\'international ?',
+    a11: '<p>Oui. Le formulaire de commande vous permet de sélectionner votre région de livraison et affiche un coût de livraison estimé. Toutes les commandes sont expédiées depuis Wellington, Nouvelle-Zélande.</p>',
+    q12: 'Quand dois-je payer ?',
+    a12: '<p>Le paiement est organisé après la confirmation de votre candidature — pas lors de la candidature. Je vous enverrai les détails une fois que nous aurons tout convenu.</p>',
+    sec5: 'D\'autres questions ?',
+    q13: 'J\'ai une question qui n\'est pas répondue ici.',
+    a13: '<p>Envoyez-moi un DM sur <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener">Instagram</a> — c\'est le moyen le plus rapide de me contacter. Je lis tout.</p>',
+    ctaEyebrow: 'Prêt ?', ctaTitle: 'Quatre créneaux.<br>Postulez maintenant.', ctaLink: 'Postuler pour une commission',
+    footerNote: 'Fabriqué à la main à Wellington, Nouvelle-Zélande'
+  },
+  de: {
+    btn: 'DE', navMaking: 'Making-of', navWaitlist: 'Warteliste', navApply: 'Bestellen',
+    eyebrow: 'Häufige Fragen', title: 'Häufig<br>gestellte Fragen.',
+    sec1: 'Die Kommission',
+    q1: 'Wie läuft der Kommissionsprozess ab?',
+    a1: '<p>Sie füllen ein Bewerbungsformular mit Ihren Maßen und Vorlieben aus. Ich lese jede persönlich durch und melde mich innerhalb weniger Tage, wenn ein Platz verfügbar ist und es passt.</p><p>Dann bestätigen wir die Details — Maße, Stoff, letzte Anpassungen — und ich beginne mit dem Zuschneiden. Der gesamte Prozess von der Bestätigung bis zum fertigen Paar dauert in der Regel 2 bis 4 Wochen.</p>',
+    q2: 'Wie viele Plätze sind verfügbar?',
+    a2: '<p>Vier pro Batch. Jedes Paar wird vollständig von Hand gefertigt — Schnittmuster, Zuschnitt, Nähen — daher halte ich die Anzahl klein genug, um es richtig zu machen.</p>',
+    q3: 'Was, wenn keine Plätze mehr frei sind, wenn ich mich bewerbe?',
+    a3: '<p>Tragen Sie sich auf der Warteliste auf der <a href="index.html#waitlist">Startseite</a> ein, und ich schreibe Ihnen, sobald der nächste Batch startet. Wartelistenpersonen erhalten bevorzugten Zugang.</p>',
+    q4: 'Kann ich Änderungen am Design anfordern?',
+    a4: '<p>Das aktuelle Angebot ist das 001 — eine High-Waist Wide-Leg Bootcut-Jeans. Schnitt und Passform sind für diesen Batch festgelegt. Kleine Details wie die Saumverarbeitung können nach Bestätigung Ihrer Bewerbung besprochen werden.</p>',
+    sec2: 'Passform & Größen',
+    q5: 'Wie nehme ich meine Maße korrekt?',
+    a5: '<p><strong style="color:var(--ink); font-weight:400;">Natürliche Taille</strong> — messen Sie um den schmalsten Teil Ihres Rumpfes, normalerweise einige Zentimeter über dem Bauchnabel. Das Maßband soll eng, aber nicht einschneidend anliegen.</p><p><strong style="color:var(--ink); font-weight:400;">Hohe Hüfte</strong> — messen Sie um den vollsten Teil Ihrer Hüften und Gesäßpartie, typischerweise 18–23 cm unter Ihrer natürlichen Taille.</p><p><strong style="color:var(--ink); font-weight:400;">Innenbeinlänge</strong> — messen Sie vom Schritt bis zum Boden (oder bis zur gewünschten Saum länge) an der Innenseite des Beins. Eine helfende Hand ist dabei nützlich.</p><p>Bei Unsicherheiten fügen Sie einfach eine Notiz im Formular hinzu — wir klären das gemeinsam, bevor ich irgendetwas zuschnede.</p>',
+    q6: 'Was ist der Unterschied zwischen Maßanfertigung und Standardgrößen?',
+    a6: '<p>Standardgrößen verwenden vordefinierte Taillen- und Innenbeinmaße. Das funktioniert gut, wenn Ihre Maße klar in eine Größe passen.</p><p>Maßanfertigung verwendet Ihre genaue natürliche Taille, hohe Hüfte und Innenbeinlänge, um ein Schnittmuster speziell für Sie zu erstellen. Wenn Sie zwischen den Größen liegen, einen längeren Oberkörper haben oder einfach die bestmögliche Passform möchten, ist Maßanfertigung die richtige Wahl.</p>',
+    q7: 'Läuft die Jeans beim Waschen ein?',
+    a7: '<p>Ja — der Stoff ist roher, nicht sanforisierter japanischer Selvedge-Denim, daher verursacht das erste Waschen etwa 3–5 % Einlaufen in der Länge. Dies ist im Schnittmuster berücksichtigt, sodass Ihre fertigen Maße nach dem ersten Waschen noch stimmen.</p><p>Lesen Sie die <a href="care.html">Pflegehinweise</a> für eine vollständige Waschanleitung.</p>',
+    sec3: 'Stoff & Materialien',
+    q8: 'Welcher Stoff wird verwendet?',
+    a8: '<p>14oz roher japanischer Selvedge-Denim. Ein schwerer, enggewebter Stoff mit sauberer Webkante — die Art, die sich mit der Zeit dramatisch abnutzt und Falten dort hält, wo Sie ihn tragen.</p><p>Roh bedeutet, er wurde nicht vorgewaschen oder behandelt, daher ist die Farbe zu Beginn tiefes Indigo und verblasst je nach Trageweise einzigartig.</p>',
+    q9: 'Ist die Webkante an der fertigen Jeans sichtbar?',
+    a9: '<p>Ja — an der Außennaht, wenn die Jeans aufgekrempelt ist, ist die Webkante sichtbar. Es ist eines der Merkmale des Stoffes und ein Grund, warum Menschen ihn suchen.</p>',
+    sec4: 'Preis & Versand',
+    q10: 'Was kostet eine Kommission?',
+    a10: '<p>Der Preis wird bei der Bewerbung bestätigt. Das Bestellformular zeigt eine Schätzung in Ihrer bevorzugten Währung. Der endgültige Preis wird bei Bestätigung Ihrer Bewerbung festgelegt.</p>',
+    q11: 'Versenden Sie international?',
+    a11: '<p>Ja. Das Bestellformular ermöglicht die Auswahl Ihrer Versandregion und zeigt geschätzte Versandkosten. Alle Bestellungen werden aus Wellington, Neuseeland, versendet.</p>',
+    q12: 'Wann bezahle ich?',
+    a12: '<p>Die Zahlung wird nach Bestätigung Ihrer Bewerbung geregelt — nicht bei der Bewerbung. Ich sende Ihnen die Details, sobald wir alles vereinbart haben.</p>',
+    sec5: 'Noch Fragen?',
+    q13: 'Ich habe eine Frage, die hier nicht beantwortet wird.',
+    a13: '<p>Schreiben Sie mir eine DM auf <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener">Instagram</a> — das ist der schnellste Weg. Ich lese alles.</p>',
+    ctaEyebrow: 'Bereit?', ctaTitle: 'Vier Plätze.<br>Jetzt bewerben.', ctaLink: 'Für eine Kommission bewerben',
+    footerNote: 'Handgefertigt in Wellington, Neuseeland'
+  }
+};
+
+function toggleLangMenu() {
+  document.getElementById('langMenu').classList.toggle('open');
+}
+
+document.addEventListener('click', e => {
+  const wrap = document.querySelector('.lang-dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) document.getElementById('langMenu').classList.remove('open');
+});
+
+function applyLang(lang) {
+  const c = faqCopy[lang];
+  document.getElementById('langMenu').classList.remove('open');
+  document.getElementById('langBtn').textContent = c.btn;
+  document.querySelectorAll('.lang-dropdown-menu button').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('onclick') === `applyLang('${lang}')`);
+  });
+  const t = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
+  const h = (id, val) => { const el = document.getElementById(id); if (el) el.innerHTML = val; };
+  t('nav-making', c.navMaking); t('nav-waitlist', c.navWaitlist); t('nav-apply', c.navApply);
+  t('l-eyebrow', c.eyebrow); h('l-title', c.title);
+  t('l-sec1', c.sec1); t('l-q1', c.q1); h('l-a1', c.a1);
+  t('l-q2', c.q2); h('l-a2', c.a2);
+  t('l-q3', c.q3); h('l-a3', c.a3);
+  t('l-q4', c.q4); h('l-a4', c.a4);
+  t('l-sec2', c.sec2); t('l-q5', c.q5); h('l-a5', c.a5);
+  t('l-q6', c.q6); h('l-a6', c.a6);
+  t('l-q7', c.q7); h('l-a7', c.a7);
+  t('l-sec3', c.sec3); t('l-q8', c.q8); h('l-a8', c.a8);
+  t('l-q9', c.q9); h('l-a9', c.a9);
+  t('l-sec4', c.sec4); t('l-q10', c.q10); h('l-a10', c.a10);
+  t('l-q11', c.q11); h('l-a11', c.a11);
+  t('l-q12', c.q12); h('l-a12', c.a12);
+  t('l-sec5', c.sec5); t('l-q13', c.q13); h('l-a13', c.a13);
+  t('l-cta-eyebrow', c.ctaEyebrow); h('l-cta-title', c.ctaTitle); t('l-cta-link', c.ctaLink);
+  t('l-footer-note', c.footerNote);
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+}
+
+applyLang(localStorage.getItem('lang') || 'en');
+</script>
 </body>
 </html>
