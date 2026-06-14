@@ -86,21 +86,29 @@ nav {
 .gallery-main {
   flex: 1;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--paper);
 }
-.gallery-main img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
+.gallery-main img,
+.gallery-main video {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
   display: block;
+  object-fit: contain;
   transition: opacity 0.3s ease;
 }
+.gallery-main video { outline: none; }
 .gallery-thumbs {
   display: flex;
   gap: 4px;
   padding: 8px;
   background: var(--paper);
   flex-shrink: 0;
+  overflow-x: auto;
 }
 .gallery-thumb {
   width: 72px;
@@ -110,10 +118,21 @@ nav {
   opacity: 0.5;
   transition: opacity 0.2s;
   flex-shrink: 0;
+  position: relative;
 }
 .gallery-thumb.active { opacity: 1; outline: 1px solid var(--ink); }
 .gallery-thumb:hover { opacity: 0.8; }
-.gallery-thumb img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.gallery-thumb img,
+.gallery-thumb video { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+.gallery-thumb-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.gallery-thumb-play svg { width: 20px; height: 20px; fill: white; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5)); }
 
 /* RIGHT — PRODUCT PANEL */
 .product-panel {
@@ -524,30 +543,36 @@ footer {
 
   <!-- LEFT: GALLERY -->
   <div class="gallery">
-    <div class="gallery-main">
-      <img id="gallery-main-img" src="media/bts_sewing_2.png" alt="Callum Godfrey sewing bespoke denim by hand">
+    <div class="gallery-main" id="gallery-main">
+      <img id="gallery-main-img" src="media/IMG_7436.PNG" alt="001 — 14oz Japanese Selvedge Wide Bootcut">
     </div>
     <div class="gallery-thumbs">
-      <div class="gallery-thumb active" onclick="setPhoto(this,'media/bts_sewing_2.png')">
+      <div class="gallery-thumb active" onclick="setMedia(this,'img','media/IMG_7436.PNG')">
+        <img src="media/IMG_7436.PNG" alt="Product">
+      </div>
+      <div class="gallery-thumb" onclick="setMedia(this,'img','media/DSCF5057.jpg')">
+        <img src="media/DSCF5057.jpg" alt="Wearing the jeans">
+      </div>
+      <div class="gallery-thumb" onclick="setMedia(this,'img','media/IMG_3741.PNG')">
+        <img src="media/IMG_3741.PNG" alt="Wearing the jeans">
+      </div>
+      <div class="gallery-thumb" onclick="setMedia(this,'video','media/e440244e05594853a0d76e995698ab57.mov')">
+        <video src="media/e440244e05594853a0d76e995698ab57.mov" muted preload="metadata"></video>
+        <div class="gallery-thumb-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="gallery-thumb" onclick="setMedia(this,'video','media/52033124d1234de2b5a76d4e38687cde.mov')">
+        <video src="media/52033124d1234de2b5a76d4e38687cde.mov" muted preload="metadata"></video>
+        <div class="gallery-thumb-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="gallery-thumb" onclick="setMedia(this,'video','media/be6deb4603634d15901532b85076077d.mov')">
+        <video src="media/be6deb4603634d15901532b85076077d.mov" muted preload="metadata"></video>
+        <div class="gallery-thumb-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div class="gallery-thumb" onclick="setMedia(this,'img','media/bts_sewing_2.png')">
         <img src="media/bts_sewing_2.png" alt="Sewing by hand">
       </div>
-      <div class="gallery-thumb" onclick="setPhoto(this,'media/bts_pattern_2.png')">
+      <div class="gallery-thumb" onclick="setMedia(this,'img','media/bts_pattern_2.png')">
         <img src="media/bts_pattern_2.png" alt="Pattern making">
-      </div>
-      <div class="gallery-thumb" onclick="setPhoto(this,'media/new_photo_1.png')">
-        <img src="media/new_photo_1.png" alt="Holding a finished pair">
-      </div>
-      <div class="gallery-thumb" onclick="setPhoto(this,'media/new_photo_2.png')">
-        <img src="media/new_photo_2.png" alt="Pattern over fabric">
-      </div>
-      <div class="gallery-thumb" onclick="setPhoto(this,'media/bts_sewing.png')">
-        <img src="media/bts_sewing.png" alt="Sewing">
-      </div>
-      <div class="gallery-thumb" onclick="setPhoto(this,'media/portrait_hero.jpg')">
-        <img src="media/portrait_hero.jpg" alt="Bespoke indigo selvedge jeans">
-      </div>
-      <div class="gallery-thumb" onclick="setPhoto(this,'media/portrait_2.jpg')">
-        <img src="media/portrait_2.jpg" alt="">
       </div>
     </div>
   </div>
@@ -985,8 +1010,11 @@ let tcsOpen = false;
 const langLabels = { en: 'EN', ja: '日本語', ko: '한국어', fr: 'FR', de: 'DE' };
 
 // ── Gallery ──
-function setPhoto(thumb, src) {
-  document.getElementById('gallery-main-img').src = src;
+function setMedia(thumb, type, src) {
+  const main = document.getElementById('gallery-main');
+  main.innerHTML = type === 'video'
+    ? `<video src="${src}" controls autoplay loop playsinline style="max-width:100%;max-height:100%;width:auto;height:auto;display:block;outline:none;"></video>`
+    : `<img id="gallery-main-img" src="${src}" alt="" style="max-width:100%;max-height:100%;width:auto;height:auto;display:block;object-fit:contain;">`;
   document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
   thumb.classList.add('active');
 }
