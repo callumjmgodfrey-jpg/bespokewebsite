@@ -25,9 +25,12 @@ exports.handler = async function(event) {
   }
 
   const sessionRaw = stripeEvent.data.object;
-  const session = await stripe.checkout.sessions.retrieve(sessionRaw.id, {
-    expand: ['shipping_details'],
-  });
+  let session = sessionRaw;
+  try {
+    session = await stripe.checkout.sessions.retrieve(sessionRaw.id);
+  } catch (err) {
+    console.error('Session retrieve error:', err.message);
+  }
   const meta = session.metadata || {};
   const amountNZD = (session.amount_total || 0) / 100;
   const orderDate = new Date(session.created * 1000).toISOString().split('T')[0];
