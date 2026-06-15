@@ -32,7 +32,7 @@ exports.handler = async function(event) {
   const amountNZD = (session.amount_total || 0) / 100;
   const orderDate = new Date(session.created * 1000).toISOString().split('T')[0];
   const customerName = meta.clientName || session.customer_details?.name || 'Unknown';
-  const customerEmail = session.customer_email || '';
+  const customerEmail = session.customer_details?.email || session.customer_email || '';
   const sizingType = meta.sizingType || 'Standard sizes';
   const shippingLabel = meta.shippingLabel || meta.shippingRegion || '';
   const addr = session.shipping_details?.address || {};
@@ -203,8 +203,10 @@ exports.handler = async function(event) {
     } catch (err) {
       console.error('Resend fetch error:', err.message);
     }
+  }
 
-    // ── Notify Callum ────────────────────────────────────────────────────────
+  // ── Notify Callum (always, regardless of customer email) ─────────────────
+  if (RESEND_API_KEY) {
     const notifyDetails = sizingType === 'Made to measure'
       ? `Made to measure — waist ${meta.naturalWaist}cm, hip ${meta.highHip}cm, inseam ${meta.inseam}cm`
       : `Standard sizes — ${meta.size || 'not specified'}`;
