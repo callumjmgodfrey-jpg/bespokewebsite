@@ -1,0 +1,182 @@
+/* ============================================================
+   Callum Godfrey — Design System Tokens
+   Single source of truth for all CSS custom properties.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap');
+
+:root {
+  /* ── Paper / cream surfaces ── */
+  --paper-0: #fdfdfb;
+  --paper-1: #fafaf8;
+  --paper-2: #f4f3f0;
+  --paper-3: #ecebe6;
+
+  /* ── Ink / darks ── */
+  --ink:      #141412;
+  --ink-soft: #2c2b27;
+  --mid:      #8a8a84;
+  --light:    #d4d3ce;
+  --hair:     rgba(20, 20, 18, 0.10);
+
+  /* ── Denim accents ── */
+  --indigo:      #38425a;
+  --indigo-deep: #232a3b;
+  --indigo-wash: #5c6884;
+
+  /* ── Status ── */
+  --rust: #c0392b;
+  --pine: #2d6a4f;
+
+  /* ── On-dark text ── */
+  --on-dark:       #fafaf8;
+  --on-dark-muted: rgba(250, 250, 248, 0.55);
+  --on-dark-faint: rgba(250, 250, 248, 0.30);
+  --on-dark-line:  rgba(250, 250, 248, 0.12);
+
+  /* ── Semantic aliases ── */
+  --bg:             var(--paper-1);
+  --surface:        var(--paper-2);
+  --surface-deep:   var(--paper-3);
+  --surface-invert: var(--ink);
+  --text:           var(--ink);
+  --text-muted:     var(--mid);
+  --text-faint:     var(--light);
+  --text-invert:    var(--on-dark);
+  --border:         var(--light);
+  --border-strong:  var(--ink);
+  --accent:         var(--indigo);
+  --danger:         var(--rust);
+  --success:        var(--pine);
+  --focus-ring:     rgba(56, 66, 90, 0.45);
+
+  /* ── Backwards-compatible aliases (existing site vars) ── */
+  --white:  var(--paper-1);
+  --paper:  var(--paper-2);
+  --serif:  'Shippori Mincho', 'Times New Roman', serif;
+  --sans:   -apple-system, 'Helvetica Neue', Arial, sans-serif;
+
+  /* ── Typography ── */
+  --font-serif:   'Shippori Mincho', 'Times New Roman', 'Songti SC', serif;
+  --font-sans:    -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-display: var(--font-serif);
+  --font-body:    var(--font-sans);
+
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semi:    600;
+
+  --type-hero:       clamp(52px, 9vw, 120px);
+  --type-display:    clamp(40px, 7vw, 90px);
+  --type-h1:         clamp(28px, 4vw, 52px);
+  --type-h2:         clamp(24px, 3vw, 36px);
+  --type-serif-lead: clamp(18px, 2vw, 24px);
+  --type-serif-md:   17px;
+  --type-serif-sm:   15px;
+  --type-body:       13px;
+  --type-body-lg:    14px;
+  --type-sm:         12px;
+  --type-xs:         11px;
+  --type-label:      10px;
+  --type-label-sm:   9px;
+
+  --leading-tight: 0.9;
+  --leading-snug:  1.1;
+  --leading-head:  1.25;
+  --leading-body:  1.8;
+  --leading-loose: 2.0;
+
+  --track-tight:   -0.01em;
+  --track-normal:  0;
+  --track-wide:    0.12em;
+  --track-label:   0.20em;
+  --track-eyebrow: 0.25em;
+
+  /* ── Spacing (base 4px) ── */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+  --space-25: 100px;
+  --space-30: 120px;
+  --space-40: 160px;
+
+  --pad-page:    48px;
+  --pad-page-sm: 24px;
+  --section-y:   120px;
+
+  /* ── Radius ── */
+  --radius-xs:      2px;
+  --radius-sm:      4px;
+  --radius-md:      8px;
+  --radius-lg:      14px;
+  --radius-xl:      22px;
+  --radius-pill:    999px;
+  --radius-default: var(--radius-sm);
+
+  /* ── Borders ── */
+  --border-hair:    0.5px solid var(--border);
+  --border-1:       1px solid var(--border);
+  --border-strong-rule: 1px solid var(--border-strong);
+  --border-on-dark: 0.5px solid var(--on-dark-line);
+
+  /* ── Shadows ── */
+  --shadow-none: none;
+  --shadow-sm:   0 1px 2px rgba(20, 20, 18, 0.04);
+  --shadow-md:   0 8px 24px -12px rgba(20, 20, 18, 0.14);
+  --shadow-lg:   0 20px 50px -20px rgba(20, 20, 18, 0.20);
+  --shadow-focus: 0 0 0 3px var(--focus-ring);
+
+  /* ── Motion ── */
+  --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out:   cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast:   0.15s;
+  --dur:        0.3s;
+  --dur-slow:   0.55s;
+  --dur-reveal: 0.85s;
+  --stagger-1:  0.08s;
+  --stagger-2:  0.16s;
+  --stagger-3:  0.24s;
+  --stagger-4:  0.32s;
+}
+
+/* ── Global base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--type-body);
+  line-height: var(--leading-loose);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--ink); color: var(--on-dark); }
+
+a { color: inherit; }
+
+img, video { max-width: 100%; display: block; }
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--shadow-focus);
+  border-radius: var(--radius-xs);
+}
+
+button, input, select, textarea {
+  border-radius: var(--radius-sm);
+}
+
+.cg-rule { width: 100%; height: 0.5px; background: var(--border); border: 0; }
