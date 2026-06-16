@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How I Design — Callum Godfrey</title>
+<meta name="description" content="Every pair starts in CLO3D. How Callum Godfrey designs bespoke jeans digitally before cutting a single thread of Japanese selvedge denim.">
+<meta property="og:title" content="How I Design — Callum Godfrey">
+<meta property="og:description" content="Every pair starts in CLO3D. Digital pattern drafting, virtual fitting, then hand-cut from raw Japanese selvedge denim.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="media/product_indigo_cuff.jpeg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="tokens.css">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="animations.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--ink);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding: 28px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  mix-blend-mode: difference;
+}
+.nav-logo { font-family: var(--serif); font-size: 15px; color: var(--white); text-decoration: none; letter-spacing: 0.12em; font-weight: 400; }
+.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); text-decoration: none; font-weight: 400; transition: opacity 0.2s; }
+.nav-link:hover { opacity: 0.5; }
+
+/* PAGE HEADER */
+.page-header {
+  padding: 180px 48px 100px;
+  background: var(--ink);
+}
+.page-header-eyebrow {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 24px;
+}
+.page-header-title {
+  font-family: var(--serif);
+  font-size: clamp(40px, 7vw, 90px);
+  line-height: 1;
+  color: var(--white);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  max-width: 800px;
+}
+.page-header-sub {
+  margin-top: 40px;
+  font-size: 13px;
+  line-height: 2;
+  color: rgba(255,255,255,0.5);
+  max-width: 480px;
+}
+
+/* INTRO */
+.intro {
+  padding: 100px 48px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+.intro-heading {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.intro-heading em { color: var(--mid); font-style: normal; }
+.intro-body { display: flex; flex-direction: column; gap: 20px; }
+.intro-body p { font-size: 13px; line-height: 2; color: var(--mid); }
+.intro-body p strong { color: var(--ink); font-weight: 400; }
+
+/* 3D MODEL PLACEHOLDER */
+.model-section {
+  margin: 100px 48px 0;
+  background: var(--paper);
+  position: relative;
+  overflow: hidden;
+}
+.model-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: var(--paper);
+  border: 0.5px solid var(--light);
+}
+.model-placeholder-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--light);
+}
+.model-placeholder-note {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  color: var(--ink);
+  font-weight: 400;
+}
+.model-placeholder-sub {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--mid);
+  text-align: center;
+  max-width: 320px;
+  line-height: 1.8;
+}
+.model-caption {
+  padding: 20px 0 0;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+/* PROCESS STEPS */
+.process {
+  padding: 100px 48px 0;
+}
+.process-heading {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 48px;
+}
+.process-steps { display: flex; flex-direction: column; }
+.process-step {
+  display: grid;
+  grid-template-columns: 80px 1fr 1fr;
+  gap: 48px;
+  padding: 52px 0;
+  border-top: 0.5px solid var(--light);
+  align-items: start;
+}
+.process-step:last-child { border-bottom: 0.5px solid var(--light); }
+.process-step-num {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3vw, 40px);
+  color: var(--light);
+  font-weight: 400;
+  line-height: 1;
+  padding-top: 4px;
+}
+.process-step-title {
+  font-family: var(--serif);
+  font-size: clamp(18px, 2vw, 24px);
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+}
+.process-step-title em { color: var(--mid); font-style: normal; }
+.process-step-body {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--mid);
+}
+.process-step-body strong { color: var(--ink); font-weight: 400; }
+
+/* SPECS STRIP */
+.specs-strip {
+  margin: 100px 48px 0;
+  padding: 52px 0;
+  border-top: 0.5px solid var(--light);
+  border-bottom: 0.5px solid var(--light);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+}
+.spec-item {
+  padding: 0 40px 0 0;
+  border-right: 0.5px solid var(--light);
+}
+.spec-item:first-child { padding-left: 0; }
+.spec-item:last-child { border-right: none; padding-right: 0; padding-left: 40px; }
+.spec-label {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--light);
+  margin-bottom: 12px;
+}
+.spec-value {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--ink);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* PHOTO SPLIT */
+.photo-split {
+  margin: 100px 48px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2px;
+}
+.photo-split img {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* CTA */
+.cta-section {
+  padding: 120px 48px 140px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+.cta-heading {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 52px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  max-width: 600px;
+}
+.cta-heading em { color: var(--mid); font-style: normal; }
+.cta-link {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px;
+  transition: opacity 0.2s;
+}
+.cta-link:hover { opacity: 0.4; }
+
+/* FOOTER */
+footer {
+  padding: 60px 48px;
+  border-top: 0.5px solid var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.footer-brand { font-family: var(--serif); font-size: 13px; color: var(--ink); letter-spacing: 0.08em; }
+.footer-links { display: flex; align-items: center; gap: 28px; flex-wrap: wrap; }
+.footer-link {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--ink); }
+.footer-link svg { width: 13px; height: 13px; fill: currentColor; }
+.footer-note { font-size: 10px; color: var(--light); letter-spacing: 0.1em; }
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  nav { padding: 24px; }
+  .page-header { padding: 140px 24px 72px; }
+  .intro { padding: 72px 24px 0; grid-template-columns: 1fr; gap: 48px; }
+  .model-section { margin: 72px 24px 0; }
+  .process { padding: 72px 24px 0; }
+  .process-step { grid-template-columns: 48px 1fr; gap: 24px; }
+  .process-step-body { grid-column: 2; }
+  .specs-strip { margin: 72px 24px 0; grid-template-columns: 1fr 1fr; gap: 32px; }
+  .spec-item { border-right: none; padding: 0; }
+  .photo-split { margin: 72px 24px 0; }
+  .cta-section { padding: 80px 24px 100px; }
+  footer { padding: 48px 24px; flex-direction: column; align-items: flex-start; gap: 32px; }
+  .nav-link:not(.nav-apply-link) { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="page-overlay"></div>
+
+<nav>
+  <a href="index.html" class="nav-logo">Callum Godfrey</a>
+  <div class="nav-right">
+    <a href="index.html#making" class="nav-link">Making</a>
+    <a href="order.html" class="nav-link nav-apply-link">Order</a>
+  </div>
+</nav>
+
+<section class="page-header">
+  <span class="page-header-eyebrow reveal">The process</span>
+  <h1 class="page-header-title reveal reveal-d1">how i design<br>before i cut<em>.</em></h1>
+  <p class="page-header-sub reveal reveal-d2">Every pair starts as a digital pattern in CLO3D. I can see how it fits, how it drapes, how it moves — before a single thread of selvedge denim is touched.</p>
+</section>
+
+<section class="intro">
+  <div>
+    <h2 class="intro-heading reveal">Most people work from<br>a block and guess.<br><em>I don't guess.</em></h2>
+  </div>
+  <div class="intro-body">
+    <p class="reveal">The traditional way to make trousers is to start from a basic block — a flat pattern adapted from a standard size — and then fit and adjust on a real person, cutting fabric, pinning, re-cutting. It works. But every mistake costs fabric, and fabric is the most expensive part of the whole process.</p>
+    <p class="reveal reveal-d1">CLO3D is 3D garment simulation software. It was built for the fashion industry — brands like Levi's and Acne use it for development. I use it at the start of every commission to build, fit and refine the pattern digitally before anything is cut.</p>
+    <p class="reveal reveal-d2">The result is that by the time I pick up scissors, <strong>I already know the pair fits</strong>. Not approximately — precisely.</p>
+  </div>
+</section>
+
+<!-- 3D MODEL — scroll-driven rotation coming soon -->
+<div class="model-section reveal">
+  <div class="model-placeholder">
+    <span class="model-placeholder-label">CLO3D — 001 Wide Bootcut</span>
+    <span class="model-placeholder-note">3D model coming soon</span>
+    <span class="model-placeholder-sub">Scroll to rotate the virtual garment — see the drape, the fit, the selvedge ID from every angle.</span>
+  </div>
+  <p class="model-caption">Virtual fit preview — CLO3D simulation, raw Japanese 14oz selvedge</p>
+</div>
+
+<section class="process">
+  <p class="process-heading reveal">Step by step</p>
+
+  <div class="process-steps">
+
+    <div class="process-step reveal">
+      <span class="process-step-num">01</span>
+      <h3 class="process-step-title">The brief.<br><em>Your measurements, your fit.</em></h3>
+      <p class="process-step-body">When you order, you tell me your measurements and which sizing option you want — standard or made to measure. For MTM, I build the pattern from your body. Natural waist, high hip, inseam: three numbers that determine everything. No averaging, no grading up or down from a closest size.</p>
+    </div>
+
+    <div class="process-step reveal">
+      <span class="process-step-num">02</span>
+      <h3 class="process-step-title">Digital pattern<br><em>drafting in CLO3D.</em></h3>
+      <p class="process-step-body">I draft the pattern directly in CLO3D — waistband, yoke, front and back panels, fly facing, pockets. Every seam is drawn as a vector shape. The software stitches the 2D panels together in real time and simulates how the fabric would hang on a virtual body, accounting for the weight and stretch of the actual denim I'm using. <strong>14oz selvedge behaves differently to regular cotton</strong> — CLO3D knows that.</p>
+    </div>
+
+    <div class="process-step reveal">
+      <span class="process-step-num">03</span>
+      <h3 class="process-step-title">Virtual fitting.<br><em>Adjust before cutting.</em></h3>
+      <p class="process-step-body">I can see the seat, the thigh, the break at the ankle — all before I've touched the fabric. If the high hip is pulling or the inseam is landing wrong, I correct it in the pattern. This is the part that would normally require a muslin toile, a fitting, and another round of cuts. I do it in software instead. <strong>No wasted denim. No guessing.</strong></p>
+    </div>
+
+    <div class="process-step reveal">
+      <span class="process-step-num">04</span>
+      <h3 class="process-step-title">From screen<br><em>to selvedge.</em></h3>
+      <p class="process-step-body">Once the pattern is locked, I export the pieces and print them full-scale. Then I lay them on the fabric — selvedge edge aligned, grain line straight — and cut by hand. No laser cutter, no die press. A rotary blade, a ruler and a cutting mat. Slow, deliberate, one piece at a time.</p>
+    </div>
+
+    <div class="process-step reveal">
+      <span class="process-step-num">05</span>
+      <h3 class="process-step-title">Hand sewn.<br><em>Start to finish.</em></h3>
+      <p class="process-step-body">Every seam is sewn on a single-needle industrial machine. Flat-felled inseam, chain-stitched outseam, bar-tacked stress points. The button fly is set by hand. The selvedge ID runs along the outseam at the hem — you can see it when you roll the cuff. That's the mark. <strong>Three to five weeks from order to your door.</strong></p>
+    </div>
+
+  </div>
+</section>
+
+<div class="specs-strip reveal">
+  <div class="spec-item">
+    <p class="spec-label">Software</p>
+    <p class="spec-value">CLO3D</p>
+  </div>
+  <div class="spec-item" style="padding-left:40px">
+    <p class="spec-label">Fabric</p>
+    <p class="spec-value">Japanese 14oz selvedge</p>
+  </div>
+  <div class="spec-item" style="padding-left:40px">
+    <p class="spec-label">Construction</p>
+    <p class="spec-value">Hand cut, hand sewn</p>
+  </div>
+  <div class="spec-item">
+    <p class="spec-label">Output</p>
+    <p class="spec-value">Four pairs a month</p>
+  </div>
+</div>
+
+<div class="photo-split">
+  <img src="media/product_indigo_cuff.jpeg" alt="Selvedge cuff detail" class="reveal" loading="lazy">
+  <img src="media/product_ecru_front.jpeg" alt="Ecru colourway" class="reveal reveal-d1" loading="lazy">
+</div>
+
+<section class="cta-section">
+  <h2 class="cta-heading reveal">Ready to order<br>your pair<em>?</em></h2>
+  <a href="order.html" class="cta-link reveal reveal-d1">Start your order →</a>
+</section>
+
+<footer>
+  <span class="footer-brand">Callum Godfrey</span>
+  <div class="footer-links">
+    <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+      Instagram
+    </a>
+    <a href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+      YouTube
+    </a>
+    <a href="https://www.tiktok.com/@callumgodfreyy" target="_blank" rel="noopener" class="footer-link">
+      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+      TikTok
+    </a>
+    <a href="care.html" class="footer-link">Care</a>
+    <a href="repairs.html" class="footer-link">Lifetime Repairs</a>
+    <a href="faq.html" class="footer-link">FAQ</a>
+  </div>
+  <span class="footer-note">Made by hand in Wellington, NZ</span>
+</footer>
+
+<script src="animations.js"></script>
+</body>
+</html>
