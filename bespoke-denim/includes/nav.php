@@ -17,6 +17,6 @@
         <button onclick="applyLang('de')">Deutsch</button>
       </div>
     </div>
-    <a href="order.php" class="nav-link nav-apply-link" id="nav-apply-link">Order</a>
+    <a href="order.php" class="nav-link nav-apply-link" id="nav-apply-link">Apply</a>
   </div>
 </nav>

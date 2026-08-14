@@ -817,6 +817,23 @@ footer {
   </div>
 </section>
 
+<!-- FOUNDER TEASER -->
+<section class="founder-teaser">
+  <div class="founder-teaser-photo-wrap reveal">
+    <img src="media/about_young.jpeg" alt="Callum Godfrey" class="founder-teaser-photo" />
+  </div>
+  <div class="founder-teaser-content reveal reveal-d1">
+    <blockquote class="founder-teaser-quote" id="founder-quote">
+      "If I can't find what I'm picturing, I make it myself — properly, with materials and construction that earn the word 'lifetime'."
+    </blockquote>
+    <div class="founder-teaser-meta">
+      <span class="founder-teaser-name">Callum Godfrey</span>
+      <span class="founder-teaser-role" id="founder-role">Founder & Bespoke Denim Maker — Wellington, NZ</span>
+    </div>
+    <a href="about.php" class="founder-teaser-link" id="founder-link">Read the founder story →</a>
+  </div>
+</section>
+
 <!-- TWO COL -->
 <section class="two-col">
   <div class="two-col-img">
@@ -838,14 +855,18 @@ footer {
     <span class="spec-value" id="spec-fabric">Japanese 14oz selvedge</span>
   </div>
   <div class="spec reveal reveal-d2">
+    <span class="spec-label" id="spec-price-label">Price</span>
+    <span class="spec-value" id="spec-price">From $650 NZD</span>
+  </div>
+  <div class="spec reveal reveal-d3">
     <span class="spec-label" id="spec-slots-label">Slots per batch</span>
     <span class="spec-value">4</span>
   </div>
-  <div class="spec reveal reveal-d3">
+  <div class="spec reveal reveal-d4">
     <span class="spec-label" id="spec-lead-label">Lead time</span>
     <span class="spec-value" id="spec-lead">2 – 8 weeks</span>
   </div>
-  <div class="spec reveal reveal-d4">
+  <div class="spec reveal reveal-d5">
     <span class="spec-label" id="spec-origin-label">Made in</span>
     <span class="spec-value">Wellington, NZ</span>
   </div>
@@ -893,6 +914,38 @@ footer {
   </div>
 </section>
 
+<!-- THE PROCESS -->
+<section class="process-section" id="process">
+  <div class="process-header reveal">
+    <span class="col-eyebrow" id="process-eyebrow">The Commission Process</span>
+    <h2 class="col-title" id="process-title">How bespoke works.</h2>
+  </div>
+  <div class="process-grid">
+    <div class="process-card reveal reveal-d1">
+      <span class="process-step-num">01</span>
+      <h3 class="process-step-title" id="proc-s1-t">Apply & Measure</h3>
+      <p class="process-step-body" id="proc-s1-b">Submit your application online along with your body measurements and fit preferences.</p>
+    </div>
+    <div class="process-card reveal reveal-d2">
+      <span class="process-step-num">02</span>
+      <h3 class="process-step-title" id="proc-s2-t">3D Digital Fitting</h3>
+      <p class="process-step-body" id="proc-s2-b">Your pattern is digitally simulated in CLO3D for silhouette precision before any fabric is cut.</p>
+    </div>
+    <div class="process-card reveal reveal-d3">
+      <span class="process-step-num">03</span>
+      <h3 class="process-step-title" id="proc-s3-t">Hand Cut & Sewn</h3>
+      <p class="process-step-body" id="proc-s3-b">Hand-drafted, cut, and sewn in Wellington using raw 14oz Japanese selvedge denim.</p>
+    </div>
+    <div class="process-card reveal reveal-d4">
+      <span class="process-step-num">04</span>
+      <h3 class="process-step-title" id="proc-s4-t">Delivery & Care</h3>
+      <p class="process-step-body" id="proc-s4-b">Delivered to your door with full care guidance and guaranteed lifetime repair support.</p>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
 <!-- IN THE MAKING -->
 <section class="making" id="making">
   <div class="making-text">
@@ -910,6 +963,39 @@ footer {
       src="https://www.youtube.com/embed/UoPG6AOnDJA?start=190&rel=0&modestbranding=1"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowfullscreen></iframe>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof-section">
+  <div class="social-proof-header reveal">
+    <span class="col-eyebrow" style="color: rgba(255,255,255,0.4);" id="proof-eyebrow">Client Feedback</span>
+    <h2 class="col-title" style="color: var(--white);" id="proof-title">Built for lifetime wear.</h2>
+  </div>
+  <div class="social-proof-grid">
+    <div class="social-proof-card reveal reveal-d1">
+      <p class="social-proof-quote" id="proof-q1">"The fit is unlike anything off the rack. You can feel the structure and weight of the selvedge from day one."</p>
+      <div class="social-proof-client">
+        <span class="social-proof-client-name">Client 004</span>
+        <span class="social-proof-client-location">Auckland, NZ</span>
+      </div>
+    </div>
+    <div class="social-proof-card reveal reveal-d2">
+      <p class="social-proof-quote" id="proof-q2">"Four months of daily wear in Wellington and the fades are starting to show. Easily the best denim I own."</p>
+      <div class="social-proof-client">
+        <span class="social-proof-client-name">Client 002</span>
+        <span class="social-proof-client-location">Wellington, NZ</span>
+      </div>
+    </div>
+    <div class="social-proof-card reveal reveal-d3">
+      <p class="social-proof-quote" id="proof-q3">"Knowing Callum cut and sewn these himself makes them feel personal. Worth every week of waiting."</p>
+      <div class="social-proof-client">
+        <span class="social-proof-client-name">Client 005</span>
+        <span class="social-proof-client-location">Christchurch, NZ</span>
+      </div>
+    </div>
   </div>
 </section>
 

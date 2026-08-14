@@ -247,7 +247,7 @@
 
         <!-- SUBMIT -->
         <button type="submit" class="submit-btn" id="submitBtn">
-          <span id="l-submit">Pay now — NZD $<span id="btn-total">500</span></span>
+          <span id="l-submit">Apply for 001 — NZD $<span id="btn-total">500</span></span>
         </button>
         <p class="submit-note" id="l-submit-note">You'll be taken to Stripe's secure checkout. Card, Apple Pay, and Google Pay accepted.</p>
 
