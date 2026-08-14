@@ -801,7 +801,7 @@ footer {
 
 <?php require_once __DIR__ . '/includes/nav.php'; ?>
 
-<!-- HERO -->
+<!-- 1. HERO -->
 <section class="hero">
   <img class="hero-img hero-portrait" src="media/bts_sewing_2.png" alt="Callum Godfrey sewing bespoke denim" />
   <img class="hero-img hero-landscape" src="media/bts_sewing.png" alt="Callum Godfrey sewing bespoke denim" />
@@ -817,38 +817,37 @@ footer {
   </div>
 </section>
 
-<!-- FOUNDER TEASER -->
+<!-- 2. FOUNDER STRIP -->
 <section class="founder-teaser">
   <div class="founder-teaser-photo-wrap reveal">
     <img src="media/about_young.jpeg" alt="Callum Godfrey" class="founder-teaser-photo" />
   </div>
   <div class="founder-teaser-content reveal reveal-d1">
     <blockquote class="founder-teaser-quote" id="founder-quote">
-      "If I can't find what I'm picturing, I make it myself — properly, with materials and construction that earn the word 'lifetime'."
+      "I taught myself Japanese in my bedroom during lockdown, then taught myself to hand-cut and hand-sew Japanese selvedge denim. If I can't find what I'm picturing, I make it myself — properly."
     </blockquote>
     <div class="founder-teaser-meta">
       <span class="founder-teaser-name">Callum Godfrey</span>
-      <span class="founder-teaser-role" id="founder-role">Founder & Bespoke Denim Maker — Wellington, NZ</span>
+      <span class="founder-teaser-role" id="founder-role">Founder &amp; Bespoke Denim Maker — Wellington, NZ</span>
     </div>
-    <a href="about.php" class="founder-teaser-link" id="founder-link">Read the founder story →</a>
+    <a href="about.php" class="founder-teaser-link" id="founder-link">Read full story →</a>
   </div>
 </section>
 
-<!-- TWO COL -->
+<!-- 3. THE JEAN & SPECS -->
 <section class="two-col">
   <div class="two-col-img">
-    <img src="media/portrait_3.jpg" alt="" loading="lazy" class="reveal" />
+    <img src="media/portrait_3.jpg" alt="Bespoke selvedge denim" loading="lazy" class="reveal" />
   </div>
   <div class="two-col-text">
     <span class="col-eyebrow reveal" id="col-eyebrow">The jean</span>
     <h2 class="col-title reveal reveal-d1" id="col-title">No stock.<br>No shortcuts.<br>Just a pair that fits.</h2>
     <p class="col-body reveal reveal-d2" id="col-body">Each piece is cut from the finest Japanese selvedge denim — 14oz raw, the kind that develops a story with every wear. Made-to-measure for your body, built with construction techniques designed to last decades, not seasons.</p>
     <p class="col-body reveal reveal-d3" style="margin-bottom: 48px;">This isn't a pair of jeans. It's the pair you'll wear to your university graduation — and maybe, one day, to your kid's.</p>
-    <a href="order.php" class="col-link reveal reveal-d4" id="col-link">Apply for 001</a>
+    <a href="order.php" class="col-link reveal reveal-d4" id="col-link">Apply for a commission</a>
   </div>
 </section>
 
-<!-- SPECS -->
 <div class="specs">
   <div class="spec reveal reveal-d1">
     <span class="spec-label" id="spec-fabric-label">Fabric</span>
@@ -856,7 +855,7 @@ footer {
   </div>
   <div class="spec reveal reveal-d2">
     <span class="spec-label" id="spec-price-label">Price</span>
-    <span class="spec-value" id="spec-price">From $650 NZD</span>
+    <span class="spec-value" id="spec-price">From $550 NZD</span>
   </div>
   <div class="spec reveal reveal-d3">
     <span class="spec-label" id="spec-slots-label">Slots per batch</span>
@@ -872,103 +871,41 @@ footer {
   </div>
 </div>
 
-<!-- PHOTO GRID -->
-<div class="photo-grid">
-  <img src="media/bts_sewing_2.png" alt="Callum Godfrey sewing bespoke denim by hand" loading="lazy" class="tall reveal" />
-  <img src="media/bts_pattern_2.png" alt="Denim pattern making" loading="lazy" class="reveal reveal-d1" />
-  <img src="media/new_photo_1.png" alt="Callum Godfrey holding a finished pair of bespoke jeans" loading="lazy" class="reveal reveal-d2" />
-  <img src="media/new_photo_2.png" alt="Denim pattern laid out over fabric ready for cutting" loading="lazy" class="reveal reveal-d3" />
-  <img src="media/bts_sewing.png" alt="Sewing selvedge denim by hand" loading="lazy" class="reveal reveal-d4" />
-</div>
+<div class="rule"></div>
 
-<!-- CAROUSEL -->
-<section class="carousel-section">
-  <div class="carousel-header reveal">
-    <div>
-      <span class="col-eyebrow" id="carousel-eyebrow">On the street</span>
-      <h2 class="carousel-title" id="carousel-title">As worn.</h2>
-    </div>
-    <span class="carousel-hint" id="carousel-hint">Drag →</span>
-  </div>
-  <div class="carousel-track" id="carousel">
-    <div class="carousel-item ratio-43">
-      <video src="media/on_the_street.mp4" loop playsinline controls></video>
-      <span class="carousel-item-label">Wellington</span>
-    </div>
-    <div class="carousel-item ratio-43">
-      <video src="media/cool_video.mp4" loop playsinline controls></video>
-      <span class="carousel-item-label">001</span>
-    </div>
-    <div class="carousel-item ratio-916">
-      <video src="media/e4wet.mp4" loop playsinline controls></video>
-      <span class="carousel-item-label">Raw denim</span>
-    </div>
-    <div class="carousel-item ratio-43">
-      <video src="media/4f43f6159ec04551bdee3ecea5de6e76.mp4" loop playsinline controls></video>
-      <span class="carousel-item-label">14oz selvedge</span>
-    </div>
-    <div class="carousel-item ratio-916">
-      <video src="media/0213__1_.mp4" loop playsinline controls></video>
-      <span class="carousel-item-label">Handmade</span>
-    </div>
-  </div>
-</section>
-
-<!-- THE PROCESS -->
+<!-- 4. HOW IT WORKS -->
 <section class="process-section" id="process">
   <div class="process-header reveal">
     <span class="col-eyebrow" id="process-eyebrow">The Commission Process</span>
-    <h2 class="col-title" id="process-title">How bespoke works.</h2>
+    <h2 class="col-title" id="process-title">How it works.</h2>
   </div>
   <div class="process-grid">
     <div class="process-card reveal reveal-d1">
       <span class="process-step-num">01</span>
-      <h3 class="process-step-title" id="proc-s1-t">Apply & Measure</h3>
-      <p class="process-step-body" id="proc-s1-b">Submit your application online along with your body measurements and fit preferences.</p>
+      <h3 class="process-step-title" id="proc-s1-t">Apply</h3>
+      <p class="process-step-body" id="proc-s1-b">Submit your application online along with your initial style preferences.</p>
     </div>
     <div class="process-card reveal reveal-d2">
       <span class="process-step-num">02</span>
-      <h3 class="process-step-title" id="proc-s2-t">3D Digital Fitting</h3>
-      <p class="process-step-body" id="proc-s2-b">Your pattern is digitally simulated in CLO3D for silhouette precision before any fabric is cut.</p>
+      <h3 class="process-step-title" id="proc-s2-t">Measurements &amp; Fit Call</h3>
+      <p class="process-step-body" id="proc-s2-b">1-on-1 measurement check &amp; 3D digital fitting in CLO3D before any fabric is cut.</p>
     </div>
     <div class="process-card reveal reveal-d3">
       <span class="process-step-num">03</span>
-      <h3 class="process-step-title" id="proc-s3-t">Hand Cut & Sewn</h3>
-      <p class="process-step-body" id="proc-s3-b">Hand-drafted, cut, and sewn in Wellington using raw 14oz Japanese selvedge denim.</p>
+      <h3 class="process-step-title" id="proc-s3-t">Deposit &amp; Hand Cut</h3>
+      <p class="process-step-body" id="proc-s3-b">Hand-drafted pattern, cut, and sewn in Wellington using raw 14oz Japanese selvedge denim.</p>
     </div>
     <div class="process-card reveal reveal-d4">
       <span class="process-step-num">04</span>
-      <h3 class="process-step-title" id="proc-s4-t">Delivery & Care</h3>
-      <p class="process-step-body" id="proc-s4-b">Delivered to your door with full care guidance and guaranteed lifetime repair support.</p>
+      <h3 class="process-step-title" id="proc-s4-t">2–8 Weeks → Delivered</h3>
+      <p class="process-step-body" id="proc-s4-b">Delivered via tracked courier with full care guidance and guaranteed lifetime repair support.</p>
     </div>
   </div>
 </section>
 
 <div class="rule"></div>
 
-<!-- IN THE MAKING -->
-<section class="making" id="making">
-  <div class="making-text">
-    <div class="making-top">
-      <div class="making-live reveal">
-        <span class="making-dot"></span>
-        <span id="making-badge">Latest vlog</span>
-      </div>
-      <h2 class="making-title reveal reveal-d1" id="making-title">Behind<br>the seams.</h2>
-      <p class="making-body reveal reveal-d2" id="making-body">Pattern making, CLO3D, sewing, Wellington streets. I document everything. Mostly in Japanese, always honest.</p>
-    </div>
-  </div>
-  <div class="making-video">
-    <iframe id="yt-embed"
-      src="https://www.youtube.com/embed/UoPG6AOnDJA?start=190&rel=0&modestbranding=1"
-      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen></iframe>
-  </div>
-</section>
-
-<div class="rule"></div>
-
-<!-- SOCIAL PROOF -->
+<!-- 5. SOCIAL PROOF -->
 <section class="social-proof-section">
   <div class="social-proof-header reveal">
     <span class="col-eyebrow" style="color: rgba(255,255,255,0.4);" id="proof-eyebrow">Client Feedback</span>
@@ -1001,7 +938,72 @@ footer {
 
 <div class="rule"></div>
 
-<!-- SIGNUP -->
+<!-- 6. ON THE STREET / VIDEO CONTENT -->
+<div class="photo-grid">
+  <img src="media/bts_sewing_2.png" alt="Callum Godfrey sewing bespoke denim by hand" loading="lazy" class="tall reveal" />
+  <img src="media/bts_pattern_2.png" alt="Denim pattern making" loading="lazy" class="reveal reveal-d1" />
+  <img src="media/new_photo_1.png" alt="Callum Godfrey holding a finished pair of bespoke jeans" loading="lazy" class="reveal reveal-d2" />
+  <img src="media/new_photo_2.png" alt="Denim pattern laid out over fabric ready for cutting" loading="lazy" class="reveal reveal-d3" />
+  <img src="media/bts_sewing.png" alt="Sewing selvedge denim by hand" loading="lazy" class="reveal reveal-d4" />
+</div>
+
+<section class="carousel-section">
+  <div class="carousel-header reveal">
+    <div>
+      <span class="col-eyebrow" id="carousel-eyebrow">On the street</span>
+      <h2 class="carousel-title" id="carousel-title">As worn.</h2>
+    </div>
+    <span class="carousel-hint" id="carousel-hint">Drag →</span>
+  </div>
+  <div class="carousel-track" id="carousel">
+    <div class="carousel-item ratio-43">
+      <video src="media/on_the_street.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">Wellington</span>
+    </div>
+    <div class="carousel-item ratio-43">
+      <video src="media/cool_video.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">001</span>
+    </div>
+    <div class="carousel-item ratio-916">
+      <video src="media/e4wet.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">Raw denim</span>
+    </div>
+    <div class="carousel-item ratio-43">
+      <video src="media/4f43f6159ec04551bdee3ecea5de6e76.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">14oz selvedge</span>
+    </div>
+    <div class="carousel-item ratio-916">
+      <video src="media/0213__1_.mp4" loop playsinline controls></video>
+      <span class="carousel-item-label">Handmade</span>
+    </div>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- 7. LATEST VLOG -->
+<section class="making" id="making">
+  <div class="making-text">
+    <div class="making-top">
+      <div class="making-live reveal">
+        <span class="making-dot"></span>
+        <span id="making-badge">Latest vlog</span>
+      </div>
+      <h2 class="making-title reveal reveal-d1" id="making-title">Behind<br>the seams.</h2>
+      <p class="making-body reveal reveal-d2" id="making-body">Vlog #004 — Pattern drafting, CLO3D simulations &amp; Wellington streets. I document everything (spoken in Japanese, subtitled in English).</p>
+    </div>
+  </div>
+  <div class="making-video">
+    <iframe id="yt-embed"
+      src="https://www.youtube.com/embed/UoPG6AOnDJA?start=190&rel=0&modestbranding=1"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen></iframe>
+  </div>
+</section>
+
+<div class="rule"></div>
+
+<!-- 8. WAITLIST -->
 <section class="signup" id="waitlist">
   <div class="signup-left">
     <h2 class="signup-title reveal" id="signup-title">Be first<br>to know.</h2>
@@ -1011,7 +1013,7 @@ footer {
     <form class="signup-form reveal reveal-d2" id="signupForm">
       <input class="signup-input" type="email" placeholder="your@email.com" id="signupEmail" required />
       <button class="signup-btn" type="submit" id="signupBtn">
-        <span id="signup-btn-text">Notify me</span>
+        <span id="signup-btn-text">Notify me when Batch 002 opens</span>
       </button>
     </form>
     <p class="signup-message" id="signupMsg"></p>
@@ -1047,31 +1049,42 @@ loadLatestVideo();
 
 // ── Language ──
 const landingCopy = {
-  en: { btn:'EN', label:'Wellington, New Zealand', sub:'001 — High Waisted Wide Bootcut', cta:'Order now', navMaking:'Making', navWaitlist:'Waitlist', navApply:'Order', statement:'Life is short.<br><em>Your clothes don\'t have to be.</em>', colEyebrow:'The jean', colTitle:'No stock.<br>No shortcuts.<br>Just a pair that fits.', colBody:'Each piece is cut from the finest Japanese selvedge denim — 14oz raw, the kind that develops a story with every wear. Made-to-measure for your body, built with construction techniques designed to last decades, not seasons.', colLink:'Order 001', specFabricLabel:'Fabric', specFabric:'Japanese 14oz selvedge', specSlotsLabel:'Slots per batch', specLeadLabel:'Lead time', specLead:'2 – 8 weeks', specOriginLabel:'Made in', carouselEyebrow:'On the street', carouselTitle:'As worn.', carouselHint:'Drag →', makingBadge:'Latest vlog', makingTitle:'Behind<br>the seams.', makingBody:'Pattern making, CLO3D, sewing, Wellington streets. I document everything. Mostly in Japanese, always honest.', signupTitle:'Be first<br>to know.', signupSub:'4 slots a month. They go fast. Drop your email and I\'ll let you know when Batch 002 opens.', signupBtn:'Notify me', signupPlaceholder:'your@email.com', successMsg:"You're on the list. I'll be in touch.", errorMsg:"Something went wrong — try again or DM me.", footerNote:'Worn in. Lived in. Built to fade with you.' },
-  ja: { btn:'日本語', label:'ニュージーランド・ウェリントン', sub:'001 — ハイウエスト ワイドブーツカット', cta:'注文する', navMaking:'メイキング', navWaitlist:'順番待ち', navApply:'注文', statement:'すべてのペアを一人で制作 —<br><em>受注後に裁断・縫製</em><br>生の日本製14ozセルビッジデニムで。<br>月4枠のみ。', colEyebrow:'このジーンズについて', colTitle:'在庫なし。<br>妥協なし。<br>本当に合う一本。', colBody:'採寸から始まり、CLO3Dでデジタルフィッティングを経て、手裁断・手縫いで仕上げる一本。生の日本製14ozセルビッジ。着るほどに色落ちしていく。', colLink:'001を注文する', specFabricLabel:'素材', specFabric:'日本製14ozセルビッジ', specSlotsLabel:'月間枠数', specLeadLabel:'リードタイム', specLead:'2〜8週間', specOriginLabel:'製造地', carouselEyebrow:'ストリートで', carouselTitle:'着用コーデ。', carouselHint:'スクロール →', makingBadge:'最新動画', makingTitle:'縫い目の<br>裏側。', makingBody:'パターン、CLO3D、縫製、ウェリントンの街。すべてを記録。主に日本語で、いつも正直に。', signupTitle:'いち早く<br>知る。', signupSub:'月4枠。すぐに埋まります。メールを登録してバッチ002の情報をお受け取りください。', signupBtn:'登録する', signupPlaceholder:'メールアドレス', successMsg:'登録完了。バッチ002のオープン時にご連絡します。', errorMsg:'エラーが発生しました。もう一度お試しいただくか、InstagramでDMをください。', footerNote:'ニュージーランド・ウェリントンで手作り' },
-  ko: { btn:'한국어', label:'뉴질랜드 웰링턴', sub:'001 — 하이웨이스트 와이드 부츠컷', cta:'지금 주문하기', navMaking:'메이킹', navWaitlist:'대기자 명단', navApply:'주문', statement:'모든 페어를 직접 제작 —<br><em>주문 후 재단·봉제</em><br>일본제 14oz 셀비지 로우 데님으로.<br>한 달에 4자리뿐.', colEyebrow:'이 청바지에 대해', colTitle:'재고 없음.<br>타협 없음.<br>진짜 맞는 한 벌.', colBody:'채수에서 시작해 CLO3D 디지털 피팅을 거쳐 손으로 재단·봉제된 데님. 일본제 14oz 셀비지 로우 데님. 입을수록 색이 바랩니다.', colLink:'001 주문하기', specFabricLabel:'소재', specFabric:'일본제 14oz 셀비지', specSlotsLabel:'월 슬롯 수', specLeadLabel:'리드 타임', specLead:'2~8주', specOriginLabel:'제조지', carouselEyebrow:'거리에서', carouselTitle:'착용 모습.', carouselHint:'드래그 →', makingBadge:'최신 브이로그', makingTitle:'솔기<br>뒤에서.', makingBody:'패턴, CLO3D, 재봉, 웰링턴 거리. 모든 것을 기록합니다. 주로 일본어로, 항상 솔직하게.', signupTitle:'가장 먼저<br>알아보세요.', signupSub:'한 달에 4자리. 금방 찹니다. 배치 002 오픈 시 알려드립니다.', signupBtn:'알림 받기', signupPlaceholder:'이메일 주소', successMsg:'등록 완료. 배치 002 오픈 시 연락드립니다.', errorMsg:'오류 발생 — 다시 시도하거나 인스타그램으로 DM 주세요.', footerNote:'뉴질랜드 웰링턴에서 수제 제작' },
-  fr: { btn:'FR', label:'Wellington, Nouvelle-Zélande', sub:'001 — Jean Taille Haute Bootcut Large', cta:'Commander maintenant', navMaking:'Fabrication', navWaitlist:'Liste d\'attente', navApply:'Commander', statement:'Je fabrique chaque paire moi-même —<br><em>coupée et cousue sur commande</em><br>en denim japonais 14oz brut.<br>Quatre créneaux par mois. C\'est tout.', colEyebrow:'Le jean', colTitle:'Pas de stock.<br>Pas de compromis.<br>Une paire qui vous va vraiment.', colBody:'Chaque commission commence par vos mesures, passe par un essayage numérique CLO3D, et aboutit à un denim coupé et cousu à la main, fait pour vous. Denim japonais 14oz brut. Il vieillit avec vous.', colLink:'Commander 001', specFabricLabel:'Tissu', specFabric:'Denim japonais 14oz selvedge', specSlotsLabel:'Créneaux par lot', specLeadLabel:'Délai', specLead:'2 – 8 semaines', specOriginLabel:'Fabriqué à', carouselEyebrow:'Dans la rue', carouselTitle:'Tel que porté.', carouselHint:'Glisser →', makingBadge:'Dernier vlog', makingTitle:'Dans les<br>coulisses.', makingBody:'Patron, CLO3D, couture, les rues de Wellington. Je documente tout. Principalement en japonais, toujours honnête.', signupTitle:'Soyez le<br>premier informé.', signupSub:'4 créneaux par mois. Ça va vite. Laissez votre email pour le Lot 002.', signupBtn:'Me notifier', signupPlaceholder:'votre@email.com', successMsg:'Vous êtes sur la liste. Je vous contacterai à l\'ouverture du Lot 002.', errorMsg:'Une erreur s\'est produite — réessayez ou contactez-moi sur Instagram.', footerNote:'Fabriqué à la main à Wellington, Nouvelle-Zélande' },
-  de: { btn:'DE', label:'Wellington, Neuseeland', sub:'001 — High-Waist Wide-Leg Bootcut', cta:'Jetzt bestellen', navMaking:'Making-of', navWaitlist:'Warteliste', navApply:'Bestellen', statement:'Ich fertige jedes Paar selbst —<br><em>auf Bestellung zugeschnitten und genäht</em><br>aus rohem japanischem 14oz Selvedge.<br>Vier Plätze pro Monat. Das wars.', colEyebrow:'Die Jeans', colTitle:'Kein Lager.<br>Keine Kompromisse.<br>Einfach eine Jeans, die passt.', colBody:'Jede Kommission beginnt mit Ihren Maßen, durchläuft ein digitales CLO3D-Fitting und endet mit handgeschnittenem, handgenähtem Denim, der Ihnen gehört. Roher japanischer 14oz Selvedge. Er verblasst mit Ihnen.', colLink:'001 bestellen', specFabricLabel:'Stoff', specFabric:'Japanischer 14oz Selvedge', specSlotsLabel:'Plätze pro Batch', specLeadLabel:'Lieferzeit', specLead:'2 – 8 Wochen', specOriginLabel:'Gefertigt in', carouselEyebrow:'Auf der Straße', carouselTitle:'Wie getragen.', carouselHint:'Ziehen →', makingBadge:'Neuester Vlog', makingTitle:'Hinter den<br>Nähten.', makingBody:'Schnittmuster, CLO3D, Nähen, Wellingtons Straßen. Ich dokumentiere alles. Meist auf Japanisch, immer ehrlich.', signupTitle:'Als Erster<br>informiert sein.', signupSub:'4 Plätze pro Monat. Die sind schnell weg. E-Mail hinterlassen für Batch 002.', signupBtn:'Benachrichtigen', signupPlaceholder:'ihre@email.com', successMsg:'Sie sind auf der Liste. Ich melde mich zur Eröffnung von Batch 002.', errorMsg:'Ein Fehler ist aufgetreten — versuchen Sie es erneut oder schreiben Sie mir auf Instagram.', footerNote:'Handgefertigt in Wellington, Neuseeland' }
+  en: { btn:'EN', label:'Wellington, New Zealand', sub:'001 — High Waisted Wide Bootcut', cta:'Apply for a commission', navMaking:'Making', navWaitlist:'Waitlist', navApply:'Apply', statement:'Life is short.<br><em>Your clothes don\'t have to be.</em>', colEyebrow:'The jean', colTitle:'No stock.<br>No shortcuts.<br>Just a pair that fits.', colBody:'Each piece is cut from the finest Japanese selvedge denim — 14oz raw, the kind that develops a story with every wear. Made-to-measure for your body, built with construction techniques designed to last decades, not seasons.', colLink:'Apply for a commission', specFabricLabel:'Fabric', specFabric:'Japanese 14oz selvedge', specSlotsLabel:'Slots per batch', specLeadLabel:'Lead time', specLead:'2 – 8 weeks', specOriginLabel:'Made in', carouselEyebrow:'On the street', carouselTitle:'As worn.', carouselHint:'Drag →', makingBadge:'Latest vlog', makingTitle:'Behind<br>the seams.', makingBody:'Vlog #004 — Pattern drafting, CLO3D simulations & Wellington streets. I document everything (spoken in Japanese, subtitled in English).', signupTitle:'Be first<br>to know.', signupSub:'4 slots a month. They go fast. Drop your email and I\'ll let you know when Batch 002 opens.', signupBtn:'Notify me when Batch 002 opens', signupPlaceholder:'your@email.com', successMsg:"You're on the list. I'll be in touch.", errorMsg:"Something went wrong — try again or DM me.", footerNote:'Worn in. Lived in. Built to fade with you.' },
+  ja: { btn:'日本語', label:'ニュージーランド・ウェリントン', sub:'001 — ハイウエスト ワイドブーツカット', cta:'ビスポークを申請する', navMaking:'メイキング', navWaitlist:'順番待ち', navApply:'申請', statement:'すべてのペアを一人で制作 —<br><em>受注後に裁断・縫製</em><br>生の日本製14ozセルビッジデニムで。<br>月4枠のみ。', colEyebrow:'このジーンズについて', colTitle:'在庫なし。<br>妥協なし。<br>本当に合う一本。', colBody:'採寸から始まり、CLO3Dでデジタルフィッティングを経て、手裁断・手縫いで仕上げる一本。生の日本製14ozセルビッジ。着るほどに色落ちしていく。', colLink:'ビスポークを申請する', specFabricLabel:'素材', specFabric:'日本製14ozセルビッジ', specSlotsLabel:'月間枠数', specLeadLabel:'リードタイム', specLead:'2〜8週間', specOriginLabel:'製造地', carouselEyebrow:'ストリートで', carouselTitle:'着用コーデ。', carouselHint:'スクロール →', makingBadge:'最新動画', makingTitle:'縫い目の<br>裏側。', makingBody:'Vlog #004 — パターン制作、CLO3D、縫製、ウェリントンの街（日本語音声、英語字幕付き）。', signupTitle:'いち早く<br>知る。', signupSub:'月4枠。すぐに埋まります。メールを登録してバッチ002の情報をお受け取りください。', signupBtn:'バッチ002の通知を受け取る', signupPlaceholder:'メールアドレス', successMsg:'登録完了。バッチ002のオープン時にご連絡します。', errorMsg:'エラーが発生しました。もう一度お試しいただくか、InstagramでDMをください。', footerNote:'ニュージーランド・ウェリントンで手作り' },
+  ko: { btn:'한국어', label:'뉴질랜드 웰링턴', sub:'001 — 하이웨이스트 와이드 부츠컷', cta:'비스포크 신청하기', navMaking:'메이킹', navWaitlist:'대기자 명단', navApply:'신청', statement:'모든 페어를 직접 제작 —<br><em>주문 후 재단·봉제</em><br>일본제 14oz 셀비지 로우 데님으로.<br>한 달에 4자리뿐.', colEyebrow:'이 청바지에 대해', colTitle:'재고 없음.<br>타협 없음.<br>진짜 맞는 한 벌.', colBody:'채수에서 시작해 CLO3D 디지털 피팅을 거쳐 손으로 재단·봉제된 데님. 일본제 14oz 셀비지 로우 데님. 입을수록 색이 바랩니다.', colLink:'비스포크 신청하기', specFabricLabel:'소재', specFabric:'일본제 14oz 셀비지', specSlotsLabel:'월 슬롯 수', specLeadLabel:'리드 타임', specLead:'2~8주', specOriginLabel:'제조지', carouselEyebrow:'거리에서', carouselTitle:'착용 모습.', carouselHint:'드래그 →', makingBadge:'최신 브이로그', makingTitle:'솔기<br>뒤에서.', makingBody:'Vlog #004 — 패턴, CLO3D, 재봉, 웰링턴 거리 (일본어 음성, 영어 자막).', signupTitle:'가장 먼저<br>알아보세요.', signupSub:'한 달에 4자리. 금방 찹니다. 배치 002 오픈 시 알려드립니다.', signupBtn:'배치 002 알림 받기', signupPlaceholder:'이메일 주소', successMsg:'등록 완료. 배치 002 오픈 시 연락드립니다.', errorMsg:'오류 발생 — 다시 시도하거나 인스타그램으로 DM 주세요.', footerNote:'뉴질랜드 웰링턴에서 수제 제작' },
+  fr: { btn:'FR', label:'Wellington, Nouvelle-Zélande', sub:'001 — Jean Taille Haute Bootcut Large', cta:'Demander une commande', navMaking:'Fabrication', navWaitlist:'Liste d\'attente', navApply:'Postuler', statement:'Je fabrique chaque paire moi-même —<br><em>coupée et cousue sur commande</em><br>en denim japonais 14oz brut.<br>Quatre créneaux par mois. C\'est tout.', colEyebrow:'Le jean', colTitle:'Pas de stock.<br>Pas de compromis.<br>Une paire qui vous va vraiment.', colBody:'Chaque commission commence par vos mesures, passe par un essayage numérique CLO3D, et aboutit à un denim coupé et cousu à la main, fait pour vous. Denim japonais 14oz brut. Il vieillit avec vous.', colLink:'Demander une commande', specFabricLabel:'Tissu', specFabric:'Denim japonais 14oz selvedge', specSlotsLabel:'Créneaux par lot', specLeadLabel:'Délai', specLead:'2 – 8 semaines', specOriginLabel:'Fabriqué à', carouselEyebrow:'Dans la rue', carouselTitle:'Tel que porté.', carouselHint:'Glisser →', makingBadge:'Dernier vlog', makingTitle:'Dans les<br>coulisses.', makingBody:'Vlog #004 — Patrons, CLO3D, couture et rues de Wellington (en japonais avec sous-titres anglais).', signupTitle:'Soyez le<br>premier informé.', signupSub:'4 créneaux par mois. Ça va vite. Laissez votre email pour le Lot 002.', signupBtn:'M\'avertir pour le Lot 002', signupPlaceholder:'votre@email.com', successMsg:'Vous êtes sur la liste. Je vous contacterai à l\'ouverture du Lot 002.', errorMsg:'Une erreur s\'est produite — réessayez ou contactez-moi sur Instagram.', footerNote:'Fabriqué à la main à Wellington, Nouvelle-Zélande' },
+  de: { btn:'DE', label:'Wellington, Neuseeland', sub:'001 — High-Waist Wide-Leg Bootcut', cta:'Anfrage stellen', navMaking:'Making-of', navWaitlist:'Warteliste', navApply:'Anfragen', statement:'Ich fertige jedes Paar selbst —<br><em>auf Bestellung zugeschnitten und genäht</em><br>aus rohem japanischem 14oz Selvedge.<br>Vier Plätze pro Monat. Das wars.', colEyebrow:'Die Jeans', colTitle:'Kein Lager.<br>Keine Kompromisse.<br>Einfach eine Jeans, die passt.', colBody:'Jede Kommission beginnt mit Ihren Maßen, durchläuft ein digitales CLO3D-Fitting und endet mit handgeschnittenem, handgenähtem Denim, der Ihnen gehört. Roher japanischer 14oz Selvedge. Er verblasst mit Ihnen.', colLink:'Anfrage stellen', specFabricLabel:'Stoff', specFabric:'Japanischer 14oz Selvedge', specSlotsLabel:'Plätze pro Batch', specLeadLabel:'Lieferzeit', specLead:'2 – 8 Wochen', specOriginLabel:'Gefertigt in', carouselEyebrow:'Auf der Straße', carouselTitle:'Wie getragen.', carouselHint:'Ziehen →', makingBadge:'Neuester Vlog', makingTitle:'Hinter den<br>Nähten.', makingBody:'Vlog #004 — Schnittmuster, CLO3D, Nähen & Wellingtons Straßen (Japanisch mit englischen Untertiteln).', signupTitle:'Als Erster<br>informiert sein.', signupSub:'4 Plätze pro Monat. Die sind schnell weg. E-Mail hinterlassen für Batch 002.', signupBtn:'Benachrichtigung für Batch 002', signupPlaceholder:'ihre@email.com', successMsg:'Sie sind auf der Liste. Ich melde mich zur Eröffnung von Batch 002.', errorMsg:'Ein Fehler ist aufgetreten — versuchen Sie es erneut oder schreiben Sie mir auf Instagram.', footerNote:'Handgefertigt in Wellington, Neuseeland' }
 };
 
 let currentLang = 'en';
 
 function toggleLangMenu() {
-  document.getElementById('langMenu').classList.toggle('open');
+  const m = document.getElementById('langMenu');
+  if (m) m.classList.toggle('open');
 }
 
 document.addEventListener('click', e => {
   const wrap = document.querySelector('.lang-dropdown-wrap');
-  if (wrap && !wrap.contains(e.target)) document.getElementById('langMenu').classList.remove('open');
+  if (wrap && !wrap.contains(e.target)) {
+    const m = document.getElementById('langMenu');
+    if (m) m.classList.remove('open');
+  }
 });
 
 function setNavLang(lang) {
+  applyLang(lang);
+}
+
+function applyLang(lang) {
   currentLang = lang;
   const c = landingCopy[lang];
-  document.getElementById('langMenu').classList.remove('open');
-  document.getElementById('langBtn').textContent = c.btn;
+  if (!c) return;
+  const m = document.getElementById('langMenu');
+  if (m) m.classList.remove('open');
+  const btn = document.getElementById('langBtn');
+  if (btn) btn.textContent = c.btn;
   document.querySelectorAll('.lang-dropdown-menu button').forEach(b => {
-    b.classList.toggle('active', b.getAttribute('onclick') === `setNavLang('${lang}')`);
+    b.classList.toggle('active', b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${lang}'`));
   });
   const s = (id, val) => { const el = document.getElementById(id); if(el) el.innerHTML = val; };
   const t = (id, val) => { const el = document.getElementById(id); if(el) el.textContent = val; };
@@ -1101,7 +1114,8 @@ function setNavLang(lang) {
   s('signup-title', c.signupTitle);
   t('signup-sub', c.signupSub);
   t('signup-btn-text', c.signupBtn);
-  document.getElementById('signupEmail').placeholder = c.signupPlaceholder;
+  const emailInp = document.getElementById('signupEmail');
+  if (emailInp) emailInp.placeholder = c.signupPlaceholder;
   t('footer-note', c.footerNote);
   document.documentElement.lang = lang;
   sessionStorage.setItem('preferredLang', lang);
