@@ -54,6 +54,7 @@
 <link rel="stylesheet" href="tokens.css">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="animations.css">
+<link rel="stylesheet" href="japan-editorial.css">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -532,6 +533,10 @@ footer {
     <div class="s2-wordmark">
       <span>Callum Godfrey</span>
     </div>
+    <!-- Vertical JP margin accent — desktop only -->
+    <div class="s2-jp-vert-wrap" aria-hidden="true">
+      <span class="s2-jp-vert">型紙設計から縫製まで、すべて手作業で仕立てる。</span>
+    </div>
     <p class="s2-tagline tagline">Made for myself, now I make for you</p>
   </div>
 
@@ -549,6 +554,27 @@ footer {
 <section class="s3">
   <img src="media/pdf_p3_img1.jpeg" alt="Wearing the jeans" loading="lazy">
   <p class="s3-tagline tagline tagline-white">Made for myself, now I make for you</p>
+  <!-- Street-snap metadata overlay -->
+  <div class="street-snap" aria-label="Wear details">
+    <span class="street-snap-header">ON THE STREET / 着用実例</span>
+    <div class="street-snap-row">
+      <span class="street-snap-key">Maker</span>
+      <span class="street-snap-val">Callum Godfrey</span>
+    </div>
+    <div class="street-snap-row">
+      <span class="street-snap-key">Height / Size</span>
+      <span class="street-snap-val">180cm &nbsp;W30 L32</span>
+    </div>
+    <div class="street-snap-row">
+      <span class="street-snap-key">Location</span>
+      <span class="street-snap-val">Te Aro, Wellington NZ</span>
+    </div>
+    <div class="street-snap-row">
+      <span class="street-snap-key">Fade status</span>
+      <span class="street-snap-val">6 months — unwashed / 生穿き</span>
+    </div>
+    <p class="street-snap-quote">「履き込むほどに体に馴染む、一生モノのシルエット。」</p>
+  </div>
 </section>
 
 <!-- ═══════════════════════════════════
@@ -558,6 +584,21 @@ footer {
 
   <div class="s4-main">
     <img src="media/pdf_p4_img3.jpeg" alt="Studio at work" loading="lazy">
+    <!-- Construction callout pins — desktop hover only -->
+    <div class="callout-pins" aria-hidden="true">
+      <div class="callout-pin" style="left:28%;bottom:34%;">
+        <div class="callout-pin-dot">01</div>
+        <div class="callout-pin-label">銅製隠しリベット<br>Hidden Copper Rivets</div>
+      </div>
+      <div class="callout-pin" style="left:38%;bottom:18%;">
+        <div class="callout-pin-dot">02</div>
+        <div class="callout-pin-label">ユニオンスペシャル チェーンステッチ裾<br>Union Special Chainstitch Hem</div>
+      </div>
+      <div class="callout-pin callout-pin--flip" style="left:52%;bottom:48%;">
+        <div class="callout-pin-dot">03</div>
+        <div class="callout-pin-label">赤耳セルビッジライン<br>Classic Selvedge ID Ticker</div>
+      </div>
+    </div>
   </div>
 
   <div class="s4-stack">
@@ -572,10 +613,87 @@ footer {
 </section>
 
 <!-- ═══════════════════════════════════
+     SPEC SHEET — 仕様書
+     ═══════════════════════════════════ -->
+<div class="bil-strip bil-strip--dark" aria-hidden="true">
+  <div class="bil-strip-left">
+    <span class="bil-strip-en">The Jean</span>
+    <span class="bil-strip-sep">/</span>
+    <span class="bil-strip-jp">特集：一本のデニム</span>
+  </div>
+  <span class="bil-strip-index">BATCH 002 &nbsp;—&nbsp; EDITION OF 04</span>
+</div>
+
+<section class="s-spec reveal">
+  <div class="s-spec-head">
+    <div class="s-spec-head-left">
+      <span class="s-spec-head-en">Specification</span>
+      <span class="s-spec-head-jp">仕様書</span>
+    </div>
+    <div class="s-spec-head-index">
+      <span>VOL. 01 // ISSUE 2026</span><br>
+      <span>QUALITY INSPECTION / 検品済</span>
+    </div>
+  </div>
+
+  <div class="s-spec-row">
+    <div class="s-spec-key">
+      <span class="s-spec-key-en">Fabric</span>
+      <span class="s-spec-key-jp">生地</span>
+    </div>
+    <div class="s-spec-dots"></div>
+    <span class="s-spec-val">14oz Raw Japanese Selvedge — Indigo</span>
+  </div>
+
+  <div class="s-spec-row">
+    <div class="s-spec-key">
+      <span class="s-spec-key-en">Cut</span>
+      <span class="s-spec-key-jp">シルエット</span>
+    </div>
+    <div class="s-spec-dots"></div>
+    <span class="s-spec-val">High-Waisted Wide Bootcut — 001</span>
+  </div>
+
+  <div class="s-spec-row">
+    <div class="s-spec-key">
+      <span class="s-spec-key-en">Capacity</span>
+      <span class="s-spec-key-jp">生産数</span>
+    </div>
+    <div class="s-spec-dots"></div>
+    <span class="s-spec-val">4 pairs / month — Limited</span>
+  </div>
+
+  <div class="s-spec-row">
+    <div class="s-spec-key">
+      <span class="s-spec-key-en">Lead time</span>
+      <span class="s-spec-key-jp">納期</span>
+    </div>
+    <div class="s-spec-dots"></div>
+    <span class="s-spec-val">2 – 8 weeks from start of make</span>
+  </div>
+
+  <div class="s-spec-row">
+    <div class="s-spec-key">
+      <span class="s-spec-key-en">Atelier</span>
+      <span class="s-spec-key-jp">製作地</span>
+    </div>
+    <div class="s-spec-dots"></div>
+    <span class="s-spec-val">Te Aro, Wellington — New Zealand</span>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════
      VIDEO — Watch me work
      ═══════════════════════════════════ -->
 <section class="s-video" id="video-section" style="display:none;">
-  <span class="s-video-eyebrow">Watch me work</span>
+  <div class="column-header s-video-eyebrow">
+    <span class="column-header-label">Column / 職人の記録</span>
+    <div class="column-header-title">
+      <span class="column-header-title-en">Behind the Seams</span>
+      <span class="column-header-title-jp">制作ドキュメンタリー</span>
+    </div>
+    <span class="column-archive-note">Bilingual archive (EN / 日本語) — Pattern · Cut · Sew</span>
+  </div>
   <a class="s-video-thumb reveal" id="videoLink" href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener">
     <img id="videoImg" src="" alt="Latest video from the workshop">
     <div class="s-video-play">
@@ -588,7 +706,20 @@ footer {
 <!-- ═══════════════════════════════════
      WAITLIST
      ═══════════════════════════════════ -->
+<div class="bil-strip bil-strip--dark" aria-hidden="true">
+  <div class="bil-strip-left">
+    <span class="bil-strip-en">Commission</span>
+    <span class="bil-strip-sep">/</span>
+    <span class="bil-strip-jp">受注予約</span>
+  </div>
+</div>
+
 <section class="waitlist" id="waitlist">
+  <!-- Bespoke commission stamp -->
+  <div class="waitlist-stamp" aria-hidden="true">
+    <span class="waitlist-stamp-en">Bespoke Commissions</span>
+    <span class="waitlist-stamp-jp">特注・受注生産</span>
+  </div>
   <span class="waitlist-eyebrow" id="l-signup-eyebrow">Stay in the loop</span>
   <h2 class="waitlist-title" id="l-signup-title">Be first<br>to know.</h2>
   <p class="waitlist-sub" id="l-signup-sub">4 slots a month. They go fast. DM me on Instagram to join the waitlist for the next batch.</p>
@@ -622,6 +753,7 @@ footer {
       <a href="faq.html" class="footer-link">FAQ</a>
     </div>
     <span class="footer-note" id="l-footer-note">Made by hand in Wellington, NZ</span>
+    <span class="footer-vol" aria-hidden="true">VOL. 01 &nbsp;//&nbsp; ISSUE 2026 &nbsp;//&nbsp; EDITION OF 04</span>
   </div>
   <div class="footer-right">
     <a href="order.html" class="footer-order" id="l-footer-order">Order now →</a>

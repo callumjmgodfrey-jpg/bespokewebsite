@@ -1,0 +1,406 @@
+/* ============================================================
+   japan-editorial.css
+   Magazine micro-typography layer — inspired by 2000s Japanese
+   denim press (Boon, Lightning, Huge). Layered on top of the
+   existing design system; never conflicts with tokens.css or
+   inner.css. All elements use muted colour and generous spacing
+   so the minimalist aesthetic is preserved.
+   ============================================================ */
+
+/* ── Japanese-aware font stacks ─────────────────────────────
+   Shippori Mincho (already loaded in tokens.css) for mincho
+   accents; system JP sans for all micro-labels. No extra font
+   request needed.
+   ─────────────────────────────────────────────────────────── */
+.jp-sans {
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+.jp-mincho {
+  font-family: 'Shippori Mincho', 'Hiragino Mincho ProN',
+    'Yu Mincho', 'Noto Serif JP', serif;
+}
+
+/* ── Bilingual section label strip ──────────────────────────
+   Thin 40px-ish horizontal rule between sections carrying
+   EN + JP paired copy. Desktop: space-between row.
+   Mobile: collapses to a stacked pair.
+   ─────────────────────────────────────────────────────────── */
+.bil-strip {
+  padding: 14px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 0.5px solid #d4d3ce;
+  background: #fdfdfb;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.bil-strip--dark {
+  background: #141412;
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+.bil-strip-left {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.bil-strip-en {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8a8a84;
+}
+.bil-strip-sep { color: #d4d3ce; font-size: 9px; }
+.bil-strip-jp {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: #c0bfba;
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+.bil-strip-dark .bil-strip-en { color: rgba(255,255,255,0.3); }
+.bil-strip-dark .bil-strip-sep { color: rgba(255,255,255,0.12); }
+.bil-strip-dark .bil-strip-jp { color: rgba(255,255,255,0.15); }
+.bil-strip-index {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: #d4d3ce;
+  font-family: 'Courier New', Courier, monospace;
+}
+.bil-strip-dark .bil-strip-index { color: rgba(255,255,255,0.15); }
+@media (max-width: 768px) {
+  .bil-strip { padding: 12px 24px; }
+}
+
+/* ── Vertical Japanese margin accent ────────────────────────
+   Sits on the right edge of .s2-left (desktop only).
+   Positioned absolutely so it never shifts layout.
+   ─────────────────────────────────────────────────────────── */
+.s2-jp-vert-wrap {
+  position: absolute;
+  right: 14px;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+.s2-jp-vert {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.22);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  white-space: nowrap;
+}
+@media (max-width: 768px) { .s2-jp-vert-wrap { display: none; } }
+
+/* ── Street-snap info overlay (S3 lifestyle shot) ───────────
+   Bottom-right corner of the full-bleed hero. Dark glass box
+   with tabular metadata. Hidden on very small viewports.
+   ─────────────────────────────────────────────────────────── */
+.street-snap {
+  position: absolute;
+  bottom: 40px;
+  right: 48px;
+  z-index: 5;
+  background: rgba(14,14,12,0.72);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-top: 1px solid rgba(255,255,255,0.18);
+  padding: 16px 20px 14px;
+  min-width: 230px;
+}
+.street-snap-header {
+  font-size: 8px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  margin-bottom: 10px;
+  display: block;
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', Arial, sans-serif;
+}
+.street-snap-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 4px 0;
+  border-bottom: 0.5px solid rgba(255,255,255,0.07);
+}
+.street-snap-row:last-of-type { border-bottom: none; }
+.street-snap-key {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.38);
+  white-space: nowrap;
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', Arial, sans-serif;
+}
+.street-snap-val {
+  font-size: 9px;
+  letter-spacing: 0.05em;
+  color: rgba(255,255,255,0.72);
+  text-align: right;
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+.street-snap-quote {
+  margin-top: 10px;
+  padding-top: 9px;
+  border-top: 0.5px solid rgba(255,255,255,0.10);
+  font-size: 9px;
+  line-height: 1.65;
+  color: rgba(255,255,255,0.32);
+  font-family: 'Shippori Mincho', 'Hiragino Mincho ProN', serif;
+  font-style: italic;
+}
+@media (max-width: 540px) {
+  .street-snap { bottom: 20px; right: 20px; left: 20px; min-width: unset; }
+}
+
+/* ── Callout pins (S4 main photo) ───────────────────────────
+   Numbered construction-detail annotations. Hover reveals the
+   label. Desktop only.
+   ─────────────────────────────────────────────────────────── */
+.callout-pins {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+.callout-pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+  cursor: default;
+}
+.callout-pin-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(14,14,12,0.65);
+  border: 1px solid rgba(255,255,255,0.42);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  color: rgba(255,255,255,0.85);
+  flex-shrink: 0;
+  font-family: 'Courier New', Courier, monospace;
+  transition: background 0.18s, border-color 0.18s;
+}
+.callout-pin:hover .callout-pin-dot {
+  background: rgba(14,14,12,0.9);
+  border-color: rgba(255,255,255,0.7);
+}
+.callout-pin-label {
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 0.18s, transform 0.18s;
+  background: rgba(14,14,12,0.82);
+  backdrop-filter: blur(4px);
+  padding: 6px 10px;
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  line-height: 1.55;
+  color: rgba(255,255,255,0.8);
+  white-space: nowrap;
+  pointer-events: none;
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+.callout-pin:hover .callout-pin-label {
+  opacity: 1;
+  transform: translateX(0);
+}
+/* right-side pins: label flips to left of dot */
+.callout-pin--flip { flex-direction: row-reverse; }
+.callout-pin--flip .callout-pin-label { transform: translateX(4px); }
+.callout-pin--flip:hover .callout-pin-label { transform: translateX(0); }
+@media (max-width: 768px) { .callout-pins { display: none; } }
+
+/* ── Spec sheet section ──────────────────────────────────────
+   Dark tabular spec ledger with dot leaders and monospaced
+   data values. Full width, inserted after S4.
+   ─────────────────────────────────────────────────────────── */
+.s-spec {
+  background: #0f0f0d;
+  padding: 72px 48px 80px;
+}
+.s-spec-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 36px;
+  padding-bottom: 18px;
+  border-bottom: 0.5px solid rgba(255,255,255,0.10);
+}
+.s-spec-head-left { display: flex; flex-direction: column; gap: 3px; }
+.s-spec-head-en {
+  font-size: 9px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+}
+.s-spec-head-jp {
+  font-size: 9px;
+  letter-spacing: 0.14em;
+  color: rgba(255,255,255,0.14);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+.s-spec-head-index {
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  color: rgba(255,255,255,0.15);
+  font-family: 'Courier New', Courier, monospace;
+  text-align: right;
+  line-height: 1.6;
+}
+.s-spec-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: baseline;
+  gap: 0 6px;
+  padding: 13px 0;
+  border-top: 0.5px solid rgba(255,255,255,0.06);
+}
+.s-spec-row:last-child { border-bottom: 0.5px solid rgba(255,255,255,0.06); }
+.s-spec-key {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.s-spec-key-en {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+}
+.s-spec-key-jp {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.14);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+.s-spec-dots {
+  /* dot leader: flexbox grow + dotted bottom border */
+  flex: 1;
+  border-bottom: 1px dotted rgba(255,255,255,0.10);
+  height: 1em;
+  min-width: 24px;
+  align-self: end;
+  margin-bottom: 2px;
+}
+.s-spec-val {
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  color: rgba(255,255,255,0.68);
+  font-family: 'Courier New', Courier, monospace;
+  text-align: right;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .s-spec { padding: 56px 24px 64px; }
+  .s-spec-head { flex-direction: column; align-items: flex-start; gap: 10px; }
+  /* collapse to 2-col: key | value, no dots */
+  .s-spec-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .s-spec-dots { display: none; }
+  .s-spec-val { text-align: left; }
+}
+
+/* ── Bespoke commission stamp (waitlist section) ────────────
+   Thin ruled rectangle. EN over JP. Pure CSS, no images.
+   ─────────────────────────────────────────────────────────── */
+.waitlist-stamp {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255,255,255,0.16);
+  padding: 9px 20px 10px;
+  gap: 2px;
+  margin-bottom: 32px;
+  letter-spacing: 0;
+}
+.waitlist-stamp-en {
+  font-size: 7px;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.28);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', Arial, sans-serif;
+}
+.waitlist-stamp-jp {
+  font-size: 9px;
+  letter-spacing: 0.12em;
+  color: rgba(255,255,255,0.16);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+
+/* ── Vol / issue editorial badge (footer) ───────────────────
+   Monospaced micro-copy beneath the footer note.
+   ─────────────────────────────────────────────────────────── */
+.footer-vol {
+  font-size: 8px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #d4d3ce;
+  font-family: 'Courier New', Courier, monospace;
+  margin-top: 12px;
+  display: block;
+}
+
+/* ── "Behind the Seams" column header (video section) ───────
+   Replaces the plain eyebrow text with a layered label.
+   ─────────────────────────────────────────────────────────── */
+.column-header { display: flex; flex-direction: column; gap: 3px; }
+.column-header-label {
+  font-size: 8px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: #8a8a84;
+}
+.column-header-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.column-header-title-en {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #6a6a64;
+}
+.column-header-title-jp {
+  font-size: 9px;
+  letter-spacing: 0.1em;
+  color: #aaa9a3;
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+.column-archive-note {
+  font-size: 8px;
+  letter-spacing: 0.14em;
+  color: #b8b8b2;
+  font-family: 'Courier New', Courier, monospace;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
