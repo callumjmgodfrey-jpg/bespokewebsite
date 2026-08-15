@@ -14,6 +14,43 @@
 <meta name="twitter:title" content="Callum Godfrey — Bespoke Selvedge Denim">
 <meta name="twitter:description" content="Hand-cut, hand-sewn bespoke jeans made from Japanese selvedge denim. Based in Wellington, New Zealand.">
 <meta name="twitter:image" content="media/pdf_p1_img1.jpeg">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "LocalBusiness",
+      "name": "Callum Godfrey",
+      "description": "Bespoke hand-cut, hand-sewn jeans made from Japanese 14oz selvedge denim. Based in Wellington, New Zealand.",
+      "url": "https://callumgodfrey.com",
+      "image": "https://callumgodfrey.com/media/product_indigo_cuff.jpeg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Wellington",
+        "addressCountry": "NZ"
+      },
+      "priceRange": "NZD $500–$550",
+      "sameAs": [
+        "https://www.instagram.com/callumgodfreyy/",
+        "https://www.youtube.com/@callumgodfreymusic",
+        "https://www.tiktok.com/@callumgodfreyy"
+      ]
+    },
+    {
+      "@type": "Person",
+      "name": "Callum Godfrey",
+      "jobTitle": "Bespoke Denim Maker",
+      "url": "https://callumgodfrey.com/about.html",
+      "image": "https://callumgodfrey.com/media/about_young.jpeg",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Wellington",
+        "addressCountry": "NZ"
+      }
+    }
+  ]
+}
+</script>
 <link rel="stylesheet" href="tokens.css">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="animations.css">
@@ -361,6 +398,65 @@ footer {
 }
 .footer-order:hover { opacity: 0.6; }
 
+/* ── VIDEO SECTION ── */
+.s-video {
+  padding: 80px 48px;
+  background: #f4f3f0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+.s-video-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #8a8a84;
+}
+.s-video-thumb {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 900px;
+  aspect-ratio: 16/9;
+  overflow: hidden;
+  background: #141412;
+  text-decoration: none;
+}
+.s-video-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.3s;
+}
+.s-video-thumb:hover img { opacity: 0.85; }
+.s-video-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.s-video-play svg {
+  width: 56px;
+  height: 56px;
+  fill: #fff;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.4));
+  transition: transform 0.2s;
+}
+.s-video-thumb:hover .s-video-play svg { transform: scale(1.08); }
+.s-video-caption {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #8a8a84;
+}
+@media (max-width: 768px) {
+  .s-video { padding: 48px 24px; }
+}
+
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
   /* Text sizing */
@@ -473,6 +569,20 @@ footer {
 
   <p class="s4-tagline tagline">Made for myself, now I make for you</p>
 
+</section>
+
+<!-- ═══════════════════════════════════
+     VIDEO — Watch me work
+     ═══════════════════════════════════ -->
+<section class="s-video" id="video-section" style="display:none;">
+  <span class="s-video-eyebrow">Watch me work</span>
+  <a class="s-video-thumb reveal" id="videoLink" href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener">
+    <img id="videoImg" src="" alt="Latest video from the workshop">
+    <div class="s-video-play">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </div>
+  </a>
+  <span class="s-video-caption reveal">Latest from the workshop</span>
 </section>
 
 <!-- ═══════════════════════════════════
@@ -602,6 +712,19 @@ function setNavLang(lang) {
 
 const saved = localStorage.getItem('lang');
 setNavLang(saved && landingCopy[saved] ? saved : 'en');
+
+/* ── LATEST VIDEO ── */
+(async () => {
+  try {
+    const res = await fetch('/.netlify/functions/latest-video');
+    if (!res.ok) return;
+    const { videoId } = await res.json();
+    if (!videoId) return;
+    document.getElementById('videoImg').src = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
+    document.getElementById('videoLink').href = 'https://www.youtube.com/watch?v=' + videoId;
+    document.getElementById('video-section').style.display = 'flex';
+  } catch (e) { /* hide section if fetch fails */ }
+})();
 </script>
 </body>
 </html>

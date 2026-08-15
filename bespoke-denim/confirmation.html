@@ -154,6 +154,44 @@ nav {
 
 .back-link:hover { opacity: 0.4; }
 
+/* ORDER SUMMARY */
+.order-summary {
+  margin-top: 48px;
+  border-top: 0.5px solid var(--light);
+  padding-top: 32px;
+}
+
+.order-summary-label {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 24px;
+}
+
+.order-summary-list { list-style: none; }
+
+.order-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 16px;
+  padding: 12px 0;
+  border-bottom: 0.5px solid var(--light);
+  font-size: 12px;
+}
+
+.order-row dt {
+  color: var(--mid);
+  letter-spacing: 0.05em;
+  font-weight: 400;
+}
+
+.order-row dd {
+  color: var(--ink);
+  font-weight: 400;
+}
+
 /* NEXT STEPS */
 .next-steps {}
 
@@ -288,10 +326,34 @@ footer {
 <div class="confirmation-body">
   <div>
     <p class="confirmation-lead reveal">
-      Payment received — your order is confirmed and I'll get started shortly.<br><br>
+      <span id="conf-greeting"></span>Payment received — your order is confirmed and I'll get started shortly.<br><br>
       <em>Everything is cut and sewn by hand. I'll be in touch via email with updates as your jeans take shape.</em>
     </p>
     <a href="index.html" class="back-link reveal reveal-d1">Back to the site</a>
+
+    <div class="order-summary reveal" id="orderSummary" style="display:none;">
+      <span class="order-summary-label">Your order</span>
+      <dl class="order-summary-list">
+        <div class="order-row" id="os-row-name" style="display:none;">
+          <dt>Name</dt><dd id="os-name"></dd>
+        </div>
+        <div class="order-row">
+          <dt>Product</dt><dd>001 — Wide Bootcut</dd>
+        </div>
+        <div class="order-row" id="os-row-sizing" style="display:none;">
+          <dt>Sizing</dt><dd id="os-sizing"></dd>
+        </div>
+        <div class="order-row" id="os-row-colour" style="display:none;">
+          <dt>Colour</dt><dd id="os-colour"></dd>
+        </div>
+        <div class="order-row" id="os-row-shipping" style="display:none;">
+          <dt>Ships to</dt><dd id="os-shipping"></dd>
+        </div>
+        <div class="order-row">
+          <dt>Total paid</dt><dd id="os-total"></dd>
+        </div>
+      </dl>
+    </div>
   </div>
 
   <div class="next-steps">
@@ -354,5 +416,57 @@ footer {
 </footer>
 
 <script src="animations.js"></script>
+<script>
+(async () => {
+  const params = new URLSearchParams(window.location.search);
+  const sessionId = params.get('session_id');
+  if (!sessionId) return;
+
+  try {
+    const res = await fetch('/.netlify/functions/get-session?session_id=' + encodeURIComponent(sessionId));
+    if (!res.ok) return;
+    const d = await res.json();
+
+    if (d.customerName) {
+      const firstName = d.customerName.split(' ')[0];
+      document.getElementById('conf-greeting').textContent = 'Hi ' + firstName + ' — ';
+    }
+
+    if (d.customerName) {
+      document.getElementById('os-name').textContent = d.customerName;
+      document.getElementById('os-row-name').style.display = 'grid';
+    }
+
+    if (d.sizingType) {
+      let sizingText = d.sizingType;
+      if (d.sizingType === 'Made to measure' && d.naturalWaist) {
+        sizingText += ' — waist ' + d.naturalWaist + 'cm, hip ' + d.highHip + 'cm, inseam ' + d.inseam + 'cm';
+      } else if (d.size) {
+        sizingText += ' — ' + d.size;
+      }
+      document.getElementById('os-sizing').textContent = sizingText;
+      document.getElementById('os-row-sizing').style.display = 'grid';
+    }
+
+    if (d.colour) {
+      document.getElementById('os-colour').textContent = d.colour;
+      document.getElementById('os-row-colour').style.display = 'grid';
+    }
+
+    if (d.shippingLabel) {
+      document.getElementById('os-shipping').textContent = d.shippingLabel;
+      document.getElementById('os-row-shipping').style.display = 'grid';
+    }
+
+    if (d.amountTotal) {
+      const currency = (d.currency || 'nzd').toUpperCase();
+      const amount = (d.amountTotal / 100).toLocaleString('en-NZ', { style: 'currency', currency });
+      document.getElementById('os-total').textContent = amount;
+    }
+
+    document.getElementById('orderSummary').style.display = 'block';
+  } catch (e) { /* fail silently — generic page still works */ }
+})();
+</script>
 </body>
 </html>
