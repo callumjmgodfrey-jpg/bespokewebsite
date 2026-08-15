@@ -388,38 +388,33 @@ footer {
 
 /* ── RESPONSIVE ── */
 @media (max-width: 768px) {
-  /* S1 — hero: taller on mobile, CTA repositioned */
-  .s1 { height: 100svh; }
-  .s1-tagline { font-size: 16px; bottom: 12%; white-space: normal; text-align: center; width: 80%; }
-  .s1-cta { right: 24px; bottom: 10%; font-size: 9px; }
-
-  /* S2 — stack vertically: wordmark block first, then photo, then side photos hidden */
-  .s2 { display: flex; flex-direction: column; min-height: auto; }
-  .s2-left { height: 80vw; order: 1; }
-  .s2-wordmark { left: 0; }
+  /* Text sizing */
+  .tagline { font-size: 20px; white-space: normal; text-align: center; width: 80%; }
   .s2-wordmark span { font-size: 18vw; }
-  .s2-tagline { font-size: 16px; white-space: normal; text-align: center; width: 80%; }
-  .s2-right { display: none; } /* hide 3 stacked photos on mobile — too cramped */
-
-  /* S3 — full bleed, shorter */
-  .s3 { height: 60vw; min-height: 260px; }
-  .s3-tagline { font-size: 16px; white-space: normal; text-align: center; width: 80%; }
-
-  /* S4 — single column */
-  .s4 { display: flex; flex-direction: column; min-height: auto; }
-  .s4-main { height: 70vw; }
-  .s4-stack { flex-direction: row; padding: 8px 0; height: 44vw; gap: 4px; }
-  .s4-stripe { display: none; }
-  .s4-tagline { font-size: 16px; white-space: normal; text-align: center; width: 80%; }
-
-  /* Waitlist */
-  .waitlist { padding: 72px 24px 88px; }
   .waitlist-title { font-size: clamp(36px, 10vw, 56px); }
+
+  /* S1 */
+  .s1-cta { right: 24px; bottom: 10%; }
+
+  /* S2 — stack: big photo on top, 3 photos below */
+  .s2 { display: flex; flex-direction: column; }
+  .s2-left { height: 100vw; }
+  .s2-right { flex-direction: row; flex-wrap: wrap; padding: 8px; gap: 6px; align-items: stretch; }
+  .s2-right img { width: calc(50% - 3px); aspect-ratio: 4/3; flex: none; }
+
+  /* S3 */
+  .s3 { height: 80vw; min-height: 280px; }
+
+  /* S4 — stack: main photo, then side photos as a row */
+  .s4 { display: flex; flex-direction: column; }
+  .s4-main { height: 80vw; }
+  .s4-stack { flex-direction: row; height: 44vw; padding: 6px 0; }
+  .s4-stripe { display: none; }
 
   /* Footer */
   footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 56px; }
   .footer-right { align-items: flex-start; }
-  .footer-links { gap: 10px 24px; }
+  .waitlist { padding: 72px 24px 88px; }
 }
 </style>
 </head>
