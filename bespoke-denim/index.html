@@ -11,6 +11,9 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="media/pdf_p1_img1.jpeg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Callum Godfrey — Bespoke Selvedge Denim">
+<meta name="twitter:description" content="Hand-cut, hand-sewn bespoke jeans made from Japanese selvedge denim. Based in Wellington, New Zealand.">
+<meta name="twitter:image" content="media/pdf_p1_img1.jpeg">
 <link rel="stylesheet" href="tokens.css">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="animations.css">
@@ -53,8 +56,7 @@ nav {
   .nav-link:not(.nav-apply-link) { display: none; }
 }
 
-/* ── RED ACCENT ── */
-:root { --red: #c0302a; }
+/* ── DM BUTTON ── */
 
 /* ── TAGLINE (shared) ── */
 .tagline {
@@ -283,46 +285,19 @@ nav {
   max-width: 420px;
   margin-bottom: 48px;
 }
-.waitlist-form {
-  display: flex;
-  gap: 0;
-  width: 100%;
-  max-width: 520px;
-  border-bottom: 1px solid rgba(255,255,255,0.25);
-  padding-bottom: 2px;
-}
-.waitlist-input {
-  flex: 1;
-  background: none;
-  border: none;
-  outline: none;
-  font-size: 13px;
-  color: #fff;
-  font-family: var(--sans);
-  padding: 8px 0;
-}
-.waitlist-input::placeholder { color: rgba(255,255,255,0.3); }
-.waitlist-btn {
-  background: none;
-  border: none;
+.waitlist-dm-btn {
+  display: inline-block;
+  margin-top: 20px;
   font-size: 10px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--red);
-  cursor: pointer;
-  font-family: var(--sans);
-  padding: 8px 0 8px 20px;
-  transition: opacity 0.2s;
+  color: #fff;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  padding: 14px 32px;
+  transition: border-color 0.2s, opacity 0.2s;
 }
-.waitlist-btn:hover { opacity: 0.6; }
-.waitlist-msg {
-  margin-top: 16px;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  min-height: 18px;
-}
-.waitlist-msg.success { color: #2d6a4f; }
-.waitlist-msg.error   { color: var(--red); }
+.waitlist-dm-btn:hover { border-color: #fff; }
 
 /* ── FOOTER ── */
 footer {
@@ -506,12 +481,8 @@ footer {
 <section class="waitlist" id="waitlist">
   <span class="waitlist-eyebrow" id="l-signup-eyebrow">Stay in the loop</span>
   <h2 class="waitlist-title" id="l-signup-title">Be first<br>to know.</h2>
-  <p class="waitlist-sub" id="l-signup-sub">4 slots a month. They go fast. Drop your email and I'll let you know when the next batch opens.</p>
-  <form class="waitlist-form" id="signupForm">
-    <input class="waitlist-input" type="email" id="signupEmail" placeholder="your@email.com" required autocomplete="email">
-    <button class="waitlist-btn" type="submit" id="signupBtn"><span id="l-signup-btn">Notify me</span></button>
-  </form>
-  <p class="waitlist-msg" id="signupMsg"></p>
+  <p class="waitlist-sub" id="l-signup-sub">4 slots a month. They go fast. DM me on Instagram to join the waitlist for the next batch.</p>
+  <a class="waitlist-dm-btn" href="https://ig.me/m/callumgodfreyy" target="_blank" rel="noopener" id="l-signup-btn">DM on Instagram →</a>
 </section>
 
 <!-- ═══════════════════════════════════
@@ -555,11 +526,8 @@ const landingCopy = {
     cta: 'Order now →',
     eyebrow: 'Stay in the loop',
     title: 'Be first<br>to know.',
-    sub: '4 slots a month. They go fast. Drop your email and I\'ll let you know when the next batch opens.',
-    placeholder: 'Your email',
-    btn: 'Notify me',
-    success: 'You\'re on the list.',
-    error: 'Something went wrong — try again.',
+    sub: '4 slots a month. They go fast. DM me on Instagram to join the waitlist.',
+    dmBtn: 'DM on Instagram →',
     footerNote: 'Handmade in Wellington, NZ',
     footerOrder: 'Order now →',
   },
@@ -567,11 +535,8 @@ const landingCopy = {
     cta: '注文する →',
     eyebrow: '最新情報をお届け',
     title: '最初に<br>知る。',
-    sub: '月4枠のみ。すぐに埋まります。メールを登録して、次のバッチが開いたらお知らせします。',
-    placeholder: 'メールアドレス',
-    btn: '通知を受け取る',
-    success: 'リストに登録されました。',
-    error: 'エラーが発生しました。再試行してください。',
+    sub: '月4枠のみ。すぐに埋まります。Instagramでダイレクトメッセージを送ってウェイティングリストに参加してください。',
+    dmBtn: 'Instagramでメッセージ →',
     footerNote: 'ニュージーランド・ウェリントンにて手製',
     footerOrder: '注文する →',
   },
@@ -579,11 +544,8 @@ const landingCopy = {
     cta: '주문하기 →',
     eyebrow: '최신 소식 받기',
     title: '가장 먼저<br>알아보세요.',
-    sub: '한 달에 4개 슬롯만 있습니다. 빨리 마감됩니다. 이메일을 등록하시면 다음 배치가 열릴 때 알려드립니다.',
-    placeholder: '이메일 주소',
-    btn: '알림 받기',
-    success: '리스트에 등록되었습니다.',
-    error: '오류가 발생했습니다. 다시 시도해 주세요.',
+    sub: '한 달에 4개 슬롯만 있습니다. 빨리 마감됩니다. Instagram에서 DM을 보내 대기자 명단에 올라가세요.',
+    dmBtn: 'Instagram으로 DM →',
     footerNote: '뉴질랜드 웰링턴에서 수공예로 제작',
     footerOrder: '주문하기 →',
   },
@@ -591,11 +553,8 @@ const landingCopy = {
     cta: 'Commander →',
     eyebrow: 'Restez informé',
     title: 'Soyez le premier<br>à savoir.',
-    sub: '4 commissions par mois. Les places partent vite. Laissez votre email et je vous préviendrai à l\'ouverture du prochain lot.',
-    placeholder: 'Votre email',
-    btn: 'M\'avertir',
-    success: 'Vous êtes sur la liste.',
-    error: 'Une erreur est survenue — réessayez.',
+    sub: '4 commissions par mois. Les places partent vite. Envoyez-moi un DM sur Instagram pour rejoindre la liste d\'attente.',
+    dmBtn: 'Message sur Instagram →',
     footerNote: 'Fait main à Wellington, NZ',
     footerOrder: 'Commander →',
   },
@@ -603,11 +562,8 @@ const landingCopy = {
     cta: 'Jetzt bestellen →',
     eyebrow: 'Auf dem Laufenden bleiben',
     title: 'Als Erster<br>erfahren.',
-    sub: '4 Slots pro Monat. Sie sind schnell vergeben. Trag deine E-Mail ein und ich melde mich, wenn das nächste Batch öffnet.',
-    placeholder: 'Deine E-Mail',
-    btn: 'Benachrichtigen',
-    success: 'Du bist auf der Liste.',
-    error: 'Etwas ist schiefgelaufen — versuche es erneut.',
+    sub: '4 Slots pro Monat. Schnell ausgebucht. Schreib mir eine DM auf Instagram, um auf die Warteliste zu kommen.',
+    dmBtn: 'DM auf Instagram →',
     footerNote: 'Handgefertigt in Wellington, NZ',
     footerOrder: 'Jetzt bestellen →',
   },
@@ -631,7 +587,7 @@ function setNavLang(lang) {
     b.classList.toggle('active', b.getAttribute('onclick') === `setNavLang('${lang}')`);
   });
   document.documentElement.lang = lang;
-  sessionStorage.setItem('preferredLang', lang);
+  localStorage.setItem('lang', lang);
 
   const c = landingCopy[lang] || landingCopy.en;
   const set = (id, html) => { const el = document.getElementById(id); if (el) el.innerHTML = html; };
@@ -639,59 +595,13 @@ function setNavLang(lang) {
   set('l-signup-eyebrow', c.eyebrow);
   set('l-signup-title', c.title);
   set('l-signup-sub', c.sub);
-  set('l-signup-btn', c.btn);
+  set('l-signup-btn', c.dmBtn);
   set('l-footer-order', c.footerOrder);
   set('l-footer-note', c.footerNote);
-  const inp = document.getElementById('signupEmail');
-  if (inp) inp.placeholder = c.placeholder;
 }
 
-const saved = sessionStorage.getItem('preferredLang');
+const saved = localStorage.getItem('lang');
 setNavLang(saved && landingCopy[saved] ? saved : 'en');
-
-/* ── KLAVIYO SIGNUP ── */
-document.getElementById('signupForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const lang = document.documentElement.lang || 'en';
-  const c = landingCopy[lang] || landingCopy.en;
-  const btn = document.getElementById('signupBtn');
-  const msg = document.getElementById('signupMsg');
-  const email = document.getElementById('signupEmail').value.trim();
-  if (!email) return;
-
-  btn.disabled = true;
-  btn.style.opacity = '0.5';
-
-  try {
-    const res = await fetch('https://a.klaviyo.com/client/subscriptions/?company_id=VQjQCZ', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'revision': '2023-02-22' },
-      body: JSON.stringify({
-        data: {
-          type: 'subscription',
-          attributes: {
-            list_id: 'RRShYG',
-            email,
-          },
-        },
-      }),
-    });
-    msg.textContent = res.ok ? c.success : c.error;
-    msg.style.color = res.ok ? 'rgba(255,255,255,0.7)' : '#c0302a';
-    if (res.ok) {
-      document.getElementById('signupEmail').value = '';
-      btn.textContent = '✓';
-    } else {
-      btn.disabled = false;
-      btn.style.opacity = '1';
-    }
-  } catch {
-    msg.textContent = c.error;
-    msg.style.color = '#c0302a';
-    btn.disabled = false;
-    btn.style.opacity = '1';
-  }
-});
 </script>
 </body>
 </html>

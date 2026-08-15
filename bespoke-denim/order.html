@@ -448,29 +448,19 @@ nav {
 .form-closed.visible { display: block; }
 .form-closed-title { font-family: var(--serif); font-size: 22px; font-weight: 400; margin-bottom: 12px; }
 .form-closed-body { font-size: 13px; color: var(--mid); line-height: 1.7; margin-bottom: 20px; }
-.form-closed-signup { display: flex; gap: 8px; }
-.form-closed-input {
-  flex: 1;
-  border: 0.5px solid var(--light);
-  background: none;
-  padding: 10px 12px;
-  font-size: 13px;
-  font-family: var(--sans);
-  color: var(--ink);
-  outline: none;
-}
-.form-closed-btn {
+.form-closed-dm-btn {
+  display: inline-block;
   background: var(--ink);
   color: var(--white);
-  border: none;
-  padding: 10px 20px;
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  cursor: pointer;
+  text-decoration: none;
+  padding: 12px 28px;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
   font-family: var(--sans);
+  transition: opacity 0.2s;
 }
-.form-closed-msg { font-size: 12px; color: var(--mid); margin-top: 10px; }
-.form-closed-msg.success { color: #2d7d46; }
+.form-closed-dm-btn:hover { opacity: 0.7; }
 
 /* HONEYPOT */
 .hp-field { opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1; pointer-events: none; }
@@ -616,12 +606,8 @@ footer {
     <!-- Batch closed state -->
     <div class="form-closed" id="formClosed">
       <h2 class="form-closed-title">Batch 001 is full.</h2>
-      <p class="form-closed-body" id="l-closed-body">All commission slots for Batch 001 have been filled. Drop your email below and you'll be first to know when Batch 002 opens.</p>
-      <div class="form-closed-signup">
-        <input class="form-closed-input" type="email" placeholder="your@email.com" id="closedEmail" />
-        <button class="form-closed-btn" onclick="submitWaitlist()" id="l-closed-btn">Join waitlist</button>
-      </div>
-      <p class="form-closed-msg" id="closedMsg"></p>
+      <p class="form-closed-body" id="l-closed-body">All commission slots for Batch 001 have been filled. DM me on Instagram to join the waitlist for Batch 002.</p>
+      <a class="form-closed-dm-btn" href="https://ig.me/m/callumgodfreyy" target="_blank" rel="noopener" id="l-closed-btn">DM on Instagram →</a>
     </div>
 
     <div id="main-form-wrap">
@@ -842,7 +828,7 @@ const translations = {
     errEmail: 'Please enter a valid email address.',
     errTcs: 'You\'ll need to read and accept the T&Cs before submitting.',
     closedBody: 'All commission slots for Batch 001 have been filled. Drop your email below and you\'ll be first to know when Batch 002 opens.',
-    closedBtn: 'Join waitlist',
+    closedBtn: 'DM on Instagram →',
     tcs: `<p><strong>Payment &amp; Final Sales</strong><br>Payment is taken in full at the time of order. Because each pair is cut and sewn specifically to your order, all sales are final once payment is made. No refunds are offered after this point.</p>
 <p><strong>Measurement Accuracy</strong><br>You are strictly responsible for the measurements and size selections you provide. If you select a standard size or provide made-to-measure numbers that are incorrect, a refund or free remake cannot be offered. Please consult the sizing guide before ordering.</p>
 <p><strong>The Nature of Raw Denim</strong><br>You acknowledge that this garment is made from raw, unsanforized Japanese 14oz indigo denim. Expect 3–5% shrinkage in length on the first wash — this is normal and intentional. Indigo dye will transfer onto lighter surfaces (crocking) during initial wear. Cold wash only, hang dry. Full care instructions are available at callumgodfrey.com/care.html.</p>
@@ -877,8 +863,8 @@ const translations = {
     errorMsg: 'エラーが発生しました。再度お試しいただくか、直接ご連絡ください。',
     errRequired: 'この項目は必須です。', errEmail: '有効なメールアドレスを入力してください。',
     errTcs: '利用規約をお読みの上、同意してください。',
-    closedBody: 'バッチ001の全スロットが埋まりました。メールアドレスをご登録いただくと、バッチ002のオープン時に最初にお知らせします。',
-    closedBtn: 'ウェイトリストに登録',
+    closedBody: 'バッチ001の全スロットが埋まりました。Instagramでダイレクトメッセージを送ってバッチ002のウェイティングリストに参加してください。',
+    closedBtn: 'Instagramでメッセージ →',
     tcs: `<p><strong>お支払いと最終販売</strong><br>お支払いはご注文時に全額いただきます。各ペアはお客様のご注文に合わせて裁断・縫製されるため、お支払い後の返金はお受けできません。</p>
 <p><strong>採寸の正確性</strong><br>お客様が提供するサイズ・採寸データについては、お客様が完全に責任を負うものとします。誤りがあった場合、返金・再製作はお受けできません。ご注文前にサイズガイドをご確認ください。</p>
 <p><strong>生デニムの特性について</strong><br>本製品は未洗いの日本製14ozインディゴデニムから製造されています。初回洗濯で丈が3〜5%縮むことがあります（パターンに考慮済み）。インディゴ染料は明るい表面に色移りすることがあります。冷水洗いのみ、吊り干しにしてください。</p>
@@ -913,8 +899,8 @@ const translations = {
     errorMsg: '오류가 발생했습니다. 다시 시도하거나 직접 문의해 주세요.',
     errRequired: '이 항목은 필수입니다.', errEmail: '유효한 이메일 주소를 입력하세요.',
     errTcs: '이용약관을 읽고 동의해 주세요.',
-    closedBody: '배치 001의 모든 슬롯이 찼습니다. 배치 002가 열리면 가장 먼저 알려드리겠습니다.',
-    closedBtn: '대기자 명단 등록',
+    closedBody: '배치 001의 모든 슬롯이 찼습니다. Instagram에서 DM을 보내 배치 002 대기자 명단에 올라가세요.',
+    closedBtn: 'Instagram으로 DM →',
     tcs: `<p><strong>결제 및 최종 판매</strong><br>결제는 주문 시 전액 이루어집니다. 각 청바지는 고객님의 주문에 맞게 재단·봉제되므로 결제 후에는 환불이 불가합니다.</p>
 <p><strong>측정 정확도</strong><br>제공하신 사이즈 및 측정값에 대해 고객님이 전적으로 책임을 지십니다. 잘못된 정보로 인한 환불 또는 무료 재제작은 불가합니다. 주문 전 사이즈 가이드를 확인하세요.</p>
 <p><strong>로우 데님의 특성</strong><br>미세탁(생) 일본제 14oz 인디고 데님으로 제작됩니다. 첫 세탁 시 길이가 3~5% 수축될 수 있습니다(패턴에 반영됨). 인디고 염료는 밝은 표면에 이염될 수 있습니다. 냉수 세탁만 가능하며, 걸어서 건조하세요.</p>
@@ -986,7 +972,7 @@ const translations = {
     errRequired: 'Dieses Feld ist erforderlich.', errEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
     errTcs: 'Bitte lesen und akzeptieren Sie die AGB.',
     closedBody: 'Alle Slots für Batch 001 sind vergeben. Hinterlassen Sie Ihre E-Mail, um als Erster über Batch 002 informiert zu werden.',
-    closedBtn: 'Warteliste beitreten',
+    closedBtn: 'DM auf Instagram →',
     tcs: `<p><strong>Zahlung und endgültige Verkäufe</strong><br>Die Zahlung erfolgt vollständig zum Zeitpunkt der Bestellung. Da jedes Paar speziell für Ihre Bestellung zugeschnitten und genäht wird, sind alle Verkäufe nach Zahlungseingang endgültig.</p>
 <p><strong>Maßgenauigkeit</strong><br>Sie sind vollständig verantwortlich für die von Ihnen angegebenen Größen und Maße. Bei falschen Angaben können keine Rückerstattung oder kostenlose Neuanfertigung angeboten werden. Bitte lesen Sie den Größenratgeber vor der Bestellung.</p>
 <p><strong>Eigenschaften von Rohdenim</strong><br>Diese Jeans wird aus rohem, nicht sanforisiertem japanischen 14oz-Denim hergestellt. Beim ersten Waschen ist mit 3–5 % Einlaufen in der Länge zu rechnen (im Schnitt berücksichtigt). Indigofarbe kann auf helle Oberflächen abfärben. Nur Kalt­wäsche, hängend trocknen.</p>
@@ -1302,29 +1288,6 @@ function showFormClosed() {
   document.getElementById('main-form-wrap').style.display = 'none';
 }
 
-// ── Waitlist ──
-const KLAVIYO_KEY_ORDER = 'YOUR_KLAVIYO_PUBLIC_KEY';
-const KLAVIYO_LIST_ORDER = 'YOUR_KLAVIYO_LIST_ID';
-async function submitWaitlist() {
-  const email = document.getElementById('closedEmail').value.trim();
-  const msg = document.getElementById('closedMsg');
-  if (!email) return;
-  msg.textContent = '...';
-  try {
-    const res = await fetch(`https://a.klaviyo.com/client/subscriptions/?company_id=${KLAVIYO_KEY_ORDER}`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'revision': '2023-02-22' },
-      body: JSON.stringify({ data: { type: 'subscription', attributes: { list_id: KLAVIYO_LIST_ORDER, email } } })
-    });
-    if (res.ok || res.status === 202) {
-      msg.textContent = "You're on the list — I'll be in touch when Batch 002 opens.";
-      msg.className = 'form-closed-msg success';
-      document.getElementById('closedEmail').value = '';
-    } else { throw new Error(); }
-  } catch {
-    msg.textContent = 'Something went wrong — try again or email me directly.';
-  }
-}
 
 // ── Button total ──
 const SHIP_NZD = { nz: 20, au: 40, jpkr: 60, namerica: 70, ukeu: 75, row: 85 };

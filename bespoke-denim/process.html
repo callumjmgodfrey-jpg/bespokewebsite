@@ -11,6 +11,9 @@
 <meta property="og:type" content="website">
 <meta property="og:image" content="media/product_indigo_cuff.jpeg">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How I Design — Callum Godfrey">
+<meta name="twitter:description" content="Every pair starts in CLO3D. Digital pattern drafting, virtual fitting, then hand-cut from raw Japanese selvedge denim.">
+<meta name="twitter:image" content="media/product_indigo_cuff.jpeg">
 <link rel="stylesheet" href="tokens.css">
 <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="animations.css">
@@ -40,6 +43,14 @@ nav {
 .nav-right { display: flex; align-items: center; gap: 32px; }
 .nav-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); text-decoration: none; font-weight: 400; transition: opacity 0.2s; }
 .nav-link:hover { opacity: 0.5; }
+.lang-dropdown-wrap { position: relative; }
+.lang-dropdown-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); background: none; border: none; cursor: pointer; font-family: var(--sans); padding: 0; }
+.lang-dropdown-btn:hover { opacity: 0.5; }
+.lang-dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: #141412; min-width: 160px; z-index: 200; }
+.lang-dropdown-menu.open { display: block; }
+.lang-dropdown-menu button { display: block; width: 100%; text-align: left; padding: 10px 16px; font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); background: none; border: none; border-bottom: 0.5px solid rgba(255,255,255,0.1); cursor: pointer; font-family: var(--sans); transition: color 0.15s; }
+.lang-dropdown-menu button:last-child { border-bottom: none; }
+.lang-dropdown-menu button:hover, .lang-dropdown-menu button.active { color: #fff; }
 
 /* PAGE HEADER */
 .page-header {
@@ -312,7 +323,17 @@ footer {
 <nav>
   <a href="index.html" class="nav-logo">Callum Godfrey</a>
   <div class="nav-right">
-    <a href="index.html#making" class="nav-link">Making</a>
+    <a href="index.html#waitlist" class="nav-link">Waitlist</a>
+    <div class="lang-dropdown-wrap">
+      <button class="lang-dropdown-btn" onclick="toggleLangMenu()" id="langBtn">EN</button>
+      <div class="lang-dropdown-menu" id="langMenu">
+        <button onclick="setLang('en')">EN — English</button>
+        <button onclick="setLang('ja')">日本語</button>
+        <button onclick="setLang('ko')">한국어</button>
+        <button onclick="setLang('fr')">Français</button>
+        <button onclick="setLang('de')">Deutsch</button>
+      </div>
+    </div>
     <a href="order.html" class="nav-link nav-apply-link">Order</a>
   </div>
 </nav>
@@ -434,5 +455,24 @@ footer {
 </footer>
 
 <script src="animations.js"></script>
+<script>
+const langLabels = { en:'EN', ja:'日本語', ko:'한국어', fr:'FR', de:'DE' };
+function toggleLangMenu() { document.getElementById('langMenu').classList.toggle('open'); }
+document.addEventListener('click', e => {
+  const wrap = document.querySelector('.lang-dropdown-wrap');
+  if (wrap && !wrap.contains(e.target)) document.getElementById('langMenu').classList.remove('open');
+});
+function setLang(lang) {
+  document.getElementById('langMenu').classList.remove('open');
+  document.getElementById('langBtn').textContent = langLabels[lang];
+  document.querySelectorAll('.lang-dropdown-menu button').forEach(b => {
+    b.classList.toggle('active', b.getAttribute('onclick') === `setLang('${lang}')`);
+  });
+  document.documentElement.lang = lang;
+  localStorage.setItem('lang', lang);
+}
+const saved = localStorage.getItem('lang');
+if (saved && langLabels[saved]) setLang(saved);
+</script>
 </body>
 </html>

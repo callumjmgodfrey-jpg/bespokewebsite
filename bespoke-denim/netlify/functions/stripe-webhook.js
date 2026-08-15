@@ -1,7 +1,7 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const NOTION_API_KEY = process.env.NOTION_API_KEY;
-const NOTION_DATABASE_ID = 'fe5ed4d07a264f2596a4bda414b56afe';
+const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || 'fe5ed4d07a264f2596a4bda414b56afe';
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 
 exports.handler = async function(event) {

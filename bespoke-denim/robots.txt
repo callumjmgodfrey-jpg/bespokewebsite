@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /confirmation.html
+Disallow: /.netlify/
+
+Sitemap: https://callumgodfrey.com/sitemap.xml

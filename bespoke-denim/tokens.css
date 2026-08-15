@@ -25,7 +25,8 @@
   --indigo-wash: #5c6884;
 
   /* ── Status ── */
-  --rust: #c0392b;
+  --red:  #c0302a;
+  --rust: var(--red); /* backwards-compat alias */
   --pine: #2d6a4f;
 
   /* ── On-dark text ── */
