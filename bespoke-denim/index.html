@@ -519,7 +519,15 @@ footer {
      ═══════════════════════════════════ -->
 <section class="s1">
   <img src="media/pdf_p1_img1.jpeg" alt="Made for myself, now I make for you">
-  <p class="s1-tagline tagline" id="l-tagline">Made for myself, now I make for you</p>
+  <!-- Vertical JP hero accent — desktop only -->
+  <div class="s1-jp-vert-wrap" aria-hidden="true">
+    <span class="s1-jp-vert">ウェリントン発、完全受注生産。</span>
+  </div>
+  <!-- Tagline + JP model sub-label grouped at bottom-centre -->
+  <div class="s1-bottom-caption">
+    <p class="s1-tagline tagline" id="l-tagline">Made for myself, now I make for you</p>
+    <p class="s1-jp-sub" aria-hidden="true">001型 ハイウエスト・ワイドブーツカット</p>
+  </div>
   <a href="order.html" class="s1-cta" id="l-cta">Order now →</a>
 </section>
 
@@ -541,6 +549,12 @@ footer {
   </div>
 
   <div class="s2-right">
+    <!-- Section label — desktop only -->
+    <div class="s2-making-label" aria-hidden="true">
+      <span class="bil-strip-en">Making</span>
+      <span class="bil-strip-sep">/</span>
+      <span class="bil-strip-jp">製作工程</span>
+    </div>
     <img src="media/pdf_p2_img2.jpeg" alt="Hands at work" loading="lazy">
     <img src="media/pdf_p2_img3.jpeg" alt="Studio floor" loading="lazy">
     <img src="media/pdf_p2_img4.jpeg" alt="Cutting tools" loading="lazy">
@@ -554,26 +568,37 @@ footer {
 <section class="s3">
   <img src="media/pdf_p3_img1.jpeg" alt="Wearing the jeans" loading="lazy">
   <p class="s3-tagline tagline tagline-white">Made for myself, now I make for you</p>
-  <!-- Street-snap metadata overlay -->
+  <!-- Street-snap metadata overlay — ON THE STREET / 着用実例 -->
   <div class="street-snap" aria-label="Wear details">
     <span class="street-snap-header">ON THE STREET / 着用実例</span>
     <div class="street-snap-row">
-      <span class="street-snap-key">Maker</span>
-      <span class="street-snap-val">Callum Godfrey</span>
+      <span class="street-snap-key">
+        <span class="ss-key-en">Wearer</span>
+        <span class="ss-key-jp">身長・体型</span>
+      </span>
+      <span class="street-snap-val">180cm / W30 L32</span>
     </div>
     <div class="street-snap-row">
-      <span class="street-snap-key">Height / Size</span>
-      <span class="street-snap-val">180cm &nbsp;W30 L32</span>
+      <span class="street-snap-key">
+        <span class="ss-key-en">Location</span>
+        <span class="ss-key-jp">撮影地</span>
+      </span>
+      <span class="street-snap-val">Te Aro / Wellington Central, NZ</span>
     </div>
     <div class="street-snap-row">
-      <span class="street-snap-key">Location</span>
-      <span class="street-snap-val">Te Aro, Wellington NZ</span>
+      <span class="street-snap-key">
+        <span class="ss-key-en">Timeline</span>
+        <span class="ss-key-jp">経年変化</span>
+      </span>
+      <span class="street-snap-val">6 Months (Raw / 0 Washes)</span>
     </div>
     <div class="street-snap-row">
-      <span class="street-snap-key">Fade status</span>
-      <span class="street-snap-val">6 months — unwashed / 生穿き</span>
+      <span class="street-snap-key">
+        <span class="ss-key-en">Note</span>
+        <span class="ss-key-jp">備考</span>
+      </span>
+      <span class="street-snap-val street-snap-quote" style="font-style:italic;font-family:'Shippori Mincho','Hiragino Mincho ProN',serif;font-size:9px;line-height:1.5;">「履き込むほどに体に馴染む、<br>一生モノのシルエット。」</span>
     </div>
-    <p class="street-snap-quote">「履き込むほどに体に馴染む、一生モノのシルエット。」</p>
   </div>
 </section>
 
@@ -642,30 +667,48 @@ footer {
       <span class="s-spec-key-jp">生地</span>
     </div>
     <div class="s-spec-dots"></div>
-    <span class="s-spec-val">14oz Raw Japanese Selvedge — Indigo</span>
+    <span class="s-spec-val">14oz Raw Japanese Selvedge (Okayama Rope-Dyed) — Indigo</span>
   </div>
 
   <div class="s-spec-row">
     <div class="s-spec-key">
-      <span class="s-spec-key-en">Cut</span>
-      <span class="s-spec-key-jp">シルエット</span>
+      <span class="s-spec-key-en">Silhouette</span>
+      <span class="s-spec-key-jp">型番</span>
     </div>
     <div class="s-spec-dots"></div>
-    <span class="s-spec-val">High-Waisted Wide Bootcut — 001</span>
+    <span class="s-spec-val">001 — High-Waisted Wide Bootcut</span>
   </div>
 
   <div class="s-spec-row">
     <div class="s-spec-key">
-      <span class="s-spec-key-en">Capacity</span>
-      <span class="s-spec-key-jp">生産数</span>
+      <span class="s-spec-key-en">Construction</span>
+      <span class="s-spec-key-jp">縫製仕様</span>
     </div>
     <div class="s-spec-dots"></div>
-    <span class="s-spec-val">4 pairs / month — Limited</span>
+    <span class="s-spec-val">Union Special 43200G Chainstitch Hem — Hidden Copper Rivets — Heavyweight Cotton-Poly Core Thread</span>
   </div>
 
   <div class="s-spec-row">
     <div class="s-spec-key">
-      <span class="s-spec-key-en">Lead time</span>
+      <span class="s-spec-key-en">Sizing &amp; Fit</span>
+      <span class="s-spec-key-jp">採寸</span>
+    </div>
+    <div class="s-spec-dots"></div>
+    <span class="s-spec-val">100% Made-to-Measure (Custom High-Hip, Rise, &amp; Inseam)</span>
+  </div>
+
+  <div class="s-spec-row">
+    <div class="s-spec-key">
+      <span class="s-spec-key-en">Batch Capacity</span>
+      <span class="s-spec-key-jp">生産枠</span>
+    </div>
+    <div class="s-spec-dots"></div>
+    <span class="s-spec-val">4 pairs / month (Limited Commission)</span>
+  </div>
+
+  <div class="s-spec-row">
+    <div class="s-spec-key">
+      <span class="s-spec-key-en">Lead Time</span>
       <span class="s-spec-key-jp">納期</span>
     </div>
     <div class="s-spec-dots"></div>
@@ -674,30 +717,32 @@ footer {
 
   <div class="s-spec-row">
     <div class="s-spec-key">
-      <span class="s-spec-key-en">Atelier</span>
+      <span class="s-spec-key-en">Origin</span>
       <span class="s-spec-key-jp">製作地</span>
     </div>
     <div class="s-spec-dots"></div>
-    <span class="s-spec-val">Te Aro, Wellington — New Zealand</span>
+    <span class="s-spec-val">Atelier Te Aro, Wellington, New Zealand</span>
   </div>
 </section>
 
 <!-- ═══════════════════════════════════
      VIDEO — Watch me work
      ═══════════════════════════════════ -->
-<section class="s-video" id="video-section" style="display:none;">
+<section class="s-video" id="video-section">
   <div class="column-header s-video-eyebrow">
     <span class="column-header-label">Column / 職人の記録</span>
     <div class="column-header-title">
       <span class="column-header-title-en">Behind the Seams</span>
       <span class="column-header-title-jp">制作ドキュメンタリー</span>
     </div>
-    <span class="column-archive-note">Bilingual archive (EN / 日本語) — Pattern · Cut · Sew</span>
+    <span class="column-archive-note">BILINGUAL ARCHIVE (EN / 日本語) — CLO3D設計・型紙製作・縫製ドキュメンタリー</span>
   </div>
-  <a class="s-video-thumb reveal" id="videoLink" href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener">
-    <img id="videoImg" src="" alt="Latest video from the workshop">
+  <!-- Poster: bts_sewing_2.png is shown until the Netlify function resolves a video ID.
+       If the function fails, the link falls back to the YouTube channel. -->
+  <a class="s-video-thumb reveal" id="videoLink" href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener" aria-label="Watch the latest video from the workshop">
+    <img id="videoImg" src="media/bts_sewing_2.png" alt="Behind the seams — latest from the workshop" loading="lazy">
     <div class="s-video-play">
-      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
     </div>
   </a>
   <span class="s-video-caption reveal">Latest from the workshop</span>
@@ -845,17 +890,23 @@ function setNavLang(lang) {
 const saved = localStorage.getItem('lang');
 setNavLang(saved && landingCopy[saved] ? saved : 'en');
 
-/* ── LATEST VIDEO ── */
+/* ── LATEST VIDEO ──
+   Section always renders (poster = bts_sewing_2.png + channel link).
+   If a video ID is found, swap to the actual thumbnail + video URL.
+─────────────────────────────────────────────────────────────────── */
 (async () => {
   try {
     const res = await fetch('/.netlify/functions/latest-video');
     if (!res.ok) return;
     const { videoId } = await res.json();
     if (!videoId) return;
-    document.getElementById('videoImg').src = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
-    document.getElementById('videoLink').href = 'https://www.youtube.com/watch?v=' + videoId;
-    document.getElementById('video-section').style.display = 'flex';
-  } catch (e) { /* hide section if fetch fails */ }
+    const img = document.getElementById('videoImg');
+    const link = document.getElementById('videoLink');
+    /* swap poster to high-res YouTube thumbnail */
+    img.src = 'https://img.youtube.com/vi/' + videoId + '/maxresdefault.jpg';
+    img.alt = 'Latest video from the workshop — click to watch on YouTube';
+    link.href = 'https://www.youtube.com/watch?v=' + videoId;
+  } catch (e) { /* channel link fallback already in place */ }
 })();
 </script>
 </body>

@@ -404,3 +404,112 @@
   text-transform: uppercase;
   margin-top: 4px;
 }
+
+/* ── Hero S1 vertical JP accent ─────────────────────────────
+   Left-edge vertical text. Mirrors S2's right-edge accent.
+   ─────────────────────────────────────────────────────────── */
+.s1-jp-vert-wrap {
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  user-select: none;
+}
+.s1-jp-vert {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 9px;
+  letter-spacing: 0.24em;
+  color: rgba(255,255,255,0.17);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  white-space: nowrap;
+}
+@media (max-width: 768px) { .s1-jp-vert-wrap { display: none; } }
+
+/* ── Hero S1 bottom caption wrapper ─────────────────────────
+   Groups the italic tagline + JP model sub-label so they sit
+   as a single unit at the base of the hero.
+   ─────────────────────────────────────────────────────────── */
+.s1-bottom-caption {
+  position: absolute;
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 7px;
+}
+/* override absolute positioning that .s1-tagline carries solo */
+.s1-bottom-caption .s1-tagline {
+  position: static;
+  bottom: auto;
+  left: auto;
+  transform: none;
+  white-space: nowrap;
+}
+.s1-jp-sub {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  color: rgba(255,255,255,0.28);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+  white-space: nowrap;
+}
+@media (max-width: 768px) {
+  .s1-bottom-caption { bottom: 10%; width: 80%; }
+  .s1-bottom-caption .s1-tagline { white-space: normal; text-align: center; }
+  .s1-jp-sub { display: none; }
+}
+
+/* ── S2 Making section label ─────────────────────────────────
+   Sits at the top of the .s2-right column (white background).
+   Reuses bil-strip classes so no extra colour tokens needed.
+   ─────────────────────────────────────────────────────────── */
+.s2-making-label {
+  align-self: flex-end; /* matches the right-align of the images below */
+  width: 75%;           /* matches .s2-right img width */
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding-bottom: 12px;
+  border-bottom: 0.5px solid #e8e7e2;
+  margin-bottom: 4px;
+}
+@media (max-width: 768px) { .s2-making-label { display: none; } }
+
+/* ── Bilingual street-snap key labels ───────────────────────
+   Each .street-snap-key becomes a small flex column:
+   EN label (uppercase) above JP label (JP sans).
+   ─────────────────────────────────────────────────────────── */
+.street-snap-key {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+.ss-key-en {
+  font-size: 7px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.35);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Helvetica Neue', Arial, sans-serif;
+}
+.ss-key-jp {
+  font-size: 8px;
+  letter-spacing: 0.1em;
+  color: rgba(255,255,255,0.2);
+  font-family: -apple-system, BlinkMacSystemFont,
+    'Hiragino Kaku Gothic ProN', 'Noto Sans JP', sans-serif;
+}
+
+/* ── Spec val: allow wrap for long construction details ──── */
+.s-spec-val {
+  white-space: normal !important;
+  max-width: 560px;
+}
