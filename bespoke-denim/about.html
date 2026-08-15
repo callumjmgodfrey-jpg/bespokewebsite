@@ -33,115 +33,159 @@
 }
 </script>
 <link rel="stylesheet" href="tokens.css">
-<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="inner.css">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@800&family=Cormorant+Garamond:ital,wght@1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="animations.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── ABOUT-SPECIFIC ── */
 
-
-body {
-  font-family: var(--sans);
-  background: var(--white);
-  color: var(--ink);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
-/* NAV */
-nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 28px 48px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  mix-blend-mode: difference;
-}
-.nav-logo { font-family: var(--serif); font-size: 15px; color: var(--white); text-decoration: none; letter-spacing: 0.12em; font-weight: 400; }
-.nav-right { display: flex; align-items: center; gap: 32px; }
-.nav-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); text-decoration: none; font-weight: 400; transition: opacity 0.2s; }
-.nav-link:hover { opacity: 0.5; }
-
-/* PAGE HEADER */
-.page-header { padding: 180px 48px 80px; background: var(--ink); }
-.page-header-eyebrow { display: block; font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 24px; }
-.page-header-title { font-family: var(--serif); font-size: clamp(40px, 7vw, 90px); line-height: 1; color: var(--white); font-weight: 400; letter-spacing: -0.01em; }
-
-/* ABOUT BODY */
-.about {
-  padding: 120px 48px 140px;
+/* Main narrative section */
+.about-narrative {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 100px;
   align-items: start;
 }
-
-.about-heading {
+.about-body { display: flex; flex-direction: column; gap: 28px; }
+.about-body p {
   font-family: var(--serif);
-  font-size: clamp(28px, 4vw, 52px);
-  font-weight: 400;
-  line-height: 1.25;
-  color: var(--ink);
-  letter-spacing: -0.01em;
-  margin-bottom: 48px;
+  font-size: clamp(15px, 1.4vw, 18px);
+  line-height: 1.9;
+  color: #2c2b27;
 }
-.about-heading em { color: var(--mid); font-style: normal; }
-
-.about-body { display: flex; flex-direction: column; gap: 20px; }
-.about-body p { font-size: 13px; line-height: 2; color: var(--mid); max-width: 440px; }
-.about-body p strong { color: var(--ink); font-weight: 400; }
+.about-body p strong { color: #141412; font-weight: 400; }
 
 .about-right { padding-top: 8px; }
-.about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center top; display: block; margin-bottom: 2px; }
-
-.about-facts { display: flex; flex-direction: column; }
-.about-fact { padding: 28px 0; border-top: 0.5px solid var(--light); display: grid; grid-template-columns: 140px 1fr; gap: 24px; }
-.about-fact:last-child { border-bottom: 0.5px solid var(--light); }
-.about-fact-label { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); padding-top: 3px; }
-.about-fact-value { font-family: var(--serif); font-size: 15px; color: var(--ink); font-weight: 400; line-height: 1.5; }
-
-/* FOOTER */
-.rule { width: 100%; height: 0.5px; background: var(--light); }
-footer { padding: 48px; border-top: 0.5px solid var(--light); display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; }
-.footer-brand { font-family: var(--serif); font-size: 13px; color: var(--mid); font-weight: 400; }
-.footer-links { display: flex; gap: 32px; justify-content: center; }
-.footer-link { display: flex; align-items: center; gap: 8px; font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color 0.2s; }
-.footer-link:hover { color: var(--ink); }
-.footer-link svg { width: 12px; height: 12px; fill: currentColor; }
-.footer-note { font-size: 9px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--light); text-align: right; }
-
-/* MOBILE */
-@media (max-width: 900px) { .about { grid-template-columns: 1fr; gap: 60px; } }
-@media (max-width: 600px) {
-  nav { padding: 20px 24px; }
-  .nav-right { gap: 20px; }
-  .nav-link:not(.nav-apply-link) { display: none; }
-  .page-header { padding: 140px 24px 60px; }
-  .about { padding: 80px 24px 100px; }
-  .about-fact { grid-template-columns: 110px 1fr; }
-  footer { grid-template-columns: 1fr; gap: 24px; padding: 40px 24px; }
-  .footer-note { text-align: left; }
+.about-photo {
+  width: 100%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  margin-bottom: 2px;
 }
 
-.lang-dropdown-wrap { position: relative; }
-.lang-dropdown-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); background: transparent; border: none; cursor: pointer; font-family: var(--sans); padding: 0; transition: opacity 0.2s; }
-.lang-dropdown-btn:hover { opacity: 0.5; }
-.lang-dropdown-menu { display: none; position: absolute; top: calc(100% + 16px); right: 0; background: var(--ink); border: 0.5px solid rgba(255,255,255,0.1); min-width: 160px; z-index: 200; }
-.lang-dropdown-menu.open { display: block; }
-.lang-dropdown-menu button { display: block; width: 100%; text-align: left; padding: 12px 20px; font-family: var(--sans); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); background: transparent; border: none; border-bottom: 0.5px solid rgba(255,255,255,0.07); cursor: pointer; transition: color 0.15s; }
-.lang-dropdown-menu button:last-child { border-bottom: none; }
-.lang-dropdown-menu button:hover { color: var(--white); }
-.lang-dropdown-menu button.active { color: var(--white); }
+.about-facts { display: flex; flex-direction: column; margin-top: 2px; }
+.about-fact {
+  padding: 24px 0;
+  border-top: 0.5px solid #d4d3ce;
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 20px;
+}
+.about-fact:last-child { border-bottom: 0.5px solid #d4d3ce; }
+.about-fact-label {
+  font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase;
+  color: #d4d3ce; padding-top: 4px;
+}
+.about-fact-value {
+  font-family: var(--serif);
+  font-size: 15px; color: #141412; font-weight: 400; line-height: 1.55;
+}
+
+/* Sewing break overlay */
+.sewing-break {
+  position: relative;
+  height: 60vh;
+  overflow: hidden;
+}
+.sewing-break img {
+  width: 100%; height: 100%; object-fit: cover;
+  object-position: center 30%;
+  display: block;
+  filter: brightness(0.5);
+}
+.sewing-break-text {
+  position: absolute;
+  inset: 0;
+  display: flex; align-items: flex-end;
+  padding: 48px 48px 56px;
+}
+.sewing-break-text blockquote {
+  font-family: 'Cormorant Garamond', 'Times New Roman', serif;
+  font-style: italic;
+  font-size: clamp(24px, 3.5vw, 48px);
+  line-height: 1.2;
+  color: #fff;
+  font-weight: 300;
+  max-width: 720px;
+}
+
+/* Material section */
+.material-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.material-swatches {
+  border-right: 0.5px solid #d4d3ce;
+  padding-right: 60px;
+}
+.swatch-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin-bottom: 28px;
+}
+.swatch-pair img {
+  width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block;
+}
+.swatch-label {
+  font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: #8a8a84;
+}
+.material-copy { padding-left: 60px; }
+.material-copy h2 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 3vw, 40px);
+  font-weight: 400; line-height: 1.2;
+  color: #141412; letter-spacing: -0.01em;
+  margin-bottom: 32px;
+}
+.material-copy p {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.3vw, 17px);
+  line-height: 1.9; color: #2c2b27;
+  margin-bottom: 20px;
+}
+
+/* Portrait closing section */
+.portrait-closing {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 2px;
+  align-items: start;
+}
+.portrait-closing img {
+  width: 100%; object-fit: cover; display: block;
+}
+.portrait-closing .img-a { aspect-ratio: 4/5; object-position: center top; }
+.portrait-closing .img-b { aspect-ratio: 4/5; object-position: center; margin-top: 120px; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .about-narrative { grid-template-columns: 1fr; gap: 60px; }
+  .material-section { grid-template-columns: 1fr; }
+  .material-swatches { border-right: none; padding-right: 0; margin-bottom: 48px; }
+  .material-copy { padding-left: 0; }
+  .portrait-closing { grid-template-columns: 1fr 1fr; }
+  .portrait-closing .img-b { margin-top: 60px; }
+}
+@media (max-width: 600px) {
+  .sewing-break-text { padding: 32px 24px 40px; }
+  .portrait-closing { grid-template-columns: 1fr; }
+  .portrait-closing .img-b { display: none; }
+}
 </style>
 </head>
 <body>
 
+<div id="page-overlay"></div>
+
 <nav>
   <a href="index.html" class="nav-logo">Callum Godfrey</a>
   <div class="nav-right">
-    <a href="index.html#waitlist" class="nav-link" id="nav-making">Making</a>
-    <a href="index.html#waitlist" class="nav-link" id="nav-waitlist">Waitlist</a>
+    <a href="about.html" class="nav-link">About</a>
+    <a href="process.html" class="nav-link">Process</a>
     <div class="lang-dropdown-wrap">
       <button class="lang-dropdown-btn" onclick="toggleLangMenu()" id="langBtn">EN</button>
       <div class="lang-dropdown-menu" id="langMenu">
@@ -156,13 +200,21 @@ footer { padding: 48px; border-top: 0.5px solid var(--light); display: grid; gri
   </div>
 </nav>
 
+<!-- PAGE HEADER -->
 <section class="page-header">
   <span class="page-header-eyebrow reveal" id="l-eyebrow">Wellington, New Zealand</span>
   <h1 class="page-header-title reveal reveal-d1" id="l-title">when i was 10,<br>i tried to make<br>an assassins creed<br>hoodie<em>…</em></h1>
 </section>
 
-<div class="about">
-  <div class="about-left">
+<!-- STUDIO BREAK -->
+<div class="photo-break photo-break--85vh reveal">
+  <img src="media/bts_studio_1.png" alt="The studio" loading="lazy">
+</div>
+<p class="photo-cap reveal">Wellington — the studio</p>
+
+<!-- NARRATIVE -->
+<section class="sect inner-pad">
+  <div class="about-narrative">
     <div class="about-body">
       <p class="reveal" id="l-p1">The idea was good — but halfway through, it didn't come out the way it was supposed to. I still wore it anyway.</p>
       <p class="reveal" id="l-p2">Fashion and clothing had always been a big part of my life — there was always a sewing machine within arm's reach. My mum used to run her own label, gave it a go in the UK, then brought it back to New Zealand, slowed down and kept production local. Growing up around that probably shaped how I think about making things.</p>
@@ -172,61 +224,107 @@ footer { padding: 48px; border-top: 0.5px solid var(--light); display: grid; gri
       <p class="reveal" id="l-p6">I got so deep into it that my parents sat me down. They asked why they never saw me anymore, what I was doing in my room, why I was doing this to myself. I'd never really been vulnerable in front of them before — but I'd also never felt that strongly about anything, and I ended up breaking down trying to explain it. After that, they let me keep going. A year and a half later, I passed N1 with a near-perfect score.</p>
       <p class="reveal" id="l-p7">That same drive is how I approach making clothes. If I can't find what I'm picturing, I make it myself — properly, with materials and construction that earn the word "lifetime." That's the only way I know how to do this.</p>
     </div>
-  </div>
 
-  <div class="about-right">
-    <img src="media/about_young.jpeg" alt="Callum as a kid" class="about-photo reveal" loading="lazy" />
-    <div class="about-facts">
-      <div class="about-fact reveal">
-        <span class="about-fact-label" id="l-fact1-label">Based</span>
-        <span class="about-fact-value" id="l-fact1-val">Wellington, New Zealand</span>
-      </div>
-      <div class="about-fact reveal reveal-d1">
-        <span class="about-fact-label" id="l-fact2-label">Fabric</span>
-        <span class="about-fact-value" id="l-fact2-val">Japanese 14oz selvedge — sourced, not substituted</span>
-      </div>
-      <div class="about-fact reveal reveal-d2">
-        <span class="about-fact-label" id="l-fact3-label">Process</span>
-        <span class="about-fact-value" id="l-fact3-val">Hand drafted, hand cut, hand sewn. No factory.</span>
-      </div>
-      <div class="about-fact reveal reveal-d3">
-        <span class="about-fact-label" id="l-fact4-label">Output</span>
-        <span class="about-fact-value" id="l-fact4-val">Four pairs a month. That's it.</span>
+    <div class="about-right">
+      <img src="media/about_young.jpeg" alt="Callum as a kid" class="about-photo reveal" loading="lazy">
+      <div class="about-facts">
+        <div class="about-fact reveal">
+          <span class="about-fact-label" id="l-fact1-label">Based</span>
+          <span class="about-fact-value" id="l-fact1-val">Wellington, New Zealand</span>
+        </div>
+        <div class="about-fact reveal reveal-d1">
+          <span class="about-fact-label" id="l-fact2-label">Fabric</span>
+          <span class="about-fact-value" id="l-fact2-val">Japanese 14oz selvedge — sourced, not substituted</span>
+        </div>
+        <div class="about-fact reveal reveal-d2">
+          <span class="about-fact-label" id="l-fact3-label">Process</span>
+          <span class="about-fact-value" id="l-fact3-val">Hand drafted, hand cut, hand sewn. No factory.</span>
+        </div>
+        <div class="about-fact reveal reveal-d3">
+          <span class="about-fact-label" id="l-fact4-label">Output</span>
+          <span class="about-fact-value" id="l-fact4-val">Four pairs a month. That's it.</span>
+        </div>
       </div>
     </div>
   </div>
+</section>
+
+<!-- SEWING ATMOSPHERIC BREAK -->
+<div class="sewing-break reveal">
+  <img src="media/bts_sewing.png" alt="Sewing in the studio" loading="lazy">
+  <div class="sewing-break-text">
+    <blockquote>If I can't find what I'm picturing, I make it myself.</blockquote>
+  </div>
 </div>
 
-<div class="rule"></div>
-
-<footer>
-  <span class="footer-brand">Callum Godfrey</span>
-  <div class="footer-links">
-    <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener" class="footer-link">
-      <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-      Instagram
-    </a>
-    <a href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener" class="footer-link">
-      <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
-      YouTube
-    </a>
-    <a href="https://www.tiktok.com/@callumgodfreyy" target="_blank" rel="noopener" class="footer-link">
-      <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-      TikTok
-    </a>
-    <a href="process.html" class="footer-link">How I Design</a>
-    <a href="care.html" class="footer-link">Care</a>
-    <a href="repairs.html" class="footer-link">Lifetime Repairs</a>
-    <a href="faq.html" class="footer-link">FAQ</a>
+<!-- MATERIAL SECTION -->
+<section class="sect inner-pad">
+  <div class="material-section">
+    <div class="material-swatches reveal">
+      <span class="eyebrow" style="margin-bottom:20px">The fabric</span>
+      <div class="swatch-pair">
+        <div>
+          <img src="media/swatch_indigo.jpg" alt="Indigo selvedge denim swatch" loading="lazy">
+          <p class="swatch-label" style="margin-top:10px">Indigo</p>
+        </div>
+        <div>
+          <img src="media/swatch_black.jpg" alt="Black selvedge denim swatch" loading="lazy">
+          <p class="swatch-label" style="margin-top:10px">Black</p>
+        </div>
+      </div>
+    </div>
+    <div class="material-copy reveal reveal-d1">
+      <h2>Japanese 14oz selvedge.<br>Not a detail. The point.</h2>
+      <p>Selvedge denim is woven on narrow shuttle looms — the same looms Japan has used for decades. The tightly woven edge (the selvedge) runs along the outseam at the hem. When you roll the cuff, you see it. That's the mark.</p>
+      <p>At 14oz, this is a heavy fabric. It drapes with authority, fades slowly and beautifully with wear, and builds a character that no machine-washed approximation can replicate. I source it directly. There is no substitute.</p>
+    </div>
   </div>
-  <span class="footer-note" id="l-footer-note">Made by hand in Wellington, NZ</span>
+</section>
+
+<!-- PORTRAIT CLOSING PAIR -->
+<div class="portrait-closing">
+  <img src="media/bts_studio_2.png" alt="Studio work" class="img-a reveal" loading="lazy">
+  <img src="media/portrait_2.jpg" alt="Callum Godfrey" class="img-b reveal reveal-d1" loading="lazy">
+</div>
+<p class="photo-cap reveal">Made by hand in Wellington, New Zealand</p>
+
+<hr class="h-rule" style="margin-top:80px">
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-left">
+    <span class="footer-brand">Callum Godfrey</span>
+    <div class="footer-links">
+      <a href="https://www.instagram.com/callumgodfreyy/" target="_blank" rel="noopener" class="footer-link">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>
+      <a href="https://www.youtube.com/@callumgodfreymusic" target="_blank" rel="noopener" class="footer-link">
+        <svg viewBox="0 0 24 24"><path d="M23.495 6.205a3.007 3.007 0 0 0-2.088-2.088c-1.87-.501-9.396-.501-9.396-.501s-7.507-.01-9.396.501A3.007 3.007 0 0 0 .527 6.205a31.247 31.247 0 0 0-.522 5.805 31.247 31.247 0 0 0 .522 5.783 3.007 3.007 0 0 0 2.088 2.088c1.868.502 9.396.502 9.396.502s7.506 0 9.396-.502a3.007 3.007 0 0 0 2.088-2.088 31.247 31.247 0 0 0 .5-5.783 31.247 31.247 0 0 0-.5-5.805zM9.609 15.601V8.408l6.264 3.602z"/></svg>
+        YouTube
+      </a>
+      <a href="https://www.tiktok.com/@callumgodfreyy" target="_blank" rel="noopener" class="footer-link">
+        <svg viewBox="0 0 24 24"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+        TikTok
+      </a>
+      <a href="process.html" class="footer-link">How I Design</a>
+      <a href="care.html" class="footer-link">Care</a>
+      <a href="repairs.html" class="footer-link">Lifetime Repairs</a>
+      <a href="sizing.html" class="footer-link">Sizing</a>
+      <a href="faq.html" class="footer-link">FAQ</a>
+    </div>
+    <span class="footer-note" id="l-footer-note">Made by hand in Wellington, NZ</span>
+  </div>
+  <div class="footer-right">
+    <a href="order.html" class="footer-order">Order now →</a>
+  </div>
 </footer>
 
 <script src="animations.js"></script>
 <script>
 const aboutCopy = {
   en: {
-    btn: 'EN', navMaking: 'Making', navWaitlist: 'Waitlist', navApply: 'Order',
+    btn: 'EN', navApply: 'Order',
     eyebrow: 'Wellington, New Zealand',
     title: 'when i was 10,<br>i tried to make<br>an assassins creed<br>hoodie<em>…</em>',
     p1: 'The idea was good — but halfway through, it didn\'t come out the way it was supposed to. I still wore it anyway.',
@@ -243,7 +341,7 @@ const aboutCopy = {
     footerNote: 'Made by hand in Wellington, NZ'
   },
   ja: {
-    btn: '日本語', navMaking: 'メイキング', navWaitlist: '順番待ち', navApply: '注文',
+    btn: '日本語', navApply: '注文',
     eyebrow: 'ニュージーランド・ウェリントン',
     title: '10歳のとき、<br>アサシンクリードの<br>パーカーを<br>作ろうとした<em>…</em>',
     p1: 'アイデアは良かった。でも途中で、思い通りにならなかった。それでも着た。',
@@ -260,7 +358,7 @@ const aboutCopy = {
     footerNote: 'ニュージーランド・ウェリントンで手作り'
   },
   ko: {
-    btn: '한국어', navMaking: '메이킹', navWaitlist: '대기자 명단', navApply: '주문',
+    btn: '한국어', navApply: '주문',
     eyebrow: '뉴질랜드 웰링턴',
     title: '열 살 때,<br>어쌔신 크리드<br>후디를<br>만들려고 했다<em>…</em>',
     p1: '아이디어는 좋았다. 하지만 만들다 보니 생각대로 되지 않았다. 그래도 입었다.',
@@ -277,7 +375,7 @@ const aboutCopy = {
     footerNote: '뉴질랜드 웰링턴에서 수제 제작'
   },
   fr: {
-    btn: 'FR', navMaking: 'Fabrication', navWaitlist: 'Liste d\'attente', navApply: 'Commander',
+    btn: 'FR', navApply: 'Commander',
     eyebrow: 'Wellington, Nouvelle-Zélande',
     title: 'à 10 ans,<br>j\'ai essayé de faire<br>un sweat Assassin\'s<br>Creed<em>…</em>',
     p1: 'L\'idée était bonne — mais à mi-chemin, ça ne s\'est pas passé comme prévu. Je l\'ai quand même porté.',
@@ -294,7 +392,7 @@ const aboutCopy = {
     footerNote: 'Fabriqué à la main à Wellington, Nouvelle-Zélande'
   },
   de: {
-    btn: 'DE', navMaking: 'Making-of', navWaitlist: 'Warteliste', navApply: 'Bestellen',
+    btn: 'DE', navApply: 'Bestellen',
     eyebrow: 'Wellington, Neuseeland',
     title: 'mit 10 Jahren<br>habe ich versucht,<br>einen Assassin\'s Creed<br>Hoodie zu nähen<em>…</em>',
     p1: 'Die Idee war gut — aber auf halbem Weg wurde es nichts. Ich habe ihn trotzdem getragen.',
@@ -315,7 +413,6 @@ const aboutCopy = {
 function toggleLangMenu() {
   document.getElementById('langMenu').classList.toggle('open');
 }
-
 document.addEventListener('click', e => {
   const wrap = document.querySelector('.lang-dropdown-wrap');
   if (wrap && !wrap.contains(e.target)) document.getElementById('langMenu').classList.remove('open');
@@ -330,7 +427,7 @@ function applyLang(lang) {
   });
   const t = (id, val) => { const el = document.getElementById(id); if (el) el.textContent = val; };
   const h = (id, val) => { const el = document.getElementById(id); if (el) el.innerHTML = val; };
-  t('nav-making', c.navMaking); t('nav-waitlist', c.navWaitlist); t('nav-apply', c.navApply);
+  t('nav-apply', c.navApply);
   t('l-eyebrow', c.eyebrow); h('l-title', c.title);
   t('l-p1', c.p1); t('l-p2', c.p2); t('l-p3', c.p3); t('l-p4', c.p4);
   t('l-p5', c.p5); t('l-p6', c.p6); t('l-p7', c.p7);
