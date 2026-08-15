@@ -1,13 +1,20 @@
-// Page transition overlay
-const overlay = document.createElement('div');
-overlay.id = 'page-overlay';
-document.body.appendChild(overlay);
+// Page transition overlay — use existing element if present, else create one
+let overlay = document.getElementById('page-overlay');
+if (!overlay) {
+  overlay = document.createElement('div');
+  overlay.id = 'page-overlay';
+  document.body.appendChild(overlay);
+}
 
-window.addEventListener('DOMContentLoaded', () => {
-  requestAnimationFrame(() => {
-    requestAnimationFrame(() => overlay.classList.add('loaded'));
-  });
-});
+// Fade out as soon as possible
+function revealPage() {
+  requestAnimationFrame(() => requestAnimationFrame(() => overlay.classList.add('loaded')));
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', revealPage);
+} else {
+  revealPage();
+}
 
 document.addEventListener('click', e => {
   const link = e.target.closest('a[href]');
