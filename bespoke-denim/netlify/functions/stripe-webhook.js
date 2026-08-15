@@ -174,7 +174,7 @@ exports.handler = async function(event) {
         <!-- Footer -->
         <tr>
           <td style="border-top:0.5px solid #d4d3ce;padding-top:32px;">
-            <p style="margin:0 0 8px;font-size:12px;color:#8a8a84;line-height:1.6;">Any questions? Reply to this email or reach me at <a href="mailto:callumgodfrey@callumgodfrey.com" style="color:#141412;">callumgodfrey@callumgodfrey.com</a></p>
+            <p style="margin:0 0 8px;font-size:12px;color:#8a8a84;line-height:1.6;">Any questions? Reply to this email or reach me at <a href="mailto:callum.jm.godfrey@gmail.com" style="color:#141412;">callum.jm.godfrey@gmail.com</a></p>
             <p style="margin:0;font-size:11px;color:#d4d3ce;letter-spacing:0.1em;text-transform:uppercase;">Made by hand in Wellington, New Zealand</p>
           </td>
         </tr>
@@ -193,8 +193,9 @@ exports.handler = async function(event) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Callum Godfrey <callumgodfrey@callumgodfrey.com>',
+          from: 'Callum Godfrey <callum.jm.godfrey@gmail.com>',
           to: customerEmail,
+          reply_to: 'callum.jm.godfrey@gmail.com',
           subject: 'Your order is confirmed — 001 Wide Bootcut',
           html,
         }),
@@ -235,8 +236,8 @@ exports.handler = async function(event) {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Bespoke Orders <callumgodfrey@callumgodfrey.com>',
-          to: 'callumgodfrey@callumgodfrey.com',
+          from: 'Bespoke Orders <callum.jm.godfrey@gmail.com>',
+          to: 'callum.jm.godfrey@gmail.com',
           subject: `New order — ${customerName} — NZD $${amountNZD.toFixed(2)}`,
           html: notifyHtml,
         }),
