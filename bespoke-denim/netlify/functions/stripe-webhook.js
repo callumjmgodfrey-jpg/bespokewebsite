@@ -2,7 +2,7 @@ const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
 const NOTION_API_KEY = process.env.NOTION_API_KEY;
 const NOTION_DATABASE_ID = process.env.NOTION_DATABASE_ID || 'fe5ed4d07a264f2596a4bda414b56afe';
-const RESEND_API_KEY = process.env.RESEND_API_KEY;
+const BREVO_API_KEY = process.env.BREVO_API_KEY;
 
 exports.handler = async function(event) {
   if (event.httpMethod !== 'POST') {
@@ -85,7 +85,7 @@ exports.handler = async function(event) {
   }
 
   // ── Customer receipt email ───────────────────────────────────────────────
-  if (customerEmail && RESEND_API_KEY) {
+  if (customerEmail && BREVO_API_KEY) {
     const orderDetails = sizingType === 'Made to measure'
       ? `
         <tr><td style="padding:8px 0;color:#8a8a84;font-size:13px;">Sizing</td><td style="padding:8px 0;font-size:13px;">Made to measure</td></tr>
@@ -186,31 +186,31 @@ exports.handler = async function(event) {
 </html>`;
 
     try {
-      const emailRes = await fetch('https://api.resend.com/emails', {
+      const emailRes = await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${RESEND_API_KEY}`,
+          'api-key': BREVO_API_KEY,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Callum Godfrey <callum.jm.godfrey@gmail.com>',
-          to: customerEmail,
-          reply_to: 'callum.jm.godfrey@gmail.com',
+          sender: { name: 'Callum Godfrey', email: 'callum.jm.godfrey@gmail.com' },
+          to: [{ email: customerEmail }],
+          replyTo: { email: 'callum.jm.godfrey@gmail.com' },
           subject: 'Your order is confirmed — 001 Wide Bootcut',
-          html,
+          htmlContent: html,
         }),
       });
       if (!emailRes.ok) {
-        const body = await emailRes.text();
-        console.error('Resend error:', body);
+        const errBody = await emailRes.text();
+        console.error('Brevo error:', errBody);
       }
     } catch (err) {
-      console.error('Resend fetch error:', err.message);
+      console.error('Brevo fetch error:', err.message);
     }
   }
 
   // ── Notify Callum (always, regardless of customer email) ─────────────────
-  if (RESEND_API_KEY) {
+  if (BREVO_API_KEY) {
     const notifyDetails = sizingType === 'Made to measure'
       ? `Made to measure — waist ${meta.naturalWaist}cm, hip ${meta.highHip}cm, inseam ${meta.inseam}cm`
       : `Standard sizes — ${meta.size || 'not specified'}`;
@@ -229,17 +229,18 @@ exports.handler = async function(event) {
 </table>`;
 
     try {
-      await fetch('https://api.resend.com/emails', {
+      await fetch('https://api.brevo.com/v3/smtp/email', {
         method: 'POST',
         headers: {
-          Authorization: `Bearer ${RESEND_API_KEY}`,
+          'api-key': BREVO_API_KEY,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          from: 'Bespoke Orders <callum.jm.godfrey@gmail.com>',
-          to: 'callum.jm.godfrey@gmail.com',
+          sender: { name: 'Bespoke Orders', email: 'callum.jm.godfrey@gmail.com' },
+          to: [{ email: 'callum.jm.godfrey@gmail.com' }],
+          replyTo: { email: 'callum.jm.godfrey@gmail.com' },
           subject: `New order — ${customerName} — NZD $${amountNZD.toFixed(2)}`,
-          html: notifyHtml,
+          htmlContent: notifyHtml,
         }),
       });
     } catch (err) {
