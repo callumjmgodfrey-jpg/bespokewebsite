@@ -465,6 +465,186 @@ nav {
 .form-message { font-size: 13px; margin-top: 16px; display: none; }
 .error-msg { color: #c0392b; }
 
+/* ── CATALOG VIEW ── */
+#catalog-view {
+  min-height: 100vh;
+  padding-top: 88px;
+}
+.catalog-header {
+  padding: 72px 48px 48px;
+  border-bottom: 0.5px solid var(--light);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+.catalog-header-left {}
+.catalog-eyebrow {
+  font-size: 9px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 10px;
+}
+.catalog-title {
+  font-family: var(--serif);
+  font-size: clamp(32px, 5vw, 64px);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+.catalog-count {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  padding-bottom: 4px;
+}
+
+.catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-left: 0.5px solid var(--light);
+}
+.catalog-card {
+  border-right: 0.5px solid var(--light);
+  border-bottom: 0.5px solid var(--light);
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: background var(--dur-fast);
+}
+.catalog-card:hover { background: var(--paper); }
+.catalog-card.is-sold-out { cursor: default; }
+.catalog-card.is-sold-out:hover { background: transparent; }
+
+.catalog-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  background: var(--paper);
+}
+.catalog-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.6s var(--ease-out);
+}
+.catalog-card:not(.is-sold-out):hover .catalog-card-img {
+  transform: scale(1.03);
+}
+.catalog-card-body {
+  padding: 20px 24px 28px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 0.5px solid var(--light);
+}
+.catalog-card-badge {
+  font-size: 8px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.catalog-card-name {
+  font-family: var(--serif);
+  font-size: clamp(17px, 1.8vw, 22px);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.catalog-card-variant {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.catalog-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 0.5px solid var(--light);
+}
+.catalog-card-price {
+  font-family: var(--serif);
+  font-size: 15px;
+  color: var(--ink);
+}
+.catalog-card-cta {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: opacity var(--dur-fast);
+}
+.catalog-card:not(.is-sold-out):hover .catalog-card-cta { opacity: 0.5; }
+.catalog-card-soon {
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+
+/* ── DETAIL VIEW BACK BUTTON ── */
+#detail-view { display: none; }
+.detail-back-bar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 99;
+  padding: 20px 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--white);
+  border-bottom: 0.5px solid var(--light);
+}
+.detail-back-btn {
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--mid);
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--dur-fast);
+}
+.detail-back-btn:hover { color: var(--ink); }
+.detail-back-breadcrumb {
+  font-size: 9px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+}
+.detail-back-breadcrumb span { color: var(--ink); }
+
+/* Adjust detail product-panel top padding when back-bar is visible */
+#detail-view .product-panel { padding-top: 80px; }
+
+/* CATALOG RESPONSIVE */
+@media (max-width: 900px) {
+  .catalog-header { padding: 56px 24px 32px; flex-direction: column; align-items: flex-start; gap: 12px; }
+  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 560px) {
+  .catalog-grid { grid-template-columns: 1fr; }
+  .detail-back-bar { padding: 16px 24px; }
+}
+
 /* BATCH CLOSED */
 .form-closed {
   display: none;
@@ -591,9 +771,32 @@ footer {
         <button onclick="setLang('de');closeLangMenu();">Deutsch</button>
       </div>
     </div>
-    <a href="order.html" class="nav-link nav-apply-link">Order</a>
+    <a href="order.html" class="nav-link nav-apply-link">Store</a>
   </div>
 </nav>
+
+<!-- ══ CATALOG VIEW ══════════════════════════════════════════ -->
+<div id="catalog-view">
+  <div class="catalog-header">
+    <div class="catalog-header-left">
+      <span class="catalog-eyebrow">Callum Godfrey — Wellington, NZ</span>
+      <h1 class="catalog-title" id="l-catalog-title">The Store</h1>
+    </div>
+    <span class="catalog-count" id="l-catalog-count">3 Items</span>
+  </div>
+
+  <div class="catalog-grid" id="catalog-grid">
+    <!-- Cards injected by JS -->
+  </div>
+</div><!-- /catalog-view -->
+
+<!-- ══ DETAIL VIEW ════════════════════════════════════════════ -->
+<div id="detail-view">
+  <!-- Back bar (replaces nav while in detail view) -->
+  <div class="detail-back-bar">
+    <button class="detail-back-btn" onclick="showCatalog()" id="l-back-btn">← Store</button>
+    <span class="detail-back-breadcrumb">The Store / <span id="detail-breadcrumb-item">001 Wide Bootcut</span></span>
+  </div>
 
 <div class="product-layout">
 
@@ -841,6 +1044,7 @@ footer {
 
   </div><!-- /product-panel -->
 </div><!-- /product-layout -->
+</div><!-- /detail-view -->
 
 <footer>
   <div class="footer-left">
@@ -867,12 +1071,227 @@ footer {
     <span class="footer-note">Made by hand in Wellington, New Zealand</span>
   </div>
   <div class="footer-right">
-    <a href="order.html" class="footer-order">Order now →</a>
+    <a href="order.html" class="footer-order">Store →</a>
   </div>
 </footer>
 
 <script src="animations.js"></script>
 <script>
+// ── Product Catalog ──
+const CATALOG = [
+  {
+    id: '001-indigo',
+    itemNo: '001-A',
+    name: '001 Wide Bootcut',
+    nameJa: '001 ワイドブーツカット',
+    variant: 'Raw Indigo',
+    variantJa: 'ロウインディゴ',
+    fabricSpec: '14oz Japanese Selvedge',
+    desc: 'Hand-cut and sewn to order from raw Japanese 14oz indigo selvedge. One style, one fabric. Each pair is built individually — no stock, no shortcuts.',
+    priceNZD: { standard: 500, mtm: 550 },
+    type: 'jeans',
+    colour: 'Indigo — 14oz Japanese selvedge',
+    leadTime: '2–8 weeks',
+    images: [
+      { type: 'img', src: 'media/product_indigo_cuff.jpeg', alt: 'Raw indigo — selvedge cuff' },
+      { type: 'img', src: 'media/product_indigo_front_2.jpeg', alt: 'Raw indigo — front' },
+      { type: 'img', src: 'media/product_indigo_front.jpeg', alt: 'Raw indigo — unwashed front' },
+      { type: 'img', src: 'media/DSCF5057.jpg', alt: 'Wearing the jeans' },
+      { type: 'video', src: 'media/e440244e05594853a0d76e995698ab57.mov' },
+      { type: 'video', src: 'media/52033124d1234de2b5a76d4e38687cde.mov' },
+      { type: 'video', src: 'media/be6deb4603634d15901532b85076077d.mov' },
+      { type: 'img', src: 'media/bts_sewing_2.png', alt: 'Sewing by hand' },
+      { type: 'img', src: 'media/bts_pattern_2.png', alt: 'Pattern making' },
+    ],
+    catalogImg: 'media/product_indigo_front_2.jpeg',
+  },
+  {
+    id: '001-ecru',
+    itemNo: '001-B',
+    name: '001 Wide Bootcut',
+    nameJa: '001 ワイドブーツカット',
+    variant: 'Ecru',
+    variantJa: 'エクリュ',
+    fabricSpec: '14oz Japanese Selvedge',
+    desc: 'The same silhouette as the Raw Indigo — in a natural ecru selvedge. Lighter in character, equally deliberate in construction.',
+    priceNZD: { standard: 500, mtm: 550 },
+    type: 'jeans',
+    colour: 'Ecru — 14oz Japanese selvedge',
+    leadTime: '2–8 weeks',
+    images: [
+      { type: 'img', src: 'media/product_ecru_front.jpeg', alt: 'Ecru — front' },
+      { type: 'img', src: 'media/product_ecru_back.jpeg', alt: 'Ecru — back' },
+      { type: 'img', src: 'media/bts_sewing_2.png', alt: 'Sewing by hand' },
+      { type: 'img', src: 'media/bts_pattern_2.png', alt: 'Pattern making' },
+    ],
+    catalogImg: 'media/product_ecru_front.jpeg',
+  },
+  {
+    id: 'canvas-tote',
+    itemNo: '002',
+    name: 'Canvas Tote',
+    nameJa: 'キャンバストート',
+    variant: 'Natural',
+    variantJa: 'ナチュラル',
+    fabricSpec: 'Heavy canvas',
+    desc: 'Coming soon. DM on Instagram to be notified.',
+    priceNZD: { fixed: 120 },
+    type: 'accessory',
+    colour: 'Natural canvas',
+    leadTime: '1–2 weeks',
+    comingSoon: true,
+    images: [
+      { type: 'img', src: 'media/bts_pattern_2.png', alt: 'Canvas tote' },
+    ],
+    catalogImg: 'media/bts_pattern_2.png',
+  },
+];
+
+let currentProductId = '001-indigo';
+
+// Currency formatter (mirrors the one below, called before currentRates is populated)
+function fmtCatalogPrice(nzd) {
+  return 'NZD $' + nzd;
+}
+
+function buildCatalogGrid() {
+  const grid = document.getElementById('catalog-grid');
+  if (!grid) return;
+  grid.innerHTML = CATALOG.map(item => {
+    const priceLabel = item.type === 'accessory'
+      ? fmtCatalogPrice(item.priceNZD.fixed)
+      : `From ${fmtCatalogPrice(item.priceNZD.standard)}`;
+    const cta = item.comingSoon
+      ? `<span class="catalog-card-soon">Coming soon</span>`
+      : `<span class="catalog-card-cta">Select →</span>`;
+    return `
+      <div class="catalog-card${item.comingSoon ? ' is-sold-out' : ''}" onclick="${item.comingSoon ? '' : `selectItem('${item.id}')`}">
+        <div class="catalog-card-img-wrap">
+          <img class="catalog-card-img" src="${item.catalogImg}" alt="${item.variant} ${item.name}" loading="lazy">
+        </div>
+        <div class="catalog-card-body">
+          <span class="catalog-card-badge">ITEM NO. ${item.itemNo}</span>
+          <p class="catalog-card-name">${item.name}</p>
+          <p class="catalog-card-variant">${item.variant} — ${item.fabricSpec}</p>
+          <div class="catalog-card-footer">
+            <span class="catalog-card-price">${priceLabel}</span>
+            ${cta}
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+}
+
+function selectItem(id) {
+  const item = CATALOG.find(p => p.id === id);
+  if (!item) return;
+  currentProductId = id;
+
+  // Update breadcrumb
+  const bc = document.getElementById('detail-breadcrumb-item');
+  if (bc) bc.textContent = `${item.name} — ${item.variant}`;
+
+  // Rebuild gallery
+  const thumbsEl = document.querySelector('.gallery-thumbs');
+  const mainEl = document.getElementById('gallery-main');
+  if (thumbsEl && mainEl && item.images.length) {
+    const first = item.images[0];
+    // Set main
+    if (first.type === 'video') {
+      mainEl.innerHTML = `<video src="${first.src}" controls autoplay loop playsinline style="max-width:100%;max-height:100%;width:auto;height:auto;display:block;outline:none;"></video>`;
+    } else {
+      mainEl.innerHTML = `<img id="gallery-main-img" src="${first.src}" alt="${first.alt || ''}" style="max-width:100%;max-height:100%;width:auto;height:auto;display:block;object-fit:contain;">`;
+    }
+    // Build thumbs
+    thumbsEl.innerHTML = item.images.map((m, i) => {
+      if (m.type === 'video') {
+        return `<div class="gallery-thumb${i === 0 ? ' active' : ''}" onclick="setMedia(this,'video','${m.src}')">
+          <video src="${m.src}" muted preload="metadata"></video>
+          <div class="gallery-thumb-play"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
+        </div>`;
+      }
+      return `<div class="gallery-thumb${i === 0 ? ' active' : ''}" onclick="setMedia(this,'img','${m.src}')">
+        <img src="${m.src}" alt="${m.alt || ''}">
+      </div>`;
+    }).join('');
+  }
+
+  // Update product copy
+  const t = translations[currentLang] || translations.en;
+  document.getElementById('l-eyebrow').textContent = `${item.itemNo} — ${item.variant}`;
+  document.getElementById('l-product-name').textContent = item.name;
+  document.getElementById('l-desc').textContent = item.desc;
+  document.getElementById('l-spec-lead').textContent = item.leadTime;
+
+  // Update colour hidden value
+  selectedColour = item.colour;
+
+  // Show/hide sizing for accessories
+  const formWrap = document.getElementById('main-form-wrap');
+  if (item.comingSoon) {
+    if (formWrap) formWrap.style.display = 'none';
+    const fc = document.getElementById('formClosed');
+    if (fc) {
+      fc.classList.add('visible');
+      const title = fc.querySelector('.form-closed-title');
+      const body = fc.querySelector('.form-closed-body');
+      if (title) title.textContent = 'Coming soon.';
+      if (body) body.textContent = 'DM me on Instagram to be notified when this drops.';
+    }
+  } else {
+    if (formWrap) formWrap.style.display = '';
+    // Only reset closed state if it was set for coming-soon; let batch logic still run
+    // Re-run batch limit check for this product
+    checkSubmissionLimit();
+  }
+
+  // Update prices
+  if (item.type === 'jeans') {
+    document.getElementById('l-price-mtm-note').style.display = '';
+    updatePrices(currentCurrency);
+  } else {
+    const priceEl = document.getElementById('price-standard');
+    if (priceEl) priceEl.textContent = fmtNZD(item.priceNZD.fixed, currentCurrency);
+    const mtmNote = document.getElementById('l-price-mtm-note');
+    if (mtmNote) mtmNote.style.display = 'none';
+  }
+
+  // Switch views
+  document.getElementById('catalog-view').style.display = 'none';
+  document.getElementById('detail-view').style.display = 'block';
+  const nav = document.querySelector('nav');
+  if (nav) nav.style.display = 'none';
+  window.history.pushState({ itemId: id }, '', `?item=${id}`);
+  window.scrollTo(0, 0);
+}
+
+function showCatalog() {
+  document.getElementById('detail-view').style.display = 'none';
+  document.getElementById('catalog-view').style.display = 'block';
+  const nav = document.querySelector('nav');
+  if (nav) nav.style.display = '';
+  // Reset any coming-soon overrides so detail view is clean next time
+  const fc = document.getElementById('formClosed');
+  if (fc) fc.classList.remove('visible');
+  const fw = document.getElementById('main-form-wrap');
+  if (fw) fw.style.display = '';
+  window.history.pushState({}, '', 'order.html');
+  window.scrollTo(0, 0);
+}
+
+// Handle browser back/forward
+window.addEventListener('popstate', function(e) {
+  if (e.state && e.state.itemId) {
+    selectItem(e.state.itemId);
+  } else {
+    document.getElementById('detail-view').style.display = 'none';
+    document.getElementById('catalog-view').style.display = 'block';
+    const nav = document.querySelector('nav');
+    if (nav) nav.style.display = '';
+    window.scrollTo(0, 0);
+  }
+});
+
 // ── Translations ──
 const translations = {
   en: {
@@ -896,6 +1315,7 @@ const translations = {
     tcsLabel: 'Terms & conditions', tcsToggle: 'Read before you submit',
     tcsReadNote: 'Scroll to read all terms before accepting.',
     tcsCheckbox: 'I\'ve read and agree to the terms & conditions',
+    catalogTitle: 'The Store', backBtn: '← Store',
     submit: 'Pay now — NZD $500', submitting: 'Redirecting…',
     submitNote: 'You\'ll be taken to Stripe\'s secure checkout. Card, Apple Pay, and Google Pay accepted.',
     successMsg: "✓ Order received — I'll be in touch via email soon.",
@@ -933,8 +1353,9 @@ const translations = {
     tcsLabel: '利用規約', tcsToggle: '利用規約を読む',
     tcsReadNote: '承諾前にすべての規約をお読みください。',
     tcsCheckbox: '利用規約を読み、同意します',
+    catalogTitle: 'ストア', backBtn: '← ストア',
     submit: '注文する', submitting: '送信中…',
-    submitNote: 'このフォームの送信は課金されません。',
+    submitNote: 'Stripeのセキュアなチェックアウトページに移動します。カード、Apple Pay、Google Pay対応。',
     successMsg: '✓ ご注文を承りました。近日中にメールにてご連絡いたします。',
     errorMsg: 'エラーが発生しました。再度お試しいただくか、直接ご連絡ください。',
     errRequired: 'この項目は必須です。', errEmail: '有効なメールアドレスを入力してください。',
@@ -969,8 +1390,9 @@ const translations = {
     tcsLabel: '이용약관', tcsToggle: '이용약관 읽기',
     tcsReadNote: '동의하기 전에 모든 약관을 읽어주세요.',
     tcsCheckbox: '이용약관을 읽고 동의합니다',
+    catalogTitle: '스토어', backBtn: '← 스토어',
     submit: '주문하기', submitting: '제출 중…',
-    submitNote: '이 양식을 제출해도 결제가 이루어지지 않습니다.',
+    submitNote: 'Stripe 보안 결제 페이지로 이동합니다. 카드, Apple Pay, Google Pay 결제 가능.',
     successMsg: '✓ 주문이 접수되었습니다. 곧 이메일로 연락드리겠습니다.',
     errorMsg: '오류가 발생했습니다. 다시 시도하거나 직접 문의해 주세요.',
     errRequired: '이 항목은 필수입니다.', errEmail: '유효한 이메일 주소를 입력하세요.',
@@ -1005,8 +1427,9 @@ const translations = {
     tcsLabel: 'Conditions générales', tcsToggle: 'Lire avant de soumettre',
     tcsReadNote: 'Faites défiler pour lire toutes les conditions avant d\'accepter.',
     tcsCheckbox: 'J\'ai lu et j\'accepte les conditions générales',
-    submit: 'Soumettre', submitting: 'Envoi en cours…',
-    submitNote: 'La soumission de ce formulaire ne génère aucun paiement.',
+    catalogTitle: 'La Boutique', backBtn: '← Boutique',
+    submit: 'Payer maintenant', submitting: 'Redirection…',
+    submitNote: 'Vous serez redirigé vers le paiement sécurisé Stripe. Carte, Apple Pay et Google Pay acceptés.',
     successMsg: '✓ Votre commande a été reçue. Nous vous contacterons par e-mail sous peu.',
     errorMsg: 'Une erreur s\'est produite. Veuillez réessayer ou nous contacter directement.',
     errRequired: 'Ce champ est obligatoire.', errEmail: 'Veuillez saisir une adresse e-mail valide.',
@@ -1041,8 +1464,9 @@ const translations = {
     tcsLabel: 'Allgemeine Geschäftsbedingungen', tcsToggle: 'AGB lesen',
     tcsReadNote: 'Bitte scrollen Sie, um alle Bedingungen vor der Annahme zu lesen.',
     tcsCheckbox: 'Ich habe die AGB gelesen und stimme ihnen zu',
-    submit: 'Bestellung aufgeben', submitting: 'Wird gesendet…',
-    submitNote: 'Das Absenden dieses Formulars ist mit keiner Zahlung verbunden.',
+    catalogTitle: 'Der Shop', backBtn: '← Shop',
+    submit: 'Jetzt bezahlen', submitting: 'Weiterleitung…',
+    submitNote: 'Sie werden zur sicheren Stripe-Zahlung weitergeleitet. Karte, Apple Pay und Google Pay akzeptiert.',
     successMsg: '✓ Ihre Bestellung wurde erhalten. Wir melden uns in Kürze per E-Mail.',
     errorMsg: 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.',
     errRequired: 'Dieses Feld ist erforderlich.', errEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
@@ -1222,6 +1646,8 @@ function setLang(lang) {
   set('l-submit-note', t.submitNote);
   set('l-closed-body', t.closedBody);
   set('l-closed-btn', t.closedBtn);
+  if (t.catalogTitle) set('l-catalog-title', t.catalogTitle);
+  if (t.backBtn) set('l-back-btn', t.backBtn);
   document.getElementById('tcs-content').innerHTML = t.tcs;
   const readNote = document.getElementById('l-tcs-read-note');
   if (readNote) {
@@ -1311,6 +1737,7 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   document.getElementById('l-submit').textContent = t.submitting;
 
   const payload = {
+    productId: currentProductId,
     clientName: document.getElementById('clientName').value.trim(),
     email: document.getElementById('email').value.trim(),
     currencyPreference: document.getElementById('currency').value,
@@ -1389,7 +1816,22 @@ document.addEventListener('click', function(e) {
 
 // ── Init ──
 fetchRates('USD');
-checkSubmissionLimit();
+
+// Build catalog grid
+buildCatalogGrid();
+
+// Check for ?item= URL param — deep-link directly to detail view
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const itemId = params.get('item');
+  if (itemId && CATALOG.find(p => p.id === itemId)) {
+    selectItem(itemId);
+  } else {
+    // Catalog is default; detail view hidden via CSS display:none
+    // Run batch check so it's ready when user selects an item
+    checkSubmissionLimit();
+  }
+})();
 </script>
 </body>
 </html>

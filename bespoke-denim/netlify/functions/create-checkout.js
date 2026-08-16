@@ -1,6 +1,27 @@
 const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
 
-const BASE_PRICES_NZD = { standard: 500, mtm: 550 };
+// Product catalog — source of truth for backend pricing
+const PRODUCT_CATALOG = {
+  '001-indigo': {
+    name: '001 Wide Bootcut — Raw Indigo',
+    type: 'jeans',
+    basePricesNZD: { standard: 500, mtm: 550 },
+  },
+  '001-ecru': {
+    name: '001 Wide Bootcut — Ecru',
+    type: 'jeans',
+    basePricesNZD: { standard: 500, mtm: 550 },
+  },
+  'canvas-tote': {
+    name: 'Canvas Tote — Natural',
+    type: 'accessory',
+    basePricesNZD: { fixed: 120 },
+  },
+};
+
+// Fallback for legacy requests without productId
+const DEFAULT_PRODUCT = PRODUCT_CATALOG['001-indigo'];
+
 const SHIPPING_NZD = { nz: 20, au: 40, jpkr: 60, namerica: 70, ukeu: 75, row: 85 };
 
 const SHIPPING_LABELS = {
@@ -30,25 +51,39 @@ exports.handler = async function(event) {
     return { statusCode: 200, body: JSON.stringify({ url: '/confirmation.html' }) };
   }
 
+  const productId = sanitise(body.productId);
+  const product = PRODUCT_CATALOG[productId] || DEFAULT_PRODUCT;
+
   const sizingType = sanitise(body.sizingType);
-  const shippingRegion = sanitise(body.shippingRegion); // key e.g. 'nz'
+  const shippingRegion = sanitise(body.shippingRegion);
   const shippingLabel = sanitise(body.shippingLabel) || SHIPPING_LABELS[shippingRegion] || shippingRegion;
   const clientName = sanitise(body.clientName);
   const email = sanitise(body.email);
 
-  if (!sizingType || !shippingRegion || !clientName || !email) {
+  const isAccessory = product.type === 'accessory';
+
+  // For jeans, sizingType is required; for accessories it's not
+  if ((!isAccessory && !sizingType) || !shippingRegion || !clientName || !email) {
     return { statusCode: 400, body: 'Missing required fields' };
   }
 
-  const baseNZD = sizingType === 'Made to measure' ? BASE_PRICES_NZD.mtm : BASE_PRICES_NZD.standard;
-  const shipNZD = SHIPPING_NZD[shippingRegion] ?? SHIPPING_NZD.row;
-  const totalCents = (baseNZD + shipNZD) * 100;
+  let baseNZD;
+  if (isAccessory) {
+    baseNZD = product.basePricesNZD.fixed;
+  } else {
+    baseNZD = sizingType === 'Made to measure'
+      ? product.basePricesNZD.mtm
+      : product.basePricesNZD.standard;
+  }
 
-  // Build order description line items
-  const productName = '001 — 14oz Japanese Selvedge Wide Bootcut';
-  const sizeDescription = sizingType === 'Made to measure'
-    ? `MTM — waist ${sanitise(body.naturalWaist)}cm, hip ${sanitise(body.highHip)}cm, inseam ${sanitise(body.inseam)}cm`
-    : `${sanitise(body.size)}`;
+  const shipNZD = SHIPPING_NZD[shippingRegion] ?? SHIPPING_NZD.row;
+
+  const productName = product.name;
+  const sizeDescription = isAccessory
+    ? 'One size'
+    : sizingType === 'Made to measure'
+      ? `MTM — waist ${sanitise(body.naturalWaist)}cm, hip ${sanitise(body.highHip)}cm, inseam ${sanitise(body.inseam)}cm`
+      : `${sanitise(body.size)}`;
 
   const siteUrl = process.env.URL || 'https://callumgodfrey.com';
 
@@ -85,8 +120,9 @@ exports.handler = async function(event) {
         },
       ],
       metadata: {
+        productId: productId || '001-indigo',
         clientName,
-        sizingType,
+        sizingType: sizingType || 'N/A',
         size: sanitise(body.size),
         naturalWaist: sanitise(body.naturalWaist),
         highHip: sanitise(body.highHip),
