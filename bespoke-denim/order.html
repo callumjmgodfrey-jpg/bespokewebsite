@@ -610,7 +610,8 @@ nav {
 .lot-img-primary,
 .lot-img-inset {
   flex: 1;
-  height: 380px;
+  aspect-ratio: 9 / 16;
+  height: auto;
   object-fit: cover;
   object-position: center top;
   display: block;
@@ -772,7 +773,7 @@ nav {
 @media (max-width: 960px) {
   .ledger-masthead { padding: 56px 32px 40px; }
   .lot-spread-header { padding: 20px 32px; }
-  .lot-img-primary, .lot-img-inset { height: 260px; }
+  .lot-img-primary, .lot-img-inset { aspect-ratio: 9 / 16; height: auto; }
   .lot-ledger { padding: 32px 32px 44px; grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
@@ -781,7 +782,7 @@ nav {
   .lot-spread-header { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
   .lot-status { text-align: left; }
   .lot-image-row { gap: 6px; padding: 8px; }
-  .lot-img-primary, .lot-img-inset { height: 44vw; }
+  .lot-img-primary, .lot-img-inset { aspect-ratio: 9 / 16; height: auto; }
   .lot-ledger { padding: 24px 24px 36px; }
   .detail-back-bar { padding: 16px 24px; }
 }
