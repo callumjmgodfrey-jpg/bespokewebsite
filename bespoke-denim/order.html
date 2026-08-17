@@ -1005,8 +1005,8 @@ footer {
 
     <!-- Batch closed state -->
     <div class="form-closed" id="formClosed">
-      <h2 class="form-closed-title">Currently at capacity.</h2>
-      <p class="form-closed-body" id="l-closed-body">Currently at capacity — DM me on Instagram and we can talk about your commission.</p>
+      <h2 class="form-closed-title">Coming soon.</h2>
+      <p class="form-closed-body" id="l-closed-body">This one isn't available to order yet — DM me on Instagram to be notified when it drops.</p>
       <a class="form-closed-dm-btn" href="https://ig.me/m/callumgodfreyy" target="_blank" rel="noopener" id="l-closed-btn">DM on Instagram →</a>
     </div>
 
@@ -1420,9 +1420,8 @@ function selectItem(id) {
     }
   } else {
     if (formWrap) formWrap.style.display = '';
-    // Only reset closed state if it was set for coming-soon; let batch logic still run
-    // Re-run batch limit check for this product
-    checkSubmissionLimit();
+    const fc = document.getElementById('formClosed');
+    if (fc) fc.classList.remove('visible');
   }
 
   // Update prices
@@ -1503,7 +1502,7 @@ const translations = {
     errRequired: 'This field is required.',
     errEmail: 'Please enter a valid email address.',
     errTcs: 'You\'ll need to read and accept the T&Cs before submitting.',
-    closedBody: 'Currently at capacity — DM me on Instagram and we can talk about your commission.',
+    closedBody: 'This one isn\'t available to order yet — DM me on Instagram to be notified when it drops.',
     closedBtn: 'DM on Instagram →',
     tcs: `<p><strong>Payment &amp; Final Sales</strong><br>Payment is taken in full at the time of order. Because each pair is cut and sewn specifically to your order, all sales are final once payment is made. No refunds are offered after this point.</p>
 <p><strong>Measurement Accuracy</strong><br>You are strictly responsible for the measurements and size selections you provide. If you select a standard size or provide made-to-measure numbers that are incorrect, a refund or free remake cannot be offered. Please consult the sizing guide before ordering.</p>
@@ -1540,7 +1539,7 @@ const translations = {
     errorMsg: 'エラーが発生しました。再度お試しいただくか、直接ご連絡ください。',
     errRequired: 'この項目は必須です。', errEmail: '有効なメールアドレスを入力してください。',
     errTcs: '利用規約をお読みの上、同意してください。',
-    closedBody: '現在受注が一時的に停止しています。Instagramのダイレクトメッセージでご相談ください。',
+    closedBody: 'このアイテムはまだご注文いただけません。発売時にお知らせを受け取るには、Instagramのダイレクトメッセージでご連絡ください。',
     closedBtn: 'Instagramでメッセージ →',
     tcs: `<p><strong>お支払いと最終販売</strong><br>お支払いはご注文時に全額いただきます。各ペアはお客様のご注文に合わせて裁断・縫製されるため、お支払い後の返金はお受けできません。</p>
 <p><strong>採寸の正確性</strong><br>お客様が提供するサイズ・採寸データについては、お客様が完全に責任を負うものとします。誤りがあった場合、返金・再製作はお受けできません。ご注文前にサイズガイドをご確認ください。</p>
@@ -1577,7 +1576,7 @@ const translations = {
     errorMsg: '오류가 발생했습니다. 다시 시도하거나 직접 문의해 주세요.',
     errRequired: '이 항목은 필수입니다.', errEmail: '유효한 이메일 주소를 입력하세요.',
     errTcs: '이용약관을 읽고 동의해 주세요.',
-    closedBody: '현재 주문을 잠시 중단하고 있습니다. 인스타그램 DM으로 커미션 문의를 해주세요.',
+    closedBody: '이 아이템은 아직 주문하실 수 없습니다. 출시 알림을 받으시려면 인스타그램 DM으로 연락해 주세요.',
     closedBtn: 'Instagram으로 DM →',
     tcs: `<p><strong>결제 및 최종 판매</strong><br>결제는 주문 시 전액 이루어집니다. 각 청바지는 고객님의 주문에 맞게 재단·봉제되므로 결제 후에는 환불이 불가합니다.</p>
 <p><strong>측정 정확도</strong><br>제공하신 사이즈 및 측정값에 대해 고객님이 전적으로 책임을 지십니다. 잘못된 정보로 인한 환불 또는 무료 재제작은 불가합니다. 주문 전 사이즈 가이드를 확인하세요.</p>
@@ -1614,8 +1613,8 @@ const translations = {
     errorMsg: 'Une erreur s\'est produite. Veuillez réessayer ou nous contacter directement.',
     errRequired: 'Ce champ est obligatoire.', errEmail: 'Veuillez saisir une adresse e-mail valide.',
     errTcs: 'Veuillez lire et accepter les conditions générales.',
-    closedBody: 'Actuellement à pleine capacité — envoyez-moi un DM sur Instagram et nous pouvons parler de votre commande.',
-    closedBtn: 'Rejoindre la liste d\'attente',
+    closedBody: 'Cet article n\'est pas encore disponible à la commande — envoyez-moi un DM sur Instagram pour être notifié à sa sortie.',
+    closedBtn: 'DM sur Instagram →',
     tcs: `<p><strong>Paiement et ventes définitives</strong><br>Le paiement est encaissé en totalité au moment de la commande. Chaque paire étant coupée et cousue spécifiquement pour vous, toutes les ventes sont définitives après paiement.</p>
 <p><strong>Précision des mesures</strong><br>Vous êtes entièrement responsable des tailles et mesures fournies. En cas d'erreur, aucun remboursement ni remake gratuit ne pourra être proposé. Consultez le guide des tailles avant de commander.</p>
 <p><strong>Nature du denim brut</strong><br>Ce jean est fabriqué en denim japonais 14oz brut non sanforisé. Attendez-vous à un rétrécissement de 3 à 5 % en longueur au premier lavage (pris en compte dans le patron). La teinture indigo peut déteindre sur les surfaces claires. Lavage à froid uniquement, séchage suspendu.</p>
@@ -1651,7 +1650,7 @@ const translations = {
     errorMsg: 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut oder kontaktieren Sie uns direkt.',
     errRequired: 'Dieses Feld ist erforderlich.', errEmail: 'Bitte geben Sie eine gültige E-Mail-Adresse ein.',
     errTcs: 'Bitte lesen und akzeptieren Sie die AGB.',
-    closedBody: 'Derzeit ausgelastet — schreiben Sie mir eine DM auf Instagram und wir können über Ihre Kommission sprechen.',
+    closedBody: 'Dieser Artikel ist noch nicht bestellbar — schreiben Sie mir eine DM auf Instagram, um benachrichtigt zu werden, wenn er erscheint.',
     closedBtn: 'DM auf Instagram →',
     tcs: `<p><strong>Zahlung und endgültige Verkäufe</strong><br>Die Zahlung erfolgt vollständig zum Zeitpunkt der Bestellung. Da jedes Paar speziell für Ihre Bestellung zugeschnitten und genäht wird, sind alle Verkäufe nach Zahlungseingang endgültig.</p>
 <p><strong>Maßgenauigkeit</strong><br>Sie sind vollständig verantwortlich für die von Ihnen angegebenen Größen und Maße. Bei falschen Angaben können keine Rückerstattung oder kostenlose Neuanfertigung angeboten werden. Bitte lesen Sie den Größenratgeber vor der Bestellung.</p>
@@ -1957,22 +1956,6 @@ document.getElementById('orderForm').addEventListener('submit', async function(e
   }
 });
 
-// ── Batch limit ──
-const MAX_SUBMISSIONS = 4;
-async function checkSubmissionLimit() {
-  try {
-    const res = await fetch('/.netlify/functions/submission-count');
-    if (!res.ok) return;
-    const data = await res.json();
-    if (data.count >= MAX_SUBMISSIONS) showFormClosed();
-  } catch(e) {}
-}
-
-function showFormClosed() {
-  document.getElementById('formClosed').classList.add('visible');
-  document.getElementById('main-form-wrap').style.display = 'none';
-}
-
 
 // ── Button total ──
 const SHIP_NZD = { nz: 20, au: 40, jpkr: 60, namerica: 70, ukeu: 75, row: 85 };
@@ -2007,9 +1990,7 @@ buildCatalogGrid();
   if (itemId && CATALOG.find(p => p.id === itemId)) {
     selectItem(itemId);
   } else {
-    // Catalog is default; detail view hidden via CSS display:none
-    // Run batch check so it's ready when user selects an item
-    checkSubmissionLimit();
+    // Catalog view is default
   }
 })();
 </script>
