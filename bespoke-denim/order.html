@@ -493,7 +493,7 @@ nav {
 
 /* Masthead */
 .ledger-masthead {
-  padding: 80px 64px 56px;
+  padding: 56px 48px 36px;
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: end;
@@ -547,6 +547,11 @@ nav {
   border-top: 0.5px solid var(--light);
 }
 
+/* Hide detail-level content in catalog cards */
+#catalog-view .specimen-table { display: none; }
+#catalog-view .lot-cta-sub { display: none; }
+#catalog-view .lot-title-variant { margin-bottom: 12px; }
+
 /* LOT SPREAD */
 .lot-spread {
   border-right: 0.5px solid var(--light);
@@ -555,7 +560,7 @@ nav {
 }
 .lot-spread:last-child { border-right: none; }
 .lot-spread-header {
-  padding: 16px 24px;
+  padding: 12px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
