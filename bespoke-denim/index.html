@@ -60,6 +60,8 @@
 html { scroll-behavior: smooth; }
 body {
   font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.75;
   background: #fff;
   color: #111;
   overflow-x: hidden;
@@ -77,12 +79,12 @@ nav {
   align-items: center;
   mix-blend-mode: difference;
 }
-.nav-logo { font-family: var(--serif); font-size: 15px; color: #fff; text-decoration: none; letter-spacing: 0.12em; font-weight: 400; }
-.nav-right { display: flex; align-items: center; gap: 32px; }
-.nav-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; text-decoration: none; font-weight: 400; transition: opacity 0.2s; }
+.nav-logo { font-family: var(--serif); font-size: 15px; color: #fff; text-decoration: none; letter-spacing: 0.12em; font-weight: 400; padding: 10px 0; display: inline-flex; align-items: center; min-height: 44px; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
+.nav-link { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; text-decoration: none; font-weight: 400; transition: opacity 0.2s; padding: 10px 6px; display: inline-flex; align-items: center; min-height: 44px; }
 .nav-link:hover { opacity: 0.5; }
 .lang-dropdown-wrap { position: relative; }
-.lang-dropdown-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; background: none; border: none; cursor: pointer; font-family: var(--sans); padding: 0; }
+.lang-dropdown-btn { font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: #fff; background: none; border: none; cursor: pointer; font-family: var(--sans); transition: opacity 0.2s; padding: 10px 6px; min-height: 44px; display: inline-flex; align-items: center; }
 .lang-dropdown-btn:hover { opacity: 0.5; }
 .lang-dropdown-menu { display: none; position: absolute; top: calc(100% + 12px); right: 0; background: #141412; min-width: 160px; z-index: 200; }
 .lang-dropdown-menu.open { display: block; }
@@ -119,7 +121,7 @@ nav {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center 20%;
   display: block;
 }
 .s1-tagline {
@@ -278,18 +280,18 @@ nav {
 /* ── HERO CTA ── */
 .s1-cta {
   position: absolute;
-  bottom: 14%;
+  bottom: 12%;
   right: 48px;
   font-size: 10px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   color: #fff;
   text-decoration: none;
-  border-bottom: 1px solid rgba(255,255,255,0.6);
-  padding-bottom: 3px;
-  transition: opacity 0.2s;
+  border: 1px solid rgba(255,255,255,0.65);
+  padding: 14px 28px;
+  transition: background 0.25s, border-color 0.25s;
 }
-.s1-cta:hover { opacity: 0.5; }
+.s1-cta:hover { background: rgba(255,255,255,0.12); border-color: #fff; }
 
 /* ── WAITLIST ── */
 .waitlist {
@@ -304,7 +306,7 @@ nav {
   font-size: 9px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.6);
   margin-bottom: 28px;
 }
 .waitlist-title {
@@ -317,10 +319,10 @@ nav {
   margin-bottom: 24px;
 }
 .waitlist-sub {
-  font-size: 13px;
-  line-height: 1.9;
-  color: rgba(255,255,255,0.45);
-  max-width: 420px;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.72);
+  max-width: 480px;
   margin-bottom: 48px;
 }
 .waitlist-dm-btn {
@@ -376,7 +378,7 @@ footer {
 .footer-link svg { width: 12px; height: 12px; fill: currentColor; }
 .footer-note {
   font-size: 10px;
-  color: #d4d3ce;
+  color: #8a8a84;
   letter-spacing: 0.1em;
   margin-top: 32px;
   display: block;
@@ -466,7 +468,8 @@ footer {
   .waitlist-title { font-size: clamp(36px, 10vw, 56px); }
 
   /* S1 */
-  .s1-cta { right: 24px; bottom: 10%; }
+  .s1-cta { right: 24px; bottom: 10%; padding: 12px 20px; }
+  .s1 img { object-position: center 15%; }
 
   /* S2 — stack: big photo on top, 3 photos below */
   .s2 { display: flex; flex-direction: column; }
@@ -486,7 +489,7 @@ footer {
   /* Footer */
   footer { grid-template-columns: 1fr; gap: 40px; padding: 48px 24px 56px; }
   .footer-right { align-items: flex-start; }
-  .waitlist { padding: 72px 24px 88px; }
+  .waitlist { padding: 56px 24px 64px; }
 }
 </style>
 </head>

@@ -51,11 +51,16 @@
 
 body {
   font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.75;
   background: var(--white);
   color: var(--ink);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
+
+/* Prevent black flash during page-overlay transitions */
+#page-overlay { background: var(--bg, #fafaf8); }
 
 /* NAV */
 nav {
@@ -75,8 +80,9 @@ nav {
   text-decoration: none;
   letter-spacing: 0.12em;
   font-weight: 400;
+  padding: 10px 0; display: inline-flex; align-items: center; min-height: 44px;
 }
-.nav-right { display: flex; align-items: center; gap: 32px; }
+.nav-right { display: flex; align-items: center; gap: 24px; }
 .nav-link {
   font-size: 10px;
   letter-spacing: 0.2em;
@@ -85,8 +91,11 @@ nav {
   text-decoration: none;
   font-weight: 400;
   transition: opacity 0.2s;
+  padding: 10px 6px; display: inline-flex; align-items: center; min-height: 44px;
 }
 .nav-link:hover { opacity: 0.5; }
+/* Hide "Store" link — we're already on the store page */
+.nav-apply-link { display: none; }
 
 /* PRODUCT LAYOUT */
 .product-layout {
@@ -229,9 +238,9 @@ nav {
 /* DESCRIPTION */
 .product-desc {
   font-family: var(--serif);
-  font-size: clamp(14px, 1.4vw, 17px);
+  font-size: clamp(15px, 1.4vw, 17px);
   line-height: 1.8;
-  color: var(--mid);
+  color: var(--ink-soft);
   margin-bottom: 24px;
 }
 
@@ -261,13 +270,24 @@ nav {
 
 /* SECTION LABEL */
 .form-section-label {
-  font-size: 9px;
-  letter-spacing: 0.25em;
+  font-size: 10px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--ink);
   display: block;
   margin-bottom: 20px;
+  font-weight: 500;
 }
+
+/* SIZING TIER NOTE */
+.sizing-tier-note {
+  font-family: var(--serif);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--mid);
+  margin: -4px 0 20px;
+}
+.sizing-tier-note strong { color: var(--ink-soft); font-weight: 400; font-style: italic; }
 
 /* SIZING OPTIONS */
 .sizing-options {
@@ -721,21 +741,22 @@ nav {
   border-bottom: 0.5px solid var(--light);
 }
 .detail-back-btn {
-  font-size: 9px;
+  font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--mid);
+  color: var(--ink);
   background: none;
   border: none;
   cursor: pointer;
   font-family: var(--sans);
-  padding: 0;
+  padding: 10px 0;
+  min-height: 44px;
   display: flex;
   align-items: center;
   gap: 8px;
-  transition: color var(--dur-fast);
+  transition: opacity var(--dur-fast);
 }
-.detail-back-btn:hover { color: var(--ink); }
+.detail-back-btn:hover { opacity: 0.5; }
 .detail-back-breadcrumb {
   font-size: 9px;
   letter-spacing: 0.15em;
@@ -864,7 +885,7 @@ footer {
   .gallery-main { height: 70vw; max-height: 480px; }
   .gallery-thumbs { padding: 6px; }
   .gallery-thumb { width: 56px; height: 56px; }
-  .product-panel { padding: 48px 24px 80px; border-left: none; border-top: 0.5px solid var(--light); }
+  .product-panel { padding: 40px 24px 64px; border-left: none; border-top: 0.5px solid var(--light); }
   .lang-switcher { margin-bottom: 32px; }
   .measurements-grid { grid-template-columns: 1fr 1fr; }
   .ship-grid { grid-template-columns: 1fr; }
@@ -1035,6 +1056,7 @@ footer {
             <p class="sizing-option-price" id="price-opt-mtm">NZD $550</p>
           </div>
         </div>
+        <p class="sizing-tier-note" id="l-sizing-tier-note"><strong>Standard ($500):</strong> Fixed block sizing — select your waist and inseam. <strong>Made to measure ($550):</strong> A custom pattern drafted to your exact natural waist, high hip, and inseam in cm.</p>
         <p class="field-error" id="err-sizing"></p>
 
         <!-- Standard size pickers -->
@@ -1481,6 +1503,7 @@ const translations = {
     currency: 'Prices in',
     specLead: '2–8 weeks',
     sizingLabel: 'Sizing',
+    sizingTierNote: '<strong>Standard ($500):</strong> Fixed block sizing — select your waist and inseam. <strong>Made to measure ($550):</strong> A custom pattern drafted to your exact natural waist, high hip, and inseam in cm.',
     optStandard: 'Standard sizing', optMtm: 'Made to measure',
     measurementsTitle: 'Your measurements', waist: 'Natural waist', hip: 'High hip', inseam: 'Inseam',
     measureHint: 'All in cm. If you\'re not sure how to measure, please double-check before submitting — I can\'t offer remakes for incorrect numbers.',
@@ -1519,6 +1542,7 @@ const translations = {
     currency: '通貨',
     specLead: '2〜8週間',
     sizingLabel: 'サイズ選択',
+    sizingTierNote: '<strong>スタンダード（$500）：</strong>固定ブロックサイズ — ウエストと股下を選択。<strong>メイドトゥメジャー（$550）：</strong>ウエスト・ハイヒップ・股下（cm）に合わせてパターンを設計。',
     optStandard: 'スタンダードサイズ', optMtm: 'メイドトゥメジャー',
     measurementsTitle: '採寸データ', waist: 'ウエスト', hip: 'ハイヒップ', inseam: '股下',
     measureHint: '単位はcmでご入力ください。不明な場合はご提出前にご確認ください。',
@@ -1556,6 +1580,7 @@ const translations = {
     currency: '통화',
     specLead: '2–8주',
     sizingLabel: '사이즈',
+    sizingTierNote: '<strong>표준 ($500):</strong> 고정 블록 사이즈 — 허리와 안쪽 솔기를 선택. <strong>맞춤 제작 ($550):</strong> 자연 허리, 하이 힙, 안쪽 솔기(cm)로 제작된 맞춤 패턴.',
     optStandard: '표준 사이즈', optMtm: '맞춤 제작',
     measurementsTitle: '측정 데이터', waist: '자연 허리', hip: '하이 힙', inseam: '안쪽 솔기',
     measureHint: '모든 측정값은 cm 단위로 입력하세요.',
@@ -1593,6 +1618,7 @@ const translations = {
     currency: 'Devise',
     specLead: '2–8 semaines',
     sizingLabel: 'Taille',
+    sizingTierNote: '<strong>Standard (500 $):</strong> Taille fixe — choisissez votre tour de taille et votre entrejambe. <strong>Sur mesure (550 $):</strong> Un patron dessiné sur vos mesures exactes : taille naturelle, tour de hanche haute et entrejambe en cm.',
     optStandard: 'Taille standard', optMtm: 'Sur mesure',
     measurementsTitle: 'Vos mesures', waist: 'Tour de taille', hip: 'Tour de hanche haute', inseam: 'Entrejambe',
     measureHint: 'Toutes les mesures en cm. Consultez le guide si vous n\'êtes pas sûr.',
@@ -1630,6 +1656,7 @@ const translations = {
     currency: 'Währung',
     specLead: '2–8 Wochen',
     sizingLabel: 'Größe',
+    sizingTierNote: '<strong>Standard (500 $):</strong> Feste Blockgröße — wählen Sie Taillen- und Beinlänge. <strong>Maßgefertigt (550 $):</strong> Ein nach Ihren genauen Maßen erstelltes Schnittmuster: natürliche Taille, hohe Hüfte und Innenbeinlänge in cm.',
     optStandard: 'Standardgröße', optMtm: 'Maßgefertigt',
     measurementsTitle: 'Ihre Maße', waist: 'Natürliche Taille', hip: 'Hohe Hüfte', inseam: 'Innenbeinlänge',
     measureHint: 'Alle Maße in cm. Nutzen Sie die Maßanleitung bei Unsicherheiten.',
@@ -1796,6 +1823,8 @@ function setLang(lang) {
   set('l-currency', t.currency);
   set('l-spec-lead', t.specLead);
   set('l-sizing-label', t.sizingLabel);
+  const tierNoteEl = document.getElementById('l-sizing-tier-note');
+  if (tierNoteEl && t.sizingTierNote) tierNoteEl.innerHTML = t.sizingTierNote;
   set('l-opt-standard', t.optStandard);
   set('l-opt-mtm', t.optMtm);
   set('l-measurements-title', t.measurementsTitle);
