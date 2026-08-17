@@ -25,7 +25,7 @@
 .sizing-intro-text {
   font-family: var(--serif);
   font-size: clamp(20px, 2.5vw, 30px);
-  line-height: 1.7; font-weight: 400; color: #141412;
+  line-height: 1.7; font-weight: 400; color: var(--ink);
 }
 
 /* Swatch image break */
@@ -51,46 +51,46 @@
 }
 .sizing-item {
   padding: 52px 0;
-  border-top: 0.5px solid #d4d3ce;
+  border-top: 0.5px solid var(--light);
   display: grid;
   grid-template-columns: 220px 1fr;
   gap: 56px;
   align-items: start;
 }
-.sizing-item:last-child { border-bottom: 0.5px solid #d4d3ce; }
+.sizing-item:last-child { border-bottom: 0.5px solid var(--light); }
 .sizing-item-label {
   font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
-  color: #8a8a84; padding-top: 6px;
+  color: var(--mid); padding-top: 6px;
 }
 .sizing-item-body {
   font-family: var(--serif);
   font-size: clamp(16px, 1.8vw, 20px);
-  line-height: 1.8; color: #141412; font-weight: 400;
+  line-height: 1.8; color: var(--ink); font-weight: 400;
 }
-.sizing-item-body em { color: #8a8a84; font-style: italic; }
+.sizing-item-body em { color: var(--mid); font-style: italic; }
 
 /* Size table */
 .size-table-wrap { padding: 0 48px 120px; max-width: 900px; }
 .size-table-label {
   font-size: 9px; letter-spacing: 0.25em; text-transform: uppercase;
-  color: #8a8a84; margin-bottom: 24px; display: block;
+  color: var(--mid); margin-bottom: 24px; display: block;
 }
 table.size-table { width: 100%; border-collapse: collapse; }
 table.size-table th {
   font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: #8a8a84; font-weight: 400; text-align: left;
-  padding: 12px 0; border-bottom: 0.5px solid #d4d3ce;
+  color: var(--mid); font-weight: 400; text-align: left;
+  padding: 12px 0; border-bottom: 0.5px solid var(--light);
 }
 table.size-table td {
   font-family: var(--serif);
-  font-size: 16px; color: #141412;
-  padding: 18px 0; border-bottom: 0.5px solid #d4d3ce;
+  font-size: 16px; color: var(--ink);
+  padding: 18px 0; border-bottom: 0.5px solid var(--light);
 }
 table.size-table tr:last-child td { border-bottom: none; }
 
 /* CTA band */
 .cta-band {
-  background: #141412;
+  background: var(--ink);
   padding: 80px 48px;
   display: flex; align-items: center;
   justify-content: space-between; gap: 48px;

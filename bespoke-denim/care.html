@@ -19,18 +19,6 @@
 <link rel="stylesheet" href="animations.css">
 <link rel="stylesheet" href="inner.css">
 <style>
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--sans);
-  background: var(--white);
-  color: var(--ink);
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-
 /* INTRO */
 .care-intro {
   padding: 100px 48px 80px;
@@ -56,7 +44,7 @@ body {
 
 .care-item {
   padding: 52px 0;
-  border-top: 0.5px solid #d4d3ce;
+  border-top: 0.5px solid var(--light);
   display: grid;
   grid-template-columns: 220px 1fr;
   gap: 48px;
@@ -64,14 +52,14 @@ body {
 }
 
 .care-item:last-child {
-  border-bottom: 0.5px solid #d4d3ce;
+  border-bottom: 0.5px solid var(--light);
 }
 
 .care-item-label {
   font-size: 9px;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: #8a8a84;
+  color: var(--mid);
   padding-top: 6px;
 }
 
@@ -79,12 +67,12 @@ body {
   font-family: var(--serif);
   font-size: clamp(16px, 1.8vw, 20px);
   line-height: 1.8;
-  color: #141412;
+  color: var(--ink);
   font-weight: 400;
 }
 
 .care-item-body em {
-  color: #8a8a84;
+  color: var(--mid);
   font-style: italic;
 }
 
