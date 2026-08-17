@@ -573,52 +573,45 @@ nav {
 
 /* Spread body */
 .lot-spread-body {
-  display: grid;
-  grid-template-columns: 56% 44%;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Visual */
-.lot-visual {
-  position: relative;
+/* Image row */
+.lot-image-row {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
   background: var(--paper);
-  overflow: hidden;
-  min-height: 520px;
   cursor: pointer;
+  overflow: hidden;
 }
-.lot-spread.is-coming-soon .lot-visual { cursor: default; }
-.lot-img-primary {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  transition: transform 0.7s cubic-bezier(.22,.1,.22,1);
-}
-.lot-spread:not(.is-coming-soon) .lot-visual:hover .lot-img-primary {
-  transform: scale(1.035);
-}
+.lot-spread.is-coming-soon .lot-image-row { cursor: default; }
+.lot-img-primary,
 .lot-img-inset {
-  position: absolute;
-  bottom: 28px;
-  right: -20px;
-  width: 36%;
-  aspect-ratio: 3/4;
+  flex: 1;
+  height: 380px;
   object-fit: cover;
   object-position: center top;
-  border: 4px solid var(--white);
-  box-shadow: 0 6px 32px rgba(0,0,0,0.16);
   display: block;
-  pointer-events: none;
+  transition: transform 0.6s cubic-bezier(.22,.1,.22,1);
+  min-width: 0;
+}
+.lot-spread:not(.is-coming-soon) .lot-image-row:hover .lot-img-primary,
+.lot-spread:not(.is-coming-soon) .lot-image-row:hover .lot-img-inset {
+  transform: scale(1.025);
 }
 
 /* Ledger panel */
 .lot-ledger {
-  padding: 48px 56px 52px;
-  border-left: 0.5px solid var(--light);
-  display: flex;
-  flex-direction: column;
+  padding: 36px 64px 48px;
+  border-top: 0.5px solid var(--light);
+  display: grid;
+  grid-template-columns: 1fr 240px;
+  gap: 0 64px;
+  align-items: start;
 }
-.lot-ledger-top { flex: 1; }
+.lot-ledger-top {}
 .lot-title-en {
   font-family: var(--serif);
   font-size: clamp(24px, 2.5vw, 38px);
@@ -758,18 +751,17 @@ nav {
 @media (max-width: 960px) {
   .ledger-masthead { padding: 56px 32px 40px; }
   .lot-spread-header { padding: 20px 32px; }
-  .lot-spread-body { grid-template-columns: 1fr; }
-  .lot-visual { min-height: 56vw; }
-  .lot-img-inset { width: 30%; right: 16px; }
-  .lot-ledger { padding: 36px 32px 44px; border-left: none; border-top: 0.5px solid var(--light); }
+  .lot-img-primary, .lot-img-inset { height: 260px; }
+  .lot-ledger { padding: 32px 32px 44px; grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
   .ledger-masthead { padding: 48px 24px 32px; grid-template-columns: 1fr; gap: 24px; }
   .ledger-meta { text-align: left; }
   .lot-spread-header { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
   .lot-status { text-align: left; }
-  .lot-img-inset { display: none; }
-  .lot-ledger { padding: 28px 24px 36px; }
+  .lot-image-row { gap: 6px; padding: 8px; }
+  .lot-img-primary, .lot-img-inset { height: 44vw; }
+  .lot-ledger { padding: 24px 24px 36px; }
   .detail-back-bar { padding: 16px 24px; }
 }
 
@@ -1232,7 +1224,6 @@ const CATALOG = [
     insetImg: 'media/product_indigo_cuff.jpeg',
     insetAlt: 'Selvedge ID — raw indigo cuff detail',
     ledger: [
-      { label: 'Mill / Origin', value: 'Okayama, Japan' },
       { label: 'Weight / Weave', value: '14.5oz Raw Selvedge Indigo' },
       { label: 'Construction', value: 'Hidden Copper Rivets\nUnion Special Chainstitched Hem' },
       { label: 'Pattern', value: 'Custom Parametric Block\nZero-Guessing Fit' },
@@ -1270,7 +1261,6 @@ const CATALOG = [
     insetImg: 'media/product_ecru_back.jpeg',
     insetAlt: 'Ecru selvedge — back seam detail',
     ledger: [
-      { label: 'Mill / Origin', value: 'Okayama, Japan' },
       { label: 'Weight / Weave', value: '14.5oz Natural Ecru Selvedge' },
       { label: 'Construction', value: 'Hidden Copper Rivets\nUnion Special Chainstitched Hem' },
       { label: 'Pattern', value: 'Custom Parametric Block\nZero-Guessing Fit' },
@@ -1304,7 +1294,6 @@ const CATALOG = [
     insetImg: 'media/bts_studio_1.png',
     insetAlt: 'Studio — pattern work detail',
     ledger: [
-      { label: 'Origin', value: 'Wellington, New Zealand' },
       { label: 'Material', value: 'Heavy Natural Canvas' },
       { label: 'Construction', value: 'Double-stitched Seams\nBrass Hardware' },
       { label: 'Pattern', value: 'Original Block\nCut & Sewn In-House' },
@@ -1349,7 +1338,7 @@ function buildCatalogGrid() {
           </div>
         </div>
         <div class="lot-spread-body">
-          <div class="lot-visual" ${item.comingSoon ? '' : `onclick="selectItem('${item.id}')"`}>
+          <div class="lot-image-row" ${item.comingSoon ? '' : `onclick="selectItem('${item.id}')"`}>
             <img class="lot-img-primary" src="${item.catalogImg}" alt="${item.name} — ${item.variant}" loading="lazy">
             <img class="lot-img-inset" src="${item.insetImg}" alt="${item.insetAlt}" loading="lazy">
           </div>
