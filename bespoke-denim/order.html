@@ -465,134 +465,253 @@ nav {
 .form-message { font-size: 13px; margin-top: 16px; display: none; }
 .error-msg { color: #c0392b; }
 
-/* ── CATALOG VIEW ── */
+/* ── SPECIMEN LEDGER / LOOKBOOK ── */
 #catalog-view {
   min-height: 100vh;
   padding-top: 88px;
 }
-.catalog-header {
-  padding: 72px 48px 48px;
-  border-bottom: 0.5px solid var(--light);
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+
+/* Masthead */
+.ledger-masthead {
+  padding: 80px 64px 56px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  border-bottom: 1px solid var(--ink);
 }
-.catalog-header-left {}
-.catalog-eyebrow {
+.ledger-eyebrow {
   font-size: 9px;
-  letter-spacing: 0.25em;
+  letter-spacing: 0.28em;
   text-transform: uppercase;
   color: var(--mid);
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
-.catalog-title {
-  font-family: var(--serif);
-  font-size: clamp(32px, 5vw, 64px);
-  font-weight: 400;
-  line-height: 1.0;
-  letter-spacing: -0.02em;
+.ledger-title {
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  font-size: clamp(52px, 8vw, 104px);
+  line-height: 0.92;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
   color: var(--ink);
 }
-.catalog-count {
+.ledger-title-ja {
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.4vw, 18px);
+  font-style: italic;
+  font-weight: 300;
+  color: var(--mid);
+  display: block;
+  margin-top: 12px;
+  letter-spacing: 0.05em;
+}
+.ledger-meta {
+  text-align: right;
+  padding-bottom: 6px;
+}
+.ledger-meta-line {
   font-size: 9px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--mid);
-  padding-bottom: 4px;
+  display: block;
+  margin-bottom: 4px;
 }
 
-.catalog-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-left: 0.5px solid var(--light);
-}
-.catalog-card {
-  border-right: 0.5px solid var(--light);
+/* LOT SPREAD */
+.lot-spread {
   border-bottom: 0.5px solid var(--light);
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  transition: background var(--dur-fast);
-}
-.catalog-card:hover { background: var(--paper); }
-.catalog-card.is-sold-out { cursor: default; }
-.catalog-card.is-sold-out:hover { background: transparent; }
-
-.catalog-card-img-wrap {
-  width: 100%;
-  aspect-ratio: 4/5;
   overflow: hidden;
-  background: var(--paper);
 }
-.catalog-card-img {
+.lot-spread-header {
+  padding: 24px 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 0.5px solid var(--light);
+}
+.lot-header-left {
+  display: flex;
+  align-items: baseline;
+}
+.lot-num {
+  font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.lot-subtitle-ja {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--mid);
+  margin-left: 18px;
+  letter-spacing: 0.04em;
+}
+.lot-status { text-align: right; }
+.lot-status-en {
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: block;
+}
+.lot-status-ja {
+  font-family: var(--serif);
+  font-size: 10px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--mid);
+  display: block;
+  margin-top: 3px;
+  letter-spacing: 0.05em;
+}
+
+/* Spread body */
+.lot-spread-body {
+  display: grid;
+  grid-template-columns: 56% 44%;
+}
+
+/* Visual */
+.lot-visual {
+  position: relative;
+  background: var(--paper);
+  overflow: hidden;
+  min-height: 520px;
+  cursor: pointer;
+}
+.lot-spread.is-coming-soon .lot-visual { cursor: default; }
+.lot-img-primary {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   display: block;
-  transition: transform 0.6s var(--ease-out);
+  transition: transform 0.7s cubic-bezier(.22,.1,.22,1);
 }
-.catalog-card:not(.is-sold-out):hover .catalog-card-img {
-  transform: scale(1.03);
+.lot-spread:not(.is-coming-soon) .lot-visual:hover .lot-img-primary {
+  transform: scale(1.035);
 }
-.catalog-card-body {
-  padding: 20px 24px 28px;
-  flex: 1;
+.lot-img-inset {
+  position: absolute;
+  bottom: 28px;
+  right: -20px;
+  width: 36%;
+  aspect-ratio: 3/4;
+  object-fit: cover;
+  object-position: center top;
+  border: 4px solid var(--white);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.16);
+  display: block;
+  pointer-events: none;
+}
+
+/* Ledger panel */
+.lot-ledger {
+  padding: 48px 56px 52px;
+  border-left: 0.5px solid var(--light);
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  border-top: 0.5px solid var(--light);
 }
-.catalog-card-badge {
-  font-size: 8px;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--mid);
-}
-.catalog-card-name {
+.lot-ledger-top { flex: 1; }
+.lot-title-en {
   font-family: var(--serif);
-  font-size: clamp(17px, 1.8vw, 22px);
+  font-size: clamp(24px, 2.5vw, 38px);
   font-weight: 400;
-  line-height: 1.2;
-  color: var(--ink);
+  line-height: 1.1;
   letter-spacing: -0.01em;
+  color: var(--ink);
+  margin-bottom: 4px;
 }
-.catalog-card-variant {
-  font-size: 10px;
-  letter-spacing: 0.12em;
+.lot-title-variant {
+  font-size: 9px;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
   color: var(--mid);
+  display: block;
+  margin-bottom: 36px;
 }
-.catalog-card-footer {
+
+/* Specimen table */
+.specimen-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 40px;
+}
+.specimen-table tr { border-top: 0.5px solid var(--light); }
+.specimen-table tr:last-child { border-bottom: 0.5px solid var(--light); }
+.specimen-table td { padding: 12px 0; vertical-align: top; }
+.specimen-td-label {
+  font-size: 8px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--mid);
+  width: 36%;
+  padding-right: 16px;
+  line-height: 1.6;
+}
+.specimen-td-value {
+  font-family: var(--serif);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+/* CTA block */
+.lot-price {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  display: block;
+  margin-bottom: 4px;
+}
+.lot-price-note {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--mid);
+  display: block;
+  margin-bottom: 22px;
+}
+.lot-cta-btn {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: auto;
-  padding-top: 16px;
-  border-top: 0.5px solid var(--light);
-}
-.catalog-card-price {
-  font-family: var(--serif);
-  font-size: 15px;
-  color: var(--ink);
-}
-.catalog-card-cta {
+  width: 100%;
+  background: var(--ink);
+  color: var(--white);
+  border: none;
+  padding: 16px 20px;
   font-size: 9px;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: opacity var(--dur-fast);
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: opacity 0.2s;
+  margin-bottom: 12px;
+  text-align: left;
 }
-.catalog-card:not(.is-sold-out):hover .catalog-card-cta { opacity: 0.5; }
-.catalog-card-soon {
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+.lot-cta-btn:hover { opacity: 0.72; }
+.lot-cta-btn.is-soon {
+  background: none;
+  border: 0.5px solid var(--light);
   color: var(--mid);
+  cursor: default;
+}
+.lot-cta-btn.is-soon:hover { opacity: 1; }
+.lot-cta-sub {
+  font-family: var(--serif);
+  font-size: 12px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--mid);
+  line-height: 1.6;
 }
 
 /* ── DETAIL VIEW BACK BUTTON ── */
@@ -635,13 +754,22 @@ nav {
 /* Adjust detail product-panel top padding when back-bar is visible */
 #detail-view .product-panel { padding-top: 80px; }
 
-/* CATALOG RESPONSIVE */
-@media (max-width: 900px) {
-  .catalog-header { padding: 56px 24px 32px; flex-direction: column; align-items: flex-start; gap: 12px; }
-  .catalog-grid { grid-template-columns: repeat(2, 1fr); }
+/* LOT SPREAD RESPONSIVE */
+@media (max-width: 960px) {
+  .ledger-masthead { padding: 56px 32px 40px; }
+  .lot-spread-header { padding: 20px 32px; }
+  .lot-spread-body { grid-template-columns: 1fr; }
+  .lot-visual { min-height: 56vw; }
+  .lot-img-inset { width: 30%; right: 16px; }
+  .lot-ledger { padding: 36px 32px 44px; border-left: none; border-top: 0.5px solid var(--light); }
 }
 @media (max-width: 560px) {
-  .catalog-grid { grid-template-columns: 1fr; }
+  .ledger-masthead { padding: 48px 24px 32px; grid-template-columns: 1fr; gap: 24px; }
+  .ledger-meta { text-align: left; }
+  .lot-spread-header { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
+  .lot-status { text-align: left; }
+  .lot-img-inset { display: none; }
+  .lot-ledger { padding: 28px 24px 36px; }
   .detail-back-bar { padding: 16px 24px; }
 }
 
@@ -777,16 +905,20 @@ footer {
 
 <!-- ══ CATALOG VIEW ══════════════════════════════════════════ -->
 <div id="catalog-view">
-  <div class="catalog-header">
-    <div class="catalog-header-left">
-      <span class="catalog-eyebrow">Callum Godfrey — Wellington, NZ</span>
-      <h1 class="catalog-title" id="l-catalog-title">The Store</h1>
+  <div class="ledger-masthead">
+    <div>
+      <span class="ledger-eyebrow">Callum Godfrey — Wellington, NZ</span>
+      <h1 class="ledger-title" id="l-catalog-title">The Store</h1>
+      <span class="ledger-title-ja">セルビッジデニム &nbsp;/&nbsp; 受注生産</span>
     </div>
-    <span class="catalog-count" id="l-catalog-count">3 Items</span>
+    <div class="ledger-meta">
+      <span class="ledger-meta-line">VOL. 01 — 2026</span>
+      <span class="ledger-meta-line">3 Lots</span>
+    </div>
   </div>
 
-  <div class="catalog-grid" id="catalog-grid">
-    <!-- Cards injected by JS -->
+  <div id="catalog-grid">
+    <!-- Spreads injected by JS -->
   </div>
 </div><!-- /catalog-view -->
 
@@ -1082,6 +1214,10 @@ const CATALOG = [
   {
     id: '001-indigo',
     itemNo: '001-A',
+    lotNum: 'LOT 001-A',
+    lotJa: 'ワイドブーツカット / インディゴ',
+    statusEn: 'Made to Order',
+    statusJa: '受注生産',
     name: '001 Wide Bootcut',
     nameJa: '001 ワイドブーツカット',
     variant: 'Raw Indigo',
@@ -1092,6 +1228,15 @@ const CATALOG = [
     type: 'jeans',
     colour: 'Indigo — 14oz Japanese selvedge',
     leadTime: '2–8 weeks',
+    catalogImg: 'media/product_indigo_front_2.jpeg',
+    insetImg: 'media/product_indigo_cuff.jpeg',
+    insetAlt: 'Selvedge ID — raw indigo cuff detail',
+    ledger: [
+      { label: 'Mill / Origin', value: 'Okayama, Japan' },
+      { label: 'Weight / Weave', value: '14.5oz Raw Selvedge Indigo' },
+      { label: 'Construction', value: 'Hidden Copper Rivets\nUnion Special Chainstitched Hem' },
+      { label: 'Pattern', value: 'Custom Parametric Block\nZero-Guessing Fit' },
+    ],
     images: [
       { type: 'img', src: 'media/product_indigo_cuff.jpeg', alt: 'Raw indigo — selvedge cuff' },
       { type: 'img', src: 'media/product_indigo_front_2.jpeg', alt: 'Raw indigo — front' },
@@ -1103,11 +1248,14 @@ const CATALOG = [
       { type: 'img', src: 'media/bts_sewing_2.png', alt: 'Sewing by hand' },
       { type: 'img', src: 'media/bts_pattern_2.png', alt: 'Pattern making' },
     ],
-    catalogImg: 'media/product_indigo_front_2.jpeg',
   },
   {
     id: '001-ecru',
     itemNo: '001-B',
+    lotNum: 'LOT 001-B',
+    lotJa: 'ワイドブーツカット / エクリュ',
+    statusEn: 'Made to Order',
+    statusJa: '受注生産',
     name: '001 Wide Bootcut',
     nameJa: '001 ワイドブーツカット',
     variant: 'Ecru',
@@ -1118,17 +1266,29 @@ const CATALOG = [
     type: 'jeans',
     colour: 'Ecru — 14oz Japanese selvedge',
     leadTime: '2–8 weeks',
+    catalogImg: 'media/product_ecru_front.jpeg',
+    insetImg: 'media/product_ecru_back.jpeg',
+    insetAlt: 'Ecru selvedge — back seam detail',
+    ledger: [
+      { label: 'Mill / Origin', value: 'Okayama, Japan' },
+      { label: 'Weight / Weave', value: '14.5oz Natural Ecru Selvedge' },
+      { label: 'Construction', value: 'Hidden Copper Rivets\nUnion Special Chainstitched Hem' },
+      { label: 'Pattern', value: 'Custom Parametric Block\nZero-Guessing Fit' },
+    ],
     images: [
       { type: 'img', src: 'media/product_ecru_front.jpeg', alt: 'Ecru — front' },
       { type: 'img', src: 'media/product_ecru_back.jpeg', alt: 'Ecru — back' },
       { type: 'img', src: 'media/bts_sewing_2.png', alt: 'Sewing by hand' },
       { type: 'img', src: 'media/bts_pattern_2.png', alt: 'Pattern making' },
     ],
-    catalogImg: 'media/product_ecru_front.jpeg',
   },
   {
     id: 'canvas-tote',
     itemNo: '002',
+    lotNum: 'LOT 002',
+    lotJa: 'キャンバストートバッグ',
+    statusEn: 'Coming Soon',
+    statusJa: '近日公開',
     name: 'Canvas Tote',
     nameJa: 'キャンバストート',
     variant: 'Natural',
@@ -1140,42 +1300,73 @@ const CATALOG = [
     colour: 'Natural canvas',
     leadTime: '1–2 weeks',
     comingSoon: true,
+    catalogImg: 'media/bts_sewing.png',
+    insetImg: 'media/bts_studio_1.png',
+    insetAlt: 'Studio — pattern work detail',
+    ledger: [
+      { label: 'Origin', value: 'Wellington, New Zealand' },
+      { label: 'Material', value: 'Heavy Natural Canvas' },
+      { label: 'Construction', value: 'Double-stitched Seams\nBrass Hardware' },
+      { label: 'Pattern', value: 'Original Block\nCut & Sewn In-House' },
+    ],
     images: [
       { type: 'img', src: 'media/bts_pattern_2.png', alt: 'Canvas tote' },
     ],
-    catalogImg: 'media/bts_pattern_2.png',
   },
 ];
 
 let currentProductId = '001-indigo';
-
-// Currency formatter (mirrors the one below, called before currentRates is populated)
-function fmtCatalogPrice(nzd) {
-  return 'NZD $' + nzd;
-}
 
 function buildCatalogGrid() {
   const grid = document.getElementById('catalog-grid');
   if (!grid) return;
   grid.innerHTML = CATALOG.map(item => {
     const priceLabel = item.type === 'accessory'
-      ? fmtCatalogPrice(item.priceNZD.fixed)
-      : `From ${fmtCatalogPrice(item.priceNZD.standard)}`;
-    const cta = item.comingSoon
-      ? `<span class="catalog-card-soon">Coming soon</span>`
-      : `<span class="catalog-card-cta">Select →</span>`;
+      ? `NZD $${item.priceNZD.fixed}`
+      : `From NZD $${item.priceNZD.standard}`;
+    const priceNote = item.type === 'accessory'
+      ? 'One size'
+      : `/ NZD $${item.priceNZD.mtm} made to measure`;
+    const ledgerRows = item.ledger.map(r =>
+      `<tr><td class="specimen-td-label">${r.label}</td><td class="specimen-td-value">${r.value.replace(/\n/g, '<br>')}</td></tr>`
+    ).join('');
+    const ctaLabel = item.comingSoon ? 'Notify Me' : 'Configure Pattern';
+    const ctaClass = `lot-cta-btn${item.comingSoon ? ' is-soon' : ''}`;
+    const ctaClick = item.comingSoon ? '' : `onclick="selectItem('${item.id}')"`;
+    const ctaSub = item.comingSoon
+      ? 'DM on Instagram to be notified when this drops.'
+      : 'Includes personalized consultation on fit and fabric.';
     return `
-      <div class="catalog-card${item.comingSoon ? ' is-sold-out' : ''}" onclick="${item.comingSoon ? '' : `selectItem('${item.id}')`}">
-        <div class="catalog-card-img-wrap">
-          <img class="catalog-card-img" src="${item.catalogImg}" alt="${item.variant} ${item.name}" loading="lazy">
+      <div class="lot-spread${item.comingSoon ? ' is-coming-soon' : ''}">
+        <div class="lot-spread-header">
+          <div class="lot-header-left">
+            <span class="lot-num">${item.lotNum}</span>
+            <span class="lot-subtitle-ja">${item.lotJa}</span>
+          </div>
+          <div class="lot-status">
+            <span class="lot-status-en">${item.statusEn}</span>
+            <span class="lot-status-ja">${item.statusJa}</span>
+          </div>
         </div>
-        <div class="catalog-card-body">
-          <span class="catalog-card-badge">ITEM NO. ${item.itemNo}</span>
-          <p class="catalog-card-name">${item.name}</p>
-          <p class="catalog-card-variant">${item.variant} — ${item.fabricSpec}</p>
-          <div class="catalog-card-footer">
-            <span class="catalog-card-price">${priceLabel}</span>
-            ${cta}
+        <div class="lot-spread-body">
+          <div class="lot-visual" ${item.comingSoon ? '' : `onclick="selectItem('${item.id}')"`}>
+            <img class="lot-img-primary" src="${item.catalogImg}" alt="${item.name} — ${item.variant}" loading="lazy">
+            <img class="lot-img-inset" src="${item.insetImg}" alt="${item.insetAlt}" loading="lazy">
+          </div>
+          <div class="lot-ledger">
+            <div class="lot-ledger-top">
+              <p class="lot-title-en">${item.name}</p>
+              <span class="lot-title-variant">${item.variant} — ${item.fabricSpec}</span>
+              <table class="specimen-table"><tbody>${ledgerRows}</tbody></table>
+            </div>
+            <div>
+              <span class="lot-price">${priceLabel}</span>
+              <span class="lot-price-note">${priceNote}</span>
+              <button class="${ctaClass}" ${ctaClick}>
+                <span>${ctaLabel}</span><span>→</span>
+              </button>
+              <p class="lot-cta-sub">${ctaSub}</p>
+            </div>
           </div>
         </div>
       </div>`;
