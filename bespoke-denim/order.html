@@ -539,13 +539,23 @@ nav {
   margin-bottom: 4px;
 }
 
+/* CATALOG GRID — 3-up */
+#catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  border-top: 0.5px solid var(--light);
+}
+
 /* LOT SPREAD */
 .lot-spread {
+  border-right: 0.5px solid var(--light);
   border-bottom: 0.5px solid var(--light);
   overflow: hidden;
 }
+.lot-spread:last-child { border-right: none; }
 .lot-spread-header {
-  padding: 24px 64px;
+  padding: 16px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -600,8 +610,8 @@ nav {
 /* Image row */
 .lot-image-row {
   display: flex;
-  gap: 10px;
-  padding: 10px;
+  gap: 4px;
+  padding: 6px;
   background: var(--paper);
   cursor: pointer;
   overflow: hidden;
@@ -625,11 +635,11 @@ nav {
 
 /* Ledger panel */
 .lot-ledger {
-  padding: 36px 64px 48px;
+  padding: 24px 24px 32px;
   border-top: 0.5px solid var(--light);
   display: grid;
-  grid-template-columns: 1fr 240px;
-  gap: 0 64px;
+  grid-template-columns: 1fr;
+  gap: 0;
   align-items: start;
 }
 .lot-ledger-top {}
@@ -648,7 +658,7 @@ nav {
   text-transform: uppercase;
   color: var(--mid);
   display: block;
-  margin-bottom: 36px;
+  margin-bottom: 20px;
 }
 
 /* Specimen table */
@@ -772,17 +782,15 @@ nav {
 /* LOT SPREAD RESPONSIVE */
 @media (max-width: 960px) {
   .ledger-masthead { padding: 56px 32px 40px; }
-  .lot-spread-header { padding: 20px 32px; }
-  .lot-img-primary, .lot-img-inset { aspect-ratio: 9 / 16; height: auto; }
-  .lot-ledger { padding: 32px 32px 44px; grid-template-columns: 1fr; }
+  #catalog-grid { grid-template-columns: 1fr; }
+  .lot-spread { border-right: none; }
 }
 @media (max-width: 560px) {
   .ledger-masthead { padding: 48px 24px 32px; grid-template-columns: 1fr; gap: 24px; }
   .ledger-meta { text-align: left; }
   .lot-spread-header { padding: 16px 24px; flex-direction: column; align-items: flex-start; gap: 8px; }
   .lot-status { text-align: left; }
-  .lot-image-row { gap: 6px; padding: 8px; }
-  .lot-img-primary, .lot-img-inset { aspect-ratio: 9 / 16; height: auto; }
+  .lot-image-row { gap: 4px; padding: 6px; }
   .lot-ledger { padding: 24px 24px 36px; }
   .detail-back-bar { padding: 16px 24px; }
 }
