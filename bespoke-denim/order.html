@@ -1293,6 +1293,13 @@ const CATALOG = [
     chipFabric: '14oz denim',
     chipColour: 'Ecru',
     desc: 'The same silhouette as the Raw Indigo — in a natural ecru denim. Lighter in character, equally deliberate in construction.',
+    i18n: {
+      en: { eyebrow: '001 — Ecru', productName: '001 Wide Bootcut', desc: 'The same silhouette as the Raw Indigo — in a natural ecru denim. Lighter in character, equally deliberate in construction.' },
+      ja: { eyebrow: '001 — エクリュ', productName: '001 ワイドブーツカット', desc: 'ローインディゴと同じシルエットを、ナチュラルなエクリュデニムで。より軽やかな表情に、変わらぬこだわりの仕立て。' },
+      ko: { eyebrow: '001 — 에크루', productName: '001 와이드 부츠컷', desc: '로우 인디고와 같은 실루엣을 내추럴 에크루 데님으로. 한층 가벼운 분위기, 변함없이 신중한 제작.' },
+      fr: { eyebrow: '001 — Écru', productName: '001 Wide Bootcut', desc: 'La même silhouette que le Raw Indigo — dans un denim écru naturel. Plus léger de caractère, tout aussi soigné dans sa construction.' },
+      de: { eyebrow: '001 — Ecru', productName: '001 Wide Bootcut', desc: 'Dieselbe Silhouette wie der Raw Indigo — in natürlichem Ecru-Denim. Leichter im Charakter, ebenso sorgfältig verarbeitet.' },
+    },
     priceNZD: { standard: 500, mtm: 550 },
     type: 'jeans',
     colour: 'Ecru — 14oz Japanese denim',
@@ -1404,6 +1411,15 @@ function buildCatalogGrid() {
   }).join('');
 }
 
+// Products with their own translated copy override the default (Indigo) page text
+function applyItemLang(item) {
+  const copy = item && item.i18n && (item.i18n[currentLang] || item.i18n.en);
+  if (!copy) return;
+  document.getElementById('l-eyebrow').textContent = copy.eyebrow;
+  document.getElementById('l-product-name').textContent = copy.productName;
+  document.getElementById('l-desc').textContent = copy.desc;
+}
+
 function selectItem(id) {
   const item = CATALOG.find(p => p.id === id);
   if (!item) return;
@@ -1443,6 +1459,7 @@ function selectItem(id) {
   document.getElementById('l-eyebrow').textContent = `${item.itemNo} — ${item.variant}`;
   document.getElementById('l-product-name').textContent = item.name;
   document.getElementById('l-desc').textContent = item.desc;
+  applyItemLang(item);
   document.getElementById('l-spec-lead').textContent = item.leadTime;
   document.getElementById('l-spec-fabric').textContent = item.chipFabric;
   document.getElementById('l-spec-colour').textContent = item.chipColour;
@@ -1842,6 +1859,7 @@ function setLang(lang) {
   set('l-eyebrow', t.eyebrow);
   set('l-product-name', t.productName);
   set('l-desc', t.desc);
+  applyItemLang(CATALOG.find(p => p.id === currentProductId));
   set('l-currency', t.currency);
   set('l-spec-lead', t.specLead);
   set('l-sizing-label', t.sizingLabel);
