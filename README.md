@@ -49,5 +49,6 @@ In Stripe, add a webhook endpoint pointing at
 `https://<your-site>/.netlify/functions/stripe-webhook` for the `checkout.session.completed` event.
 
 In Notion, share the order database with your integration (··· → Add connections).
+The database needs a text column named **Product** to record what was ordered (orders still save without it).
 
 The site supports English, Japanese, Korean, French and German.

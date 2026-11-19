@@ -121,6 +121,7 @@ exports.handler = async function(event) {
       ],
       metadata: {
         productId: productId || '001-indigo',
+        productName: product.name,
         clientName,
         sizingType: sizingType || 'N/A',
         size: sanitise(body.size),

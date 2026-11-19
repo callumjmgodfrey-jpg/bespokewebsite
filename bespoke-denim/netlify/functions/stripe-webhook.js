@@ -38,6 +38,7 @@ exports.handler = async function(event) {
   const customerEmail = session.customer_details?.email || session.customer_email || '';
   const sizingType = meta.sizingType || 'Standard sizes';
   const shippingLabel = meta.shippingLabel || meta.shippingRegion || '';
+  const productName = meta.productName || '001 Wide Bootcut — Raw Indigo';
   const addr = session.shipping_details?.address || {};
   const shippingAddress = [
     addr.line1, addr.line2, addr.city, addr.state, addr.postal_code, addr.country
@@ -46,6 +47,7 @@ exports.handler = async function(event) {
   // ── Notion ──────────────────────────────────────────────────────────────
   const properties = {
     Order: { title: [{ text: { content: `${customerName} — ${orderDate}` } }] },
+    Product: { rich_text: [{ text: { content: productName } }] },
     Status: { select: { name: 'New' } },
     'Customer Name': { rich_text: [{ text: { content: customerName } }] },
     Email: { email: customerEmail },
@@ -66,16 +68,24 @@ exports.handler = async function(event) {
     if (meta.inseam)       properties['Inseam (cm)']        = { number: parseFloat(meta.inseam) };
   }
 
+  const createNotionPage = (props) => fetch('https://api.notion.com/v1/pages', {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${NOTION_API_KEY}`,
+      'Content-Type': 'application/json',
+      'Notion-Version': '2022-06-28',
+    },
+    body: JSON.stringify({ parent: { database_id: NOTION_DATABASE_ID }, properties: props }),
+  });
+
   try {
-    const res = await fetch('https://api.notion.com/v1/pages', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${NOTION_API_KEY}`,
-        'Content-Type': 'application/json',
-        'Notion-Version': '2022-06-28',
-      },
-      body: JSON.stringify({ parent: { database_id: NOTION_DATABASE_ID }, properties }),
-    });
+    let res = await createNotionPage(properties);
+    if (res.status === 400) {
+      // Most likely the database has no "Product" column yet — save the order without it
+      console.error('Notion rejected order, retrying without Product:', await res.text());
+      const { Product, ...withoutProduct } = properties;
+      res = await createNotionPage(withoutProduct);
+    }
     if (!res.ok) {
       const body = await res.text();
       console.error('Notion API error:', body);
@@ -137,7 +147,7 @@ exports.handler = async function(event) {
           <td style="padding-bottom:40px;">
             <p style="margin:0 0 20px;font-size:9px;letter-spacing:0.25em;text-transform:uppercase;color:#8a8a84;">Order summary</p>
             <table width="100%" cellpadding="0" cellspacing="0" style="border-top:0.5px solid #d4d3ce;">
-              <tr><td style="padding:8px 0;color:#8a8a84;font-size:13px;">Product</td><td style="padding:8px 0;font-size:13px;">001 — 14oz Japanese Selvedge Wide Bootcut</td></tr>
+              <tr><td style="padding:8px 0;color:#8a8a84;font-size:13px;">Product</td><td style="padding:8px 0;font-size:13px;">${productName}</td></tr>
               ${orderDetails}
               <tr><td style="padding:8px 0;color:#8a8a84;font-size:13px;">Shipping to</td><td style="padding:8px 0;font-size:13px;">${shippingLabel}</td></tr>
               ${shippingAddress ? `<tr><td style="padding:8px 0;color:#8a8a84;font-size:13px;">Delivery address</td><td style="padding:8px 0;font-size:13px;">${shippingAddress}</td></tr>` : ''}
@@ -196,7 +206,7 @@ exports.handler = async function(event) {
           sender: { name: 'Callum Godfrey', email: 'callum.jm.godfrey@gmail.com' },
           to: [{ email: customerEmail }],
           replyTo: { email: 'callum.jm.godfrey@gmail.com' },
-          subject: 'Your order is confirmed — 001 Wide Bootcut',
+          subject: `Your order is confirmed — ${productName}`,
           htmlContent: html,
         }),
       });
@@ -218,6 +228,7 @@ exports.handler = async function(event) {
     const notifyHtml = `
 <table style="font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;font-size:14px;line-height:1.8;color:#141412;max-width:480px;">
   <tr><td style="padding-bottom:24px;font-size:20px;font-family:'Times New Roman',serif;">New order — CG</td></tr>
+  <tr><td><strong>Product:</strong> ${productName}</td></tr>
   <tr><td><strong>Name:</strong> ${customerName}</td></tr>
   <tr><td><strong>Email:</strong> ${customerEmail}</td></tr>
   <tr><td><strong>Sizing:</strong> ${notifyDetails}</td></tr>
