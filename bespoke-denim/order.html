@@ -1033,8 +1033,8 @@ footer {
     <p class="product-desc" id="l-desc">Hand-cut and sewn to order from raw Japanese 14oz indigo selvedge. One style, one fabric. Each pair is built individually — no stock, no shortcuts.</p>
 
     <div class="spec-chips">
-      <span class="spec-chip">14oz selvedge</span>
-      <span class="spec-chip">Indigo</span>
+      <span class="spec-chip" id="l-spec-fabric">14oz selvedge</span>
+      <span class="spec-chip" id="l-spec-colour">Indigo</span>
       <span class="spec-chip" id="l-spec-lead">2–8 weeks</span>
     </div>
 
@@ -1251,6 +1251,8 @@ const CATALOG = [
     variant: 'Raw Indigo',
     variantJa: 'ロウインディゴ',
     fabricSpec: '14oz Japanese Selvedge',
+    chipFabric: '14oz selvedge',
+    chipColour: 'Indigo',
     desc: 'Hand-cut and sewn to order from raw Japanese 14oz indigo selvedge. One style, one fabric. Each pair is built individually — no stock, no shortcuts.',
     priceNZD: { standard: 500, mtm: 550 },
     type: 'jeans',
@@ -1288,6 +1290,8 @@ const CATALOG = [
     variant: 'Ecru',
     variantJa: 'エクリュ',
     fabricSpec: '14oz Japanese Denim',
+    chipFabric: '14oz denim',
+    chipColour: 'Ecru',
     desc: 'The same silhouette as the Raw Indigo — in a natural ecru denim. Lighter in character, equally deliberate in construction.',
     priceNZD: { standard: 500, mtm: 550 },
     type: 'jeans',
@@ -1320,6 +1324,8 @@ const CATALOG = [
     variant: 'Natural',
     variantJa: 'ナチュラル',
     fabricSpec: 'Heavy canvas',
+    chipFabric: 'Heavy canvas',
+    chipColour: 'Natural',
     desc: 'Coming soon. DM on Instagram to be notified.',
     priceNZD: { fixed: 120 },
     type: 'accessory',
@@ -1438,6 +1444,8 @@ function selectItem(id) {
   document.getElementById('l-product-name').textContent = item.name;
   document.getElementById('l-desc').textContent = item.desc;
   document.getElementById('l-spec-lead').textContent = item.leadTime;
+  document.getElementById('l-spec-fabric').textContent = item.chipFabric;
+  document.getElementById('l-spec-colour').textContent = item.chipColour;
 
   // Update colour hidden value
   selectedColour = item.colour;
