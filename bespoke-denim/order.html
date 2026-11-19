@@ -1254,6 +1254,12 @@ const CATALOG = [
     chipFabric: '14oz selvedge',
     chipColour: 'Indigo',
     desc: 'Hand-cut and sewn to order from raw Japanese 14oz indigo selvedge. One style, one fabric. Each pair is built individually — no stock, no shortcuts.',
+    i18n: {
+      ja: { eyebrow: '001-A — ロウインディゴ', productName: '001 ワイドブーツカット', desc: '生の日本製14ozインディゴセルビッジから、オーダーごとに手裁断・手縫製。一スタイル、一生地。在庫なし。', specLead: '2〜8週間' },
+      ko: { eyebrow: '001-A — 로우 인디고', productName: '001 와이드 부츠컷', desc: '원단 일본제 14온스 인디고 셀비지로 주문 제작됩니다. 하나의 스타일, 하나의 원단. 재고 없음.', specLead: '2–8주' },
+      fr: { eyebrow: '001-A — Indigo brut', productName: '001 Wide Bootcut', desc: 'Coupé et cousu à la main sur commande, en denim indigo brut japonais 14oz. Un style, un tissu. Pas de stock, pas de compromis.', specLead: '2–8 semaines' },
+      de: { eyebrow: '001-A — Raw Indigo', productName: '001 Wide Bootcut', desc: 'Von Hand zugeschnitten und genäht aus rohem japanischem 14oz Indigo-Selvedge. Ein Stil, ein Stoff. Kein Lager, keine Abkürzungen.', specLead: '2–8 Wochen' },
+    },
     priceNZD: { standard: 500, mtm: 550 },
     type: 'jeans',
     colour: 'Indigo — 14oz Japanese selvedge',
@@ -1294,11 +1300,10 @@ const CATALOG = [
     chipColour: 'Ecru',
     desc: 'The same silhouette as the Raw Indigo — in a natural ecru denim. Lighter in character, equally deliberate in construction.',
     i18n: {
-      en: { eyebrow: '001 — Ecru', productName: '001 Wide Bootcut', desc: 'The same silhouette as the Raw Indigo — in a natural ecru denim. Lighter in character, equally deliberate in construction.' },
-      ja: { eyebrow: '001 — エクリュ', productName: '001 ワイドブーツカット', desc: 'ローインディゴと同じシルエットを、ナチュラルなエクリュデニムで。より軽やかな表情に、変わらぬこだわりの仕立て。' },
-      ko: { eyebrow: '001 — 에크루', productName: '001 와이드 부츠컷', desc: '로우 인디고와 같은 실루엣을 내추럴 에크루 데님으로. 한층 가벼운 분위기, 변함없이 신중한 제작.' },
-      fr: { eyebrow: '001 — Écru', productName: '001 Wide Bootcut', desc: 'La même silhouette que le Raw Indigo — dans un denim écru naturel. Plus léger de caractère, tout aussi soigné dans sa construction.' },
-      de: { eyebrow: '001 — Ecru', productName: '001 Wide Bootcut', desc: 'Dieselbe Silhouette wie der Raw Indigo — in natürlichem Ecru-Denim. Leichter im Charakter, ebenso sorgfältig verarbeitet.' },
+      ja: { eyebrow: '001-B — エクリュ', productName: '001 ワイドブーツカット', desc: 'ローインディゴと同じシルエットを、ナチュラルなエクリュデニムで。より軽やかな表情に、変わらぬこだわりの仕立て。', specLead: '2〜8週間' },
+      ko: { eyebrow: '001-B — 에크루', productName: '001 와이드 부츠컷', desc: '로우 인디고와 같은 실루엣을 내추럴 에크루 데님으로. 한층 가벼운 분위기, 변함없이 신중한 제작.', specLead: '2–8주' },
+      fr: { eyebrow: '001-B — Écru', productName: '001 Wide Bootcut', desc: 'La même silhouette que le Raw Indigo — dans un denim écru naturel. Plus léger de caractère, tout aussi soigné dans sa construction.', specLead: '2–8 semaines' },
+      de: { eyebrow: '001-B — Ecru', productName: '001 Wide Bootcut', desc: 'Dieselbe Silhouette wie der Raw Indigo — in natürlichem Ecru-Denim. Leichter im Charakter, ebenso sorgfältig verarbeitet.', specLead: '2–8 Wochen' },
     },
     priceNZD: { standard: 500, mtm: 550 },
     type: 'jeans',
@@ -1334,6 +1339,12 @@ const CATALOG = [
     chipFabric: 'Heavy canvas',
     chipColour: 'Natural',
     desc: 'Coming soon. DM on Instagram to be notified.',
+    i18n: {
+      ja: { eyebrow: '002 — ナチュラル', productName: 'キャンバストート', desc: '近日発売。通知をご希望の方はInstagramのDMでご連絡ください。', specLead: '1〜2週間' },
+      ko: { eyebrow: '002 — 내추럴', productName: '캔버스 토트', desc: '출시 예정. 알림을 원하시면 인스타그램 DM을 보내주세요.', specLead: '1–2주' },
+      fr: { eyebrow: '002 — Naturel', productName: 'Tote en toile', desc: 'Bientôt disponible. Envoyez un DM sur Instagram pour être prévenu.', specLead: '1–2 semaines' },
+      de: { eyebrow: '002 — Natur', productName: 'Canvas-Tote', desc: 'Demnächst erhältlich. Schreib eine DM auf Instagram, um benachrichtigt zu werden.', specLead: '1–2 Wochen' },
+    },
     priceNZD: { fixed: 120 },
     type: 'accessory',
     colour: 'Natural canvas',
@@ -1411,13 +1422,15 @@ function buildCatalogGrid() {
   }).join('');
 }
 
-// Products with their own translated copy override the default (Indigo) page text
+// Show the selected product's copy in the current language (English comes from the item itself)
 function applyItemLang(item) {
-  const copy = item && item.i18n && (item.i18n[currentLang] || item.i18n.en);
-  if (!copy) return;
+  if (!item) return;
+  const copy = (item.i18n && item.i18n[currentLang]) ||
+    { eyebrow: `${item.itemNo} — ${item.variant}`, productName: item.name, desc: item.desc, specLead: item.leadTime };
   document.getElementById('l-eyebrow').textContent = copy.eyebrow;
   document.getElementById('l-product-name').textContent = copy.productName;
   document.getElementById('l-desc').textContent = copy.desc;
+  if (copy.specLead) document.getElementById('l-spec-lead').textContent = copy.specLead;
 }
 
 function selectItem(id) {
@@ -1459,10 +1472,10 @@ function selectItem(id) {
   document.getElementById('l-eyebrow').textContent = `${item.itemNo} — ${item.variant}`;
   document.getElementById('l-product-name').textContent = item.name;
   document.getElementById('l-desc').textContent = item.desc;
-  applyItemLang(item);
   document.getElementById('l-spec-lead').textContent = item.leadTime;
   document.getElementById('l-spec-fabric').textContent = item.chipFabric;
   document.getElementById('l-spec-colour').textContent = item.chipColour;
+  applyItemLang(item);
 
   // Update colour hidden value
   selectedColour = item.colour;
@@ -1859,9 +1872,9 @@ function setLang(lang) {
   set('l-eyebrow', t.eyebrow);
   set('l-product-name', t.productName);
   set('l-desc', t.desc);
-  applyItemLang(CATALOG.find(p => p.id === currentProductId));
   set('l-currency', t.currency);
   set('l-spec-lead', t.specLead);
+  applyItemLang(CATALOG.find(p => p.id === currentProductId));
   set('l-sizing-label', t.sizingLabel);
   const tierNoteEl = document.getElementById('l-sizing-tier-note');
   if (tierNoteEl && t.sizingTierNote) tierNoteEl.innerHTML = t.sizingTierNote;
